@@ -1,0 +1,28 @@
+/* pages/friendsbargainb/friendsbargainb.wxss */
+.userPic{
+  top: 20rpx;
+}
+.bg{
+  top: 70rpx;
+}
+.brand{
+  top: 125rpx;
+}
+.callon{
+  top: 165rpx;
+}
+.discountbg{
+  top: 232rpx;
+}
+.detail{
+  top: 250rpx;
+}
+.pnum{
+  background-color: #f4cc00;
+}
+.cutbtn{
+  background-color: #00a23d;
+}
+.cutsuccess{
+  color: #02a842;
+}

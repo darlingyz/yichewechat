@@ -1,0 +1,5 @@
+/* pages/vehicledetails/vehicledetails.wxss */
+.btna{
+  background-color:#09ba07;
+  margin-top:600rpx;
+}

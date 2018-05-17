@@ -1,0 +1,26 @@
+<!--头部数量提示栏-->
+<view class='topBlock wp100 border-t border-b ohid'>
+  <view class='couponsNumber fl color-green h60 fs30 ta-c lh60'>优惠券</view>
+  <view class='vouchersNumber fl fs30 h60 lh60 ta-c' bindtap='bindViewmyvouchers'>商家代金券</view>
+</view>
+<!--头部数量提示栏结束-->
+
+<block wx:for="{{coupons}}" wx:key="unique">
+<view class='couponsMain border-t border-b pr wp100'>
+  <view class='couponsFace color-white pr'>
+    <text class='currency pa fs40'>￥</text>
+    <text class='price pa'>{{item.price}}</text>
+    <text class='require pa fs18'>{{item.require1}}</text>
+  </view>
+
+  <text class='couponsName pa'>{{item.title}}</text>
+  <text class='couponsTime pa border-b-d fs23 dis-b'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
+  <view wx:if='{{item.businessName}}'>
+      <text class='couponsRange pa fs23'>{{item.merchantName}}:限{{item.businessName}}</text>
+  </view>
+  <view wx:else>
+    <text class='couponsRange pa fs23'>{{couponsRange1}}</text>
+  </view>
+  <!-- <view class='getButton pa color-white ta-c fs16 rad20' bindtap='btClick'>{{getButton1}}</view> -->
+</view>
+</block>

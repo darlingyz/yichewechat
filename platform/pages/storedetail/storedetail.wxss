@@ -1,0 +1,185 @@
+/* pages/storedetail/storedetail.wxss */
+/* pages/storedetail/storedetail.wxss */
+.collectbtn{
+  top:218rpx;
+  left:533rpx;
+}
+.outbutton{
+   height: 67rpx;
+   width: 196rpx;
+}
+.inbutton{
+  margin-left:-21rpx;
+  margin-top:8rpx;
+}
+.add{
+  right:8rpx;
+  bottom:5rpx;
+}
+.modal-mask {
+width: 100%;
+height: 900rpx;
+background: #000;
+opacity: 0.5;
+}
+.modal-maskb {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.brand{
+top:805rpx;
+left: 166rpx;
+}
+.cart{
+  right:0;
+  bottom:52rpx;
+  z-index:9900;
+}
+.carthave{
+  right:380rpx;
+  bottom:50rpx;
+  z-index:9990;
+}
+.cartnum{
+  background-color: #de2916;
+  z-index:9999;
+  right:384rpx;
+  bottom:118rpx;
+}
+.carthidden{
+  right:0;
+  bottom:50rpx;
+  z-index:9999;
+}
+.modal-dialog {
+  height: 380rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 64rpx;
+  bottom: 180rpx;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 36rpx;
+}
+.saleprice{
+  color: #ce2216;
+}
+.dec{
+  border: 1rpx solid #7b7b7b;
+}
+.addnum{
+   right:8rpx;
+   bottom:5rpx;
+}
+.triangle-down { 
+    width: 0; 
+    height: 0; 
+    border-left: 12px solid transparent; 
+    border-right: 12px solid transparent; 
+    border-top: 20px solid #fff; 
+    bottom: 150rpx;
+    left: 326rpx;
+    z-index: 9999;
+}
+.middle{
+  overflow-y: scroll;
+}
+.clearcart {
+  background:url('http://116.62.151.139/res/img/emptycart.png') no-repeat center left;
+  background-size:25rpx;
+  padding-left:40rpx;
+}
+.title{
+top: 712rpx;
+right: 1rpx;
+}
+.addCarts{
+  width: 200rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background:#09bb07;
+  position: absolute;
+  right: 10rpx;
+ border-radius:12rpx; 
+
+}
+.carpic{
+  width: 200rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+   float: left;
+  /* position: absolute;  */
+  color: #fff;
+  text-align: center;
+}
+.contbox{
+  width: 100%;
+  /* //border-bottom: 1px solid #7b7b7b; */
+  height: 180rpx;
+}
+.disitembox{
+  width: 100%;
+  height: 200rpx;
+  display: block;
+  border-bottom:1rpx #eaeaea solid; 
+  padding-bottom: 10rpx;
+  position: relative;
+}
+.oleft,
+.oright{
+  float: left;
+  height: 200rpx;
+  display:inline-block;
+}
+.oright{
+  float: right;
+  padding-left: 40rpx;
+  position: absolute;
+  top: 0;
+}
+
+.conts{
+  width: 95%;
+  height: 200rpx;
+  line-height: 200rpx;
+  float: left;
+  text-align: center;
+}
+.lines{
+  width: 2rpx;
+  display: inline-block;
+  height: 100rpx;
+  margin-top: 40rpx;
+}
+.stars{
+  float: left;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top:40rpx; 
+}
+.allcom{
+  min-height: 260rpx;
+  padding-bottom: 20rpx;
+}
+.commleft{
+  width: 100rpx;
+  float: left
+}
+.photocom{
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+}
+.photoitem{
+  max-width: 100%;
+  max-height: 100%;
+}

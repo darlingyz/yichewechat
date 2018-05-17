@@ -1,0 +1,40 @@
+/* pages/bargainb/bargainb.wxss */
+.boxa{
+  height: 235rpx;
+}
+.boxb{
+  top: 10rpx;
+  left: 500rpx;
+}
+.pnum{
+  background-color: #f4cc00;
+}
+.cuttext{
+  width: 60%;
+  bottom: 5rpx;
+text-align: left;
+text-indent: 10rpx;
+}
+.frscir{
+ bottom: 10rpx;
+ right: 22rpx;
+ 
+}
+.discount{
+  top: 155rpx;
+}
+.callfriend{
+  width: 60%;
+  height: 70rpx;
+  background: url("http://116.62.151.139/res/img/bottom.png") no-repeat 0 0;
+    background-size:100% 100%;
+}
+.sbtn{
+  width: 80rpx;
+  height: 80rpx; 
+  float: right;
+  border: none;
+  outline: none;
+  background: url("http://116.62.151.139/res/img/friends.png") no-repeat 0 0;
+  background-size:90% 90%;
+}

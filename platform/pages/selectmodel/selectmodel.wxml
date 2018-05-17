@@ -1,0 +1,52 @@
+<!--pages/selectmodel/selectmodel.wxml-->
+<view class='wp00 hv'>
+  <!--搜索栏-->
+  <view class='mt20 h60 pb20 pl110'  bindtap="search"> 
+    <view class='searchAr bg-gray h60 w80 pr fl'>
+      <image class='w35 mt15 ml20 pa' src='http://116.62.151.139/res/img/searchlogo.png' mode='widthFix'></image>
+    </view>
+    <input class="input bg-gray h60 wp70 fs30 fl"  placeholder-style="color:white" placeholder="汽车品牌关键字" value="{{searchValue}}"/>  
+  </view> 
+  <view class="bg-light-gray">
+    <view class='fs25 h80 lh80 ml20 cb'>热门品牌</view>
+    <view class='h200 wp100 pl45 cb'>
+    <block  wx:for='{{newmodel}}' wx:key='this'>
+      <view class='h100 fl w150 pr' bindtap='hostdetail' data-id='{{item.id}}'data-name='{{item.name}}'>
+          <image src='{{item.logo}}' mode='widthFix' class='w50'></image>
+          <text class='fs28 w100 pa carname'>{{item.name}}</text>
+      </view>
+    </block>
+    </view>
+  </view>
+  <view class='model_box mt5'>
+    <view class='model_left'>
+      <scroll-view scroll-y style='width:100%;height:100%;' scroll-with-animation scroll-into-view='{{modelListId}}'>
+        <view class='model_list_box'>
+          <block wx:for='{{modellist}}' wx:key='this' wx:for-item='letterItem' wx:for-index='letterIndex'>
+            <view class='model_first_letter' id='{{letterItem.letter}}'>{{letterItem.letter}}</view>
+            <text class='model_name' wx:for='{{letterItem.data}}' wx:key='this' catchtap='modelTap' data-index='{{index}}' data-val='{{item}}'><text bindtap='brandList'>{{item.modelName}}</text></text>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='model_right'>
+        <text class='letter_item' wx:for='{{letter}}' wx:key='this' catchtap='letterTap' data-item='{{item}}'>{{item}}         </text>
+    </view>
+  </view>
+</view>
+<!--遮罩-->
+<view class="modal-mask"  catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!--弹层 -->
+<view class='modeldetail cb pa bg-white wp80 ' wx:if="{{showModeldetail}}">
+  <view class='h100 lh100 fs28 pl20 fl' bindtap='hideModal'>返回</view>
+  <view class='h100 lh100 fs35 ml210 fl' bindtap=''>{{brandname}}</view>
+  <view wx:for='{{brandList}}'>
+  <view class='cb h60 lh60 fs25 ml240' >{{item.name}}</view>
+  <view>
+  <block wx:for='{{item.list}}'  wx:for-item='i' wx:for-index='letterIndex' >
+    <view class='mbg w298 h70 lh70 ta-c border-b border-r fl fs30' data-id='{{i.id}}' bindtap='cars'>{{i.fullname}}</view>
+  </block>
+  </view>
+  </view>
+</view>
+

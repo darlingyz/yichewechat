@@ -1,0 +1,28 @@
+<!--pages/evaluateorder/evaluateorder.wxml-->
+<view class='wp100 bg-light-gray hv'>
+  <view class='bg-white h80 lh80 wp100'>
+    <image src='http://139.224.235.32:8088/img/satisfaction.png' mode='widthFix' class='w60 ml20 mt10 fl'></image>
+    <view class='fs30 ml20 w200 fl'>服务满意度</view>
+  <block wx:for="{{stars}}">
+  <image class="w50 h50 fl ml10 mt10" src="{{key > item ?(key-item == 0.5?halfstar:star) : nonestar}}">
+    <view class="item " data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+    <view class="item " data-key="{{item+1}}" bindtap="selectRight"></view>
+  </image>
+</block> 
+    <block wx:for='{{commentList}}' wx:key='index'>
+      <view class='fs35 ml20 w50 fl'>{{item.comment}}</view>
+    </block>
+  </view>
+
+  <view class='bg-white h200 wp100 mt10'>
+      <input placeholder='对于我们的服务您还满意吗?说说不足的地方吧~' placeholder-style='font-size:28rpx;margin-left:40rpx;'></input>
+  </view>
+  <view class='bg-white border-b' bindtap='{{bindChooiceProduct}}'>
+      <image src='http://139.224.235.32:8088/img/addpic.png' mode='widthFix' class='w200 ml20 mt20 mb20'></image>
+  </view>
+  <view class='bg-white h200'>
+     <button class='evaluatebtn w200 h60 lh50 ta-c bg-white fr mr30 mt30'><text class='fs30'>发表评价</text></button>
+  </view>
+  <view class='mt30 cb fs28 ml40 color-gray'>如果对订单不满意，可以联系客服哦！</view>
+</view>
+  

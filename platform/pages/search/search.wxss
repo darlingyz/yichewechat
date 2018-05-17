@@ -1,0 +1,16 @@
+.searchV{height: 61rpx;
+}
+.disabled{width: 60%;background-color:#B2B2B2;}
+.searchAr{width: 80rpx;background-color:#B2B2B2;
+         border-bottom-left-radius: 16rpx;border-top-left-radius: 16rpx;}
+    .searchPic{height: 35rpx;width: 35rpx;margin-top: 16rpx;}
+.closeL{height:60rpx ;width:68rpx;background-color:#B2B2B2;
+         border-bottom-right-radius: 16rpx;border-top-right-radius: 16rpx;}
+    .closeP{height: 35rpx;width: 35rpx;margin-top: 13rpx;margin-left: 19rpx;}
+
+.sousuo{margin-left: 37rpx;margin-top:15rpx ;}
+
+    .history{margin-top:25rpx;}
+
+.historyWB{width: 96%;height: 68rpx;margin-left: 26rpx;line-height: 68rpx;}
+    .historyW{color:#767475; }

@@ -1,0 +1,15 @@
+<view class='navigation wp100 h80'>
+  <view class='all fl h80 ta-c fs30 lh80 ml30 w136' bindtap='bindVieworderdetailed'>全部</view>
+  <view class='needPay fl h80 ta-c fs30 lh80 ml55 w136' bindtap='bindVieworderdetail1'>待支付</view>
+  <view class='serveing fl h80 ta-c fs30 lh80 ml55 w136'>服务中</view>
+  <view class='needAssess fl h80 ta-c fs30 lh80 ml55 w136'>待评价</view>
+</view>
+
+
+<view class='shoppingcart'>
+  <image class='emptyshoppingcart' src='http://116.62.151.139/res/img/emptyshoppingcart.png'></image>
+</view>
+
+<text class='remind fs25'>哎呦 ， 您还没有订单哦 ！</text>
+
+<view class='buttonPay pa rad8 ta-c mt20 fs26' bindtap='bindViewhome'>去首页逛逛</view>

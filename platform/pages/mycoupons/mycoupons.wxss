@@ -1,0 +1,26 @@
+.couponsNumber{width: 215rpx;
+               border-bottom: 5rpx solid #07c108;
+               margin-left: 67rpx;}
+.vouchersNumber{margin-left: 187rpx;}
+
+.couponsMain{ height: 155rpx;
+                margin-top: 18rpx;}
+
+    .couponsFace{height: 155rpx;
+                width: 183rpx;
+                background-color: #E67817;}
+
+        .currency{margin-left: 54rpx; margin-top: 41rpx;}
+
+        .price{font-size: 75rpx; margin-left: 91rpx; margin-top: 6rpx;}
+
+        .require{margin-left: 53rpx; margin-top: 108rpx;}
+
+        .couponsName{font-size: 32rpx;color: #E67817; margin-top:-143rpx;margin-left:212rpx;}
+
+        .couponsTime{ color:#757575;padding-bottom:9rpx;width: 519rpx;margin-top:-92rpx;                                 margin-left:212rpx;}
+
+        .couponsRange{color:#757575;margin-top:-41rpx;margin-left:212rpx;}
+
+        .getButton{height: 27rpx; width: 84rpx; background-color:#DB251A;line-height:27rpx;                           margin-top:-138rpx;margin-left:640rpx;}
+        #clicked{background-color: #eaeaea;}

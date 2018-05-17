@@ -1,0 +1,77 @@
+<view class='needPayBg wp100 pr'>
+  <image class='headBg wp100 pa ' src='http://116.62.151.139/res/img/waitEvaluation.png '></image>
+   <text class='needPayWd pa fs30 '>服务已完成</text>
+   <text class='goEvaluate pa fs30' bindtap='bindViewevaluateorder'>去评价</text>
+  <image class='evaluateArrow pa ' src='http://116.62.151.139/res/img/goevaluatearrow.png'></image>
+</view>
+
+<view class='personalDetails wp100 h90'>
+    <view class='personalName border-1 fl pr'>
+        <image class='personPic w30' src='{{portait}}'></image>
+        <text class='personName pa fs27'>{{personName}}</text>
+    </view>
+    <view class='personalPhonenumber border-1 fr pr'>
+        <image class='phoneLogo w20 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
+        <text class='phoneNumber pa fs25'>{{phoneNumber}}</text>
+    </view>
+</view>
+
+<view class='shopDetail wp100  pr'>
+    <view class='shopCase pa border-1 mt30 ml20'>
+    <image class='shopLogo' mode='widthFix' src='{{shopLogo}}'></image>
+    </view>
+   <text class='shopsName pa'>{{shopsName}}</text>
+   <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
+   <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
+   <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png'></image>
+   <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
+   <image class='shopsNavigation w48 h48'  src='http://116.62.151.139/res/img/navigation.png'></image>
+</view>
+
+<text class='serve dis-b'>| 服务</text>
+
+<block wx:for="{{OrderList}}">
+<view class='serve1 pr wp100 border-b border-t'>
+    <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
+    <text class='serveName pa'>{{item.businessName}}</text>
+    <text class='serveDetail pa'>{{item.brandName}}</text>
+    <text class='servePrice pa fs25'>¥{{item.price}}</text>
+    <text class='servePrice pa fs25'>¥{{item.privilegePrice}}</text>
+    <text class='serveNumber pa fs25'>{{item.amount}}</text>
+</view>
+</block>
+
+<view class='orderCollect pr wp100'>
+
+    <view class="projectBox h80">
+      <text class='projectName pr fl dis-b fs26 mt20'>商品总额</text>
+      <text class='projectPrice pa fr dis-b fs26 mt20'>¥ {{totalMoney}}</text>
+    </view>
+    <view class="projectBox h80">
+      <text class='projectName pr fl dis-b fs26 mt20'>优惠券</text>
+      <text class='projectPrice pa fr dis-b fs26 mt20'>{{discountPrice ? discountPrice :0}}</text>
+    </view>
+        <view class="projectBox h80">
+      <text class='projectName pr fl dis-b fs26 mt20'>实付款</text>
+      <text class='projectPrice pa fr dis-b fs26 mt20'>¥ {{payPrice}}</text>
+    </view>
+
+
+    <view class="projectSBox h50">
+      <text class='orderState pr fl dis-b fs25'>订单编号 : </text>
+      <text class='orderStateN pa fr dis-b fs25'>{{orderCode}}</text>
+    </view>
+        <view class="projectSBox h50">
+      <text class='orderState pr fl dis-b fs25'>订单时间 : </text>
+      <text class='orderStateN pa fr dis-b fs25'>{{orderDate}}</text>
+    </view>
+
+</view>
+
+<view class='contactBox wp100 border-b border-t pr'>
+    <image class='serveLogo1 pa' src='http://116.62.151.139/res/img/onLionServe.png'></image>
+    <text class='onlionServe pa fs28'>一车独秀在线客服</text>
+    <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
+    <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png'></image>
+    <text class='consultW pa fs28'>一车独秀电话咨询</text>
+</view>

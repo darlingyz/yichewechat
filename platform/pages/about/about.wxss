@@ -1,0 +1,36 @@
+#bd{
+    height: 467px;}
+.fp{
+     position: relative;
+     background-color: white;}
+.list_1{font-size: 40rpx;
+        margin-left: 32rpx;
+        position: absolute;
+        top: 70rpx;}
+.ft{ height: 106rpx;
+     width: 106rpx;
+     margin-top: 42rpx;
+     margin-left: 42rpx;}
+.sed{ border-bottom: 1rpx solid #eaeaea;
+     position: relative;
+}
+.list_2{font-size: 40rpx;
+        margin-left: 32rpx;
+        position: absolute;
+        top: 70rpx;}
+.set{ height: 106rpx;
+     width: 106rpx;
+     margin-top: 42rpx;
+     margin-left: 42rpx;}
+
+.thr{ border-bottom: 1rpx solid #eaeaea;
+     position: relative;
+     }
+.list_3{font-size: 40rpx;
+        margin-left: 32rpx;
+        position: absolute;
+        top: 70rpx;}
+.tht{ height: 106rpx;
+     width: 106rpx;
+     margin-top: 42rpx;
+     margin-left: 42rpx;}

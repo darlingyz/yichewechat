@@ -1,0 +1,22 @@
+/* pages/mywallet/mywallet.wxss */
+.cont{
+  border-bottom: 1rpx solid #d9d9d9;
+}
+.price{
+  color: red;
+  font-size: 70rpx;
+}
+.texta{
+  color: #626061;
+}
+.textb{
+  color: #626061;
+}
+.textc{
+  line-height: 0rpx;
+  color: #626061;
+  font-size: 50rpx;
+}
+.textd{
+  color:#91d894;
+}

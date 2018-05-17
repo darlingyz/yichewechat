@@ -1,0 +1,204 @@
+.illegalCar {
+  height: 203rpx;
+  border-top-left-radius: 20rpx;
+  margin-top: 15rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.illegalPic {
+  width: 135rpx;
+  margin-left: 16rpx;
+  margin-top: 28rpx;
+  height: 95rpx;
+}
+
+.illegalModel {
+  margin-left: 182rpx;
+  margin-top: 25rpx;
+}
+
+.licenseNumber {
+  margin-left: 183rpx;
+  margin-top: 66rpx;
+}
+
+.distance {
+  margin-left: 183rpx;
+}
+
+.finishBt {
+  width: 130rpx;
+  border: 1rpx solid #ecbbbc;
+  margin-left: 558rpx;
+  margin-top: 144rpx;
+}
+
+.defaultBt {
+  width: 150rpx;
+  background-color: #e47916;
+  font-size: 20rpx;
+  margin-left:180rpx;
+  margin-top: 144rpx;
+}
+
+.deleteBt {
+  width: 150rpx;
+  font-size: 20rpx;
+  color: #d85852;
+  margin-left:360rpx;
+  margin-top: 144rpx;
+  border: 0.1rpx solid #ecbbbc;
+}
+
+.redactDetail {
+  height: 54rpx;
+}
+
+.redactDetailW {
+  margin-left: 280rpx;
+}
+
+.cardistance {
+  height: 54rpx;
+}
+
+.distanceW {
+  margin-left: 29rpx;
+}
+
+.distanceN {
+  margin-left: 179rpx;
+}
+
+.carCard {
+  height: 54rpx;
+}
+
+.carCardW {
+  margin-left: 29rpx;
+}
+
+.carCardN {
+  margin-left: 179rpx;
+}
+
+.serchBox {
+  height: 54rpx;
+}
+
+.searchNavigate {
+  margin-left: 29rpx;
+}
+
+.getInput1 {
+  margin-left: 185rpx;
+  color: #aaa;
+}
+
+.illegalCar2 {
+  height: 157rpx;
+  margin-left: 18rpx;
+  border-top-left-radius: 20rpx;
+  margin-top: 42rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.illegalPic {
+  width: 135rpx;
+  margin-left: 16rpx;
+  margin-top: 28rpx;
+  height: 95rpx;
+}
+
+.illegalModel {
+  margin-left: 182rpx;
+  margin-top: 25rpx;
+}
+
+.licenseNumber {
+  margin-left: 183rpx;
+  margin-top: 62rpx;
+}
+
+.distance {
+  margin-left: 183rpx;
+  margin-top: 96rpx;
+}
+
+.compile {
+  width: 120rpx;
+  border: 1rpx solid #d8b79c;
+  margin-left: 568rpx;
+}
+
+.illegalMark {
+  height: 58rpx;
+  background-color: #efefed;
+  margin-left: 18rpx;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.illegalRecoud {
+  margin-left: 22rpx;
+}
+
+.illegalW {
+  font-size: 19rpx;
+  margin-top: 13rpx;
+  color: #535250;
+}
+
+.bomb {
+  height: 290rpx;
+  width: 553rpx;
+}
+
+.warmPrompt {
+  font-size: 34rpx;
+  margin-top: 55rpx;
+  margin-left: 208rpx;
+}
+
+.warmPromptW {
+  margin-top: 127rpx;
+  margin-left: 155rpx;
+}
+
+.all {
+  margin-top: 187rpx;
+}
+
+.btGroup {
+  display: block;
+  height: 98rpx;
+  width: 265rpx;
+  margin-top: 188rpx;
+  text-align: center;
+  line-height: 98rpx;
+}
+
+.sureBt {
+  display: block;
+  height: 98rpx;
+  width: 280rpx;
+  margin-top: 188rpx;
+  margin-left: 270rpx;
+  text-align: center;
+  line-height: 98rpx;
+}
+
+.commodity_screen {
+  height: 100%;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 1000;
+  color: #fff;
+}
+
+.bomb {
+  top: 309rpx;
+  left: 92rpx;
+  z-index: 2000;
+}

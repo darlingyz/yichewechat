@@ -1,0 +1,92 @@
+.conter{
+  width: 100%;
+  height: 80%;
+  background: #fff;
+  display: block;
+}
+.interduce{
+  width: 100%;
+  height: 100rpx;
+  margin: 10% auto;
+  text-align: center;
+}
+.wename{
+  width: 100%;
+  font-size: 36rpx;
+  margin: 5% auto;
+}
+.log{
+  width: 180rpx;
+  height: 180rpx;
+  margin: 5% auto;
+  display: block;
+}
+.about{
+  width: 70%;
+  height: 200rpx;
+  font-size: 30rpx;
+  display: block;
+  margin: 0 auto;
+  margin-top:20%;
+  color: #686667;
+}
+.inter01{
+  width: 100%;
+  display: block;
+  height: 50px;
+  line-height: 50rpx;
+  border-top: 1px solid #bebebc;
+   margin-top: 5%; 
+   padding-top:5%; 
+  font-size: 30rpx;
+}
+.inter02{
+  width: 100%;
+  display: block;
+  height: 50px;
+  line-height: 50rpx;
+  border-top: 1px solid #bebebc;
+  padding-top:5%; 
+  font-size: 30rpx;
+}
+.name01{
+margin-left: 5%;
+}
+.name02{
+  margin-left: 10%;
+  color: #bebebc;
+}
+.inter03{
+  width: 100%;
+  width: 100%;
+  display: block;
+  height: 50px;
+  line-height: 50rpx;
+  border-top: 1px solid #bebebc;
+  border-bottom: 1px solid #bebebc;
+  padding-top:5%; 
+  padding-bottom:5%; 
+  font-size: 30rpx; 
+}
+.name031{
+  margin-left: 5%;
+  float: left;
+}
+.name03{
+  width: 60%;
+   margin-left: 10%;
+   float: left;
+}
+.logs{
+  width: 80rpx;
+  height:80rpx;
+  margin-right:5%; 
+}
+.toanther{
+  width: 100%;
+  height: 20%;
+  background: #bebebc;
+}
+.wxbtn{
+  background-color: #09ba07;
+}

@@ -1,0 +1,21 @@
+<!--pages/selectstandard/selectstandard.wxml-->
+<view class='border-b wp100 h80'>
+  <view class='fl h80 lh80 wp50'>
+     <text class='ml120 color-green'>车型适配</text>
+  </view>
+  <view class='fl h80 lh80 wp50' bindtap='bindViewSelectstandard'>
+     <text class='ml120'>自选规格</text>
+  </view>
+</view>
+<image src='http://192.168.1.111:90/ckgreen.png' class='fl w370' mode='widthFix'></image>
+<view class='h100 lh100 wp100 cb border-b'>
+  <image src='{{carsign}}' mode='widthFix' class='w40 fl ml50 mt30'></image>
+  <view class='fl fs35 ml30'>{{cartype}}</view>
+  <view class='fl fs25 ml50'>更换车辆>></view>
+</view>
+<block wx:for='{{cartypelist}}'>
+  <view class='h80 lh80 wp80 border-1 ta-c ma mt20'>
+    <view class='fs30'>{{item.carkind}}</view>
+  </view>
+</block>
+<image src='{{tyreselected}}' class='wp100 mt80' mode='widthFix'></image>

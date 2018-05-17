@@ -1,0 +1,22 @@
+/* pages/login/login.wxss */
+.btna{
+  background-color:#09ba07;
+  margin-top:450rpx;
+}
+.btnb{
+  border:1rpx solid #ccc;
+}
+.textc{
+  color: #878787;
+}
+.textd{
+  color: #2fb3f1;
+}
+.img{
+  width: 70rpx;
+  margin-left: 170rpx;
+}
+.imgp{
+  width: 20rpx;
+  margin-left: 240rpx;
+}

@@ -1,0 +1,18 @@
+/* pages/phonelogin/phonelogin.wxss */
+.input{
+  width: 335rpx;
+}
+.num{
+  width: 210rpx;
+  margin:20rpx auto;
+  background-color:#f4ca02;
+}
+.btna{
+  background-color:#09ba07;
+}
+.textc{
+  color: #878787;
+}
+.textd{
+  color: #2fb3f1;
+}

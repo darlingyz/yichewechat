@@ -1,0 +1,65 @@
+.illegalCar {
+  height: 157rpx;
+  
+}
+
+.illegalPic {
+  width: 142rpx;
+  margin-top: 28rpx;
+}
+
+.illegalModel {
+  width: 320rpx;
+  margin-left: 216rpx;
+  margin-top: 58rpx;
+}
+
+.licenseNumber {
+  font-size: 30rpx;
+  margin-left: 550rpx;
+  margin-top: 58rpx;
+}
+
+.activelist {
+height: 230rpx;
+font-size: 30rpx;
+padding-top: 20rpx;
+}
+.illreson{
+  min-height: 30rpx;
+}
+.illegalReason{
+  width: 70%;
+  min-height: 80rpx;
+  line-height: 30rpx;
+  display: inline-block;
+}
+ .illtime
+.illplace
+.illmoney
+.illscoe{
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+}
+.illreson{
+  min-height: 60rpx;
+  display:block
+}
+.no-data{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 28rpx;
+  color: #222;
+}
+.box{
+  width: 100%;
+ min-height: 240rpx; 
+  border-bottom:1px solid #ccc;
+  padding-top:20rpx;  
+}
+.illegalReason{
+  min-height: 30rpx;
+  line-height: 30rpx;
+}

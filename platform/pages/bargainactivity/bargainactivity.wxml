@@ -1,0 +1,31 @@
+<!--pages/bargainactivity/bargainactivity.wxml-->
+<text class='fs28'>活动准备中,敬请期待~</text>
+<view wx:for="{{bargainList}}" wx:key="unique" wx:if="{{nomsg}}">
+    <view class='wp100' bindtap='bargaindetail' data-id="{{item.id}}">
+      <view class="pr" >
+        <image src='{{item.img}}' class='wp60 fl mt10 h234'></image>
+        <image src='{{item.bargainSrc}}' mode='widthFix' class='bargain w90 pa fl'></image>
+      </view>
+      <view class="pr">
+        <image src='{{couponSrc}}' class='wp40 fl mt10 h234'></image>
+        <view class='boxb fl pa'>
+          <view class='pr'>
+                <view class='fs35 mt20 fw ta-c ma'>{{item.activityName}}</view>
+                <view class='mt10'>
+                    <view class='fs20 ta-c wp100'>{{item.description}}</view>
+                </view>
+                <view class='pt20'>
+                    <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
+                    <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+                </view>
+                <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.minPrice}}元-</view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class='cb border-b wp100 h80 lh100'>
+        <view class='fl h80 lh80 fs28 ml10 w280'>{{item.merchangtName}}</view>
+        <view class='fl h80 lh80 fs28 ml10 color-gray ohid w320'>{{item.address}}</view>
+        <view class='fr h80 lh80 fs28 mr10 color-gray w100'bindtap='calculate'>{{item.distance}}km</view>
+    </view>
+</view>

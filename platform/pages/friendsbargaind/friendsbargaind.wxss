@@ -1,0 +1,53 @@
+/* pages/friendsbargaind/friendsbargaind.wxss */
+.userPic{
+  top: 20rpx;
+}
+.bg{
+  top: 70rpx;
+}
+.brand{
+  top: 125rpx;
+}
+.callon{
+  top: 165rpx;
+}
+.discountbg{
+  top: 232rpx;
+}
+.detail{
+  top: 250rpx;
+}
+.pnum{
+  background-color: #f4cc00;
+}
+.cutdetial{
+  background-color: #f4cb01;
+  overflow-y: scroll;
+}
+.bgbox{
+  background-color: #fff;
+  top:20rpx;
+  left: 30rpx;
+}
+.frienduserSrc{
+  top: 10rpx;
+  left: 10rpx;
+}
+.friendsname{
+  left: 80rpx;
+}
+.cutnum{
+  left: 260rpx;
+}
+.date{
+  left: 430rpx;
+}
+.time{
+ right: -10rpx;
+}
+.cutbtn{
+  background-color: #09ba07;
+}
+.middle{
+  overflow-y: scroll;
+}

@@ -1,0 +1,53 @@
+<view class='mainList wp100' hidden='{{editModel}}'>
+  <view class='illegalCar pr border-1 ml18 wp95'>
+    <image class='illegalPic pa' src='{{illegalPic}}'></image>
+    <text class='illegalModel pa fs27'>{{illegalModel}}</text>
+    <text class='licenseNumber pa fs25'>{{illicenseNumber}}</text>
+    <text class='distance pa fs25 mt100'>行驶行程{{distance}}Km</text>
+    <button class='defaultBt color-white pa h40 lh40' bindtap='setDefault'>设为默认</button>
+    <button class='deleteBt pa h40 bg-white lh40' bindtap='txClick'>删除爱车</button>
+    <button class='finishBt pa h40 fs22 lh40 bg-white' bindtap='bindViewcarport'>完成</button>
+  </view>
+
+  <view class='redactDetail wp95 border-1 pr ml18'>
+    <text class='redactDetailW pa fs23 mt10'>-编辑车辆详情-</text>
+  </view>
+
+  <view class='cardistance border-1 pr ml18 wp95'>
+    <text class='distanceW pa fs23 mt10'>行驶里程</text>
+    <text class='distanceN pa fs23 mt10'>{{distance}}Km</text>
+  </view>
+  <view class='carCard border-1 pr ml18 wp95'>
+    <text class='carCardW pa fs23 mt10'>车牌号</text>
+    <view>
+      <input type='text' bindinput='illicenseNumber' value='{{illicenseNumber}}' class='getInput1 pa h50 fs23 pl30'></input>
+    </view>
+  </view>
+
+  <view class="serchBox border-b border-l border-r pr ml18 wp95">
+    <text class='searchNavigate pa fs23 mt10'>发动机号</text>
+    <input type='text' value='{{carEngine}}' bindinput='carEngine' class='getInput1 pa h50 fs23 pl30'></input>
+  </view>
+  <view class="serchBox border-b border-l border-r pr ml18 wp95">
+    <text class='searchNavigate pa fs23 mt10'>车架号</text>
+    <input type='text' value='{{carFrame}}' bindinput='carFrame' class='getInput1 pa h50 fs23 pl30'></input>
+  </view>
+  <view class="serchBox border-b border-l border-r pr ml18 wp95">
+    <text class='searchNavigate pa fs23 mt10'>更换机油里程数</text>
+    <input type='text' value='{{oilMileage}}' bindinput='oilMileage' class='getInput1 pa h50 fs23 pl30'></input>
+  </view>
+  <view class="serchBox border-b border-l border-r pr ml18 wp95">
+    <text class='searchNavigate pa fs23 mt10'>日均里程数</text>
+    <input type='text' value='{{dailyMileage}}' bindinput='dailyMileage' class='getInput1 pa h50 fs23 pl30'></input>
+  </view>
+</view>
+
+
+<view class='bomb border-1 pr pf bg-white' wx:if="{{show}}">
+  <text class='warmPrompt pa'>温馨提示</text>
+  <text class='warmPromptW pa fs27'>您确定删除此辆车吗？</text>
+  <view class='btGroup pa border-1' bindtap='cancelClick'>取消</view>
+  <view class='sureBt pa pr border-1' bindtap='sureClick'>确定</view>
+</view>
+
+<view class="commodity_screen wp100 pf top0 ohid" bindtap="hideModa" wx:if="{{showModalStatus}}"></view>

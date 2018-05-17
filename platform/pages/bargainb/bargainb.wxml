@@ -1,0 +1,74 @@
+<!--pages/bargainb/bargainb.wxml-->
+  <view class='wp100'>
+    <view class="pr">
+        <image src='{{detail.img}}' class='wp60 fl mt10 pr' mode='widthFix'></image>
+    </view>
+    <view class="pr">
+       <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40 fl mt10 pr'></image> 
+        <view class='boxb fl pa'>
+          <view class='pr'>
+                <view class='fs35 mt20 ml80 fw'>{{detail.activityName}}</view>
+                <view class='mt10'>
+                    <view class='fs20 fl ml30'>{{detail.description}}</view>
+                    <!-- <view class='fs20 fr mr20'>{{sloganb}}</view> -->
+                </view>
+                <view class='pt40'>
+                    <view class='fs40 fl fw'>{{detail.minPrice}}</view>
+                    <view class='fs20 fl mt20 ml20 txt-throw'>原价:{{detail.price}}</view>
+                </view>
+                <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{detail.minPrice}}-</view>
+            </view>
+          </view>
+    </view>
+    <view class='cb wp100 h60'></view>
+    <view class='fs35 wp100 h50 ta-c fw'>已有0位好友为你砍价</view>
+    <view class='fs30 wp100 h50 ta-c mt20'>请在24小时内达到折扣价或底价</view>
+    <view class='cb wp100 h60'></view>
+    <view class='cb'>
+        <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{detail.middleNum}}人</view>
+        <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{detail.minNum}}人</view>
+    </view>
+    <view class='cb'>
+        <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
+    </view>
+    <view class='cb'>
+        <view class='fl fs30 ml50'>原价</view>
+        <view class='fl fs30 ml210'>中间价</view>
+        <view class='fr fs30 mr50'>最低价</view>
+    </view>
+    <view class='cb'>
+        <view class='fl fs30 ml50'>￥{{detail.price}}</view>
+        <view class='fl fs30 ml210'>￥{{detail.middlePrice}}</view>
+        <view class='fr fs30 mr65'>￥{{detail.minPrice}}</view>
+    </view>
+    <view class='cb wp100 h30'></view>
+    <view class='cb h60 lh60 wp100 ta-c fs30 border-t border-b'>-砍价流程-</view>
+    <view class='cb wp100 h30'></view>
+    <view class='cb'>
+      <image src='http://116.62.151.139/res/img/share.png' class='wp10 ml65 fl' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/step.png' class='wp6 ml30 fl mt20' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/friendscut.png' class='wp10 ml30 fl' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/step.png' class='wp6 ml30 fl mt20' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/cutmp.png' class='wp10 ml30 fl' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/step.png' class='wp6 ml30 fl mt20' mode='widthFix'></image>
+      <image src='http://116.62.151.139/res/img/mdbuy.png' class='wp10 ml30 fl' mode='widthFix'></image>
+    </view>
+    <view class='cb wp100 h10'></view>
+    <view class='cb border-b wp100 h80'>
+        <view class='fl wp20 ml25 fs28 ta-c'>分享</view>
+        <view class='fl wp20 ml25 fs28 ta-c'>朋友砍价</view>
+        <view class='fl wp22 ml25 fs28 ta-c'>砍到中间价/最低价</view>
+        <view class='fl wp20 ml10 fs28 ta-c'>中间价/最低价购买</view>
+    </view>
+    <view class='cb wp100 h200'></view>
+    <view class='cb wp100 pa pf b0'>
+      <view class='wp40 fl fs28 h70 lh70 border-1 ta-c' bindtap='bindViewBuy'>￥{{detail.price}}元立即购买</view>
+      <view class='wp60 fl callfriend'>
+        <view class='cuttext fl h70 lh70 ta-c pa color-white fs30 '>召唤好友砍到￥{{detail.minPrice}}！</view>
+      <button open-type="share" type="primary" hover-class="other-button-hover" class='sbtn fr'>
+         <!-- <image src='http://116.62.151.139/res/img/friends.png'
+bindtap='binsViewShare'></image> -->
+      </button>
+      </view>
+    </view>
+</view>

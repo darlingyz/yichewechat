@@ -1,0 +1,15 @@
+.pat_top{overflow: hidden;}
+  .an{width: 110rpx;
+     background-color:#F4CB01;
+    margin-left: 612rpx;}
+  .sever{top: 16rpx;
+        left: 60rpx;}
+  .serve1P{margin-left: 42rpx;}
+
+.none{height:26rpx;background-color: #eaeaea;}
+
+.list_2{ border-left: 4rpx solid;
+         padding-left: 18rpx;margin-top: 25rpx;}
+
+.allserve{margin-top: 25rpx;}
+.del_1{margin-left: -17rpx; margin-top: -10rpx;}

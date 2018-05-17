@@ -1,0 +1,24 @@
+<!--pages/vehicledetails/vehicledetails.wxml-->
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl ml20 fs30'>车牌号码</text>
+    <input class='w300 h50 fl fs30' placeholder='{{platenumber}}'  bindinput='carNo' type='text'></input>
+</view>
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl ml20 fs30'>发动机号</text>
+    <input class='w300 h50 fl fs30' placeholder='{{enginenumber}}' bindinput='carEngine' type='text'></input>
+</view>
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl ml20 fs30'>车架号</text>
+    <input class='w300 h50 fl fs30' placeholder='{{framenumber}}'  bindinput='carFrame'  type='text'></input>
+</view>
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl ml20 fs30'>行驶里程数</text>
+    <input class='w300 h50 fl fs30' placeholder='{{drivingmileage}}'  bindinput='strokeCount'  type='text'></input>
+</view>
+<view>
+    <button class='btna ma h100 lh100 rad20 ta-c w700' bindtap='addCar'>
+        <text class='color-white'>保存</text>
+    </button>
+</view>
+
+

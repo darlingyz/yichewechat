@@ -1,0 +1,41 @@
+<!--pages/selectstandard/selectstandard.wxml-->
+<view class='border-b wp100 h80'>
+  <view class='fl h80 lh80 wp50' bindtap='bindViewModelmatch'>
+     <text class='ml120'>车型适配</text>
+  </view>
+  <view class='fl h80 lh80 wp50' >
+     <text class='ml120 color-green'>自选规格</text>
+  </view>
+</view>
+<image src='http://116.62.151.139/res/img/ckgreen.png' class='fr w370' mode='widthFix'></image>
+<image src='{{tyreselected}}' class='wp100' mode='widthFix'></image>
+<view>
+  <view class='h80 lh80 wp100'>
+    <view class='w200 fs35 fl ml30'>胎面宽</view>
+
+    <view class='wp40 fs35 ta-c fl'>扁平比</view>
+
+    <view class='wp200 fs35 fr mr40'>直径</view>
+  </view>
+  <view>
+    <picker-view indicator-style="height: 40px;" style="width: 100%; height: 200px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column class='ta-c'>
+        <view wx:for="{{treadwidths}}" style="line-height: 40px" wx:key="unique">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column class='ta-c'>
+        <view style="line-height: 40px">/</view>
+      </picker-view-column>
+      <picker-view-column class='ta-c'>
+        <view wx:for="{{aspectratios}}" style="line-height:40px" wx:key="unique">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column class='ta-c'>
+        <view style="line-height: 40px">R</view>
+      </picker-view-column>
+      <picker-view-column class='ta-c'>
+        <view wx:for="{{diameters}}" style="line-height:40px" wx:key="unique">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>
+<button class='bg-green ta-c h90 lh90 wp90 mt80'><text class='color-white fs30'>搜索轮胎</text></button>
+

@@ -1,0 +1,25 @@
+<view class='boxTop wp100'>
+<image class='store' src="{{store}}"></image>
+<view class='allPrice pr rad8'>
+ <text class='wash pa dis-b w100 fw'>{{wash}}</text>
+ <text class='onsale pa fs22'>{{onsale}}</text><text class='onsale1 pa fs22'>{{onsale1}}</text>
+<text class='price pa fs50 fw'>{{price}}</text> <text class='price1 pa fs50 fw'>{{price1}}</text>
+ <text class='ex_price pa fs16 txt-throw'>{{ex_price}}</text>
+ <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text>
+</view>
+</view>
+<view class='none ta-c h40'><image class='arrow h20' src='http://192.168.1.111:90/arrow_down.png'></image></view>
+<view class='team_show pr'>
+  <text class='count pa'>{{count}}</text><text class='dot pa'>,</text><text class='this pa'>该活动已</text><text class='success pa'>拼团成功</text>
+  <image class='pic_1 pa h100 w100' src='{{pic_1}}'></image>
+  <text class='colonel fs28 dis-b ta-c color-white pa'>团长</text>
+  <image class='pic_2 pa h100 w100' src='{{pic_2}}'></image>
+  <image class='pic_3 pa h100 w100' src='{{pic_3}}'></image>
+</view>
+<view class='detailed pr wp100'>
+  <text class='rule pa'>{{rule}}</text>
+  <text class='detailed_rule pa'bindtap='bindViewrules'>详细规则</text>
+  <image class='detailedArrow pa' src='{{detailedArrow}}' bindtap='bindViewrules'></image>
+</view>
+<button class='join_in pa color-white mt60' bindtap='bindViewstartgroup'>我也来开个团</button>
+<button class='to_home pa' bindtap='bindViewhome'>去首页逛逛</button>

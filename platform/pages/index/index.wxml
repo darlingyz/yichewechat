@@ -1,0 +1,526 @@
+<view class="container">
+  <view class="zi1 pa fs23 h70 lh70 mt20 dis-flex flex-row contenter">
+    <view class="gps ta-r backs" bindtap="goSearch">
+      <text class='ml23'>{{currentCity}}</text>
+    </view>
+    <view class="bg-black rad10 op4 dis-flex flex-row ml20" style="width:75%" bindtap='goSearcar'>
+      <view class="searchIcon mr10"></view>
+      <view class="searchGpsIcon ta-r fs25 color-white">搜索&地图</view>
+      <view class="color-white ta-r" style="width:50%;">搜索汽车试试</view>
+    </view>
+    <view class="cs" bindtap='callPeople'></view>
+  </view>
+</view>
+
+<swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" indicator-color="#DFDFDD" indicator-active-color="#fff" style="height:{{imgheights[current]}}rpx;">
+  <block wx:for="{{adsInfo}}" wx:key="unique">
+    <swiper-item>
+      <navigator src="{{item.hyperLink}}">
+        <image mode="aspectFit" bindload="imageLoad" src="{{item.imageUrl}}" class="wp100" data-id="{{item.id}}" style="height:{{imgheights[current]}}rpx;width:{{imgwidth}}rpx;" />
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="container pr fs25" style="top:-14rpx;" bindtap='goillegal'>
+  <view class="wp90 dis-flex flex-row rad10 h70 lh70 myCar" wx:if="{{havemsg}}">
+    <image class="w80 ha ml10 mr10" mode="aspectFit" src="{{myCar.carLogo}}"></image>
+    <view class="mr20 wp40">{{myCar.carName}}</view>
+    <view class="mr20 wp40">行驶里程 {{myCar.carMileage}}km</view>
+    <view class="wp30 ta-r pr20" wx:if="{{reson}}">
+      <view>违章</view>
+    </view>
+    <view class="wp30 ta-r pr20" wx:else>
+      <view>无违章</view>
+    </view>
+  </view>
+  <view class="wp90 dis-flex flex-row rad10 h70 lh70 myCar ta-c nomsg" wx:if="{{nomsg}}">
+      <text class='nomg'>没有默认车辆请设置!</text>
+  </view>
+</view>
+<view wx:if="{{showit}}">
+<view class="container fs28 mt5">
+  <view class="contenter h40 lh40 pb20">
+    <view class="signInIcon wp70 ti50 fl">每周签到送优惠券哦！</view>
+    <view class="fr bg-light-green rad40 w150 ta-c fs25 color-white" bindtap='coupondetail'>
+      点击领取
+    </view>
+  </view>
+</view>
+</view>
+<view class="border-b-5"></view>
+<!-- 栏目 -->
+<!--汽车美容  -->
+<view class="mt20 ml15 mr15">
+  <block wx:for="{{cateInfoList}}" wx:key="unique">
+    <!--分类-->
+    <view class="container flex-row flex-ail color-white">
+      <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+        <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">
+              {{item.cateInfo.list[0].name}}
+            </view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 中间首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+        <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 最后首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[item].url}}">
+        <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="panicbuyIcon pa r0"></view>
+        </view>
+      </navigator>
+      <view class="flex-column" style="width:210rpx;">
+        <navigator url="{{item.cateInfo.list[1].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+          <view class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[1].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[1].name}}</view>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="{{item.cateInfo.list[2].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+          <view class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[2].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[2].name}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <view class="flex-column" style="width:210rpx;">
+        <navigator url="{{item.cateInfo.list[3].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+          <!-- 首行 -->
+          <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+          <!--中间行-->
+          <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="{{item.cateInfo.list[4].url}}" open-type="switchTab" hover-class="other-navigator-hover">
+          <view wx:if="{{item.cateInfo.rowPos!='last'}}" class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+          <!--最后一行-->
+          <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="dis-b fs28 h60 lh60">
+      <navigator url="{{item.cateInfo.moreUrl}}">
+        <view class="fr color-gray">
+          更多>
+        </view>
+      </navigator>
+    </view>
+  </block>
+  <!--活动专区 -->
+  <block wx:for="{{ocateInfoList}}" wx:key="unique">
+    <!--分类-->
+    <view class="container flex-row flex-ail color-white">
+      <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">
+              {{item.cateInfo.list[0].name}}
+            </view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 中间首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 最后首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="panicbuyIcon pa r0"></view>
+        </view>
+      </navigator>
+      <view class="flex-column" style="width:210rpx;">
+        <navigator url="{{item.cateInfo.list[1].url}}">
+          <view class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[1].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[1].name}}</view>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="{{item.cateInfo.list[2].url}}">
+          <view class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[2].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[2].name}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+      <view class="flex-column" style="width:210rpx;">
+        <navigator url="{{item.cateInfo.list[3].url}}">
+          <!-- 首行 -->
+          <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+          <!--中间行-->
+          <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="{{item.cateInfo.list[4].url}}">
+          <view wx:if="{{item.cateInfo.rowPos!='last'}}" class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+          <!--最后一行-->
+          <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="dis-b fs28 h60 lh60">
+      <navigator url="{{item.cateInfo.moreUrl}}">
+        <view class="fr color-gray">
+          更多>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</view>
+<view class="border-b-15"></view>
+<!--周边门店-->
+<view class="ml15 mr15">
+  <view class="fs30 ta-c h60 lh60 border-b">-周边门店推荐-</view>
+  <view class="roll mt20 mb10 dis-flex flex-row">
+    <block wx:for="{{shopInfo}}" wx:key="unique">
+      <view bindtap='storedetail' data-shopId='{{item.shopId}}'>
+        <view class='box_pic'>
+          <image mode="widthFix" class="recompic" src='{{item.facadePhotoUrl}}'></image>
+        </view>
+        <view class="fs25 h40 lh40 ohid">{{item.shopName}}</view>
+        <view class="dis-flex flex-row fs18 color-gray">
+          <view class="border-r pr10">{{item.score}}分</view>
+          <view class="border-r pl10 pr10">{{item.amount}}人购买</view>
+          <view class="pl10">{{item.distance}}km</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--导航菜单-->
+<view class="container fs28 mb20">
+  <view class="container dis-flex flex-row wp90 ta-c mt10">
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/Illegal.png'></image>
+        <view>查违章</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/pickcar.png'></image>
+        <view>取车维修</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/1hi.png'></image>
+        <view>一嗨租车</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/loan.png'></image>
+        <view>车抵贷</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/save.png'></image>
+        <view>道路救援</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="container dis-flex flex-row wp90 ta-c mt10">
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/insurance.png'></image>
+        <view>买车险</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/oilcard.png'></image>
+        <view>充油卡</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/drivingservice.png'></image>
+        <view>找代驾</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/parking.png'></image>
+        <view>智慧停车</view>
+      </view>
+    </navigator>
+    <navigator>
+      <view class="navbox">
+        <image mode="widthFix" style="width:85rpx;" src='http://116.62.151.139/res/img/navmore.png'></image>
+        <view>更多</view>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--中间广告-->
+<view class='boxPic'>
+  <view>
+    <navigator src="" style="height:auto;">
+      <image mode="widthFix" class="wp100" src="http://121.40.148.153/img/-224859544.jpg"></image>
+    </navigator>
+  </view>
+  <view class="container dis-flex flex-row">
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+    </navigator>
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+    </navigator>
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+    </navigator>
+  </view>
+  <view class="container flex-row">
+    <navigator>
+      <image mode="widthFix" style="width:497rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+    </navigator>
+    <view>
+      <view style="height:147rpx;">
+        <navigator>
+          <image mode="widthFix" style="width:247rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+        </navigator>
+      </view>
+      <view>
+        <navigator>
+          <image mode="widthFix" style="width:247rpx;" src="http://121.40.148.153/img/-224859544.jpg"></image>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--限时优惠活动-->
+ <view class="ml15 mr15" >
+  <view class="fs30 ta-c h60 lh60 border-b">-限时优惠活动-</view>
+</view> 
+<text class='wp100 fs28 ta-c'>敬请期待~</text>
+<!--父元素，最大的盒子  -->
+<view class='wp100 wpbox kanjia'>
+  <block wx:for="{{odata}}" wx:key="unique">
+    <!--子元素，每个小盒子  -->
+    <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goActive'>
+      <!--公司活动图片-->
+      <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+      <!--其他内容 -->
+      <view class='chil_box'>
+        <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+        <view class='fs30 fw actname'>{{item.activityName}}</view>
+        <view class='fs30 fw desname'>{{item.description}}</view>
+        <view class='pt40 disname'>
+          <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
+          <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+        </view>
+        <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+      </view>
+      <!--地址  -->
+      <view class='cb border-b wp100 h80 lh100'>
+        <view class='fl h80 lh80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
+        <view class='fl h80 lh80 fs28 mr20 color-gray address'>{{item.address}}</view>
+        <!--距离  -->
+        <view class='f1 h80 lh80 fs28 color-gray distance'>{{item.distance}}km</view>
+      </view>
+
+    </view>
+  </block>
+</view>
+<!--拼团  -->
+<view class='wp100 wpbox'>
+  <block wx:for="{{ogroup}}" wx:key="unique">
+    <!--子元素，每个小盒子  -->
+    <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goGroup'>
+      <!--公司活动图片-->
+      <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+      <!--其他内容 -->
+      <view class='chil_box'>
+        <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+        <view class='fs30 fw actname'>{{item.activityName}}</view>
+        <view class='fs30 fw desname'>{{item.description}}</view>
+        <view class='pt40 disname'>
+          <view class='fs40 fl fw'>￥{{item.groupPrice}}</view>
+          <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+        </view>
+        <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+      </view>
+      <!--地址  -->
+      <view class='cb border-b wp100 h80 lh80'>
+        <view class='fl h80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
+        <view class='fl h80 fs28 mr20 color-gray address'>{{item.address}}</view>
+        <!--距离  -->
+        <view class='f1 h80 fs28 color-gray distance'>{{item.distance}}km</view>
+      </view>
+
+    </view>
+  </block>
+</view>
+
+
+
+
+<!--优惠券弹窗-->
+<view wx:if="{{showcoupondetail}}">
+  <view class="modal-dialog wp80">
+    <view class='h60 lh60'>
+      <view class="pt40 fs30 color-white ta-c">优惠券</view>
+    </view>
+    <view class='mt60 h300 wp100 cb middle'>
+      <block wx:for='{{couponList}}' wx:key="unique">
+        <view class='h180 ml70 mt20'>
+          <view class='bg-orange h180 wp30 fl'>
+            <text class='fs40 color-white fl mt60 ml40'>￥</text>
+            <text class='fs80 color-white fl mt20'>{{item.price}}</text>
+          </view>
+          <view class='bg-white h180 wp55 fl pl10'>
+            <view class='cb'>
+              <view class='fs28 fl mt30 color-orange'>{{item.sendPosition}}</view>
+              <view class='fs18 fr color-gray mt20 mr10'>剩余时间：{{item.useLimit}}天</view>
+            </view>
+            <view class='cb mt10'>
+              <view class='fs20 fl mt10 color-gray '>{{item.merchantName}}</view>
+              <view class='fs20 fr mt40 mr10'>满{{item.discountPrice}}元可用</view>
+            </view>
+          </view>
+        </view>
+          <view class='couponbtn rad40 h60 w200 ta-c mt30 ma' data-id="{{item.couponId}}" bindtap='gomoney'>
+            <text class='fs30'>立即领取</text>
+          </view>
+      </block>
+    </view>
+
+  </view>
+  <image src='http://116.62.151.139/res/img/delect.png' mode='widthFix' class='delect w50' bindtap="hideModal"></image>
+</view>
+<!--遮罩-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+
+<!--模态框  -->
+<view class="modal-mask" wx:if="{{maskModal}}">
+  <view class="contbox">
+    <button class='prompt'>提示</button>
+    <button open-type="getUserInfo" class='obtn' bindtap='getUserInfo'>请点击确认一车独秀获得您的信息</button>
+    <button class='cancel' bindtap='close'>退出小程序</button>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<view class='container wp100'>
+  <view class='searchV mt20 ml30' bindtap="search"> 
+    <view class='searchAr pr fl h60 w80'>
+      <image class='searchPic pa ml30'src='http://116.62.151.139/res/img/searchlogo.png'></image>
+    </view>
+   <input class="disabled fl h60 fs30"  placeholder-style="color:white" placeholder="输入服务内容" value="{{searchValue}}" type='text' bindinput ="userNameInput"/>
+  <view class='sousuo fl fs30 'bindtap='bindViewmoreserve'>全部服务 ></view>  
+  </view>  
+<!--地图区域-->
+  <view class='mapRate mt10 wp100'>
+    <map
+      id="myMap"
+      style="width: 100%; height: 300px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      covers="{{covers}}"
+      show-location>
+    </map>
+    <image src='../../images/center.png' class='centerpic w50 h50'bindtap='moveToLocation'></image>
+
+  </view>
+
+                                          <!--店铺信息区域-->
+
+  <block wx:for="{{shopList}}" wx:key="unique">
+    <view class='all cb wp100 h160 pb10 border-b mt10 ' bindtap='storedetail'>
+        <image src='{{item.facadePhotoUrl}}' class='storePic  border-1 ml20 mt10 w200 h150'></image>
+        <view class='shopDetail h160'>
+          <view class='fs28 mt10'>{{item.shopName}}</view>
+          <view class='w200 h30 ml140'>
+            <view class='fs20 fl ml10'>{{item.score}}分</view>
+            <view class='fs20 fl ml10'>{{item.amount}}人购买</view>
+          </view>
+
+          <view class='pt10 cb'>
+          <block wx:for="{{item.services}}" wx:key="unique">
+            <view class='change fs20 fl mr30'>{{item.business}}</view>
+          </block>  
+          </view>
+
+          <view class='color-gray fs25 cb pt10 mr30 wp100 ohid h30'>{{item.address}}</view>
+        </view>
+        <view class='dis fr w136 mr10'>
+          <image src='http://116.62.151.139/res/img/guide.png' class='fl w40 h40' ></image>
+        <text class='fl fs25 ml10 w40 h40 pt10'>{{item.distance}}km</text>
+      </view>
+    </view>
+  </block>
+</view>

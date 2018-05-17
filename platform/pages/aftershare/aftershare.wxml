@@ -1,0 +1,49 @@
+<view class='.box_top wp100 pr'>
+<image class='store' src='{{store}}'></image>
+<view class='all_price pr rad8'>
+ <text class='wash fw pa dis-b w100 fw'>{{wash}}</text>
+ <text class='onsale pa'>{{onsale}}</text><text class='onsale1 pa'>{{onsale1}}</text>
+<text class='price pa fw fs50'>{{price}}</text> <text class='price1 pa fs50 fw'>{{price1}}</text>
+ <text class='ex_price pa fs16 txt-throw'>{{ex_price}}</text>
+ <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text></view></view>
+
+ <text class='servr_detail border-t dis-b pt10 fs26'>-服务详情-</text>
+ <text class='serve_end border-t border-b pl30 mt10 dis-b'>{{serve_end}}</text>
+
+ <text class='serve_place  border-t border-b dis-b mt20 fs26'>-服务地点-</text>
+<view class='contact pr wp100 border-b'>
+  <image class='place_dot pa mt20 w20' src='{{place_dot}}'></image>
+  <image class='telphone pa h30 w20' src='{{telphone}}'></image>
+  <text class='place pa fs26'>{{place}}</text>
+  <text class='phone_number pa fs26'>{{phone_number}}</text>
+</view>
+
+<view class='none ta-c border-t border-b'><image class='arrow' src='http://192.168.1.111:90/pack-up-arrow.png'></image></view>
+
+<view class='team_show pr'>
+  <text class='count pa '>好友邀请你参加他的拼团 , 只差</text><text class='residueNumbers pa mt30 fs50 fw'>{{residueNumbers}}</text><text class='people pa'>人 !</text>
+  <text class='residue-time pa fs26'>剩余<text class='time'>{{time}}</text>结束 </text>
+  <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
+ <text class='colonel  dis-b ta-c color-white pa rad40 w70'>团长</text>
+  <image class='pic_2 pa .w100' src='{{pic_2}}'></image>
+  <image class='pic_3 pa .w100' src='{{pic_3}}'></image>
+</view>
+
+<view class='group_way wp100 border-b fs25 h60 .border-t'>
+   <text class='group_invite lh60'>{{group_invite}}</text>
+   <text class='group_rule fs25'bindtap='bindViewrules'>详细规则</text>
+   <image class='group_arrow ml10 h20' src='http://192.168.1.111:90/detailed_arrow.png' bindtap='bindViewrules'></image>
+ </view>
+
+<view class='button-1 color-white ml20 ta-c fs35 rad8'><text class='share-friend' bindtap='bindViewpay'>{{button_1}}</text></view>
+ <view class='button-2 color-white ml20 ta-c fs35 rad8'><text class='share-friend'>分享给好友来拼团</text></view>
+ <view class='button-3 border-t border-b border-l border-r mt20 ml20 ta-c rad8 fs35' bindtap='bindViewhome'><text class='back-home'>返回首页</text></view>
+
+<text class= 'guess-w  dis-b pt10 border-t border-b fs26'>-猜您喜欢-</text>
+
+<view class='guessyourlike-1'>
+<image class='like_1 mt10' src='{{like_1}}'></image>
+</view>
+<view class='guessyourlike-1'>
+<image class='like_2 mt10' src='{{like_2}}' ></image>
+</view>

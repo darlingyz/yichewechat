@@ -1,0 +1,51 @@
+<view class='wp100 box_top '>
+  <image src="{{odata.img}}" class="store" bindload="imageLoad" mode="widthFix"></image>
+</view>
+
+<view class='coupons_use  pr wp100'>
+  <text class='coupons_name pa'>{{odata.activityName}}</text>
+  <text class='coupons_price pa fw'>{{odata.description}}</text>
+  <text class='coupons_range fs26'>现价:{{odata.groupPrice}}元</text>
+  <text class='excoupons_price pa txt-throw'>原价:￥{{odata.price}}</text>
+  <text class='join_munber pa'>已有{{odata.groupNum}}参与</text>
+  <!-- <button class='group_munber pa color-white ta-c'>{{group_munber}}</button> -->
+</view>
+<view class='group_way wp100 border-b fs25 h60 pr'>
+  <text class='group_invite lh60'>支付开团后，可邀请{{odata.groupNum-1}}人参团，人数不足自动退款'</text>
+  <text class='group_rule' bindtap='bindViewrules'>详细规则</text>
+  <image class='group_arrow h20 pa' src="{{group_arrow}}" bindtap='bindViewrules'></image>
+</view>
+
+<text class='servr_detail border-t dis-b pt10 mt20 fs26 '>-服务详情-</text>
+<view class='serverlist wp100 border-t border-b mt10 dis-b'>
+  <block wx:for="{{odata.serviceList}}" wx:key="unique">
+  <!-- <view class='serve_end wp100 border-t border-b mt10 dis-b'>{{odata.address}}</view> -->
+      <view class='itemchild fl mt20 ml20'>
+      <view class='boximg'>
+         <image src='{{item.img}}' mode='widthFix' class='imglist'></image>
+      </view>
+        <text class='interduce fs28'>{{item.businessName}}</text>
+        <text class='money'>￥:{{item.price}}元</text>
+      </view>
+      </block>
+    </view>
+  
+<text class='serve_place  border-t border-b dis-b mt20 fs26 '>-服务地点-</text>
+
+<view class='contact pr wp100 border-b'>
+  <image class='place_dot pa mt20 w20' src="http://116.62.151.139/res/img//place.png"></image>
+  <image class='telphone pa h30 w20' src="http://116.62.151.139/res/img//telphone.png"></image>
+  <text class='place pa fs26'>{{odata.address}}</text>
+  <text class='phone_number pa fs26'>{{odata.mobile}}</text>
+</view>
+
+<view class='pinbox'>
+  <view class='rightnow' 
+  bindtap='bindViewpay' 
+  data-price='{{odata.price}}' data-type="1">¥{{odata.price}}元 立即购买
+  </view>
+
+  <view class='pinafter' 
+  bindtap='bindViewpay' data-type="2"
+  data-price='{{odata.groupPrice}}'>¥{{odata.groupPrice}}元 {{odata.groupNum}}人拼团</view>
+</view>

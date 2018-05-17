@@ -1,0 +1,23 @@
+<!--pages/phonelogin/phonelogin.wxml-->
+<view class='border-t h60 wp100 cb mt80'> 
+  <text class='w150 fl h100 lh100 fs30 pl30'>{{phone}}</text>
+  <input bindinput='phoneInput' placeholder='绑定手机号或登录' class='input fl h100 lh100 fs30' type='number'></input>
+</view>
+<view class='border-t h60 lh60 wp100 cb mt40'>
+  <text class='w150 fl h100 lh100 fs30 pl30'>{{VerificationCode}}</text>
+  <input bindinput='codeInput' placeholder='短信动态码' class='input fl h100 lh100 fs30' type='number'></input>
+  <button class='num fl h60 lh60 ta-c fs30 rad15' disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode">
+  <text class='fs30'>{{time}}</text>
+  </button>
+</view>
+<view class='border-t h60 lh60 wp100 cb mt40'>
+  <text class='fs28 pl30'>{{tip}}</text>
+</view>
+<button class='btna ma h100 lh100 rad20 ta-c w700 mt150'  bindtap='gosetPass'>
+    <text class='color-white'>登录</text>
+</button>
+
+<!-- <text class='fr fs30 mr30 mt20' bindtap='bindViewPasswordLogin'>密码登录</text> -->
+<view class='textc ta-c fs28 mt200'>登录即表示您已阅读并同意
+<text class='textd fs28' bindtap='bindViewAgreement'>《一车独秀用户协议》</text>
+</view>

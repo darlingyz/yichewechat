@@ -1,0 +1,36 @@
+<view class='.boxTop wp100 pr'>
+    <image class='store' src='{{store}}'></image>
+    <view class='allPrice pr rad8'>
+       <text class='wash fw pa dis-b w100'>{{wash}}</text>
+       <text class='onsale pa'>{{onsale}}</text><text class='onsale1 pa'>{{onsale1}}</text>
+       <text class='price pa fw fs50'>{{price}}</text> <text class='price1 pa fw fs50'>{{price1}}</text>
+       <text class='exPrice pa fs16 txt-throw'>{{exPrice}}</text>
+       <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text>
+    </view>
+</view>
+
+<view class='success-remind pr'>
+      <image class='success-logo pa' src='http://116.62.151.139/res/img/failure.png'></image>
+      <text class='success-word pa fw'>很遗憾，逾期拼团失败！</text>
+</view>
+
+<text class='group-detail dis-b pt10 fs30'>-拼团详情-</text>
+
+<view class='beginDetail1  pr  border-b'>
+   <image class='beginLogo pa h75 w75 ml38' src='{{beginLogo}}'></image>
+   <text class='colonel  dis-b ta-c color-white pa rad40 ml50'>团长</text>
+   <text class='beginName pa fs26 ml120'>{{beginName}}</text>
+   <text class='beginTime pa fs25'>{{beginTime}}</text>
+</view>
+
+<view wx:if='{{helpsMsg}}'>
+  <view wx:for='{{helpsMsg}}'>
+    <view class='begin-detail1 pr  border-b'>
+      <image class='begin-logo pa' src='{{item.portait}}'></image>
+      <text class='begin-name pa fs26 ml120'>{{item.userName}}</text>
+      <text class='begin-time pa'>{{item.stime}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='button-1 border-t border-b border-l border-r ml20 ta-c fs35 rad8' bindtap='bindViewhome'><text class='back-home'>去首页逛逛</text></view>

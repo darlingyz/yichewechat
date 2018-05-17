@@ -1,0 +1,40 @@
+.searchV{
+  height:60rpx;
+  width: 90%;
+  display: block;
+}
+.searchAr{
+  background-color:#B2B2B2;
+  border-bottom-left-radius: 16rpx;
+  border-top-left-radius: 16rpx;
+}
+.searchPic{
+  height: 35rpx;
+  width: 35rpx;
+  margin-top: 16rpx;
+}
+.disabled{
+  background-color:#B2B2B2;
+  border-top-right-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+  width: 60%;
+}
+.sousuo{
+  margin-left: 37rpx;
+  color:#B2B2B2;
+  margin-top: 15rpx;
+}
+.mapP{
+  height:1093rpx;
+}
+.centerpic{
+position: absolute;
+bottom:50%;
+right: 30rpx;
+}
+.shopDetail{
+            width: 310rpx;
+            margin-left: 231rpx;
+            margin-top: -170rpx;
+            }
+.dis{margin-top: -50rpx;}

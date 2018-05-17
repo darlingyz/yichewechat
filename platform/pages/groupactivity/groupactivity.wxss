@@ -1,0 +1,98 @@
+.store {
+  height: 240rpx;
+  width: 452rpx;
+}
+
+.box_top {
+  height: 240rpx;
+  background-color: #f4cb01;
+}
+
+.group_icon {
+  height: 84rpx;
+  width: 84rpx;
+  margin-top: 145rpx;
+  margin-left: -99rpx;
+}
+
+.all_price {
+  height: 223rpx;
+  width: 276rpx;
+  background-color: #f4cb01;
+  border: 2rpx dotted;
+  margin-left: 461rpx;
+  margin-top: -236rpx;
+}
+
+.wash {
+  width: 100%;
+  left: 80rpx;
+  height: 40rpx;
+  color: #2a1573;
+  top: 12rpx;
+  font-size: 34rpx;
+  overflow: hidden;
+}
+
+.onsale {
+  left: 52rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
+
+.onsale1 {
+  left: 151rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
+
+.price {
+  font-size: 50rpx;
+  left: 15rpx;
+  top: 103rpx;
+  color: #2a1573;
+}
+
+.price1 {
+  font-size: 50rpx;
+  left: 66rpx;
+  top: 102rpx;
+  color: #2a1573;
+}
+
+.ex_price {
+  top: 139rpx;
+  left: 164rpx;
+}
+
+.discount {
+  height: 27rpx;
+  width: 177rpx;
+  top: 175rpx;
+  left: 25rpx;
+  padding-left: 48rpx;
+}
+
+.location {
+  height: 56rpx;
+}
+
+.store_name {
+  margin-top: 15rpx;
+}
+
+.store_location {
+  width: 50%;
+  margin-top: 9rpx;
+  margin-left: 200rpx;
+  color: #727272;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.store_distanca {
+  margin-top: 9rpx;
+  margin-left: 580rpx;
+  color: #727272;
+}

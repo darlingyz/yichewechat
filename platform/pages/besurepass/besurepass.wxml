@@ -1,0 +1,58 @@
+<view class='conter'>
+  <text class='title'>该手机号还未注册过一车独秀</text> 
+  <text class='goset'>请设置密码</text> 
+  <view class='border-t h60 wp100 cb mt80'> 
+    <text class='wp25 fl h100 lh100 fs30 pl30'>请输入密码:</text>
+    <input type ="password" bindinput='phoneInput00' placeholder='请输入' class='input fl h100 lh100 fs30' password='true' name='password'></input>
+  </view>
+  <view class='border-t h60 wp100 cb mt20'> 
+    <text class='wp25 fl h100 lh100 fs30 pl30'>请确认密码:</text>
+    <input bindinput='phoneInput01' placeholder='请输入'  name='password' class='input fl h100 lh100 fs30' type ="password" password='true'></input>
+  </view>
+
+  <view class='border-t h60 lh60 wp100 cb mt20'>
+  <text class='fs28 pl30'></text>
+</view>
+
+  <!-- <navigator url="../home/home" open-type="switchTab" hover-class="other-navigator-hover"> -->
+  <button class='btna ma h100 lh100 rad20 ta-c w700 mt150 obtn' bindtap='toHome'>
+    <text class='color-white'>完成绑定</text>
+</button>
+  <!-- </navigator> -->
+  
+<view wx:if="{{showcoupondetail}}">
+  <view class="modal-dialog wp80">
+    <view class='h60 lh60'>
+      <view class="pt40 fs30 color-white ta-c">新人大礼包</view>
+    </view>
+    <view class='mt60 h300 wp100 cb middle'>
+      <block wx:for='{{bao}}' wx:key="unique">
+        <view class='h200 ml70 mt20'>
+          <view class='bg-orange h200 wp40 fl'>
+            <text class='fs40 color-white fl mt70 ml40'>￥</text>
+            <text class='fs80 color-white fl mt50'>{{item.price}}</text>
+          </view>
+          <view class='bg-white h200 wp55 fl pl10'>
+            <view class='cb'>
+              <view class='fs28 fl mt30 color-orange'>{{item.title}}</view>
+              <view class='fs18 fr color-gray mt20 mr10'>剩余时间：{{item.useLimit}}天</view>
+            </view>
+            <view class='cb mt10'>
+              <view class='fs20 fl mt40 color-gray '>{{item.merchantName}}</view>
+              <view class='fs20 fr mt40 mr10'>满{{item.discountPrice}}元可用</view> 
+            </view>
+          </view>
+        </view>
+            <view class='couponbtn rad40 h60 w200 ta-c mt30 ma' bindtap="mybao" data-id="{{item.couponId}}">
+      <text class='fs30'>立即领取</text>
+    </view>
+      </block>
+    </view>
+  </view>
+  <image src='http://116.62.151.139/res/img/delect.png' mode='widthFix' class='delect w50' bindtap="hideModal"></image>
+</view>
+<!--遮罩-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+
+
+</view>

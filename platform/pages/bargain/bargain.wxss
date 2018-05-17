@@ -1,0 +1,58 @@
+/* pages/bargain/bargain.wxss */
+.boxa{
+  height: 235rpx;
+}
+.bargain{
+  top: 142rpx;
+  left: 348rpx;
+}
+.boxb{
+  top: 10rpx;
+  left: 500rpx;
+}
+.pnum{
+  background-color: #f4cc00;
+}
+.cuttext{
+bottom: 5rpx;
+left: 330rpx;
+}
+.frscir{
+ bottom: 10rpx;
+ right: 10rpx;
+top: 10rpx;
+}
+.discount{
+  top: 155rpx;
+}
+.contbox{
+  position: fixed;
+  bottom: 0;
+  left: 0; 
+  width: 100%;
+  height: 70rpx;
+  background: #f66;
+}
+.gocar{
+  border:1px solid #ccc;
+  box-sizing:border-box;
+   background: #ccc;
+   text-align: center;
+}
+ .sharebox{
+  background: url("http://116.62.151.139/res/img/bottom.png") no-repeat center center;
+  text-indent: 10rpx;
+}
+.obtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80rpx;
+  margin: 0 auto;
+} 
+.btnpic{
+  display: inline-block;
+  display: -webkit-inline-box;
+  margin-top: 10%;
+  margin:0 auto;
+}

@@ -1,0 +1,80 @@
+<!--pages/my/my.wxml-->
+<view class='container'>
+  <image src='{{srcUser}}' class='w150 mt20 picure' mode='widthFix'></image>
+</view>
+<view class='nav wp100 h60 lh60 mt10 pb20'>
+  <text class='design w100 h60 lh60 fs35'>{{design}}</text>
+  <text wx:if="{{mobile === ''}}" class='bindPhone w100 h60 lh60 fs28 ml20' bindtap='bindViewBindPhone'>{{bindPhone}}</text>
+</view>
+<view class='wp100 h100 clicktap' wx:if='{{carId == null || carId == "" || carId == 0}}' bindtap='bindViewCarList'>
+  <image src='http://116.62.151.139/res/img/aboutCar.png' class='w100 fl ml80 mt20' mode='widthFix'></image>
+  <view class='fl mt20 h100 ml30'>
+    <view class='fs35' bindtap='bindViewCarList'>添加爱车 , 享受定制服务</view>
+    <view class='remind fs28 pt10'>保养提醒 换轮胎...</view>
+  </view>
+  <view class='navto fl mt40 h100 ml90'>></view>
+</view>
+<view class='wp100 h100 clicktap' bindtap='bindViewCarList' wx:else>
+  <image src='{{carLogo}}' class='w180 fl ml80 mt10' mode='widthFix'></image>
+  <view class='fl mt20 h100 ml30'>
+    <view class='fs35' bindtap='bindViewCarList'>{{carName}}</view>
+    <view class='fl fs28 pt10'>行驶里程</view>
+    <view class='fl fs28 pt10'>{{strokeCount}} km</view>
+  </view>
+  <view class='navto fr mt40 h100 mr40'>></view>
+</view>
+<view class='cb h150 border-t border-b pb20'>
+  <view class='fl wp33' bindtap='mywallet'>
+    <view class='price ta-c mt20 fs35'>{{price}}
+      <text class='price ta-c mt20 fs25 ml10'>元</text>
+    </view>
+    <view class=' ta-c mt20 fs28'>钱包</view>
+  </view>
+  <view class='orderList fl wp33 ta-c h150 lh150 pb20 fs35' bindtap='bindViewOrderList'>{{orderList}}</view>
+  <view class='fl wp33' bindtap='mycouponsView'>
+    <view class='num  ta-c mt20 fs35'>{{num}}
+      <text class='num  ta-c mt20 fs25 ml10'>个</text>
+    </view>
+    <view class=' ta-c mt20 fs28'>优惠</view>
+  </view>
+</view>
+<view class='cb h50 lh50 mt20 ml20 border-b pb20' bindtap='bindViewActivity'>
+  <image src='{{srcActivity}}' class='fl w50 ml20' mode='widthFix'></image>
+  <view class='fl ml30 fs30'>我参加的活动</view>
+  <view class='navto fr mr50'>></view>
+</view>
+<view class='cb h50 lh50 mt20 ml20 border-b pb20' bindtap='bindViewStore'>
+  <image src='{{srcStore}}' class='fl w50 ml20' mode='widthFix'></image>
+  <view class='fl ml30 fs30'>我收藏的店铺</view>
+  <view class='navto fr mr50'>></view>
+</view>
+<view class='cb h50 lh50 mt20 ml20 border-b pb20' bindtap="showDialogBtn">
+  <image src='{{srcContact}}' class='fl w50 ml20' mode='widthFix'></image>
+  <view class='fl ml30 fs30'>联系客服</view>
+  <view class='navto fr mr50'>></view>
+</view>
+<view class='cb h50 lh50 mt20 ml20 border-b pb20' bindtap="showDialogBtn">
+  <image src='{{srcCooperation}}' class='fl w50 ml20' mode='widthFix'></image>
+  <view class='fl ml30 fs30'>商务合作</view>
+  <view class='navto fr mr50'>></view>
+</view>
+<view class='cb h50 lh50 mt20 ml20 border-b pb20' bindtap='bindViewAboutCar'>
+  <image src='{{srcAboutCar}}' class='fl w50 ml20' mode='widthFix'></image>
+  <view class='fl ml30 fs30'>关于一车独秀</view>
+  <view class='navto fr mr50'>></view>
+</view>
+<button class='backBtn h80 lh80 wp90 ta-c mt50 bg-white' bindtap='bindViewLogin'>
+  <text class='backLogin h80 lh80'>退出登录</text>
+</button>
+<!--遮罩-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!--弹窗-->
+<view class="modal-dialog wp90" wx:if="{{showModal}}">
+  <view class="pt50 fs35 ta-c">联系客服</view>
+  <contact-button class='cBtn wxbtn wp90 h70 lh70 rad10 color-white ma mt40' type="default-light" size="28" session-from="weapp">
+    <text class='ta-c fs35'>通过微信联系客服</text>
+  </contact-button>
+  <button class='wxbtn wp90 h70 lh70 rad10 color-white ma mt40' bindtap="onConfirm">
+    <text class='ta-c fs35' data-status="confirm">拨打电话联系客服</text>
+  </button>
+</view>

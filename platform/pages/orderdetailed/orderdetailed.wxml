@@ -1,0 +1,134 @@
+<view class='navigation border-b wp100 h80'>
+  <view class='allList fl h80 ta-c fs30 lh80 ml30 w136'>全部</view>
+  <view class='needPay fl h80 ta-c fs30 lh80 ml55 w136' bindtap='bindVieworderdetail1'>待支付</view>
+  <view class='serveing fl h80 ta-c fs30 lh80 ml55 w136' bindtap='bindViewserving'>服务中</view>
+  <view class='needAssess fl h80 ta-c fs30 lh80 ml55 w136'>待评价</view>
+</view>
+
+<view class='appDdownlode pr ml40'>
+  <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img//fork.png' mode='widthFix'></image>
+  <text class='appGeneralize pa fs26'>汽车服务全包揽 , 用一车独秀APP</text>
+  <view class='downlodeButton pa rad8 h40 ta-c lh40'>点击下载</view>
+</view>
+
+<block wx:for='{{orderListMsg}}' wx:key="unique">
+<view bindtap='orderdetail' data-id='{{item.id}}' data-status = '{{item.paymentStatus}}'>
+  <view class='order pr border-t border-b wp100' >
+    <text class='orderName pa ml20 lh54'>订单编号：</text>
+    <text class='orderNumber pa lh54'>{{item.orderCode}}</text>
+    <view wx:if='{{item.paymentStatus ==1}}'>
+      <text class='orderState pa fs25 lh54'>未付款</text>
+    </view>
+    <view wx:elif='{{item.paymentStatus ==2}}'>
+      <text class='orderState pa fs25 lh54'>已付款</text>
+    </view>
+    <view wx:elif='{{item.paymentStatus ==3}}'>
+      <text class='orderState pa fs25 lh54'>服务完成-待评价</text>
+    </view>
+    <view wx:elif='{{item.paymentStatus ==4}}'>
+      <view wx:if='{{item.evaluateState == 0 || item.evaluateState == null}}'>
+        <text class='orderState pa fs25 lh54'>已完成</text>
+      </view>
+      <view wx:else>
+        <text class='orderState pa fs25 lh54'>已评价</text>
+      </view>
+    </view>
+    <view wx:elif='{{item.paymentStatus ==5}}'>
+      <text class='orderState pa fs25 lh54'>已取消</text>
+    </view>
+  </view>
+  <block wx:for='{{item.orderServices}}' wx:for-item='service' wx:key="unique">
+    <view class='serve1 pr wp100 border-t border-b' >
+      <image class='serveLogo pa' src='{{service.img}}' mode='widthFix'></image>
+      <text class='serveName pa'>{{service.businessName}}</text>
+      <text class='serveDetail pa fs26'>{{service.brandName}}</text>
+      <view wx:if='{{service.privilegePrice > 0}}'>
+        <text class='servePrice pa'>¥{{service.privilegePrice}}</text>
+        <text class='exPlace2 pa'>¥{{service.price}}</text>
+      </view>
+      <view wx:else>
+        <text class='servePrice pa'>¥{{service.price}}</text>
+      </view>
+      <text class='serveNumber pa'>× {{service.amount}}</text>
+    </view>
+  </block>
+  <view class='sum pr wp100 border-t border-b' >
+    <text class='sumWords pa lh87 fs27'>共{{item.orderServices.length}}项</text>
+    <text class='words pa lh87 fs27'>服务</text>
+    <text class='total pa lh87 fs27'>合计：</text>
+    <text class='sumPrice pa fs26 lh87'>￥{{item.totalMoney}}</text>
+  </view>
+  <view wx:if='{{item.paymentStatus ==1}}'>
+    <view class='buttonDo wp100 pr'>
+      <view class='buttonLeave pa rad8 ta-c mt20 fs26' data-id='{{item.id}}' bindtap='txClick'>取消订单</view>
+      <view class='buttonPay pa rad8 ta-c mt20 fs26' data-id='{{item.id}}' bindtap='bindViewpay'>立即付款</view>
+    </view>
+  </view>
+  <view wx:elif='{{item.paymentStatus ==4}}' >
+    <view class='buttonCommend wp100 pr'>
+      <view wx:if='{{item.evaluateState == 0 || item.evaluateState == null}}'>
+        <view class='buttonCommend1 pa rad8 ta-c mt20 fs26' data-id='{{item.id}}'  bindtap='bindViewevaluateorder'>去评价</view>
+      </view>
+    </view>
+  </view>
+</view>
+</block>
+
+<view class='bomb border-1 pr pf bg-white' wx:if="{{show}}">
+    <text class='warmPrompt pa'>温馨提示</text>
+    <text class='warmPromptW pa fs27'>您确定取消订单吗？</text>
+    <view class='btGroup pa border-1'bindtap='cancelClick'>取消</view>
+    <view class='sureBt pa pr border-1'bindtap='sureClick'>确定</view>
+</view>
+
+<view class="commodity_screen wp100 pf top0 ohid" bindtap="hideModa" wx:if="{{showModalStatus}}"></view>
+
+<!-- <view class='waitCommend'>
+  <view class='order3 pr wp100 border-b'>
+    <text class='orderName pa ml20 lh54'>订单编号：</text>
+    <text class='orderNumber pa lh54'>{{orderNumber3}}</text>
+    <text class='orderState3 pa fs25 lh54'>{{orderState3}}</text>
+  </view>
+
+  <view class='serve3 border-1 pr'>
+    <image class='serveLogo2 pa' src='http://192.168.1.111:91/storeba.png' mode='widthFix'></image>
+    <text class='serveName2 pa'>标准洗车</text>
+    <text class='serveDescribe2 pa'>全车精洗 绝对干净</text>
+    <text class='servePrice2 pa'>￥9.90</text>
+    <text class='exPlace2 pa'>￥40.0</text>
+    <text class='serveNumber2 pa'>×1</text>
+  </view>
+  <view class='sum pr wp100 border-1'>
+    <text class='sumWords pa lh87 fs27'>{{sumWords2}}</text>
+    <text class='words pa lh87 fs27'>服务</text>
+    <text class='total pa lh87 fs27'>合计：</text>
+    <text class='sumPrice pa fs26 lh87'>{{sumPrice2}}</text>
+  </view>
+  <view class='buttonCommend wp100 pr'>
+    <view class='buttonCommend1 pa rad8 ta-c mt20 fs26' bindtap='bindViewevaluateorder'>去评价</view>
+  </view>
+</view>
+
+<view class='finished'>
+  <view class='order4 pr wp100 border-b'>
+    <text class='orderName pa ml20 lh54'>订单编号：</text>
+    <text class='orderNumber pa lh54'>{{orderNumber3}}</text>
+    <text class='orderState4 pa fs25 lh54'>{{orderState4}}</text>
+  </view>
+
+  <view class='serve3 border-1 pr'>
+    <image class='serveLogo2 pa' src='http://192.168.1.111:91/storeba.png' mode='widthFix'></image>
+    <text class='serveName2 pa'>标准洗车</text>
+    <text class='serveDescribe2 pa'>全车精洗 绝对干净</text>
+    <text class='servePrice2 pa'>￥9.90</text>
+    <text class='exPlace2 pa'>$40.0</text>
+    <text class='serveNumber2 pa'>×1</text>
+  </view>
+
+  <view class='sum pr wp100 border-1'>
+    <text class='sumWords pa lh87 fs27'>{{sumWords2}}</text>
+    <text class='words pa lh87 fs27'>服务</text>
+    <text class='total pa lh87 fs27'>合计：</text>
+    <text class='sumPrice pa fs26 lh87'>{{sumPrice2}}</text>
+  </view>
+</view> -->

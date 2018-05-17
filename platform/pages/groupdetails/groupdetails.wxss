@@ -1,0 +1,237 @@
+.box_top {
+  height: 300rpx;
+}
+.store {
+  width: 100%;
+  max-height: 100%;
+  display: inline-block;
+}
+
+.all_price {
+  height: 223rpx;
+  width: 276rpx;
+  background-color: #f4cb01;
+  border: 2rpx dotted;
+  margin-left: 461rpx;
+  margin-top: -236rpx;
+}
+
+.wash {
+  left: 111rpx;
+  height: 34rpx;
+  color: #2a1573;
+  top: 12rpx;
+  font-size: 34rpx;
+}
+
+.onsale {
+  left: 52rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
+
+.onsale1 {
+  left: 151rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
+
+.price {
+  font-size: 50rpx;
+  left: 15rpx;
+  top: 110rpx;
+  color: #2a1573;
+}
+
+.price1 {
+  font-size: 50rpx;
+  left: 66rpx;
+  top: 102rpx;
+  color: #2a1573;
+}
+
+.ex_price {
+  top: 137rpx;
+  left: 164rpx;
+}
+
+.discount {
+  height: 27rpx;
+  width: 177rpx;
+  top: 175rpx;
+  left: 25rpx;
+  padding-left: 48rpx;
+}
+
+.coupons_use {
+  height: 230rpx;
+  border-bottom: 10rpx solid #efefef;
+}
+
+.coupons_name {
+  font-size: 34rpx;
+  margin-left: 22rpx;
+  margin-top: 13rpx;
+}
+
+.coupons_range {
+  text-indent: 20rpx; 
+  margin-top: 170rpx;
+  color: #777;
+  position: absolute;
+}
+
+.coupons_price {
+  font-size: 40rpx;
+  margin-left: 18rpx;
+  margin-top: 80rpx;
+  color: #27146e;
+}
+
+.excoupons_price {
+  font-size: 24rpx;
+  margin-left: 164rpx;
+  margin-top: 173rpx;
+}
+
+.join_munber {
+  color: #777;
+  font-size: 24rpx;
+  margin-left: 550rpx;
+  margin-top: 135rpx;
+}
+
+.group_munber {
+  width: 121rpx;
+  height: 38rpx;
+  background-color: #0093dd;
+  margin-left: 569rpx;
+  margin-top: 171rpx;
+  font-size: 18rpx;
+  line-height: 38rpx;
+}
+
+.group_invite {
+  color: #777;
+  margin-left: 24rpx;
+}
+
+.group_rule {
+  font-size: 25rpx;
+  color: #777;
+  margin-left: 60rpx;
+}
+
+.group_arrow {
+  width: 26rpx;
+  margin-left: 2rpx;
+  margin-top: 20rpx;
+}
+
+.servr_detail {
+  height: 34rpx;
+  width: 58%;
+  padding-left: 315rpx;
+}
+
+.serve_end {
+  height: 106rpx;
+  font-size: 24rpx;
+  color: #777;
+  padding-top: 17rpx;
+}
+
+.serve_place {
+  height: 48rpx;
+  padding-top: 16rpx;
+  width: 58%;
+  padding-left: 315rpx;
+}
+
+.contact {
+  height: 140rpx;
+}
+
+.place_dot {
+  height: 28rpx;
+  margin-left: 33rpx;
+}
+
+.telphone {
+  margin-left: 33rpx;
+  margin-top: 90rpx;
+}
+
+.place {
+  color: #777;
+  margin-left: 69rpx;
+  margin-top: 17rpx;
+}
+
+.phone_number {
+  color: #777;
+  margin-left: 69rpx;
+  margin-top: 90rpx;
+}
+
+.buy_now {
+  width: 30%;
+  margin-top: 169rpx;
+  padding-left: 40rpx;
+}
+
+.build_group {
+  width: 46%;
+  background-color: #09ba07;
+  margin-left: 278rpx;
+  margin-top: 169rpx;
+  padding-left: 124rpx;
+}
+.serverlist{
+  width: 100%;
+ height:240rpx; 
+}
+.itemchild{
+  width: 30%;
+  height: 200rpx;
+  float: left;
+  text-align: center;
+}
+.boximg{
+  width: 100%;
+  height:100rpx;
+}
+.imglist{
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-block;
+  margin: 0 40rpx;
+}
+.interduce{
+  width: 100%;
+  display: inline-block;
+  height: 30rpx;
+}
+.money{
+  width: 100%;
+  display: inline-block;
+  font-size: 28rpx;
+  
+}
+.pinbox{
+  width: 100%;
+  height: 80rpx;
+}
+.rightnow,
+.pinafter{
+  width:50%;
+  line-height: 80rpx;
+  text-align: center;
+  float: left;
+  font-size:28rpx; 
+  color: #666;
+}
+.pinafter{
+  background: #09ba07;
+  color: #fff;
+}

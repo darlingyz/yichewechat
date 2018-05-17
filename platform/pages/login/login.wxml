@@ -1,0 +1,14 @@
+<!--pages/login/login.wxml-->
+
+<button class='btna ma h100 lh100 ta-c rad20 w700' open-type="getUserInfo" bindtap='goMy'>
+    <image src='{{srcWx}}' class='img fl mt20' mode='widthFix'></image>
+    <text class='color-white fs30 fl ml20'>微信用户快速登录</text>
+</button>
+<button class='btnb ma h100 lh100 mt30 ta-c rad20 bg-white w700' bindtap='bindViewPhoneLogin'>
+<image src='{{srcPhone}}' class='imgp fl mt30' mode='widthFix'></image>
+    <text class='color-black fs30 fl ml20'>手机号登录</text>
+</button>
+<view class='textc ta-c fs28 mt20'>登录即表示您已阅读并同意
+<text class='textd fs28' bindtap='bindViewAgreement'>《一车独秀用户协议》</text>
+</view>
+

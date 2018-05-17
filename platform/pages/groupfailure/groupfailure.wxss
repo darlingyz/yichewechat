@@ -1,0 +1,72 @@
+.store{ height: 235rpx;
+        width: 454rpx;}
+.boxTop{ height: 235rpx;
+          background-color:  #F4CB01;}
+.allPrice{ height: 223rpx;
+            width:276rpx;
+            background-color: #F4CB01;
+            border: 2rpx dotted;
+            margin-left:461rpx;
+            margin-top: -234rpx;}
+.wash{ left: 111rpx;
+       height: 34rpx;
+       color: #2A1573;
+       top: 12rpx;
+       font-size: 34rpx;}
+.onsale{font-size:19rpx;
+        left:67rpx;
+        top: 60rpx;
+        color: #2A1573;}
+.onsale1{font-size:19rpx;
+        left:151rpx;
+        top:60rpx;color: #2A1573;}
+.price{left: 15rpx;
+        top: 103rpx;
+        color: #2A1573;}
+.price1{left: 66rpx;
+        top: 102rpx;
+        color: #2A1573;}
+.exPrice{top: 137rpx;
+          left:164rpx;}
+.discount{ height: 27rpx;
+           width: 177rpx;
+          top: 175rpx;
+          left:25rpx;
+          padding-left:48rpx;}
+.success-remind{height: 120rpx;margin-top: 6rpx;
+                border-top: 5rpx solid #eaeaea;}
+  
+.success-logo{ height: 46rpx;
+               width: 48rpx;
+               margin-left: 203rpx;
+               margin-top:49rpx; }
+.success-word{ font-size: 31rpx;
+               margin-top: 51rpx;
+               margin-left: 280rpx;}
+
+.group-detail{ height: 43rpx;
+              padding-left:310rpx ;
+              margin-top: 5rpx;
+              width: 58%;}
+
+.beginDetail1{  height: 98rpx; }
+.beginLogo{margin-top: 11rpx;}
+.beginLogo2{margin-top: 2rpx;}
+.beginTime2{color: #625F60;margin-left: 447rpx;}
+.beginLogo3{margin-top: 2rpx;}
+.beginTime3{color: #625F60;margin-left: 447rpx;}
+
+.colonel{ width:55rpx;
+         background-color: #0293D8;
+         margin-top:71rpx;
+         font-size: 17rpx;
+         line-height: 26rpx;
+         height: 26rpx;}
+.beginName{line-height: 97rpx;}
+.beginTime{color: #625F60;line-height:97rpx;margin-left: 447rpx;}
+
+
+.button-1{height: 82rpx;
+           width: 696rpx;
+            line-height: 82rpx;
+            margin-top: 69rpx;}

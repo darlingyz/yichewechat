@@ -1,0 +1,20 @@
+<view class='searchV mt20 ml30' bindtap="suo"> 
+   <view class='searchAr pr fl h60'>
+     <image class='searchPic pa ml30'src='http://192.168.1.111:90/searchlogo.png'></image>
+   </view>
+   <input class="disabled fl h60 fs30"  placeholder-style="color:white" placeholder="洗车" value="{{searchValue}}"/>
+   <view class='closeL fl pr'>
+       <image class='closeP pa' src='http://192.168.1.111:90/searchdelet.png'></image>
+   </view>   
+  <view class='sousuo fl fs30'>搜索</view>  
+</view>  
+
+<view class='historyBox border-1 pr h80 mt10'>
+    <text class='history pa fs30 ml30'>历史搜索</text>
+</view>
+
+<block wx:for="{{historyList}}">
+<view class='historyWB pr border-b fs26' >
+    <text class='historyW pa'>{{item.historyW}}</text>
+</view>
+</block>

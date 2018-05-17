@@ -1,0 +1,315 @@
+<!--pages/storedetail/storedetail.wxml-->
+<image src='{{storedetail}}' class='wp100 pr h300'></image>
+<!--收藏门店按钮-未收藏-->
+<view class='pa collectbtn' wx:if='{{!showCollect}}'>
+  <button class='outbutton bg-light-blue ta-c op5' bindtap='collectstore'>
+    <view class='h50 lh50 w180 border-red bg-t inbutton'>
+      <image src='http://121.40.148.153/img/1384070672683654.png' mode='widthFix' class='w30 fl mt10 ml10'></image>
+      <text class='fs28 color-red fr w120 h50 lh50 mr10'>收藏门店</text>
+    </view>
+  </button>
+</view>
+<!--收藏门店按钮-已收藏-->
+<view class='pa collectbtn' wx:else>
+  <button class='outbutton bg-light-blue ta-c op5' bindtap='collectstore'>
+    <view class='h50 lh50 w180 border-red bg-t inbutton'>
+      <image src='http://121.40.148.153/img/1381379545768160.png' mode='widthFix' class='w30 fl mt10 ml10'></image>
+      <text class='fs28 color-red fr w100 h50 lh50 mr30'>已收藏</text>
+    </view>
+  </button>
+</view>
+<view class='wp100 h60 cb'>
+  <view class='fs40 fl h60 lh60 ml20'>{{storeName}}</view>
+  <view class='fs25 fl color-degray h60 lh70 ml40' bindtap='checkdetail'>查看详情>></view>
+</view>
+<view class='fl wp70 h120 cb'>
+  <view class='wp100 h60'>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>{{score}}分</view>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>|</view>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>{{people}}人购买>></view>
+  </view>
+  <view class='wp100 h60 cb'>
+    <view class='fs28 fl h60 lh60 ml20 color-blue'>更换机油滤芯</view>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>|</view>
+    <view class='fs28 fl h60 lh60 ml20 color-blue'>更换空调滤芯</view>
+  </view>
+</view>
+<view class='fl wp30 h120'>
+  <image src='http://116.62.151.139/res/img/call.png' mode='widthFix' class='w80 fl' bindtap='callPhone'></image>
+  <image src='http://116.62.151.139/res/img/clineg.png' class='fl ml10 h80 w5'></image>
+  <image src='http://116.62.151.139/res/img/guidemap.png' mode='widthFix' class='w80 fl ml10' bindtap='goMap'></image>
+</view>
+<view class='wp100 h60 cb'>
+  <image src='http://116.62.151.139/res/img/businesshours.png' mode='widthFix' class='w30 fl ml20 pt20'></image>
+  <view class='fs25 fl h60 lh70 ml20 color-degray'>营业时间：{{starttime}}-{{endtime}}</view>
+</view>
+<view class='wp100 h60 cb'>
+  <image src='http://116.62.151.139/res/img/locationb.png' mode='widthFix' class='w25 fl ml20 pt20'></image>
+  <view class='fs25 fl h60 lh70 ml20 color-degray w550 ohid'>{{address}}</view>
+  <view class='fs25 fr h60 lh70 mr20 color-degray'>{{distance}}km</view>
+</view>
+<!--列表栏-->
+<view class='cb h90 border-b mt10'>
+  <view class='fl wp22'>
+    <view class='ta-c mt30 fs28' bindtap='showService'>服务</view>
+  </view>
+  <view class='fl wp22'>
+    <view class=' ta-c mt30 fs28 ml60' bindtap='showEvaluate'>评价</view>
+  </view>
+  <button class='bg-green fl wp40 rad40 h60 lh50 mt20 ml100 pr20' bindtap='bindViewStoredetailb'>
+    <text class=' ta-c mt30 fs28 color-white'>去该店铺小程序查看</text>
+  </button>
+</view>
+<!--服务-->
+<view class='wp100 cb'>
+  <!--菜单列表-->
+  <!--活动-->
+  <view class='bg-white wp22 fl' wx:if="{{showList}}">
+    <view class='h90 lh90 border-b border-r fs28 pl30 {{showstoreactivity ? "color-green" : ""}}' bindtap="showStoreactivity">店铺活动</view>
+    <!--服务-->
+    <view class='h90 lh90 border-b border-r fs28 pl30' bindtap='showAllServices'>全部服务</view>
+    <block wx:for='{{showListMsg}}' wx:key="unique">
+      <view class='h90 lh90 border-b border-r fs28 pl30' data-business='{{item.businessId}}' data-sn='{{item.sn}}' data-businessName='{{item.businessName}}' bindtap='showServicesDetail'>{{item.businessName}}</view>
+    </block>
+  </view>
+
+  <!--店铺活动-->
+  <view class='bg-white wp78 h200 fr mt10' wx:if="{{noshow}}">
+    <view wx:if="{{showstoreactivity}}">
+      <!-- 砍价活动 -->
+      <view class='bargainActivitis fs28 mt20 ml20'>
+        暂无门店活动
+        <view wx:for="{{bargainActivitis}}" wx:key="unique">
+          <!-- <image src='{{item.img}}' class='picimg'></image> -->
+          <view>
+            <!-- <text>{{item.activityName}}</text>
+                <text>{{item.description}}</text>
+                <text>{{item.activityName}}</text> -->
+          </view>
+        </view>
+      </view>
+      <!--折扣活动  -->
+      <view class='discounts'>
+        <view wx:for="{{discounts}}" wx:key="unique">
+
+        </view>
+      </view>
+      <!--拼团活动  -->
+      <view class='groupActivitis'>
+        <view wx:for="{{groupActivitis}}" wx:key="unique">
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- <view wx:if="{{showstoreactivity}}">
+    <view class='bg-white wp78 h200 fr mt10 border-b'>
+      <view>
+        <image src='{{storeba}}' mode='widthFix' class='wp40 fl ml10'></image>
+        <view class='fl wp50 ml10'>
+          <view class='cb '>
+            <view class='fs30 fl mt10'>{{washcoupons}}</view>
+            <view class='color-gray fs25 fr mt15 ml100'>{{pnum}}人已抢</view>
+          </view>
+          <view class='cb pt10'>
+            <text class='fs28 color-gray'>标准洗车、全车打蜡</text>
+          </view>
+          <view class='cb'>
+            <view class='fs45 fl mt20 fw'>￥{{nprice}}</view>
+            <view class='fs25 fl mt40 ml20 txt-throw'>原价￥{{oprice}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='bg-white wp78 h180 fr mt20 border-b'>
+      <view>
+        <view class='bg-orange wp30 h160 fl ta-c ml10'>
+          <text class='fs40 color-white h160 lh160'>￥</text>
+          <text class='fs90 color-white h160 lh160'>{{couponprice}}</text>
+        </view>
+        <view class='fl wp50 ml10'>
+          <view class='cb pt40'>
+            <view class='color-orange fs28 fl'>{{couponstype}}</view>
+            <view class='color-gray fs20 fl mt10 ml5'>剩余时间：{{remainingtime}}天</view>
+          </view>
+          <view class='cb pt20'>
+            <view class='fs20 fl color-gray'>适用于本店</view>
+            <view class='fs20 fl ml85'>满{{limitprice}}元可用</view>
+          </view>
+        </view>
+        <view class='bg-green h40 lh25 fl wp15 rad20 ta-c mt70 ml8'>
+          <text class='color-white fs20'>{{couponsstatus}}</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+  <!--各种服务列表-->
+  <view wx:if="{{shopServiceList}}">
+    <block wx:for='{{shopServicesMsg}}' wx:key="unique">
+      <view wx:if="{{showChangetyre}}">
+        <view class='h90'>
+          <view class='border-b wp78 fr h90 pa title'>
+            <view class='h90 lh90 w100 fs25 fl ml10' bindtap="showSelectbrand">{{searchbrand}}</view>
+            <image wx:if="{{!showBrand}}" src='{{downarrow}}' class='w20 fl mt40' mode='widthFix'></image>
+            <image wx:if="{{showBrand}}" src='{{uparrow}}' class='w20 fl mt40' mode='widthFix'></image>
+            <view class='h90 lh90 w20 fs25 fl ml10'>|</view>
+            <view class='h90 lh90 w210 fs28 fl ml30'>{{currentstandard}}</view>
+            <view class='h90 lh90 w10 fs28 fl pr30 color-red' bindtap='bindViewSelectstandard'>切换规格>></view>
+          </view>
+        </view>
+      </view>
+      <view class='bg-white wp78 h180 fr mt10 border-b'>
+        <view>
+          <image src='{{item.img}}' mode='widthFix' class='wp30 fl ml10'></image>
+          <view class='fl wp65 ml10'>
+            <view class='cb '>
+              <view class='fs30 fl mt10'>{{item.businessName}}</view>
+            </view>
+            <view class='cb w350 h50 lh50 ohid'>
+              <text class='fs28 color-gray'>{{item.brandName}}</text>
+            </view>
+            <view class='cb wp40 wh40'>
+              <view wx:if="{{item.privilegePrice > 0}}">
+                <view class='fs45 fl mt10 fw'>￥{{item.privilegePrice}}</view>
+                <view class='fs25 fl mt30 ml20 txt-throw'>原价￥{{item.price}}</view>
+              </view>
+              <view wx:else>
+                <view class='fs45 fl mt10 fw'>￥{{item.price}}</view>
+              </view>
+              <!--购物车加减功能-->
+            </view>
+            <!--加号-->
+            <view class='addCarts' bindtap='addPlus' data-index="{{index}}" data-id="{{item.serviceId}}">
+              <text class="carpic">加入购物车</text>
+              <!-- <image src='http://116.62.151.139/res/img/carthave.png' class="carpic"></image> -->
+            </view>
+          </view> 
+        </view>
+      </view>
+    </block>
+  </view>
+  <!--轮胎更换-品牌内容-->
+  <view class='brand wp100 pa' wx:if="{{showBrand}}">
+    <!--遮罩-->
+    <view class="modal-mask pa zi3" bindtap="hideModal"></view>
+    <view class="bg-white wp70 h450 pa zi4">
+      <view wx:for="{{tireBrandList}}">
+        <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10' data-brandname='{{item.brand}}' bindtap='selectbrand'>
+          <text class='fs30 ta-c'>{{item.brand}}</text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--评价-->
+<view class='boxall'> 
+<view class='commtbox' wx:if="{{showModaleva}}"> 
+<view class='commt01'>
+  <view class='disitembox'>
+  <!--left  -->
+     <view class='wp20 oleft'>
+      <view class=' color-green fs50 conts'>{{score}}</view>
+           <image src='http://116.62.151.139/res/img/clineg.png' class='fl lines'></image>
+    </view>
+    <!--right-->
+    <view class='wp60 oright'>
+    <view class='wp100 h80'>
+        <view wx:for="{{score/2}}" wx:key="unique" class='fl stars'>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+    </view>
+    </view>
+
+      <view class='fl h50 lh50 mt20'>
+        <text class='fl fs28'>服务满意度</text>
+        <text class='fl fs28 ml20'>共{{evaluateList.length}}人点评</text>
+      </view>
+    </view> 
+  </view>
+
+</view>
+  <block wx:for='{{evaluateList}}' wx:key="unique">
+    <view class='wp100 mt20 border-b allcom'>
+    <!--left  -->
+    <view class='commleft'>
+      <image src='{{item.portait}}' class='fl ml10 w100 h100' mode='widthFix'></image>
+    </view>
+      <!--right  -->
+      <view class='fl wp80 ml20'>
+        <view class='ml10'>
+          <text class='fl fs28'>{{item.userName}}</text>
+          <text class='fr fs28 mr20'>{{item.evaluateTime}}</text>
+        </view>
+        <view class='cb mt50'>
+          <view wx:for="{{item.satisfaction / 2}}" wx:key="unique">
+            <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+          </view>
+        </view>
+        <view class='cb'>
+          <text class='fs25 ml10'>{{item.desn}}</text>
+        </view>
+        <view class='cb mt10'>
+          <view wx:if='{{item.picture}}' class='photocom'>
+            <image src='{{item.picture}}' class='photoitem' mode='widthFix'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+   <view wx:if="{{nocommsg}}">
+    <text class='msg fs28'>暂无评价~</text>
+  </view>  
+</view>
+
+<!--显示购物车-->
+<view wx:if="{{showModalcart}}" class='pf carthidden'>
+  <view class='cartnum rad40 w30 h30 lh30 pa color-white fs28 ta-c'>{{cartnum}}</view>
+  <image src='http://116.62.151.139/res/img/carthave.png' mode='widthFix' class='w90 fl pa carthave' bindtap='cartdetail'></image>
+  <view class='cart pa bg-white'>
+    <view class='w410 h80 lh80 border-b border-t fr'>
+      <view class='fl fs30 color-green pl30 ml10' bindtap='checkedreturn'>隐藏</view>
+      <!-- <view class='fl fs30 color-gray txt-throw pl30 border-r pr20' bindtap='checkedreturn'>￥{{originalprice}}</view> -->
+      <view class='fl fs35 color-green pl30' bindtap='bindViewPay'>去购物车查看</view>
+    </view>
+  </view>
+</view>
+<!--隐藏购物车-->
+<view bindtap='checked' wx:if="{{hiddencart}}">
+  <image src='http://116.62.151.139/res/img/carthidden.png' mode='widthFix' class='w50 pf carthidden'></image>
+</view>
+<!--购物车弹窗-->
+<!-- <view wx:if="{{showcartdetail}}">
+  <view class="modal-dialog wp83">
+    <view class='h70 lh70 mt10'>
+      <view class="fs28 color-gray fr mr20 clearcart">清空购物车</view>
+    </view>
+    <view class='h260 wp95 middle ma cb'>
+      <block wx:for='{{cartList}}'>
+        <view class='h80 cb border-t border-b'>
+          <view class='fl ml20 w280'>
+            <view class="fs30">{{item.productname}}</view>
+            <view class="fs25 color-gray ">{{item.repeatname}}</view>
+          </view>
+          <view class="fl fs30 w100 saleprice h80 lh80">￥{{item.saleprice}}</view>
+          <view class="fl ta-c rad40 w30 h30 lh20 dec mt20 ml50">
+            <text class='fs35 color-gray '>-</text>
+          </view>
+          <view class="fl fs30 w20 h80 lh80 ml10 mr10">{{item.num}}</view>
+          <view class="fl ta-c rad40 w30 h30 lh20 mt20 pr border-green">
+            <text class='fs35 color-green addnum pa'>+</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class='h20'></view>
+  </view>
+  <!--向下的三角箭头--
+  <view class='triangle-down pa'></view>
+</view> -->
+
+<!--全屏遮罩-->
+<!-- <view class="modal-maskb" bindtap="hideModalb" catchtouchmove="preventTouchMove" wx:if="{{showModalb}}"></view> -->

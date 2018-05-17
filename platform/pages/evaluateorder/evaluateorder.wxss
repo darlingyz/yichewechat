@@ -1,0 +1,10 @@
+/* pages/evaluateorder/evaluateorder.wxss */
+.evaluatebtn{
+  border: 1rpx solid #d0a787;
+}
+.item {
+  position: absolute;
+  top: 25rpx;
+  width: 25rpx;
+  height: 50rpx;
+}

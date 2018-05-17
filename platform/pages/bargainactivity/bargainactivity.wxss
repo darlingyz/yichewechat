@@ -1,0 +1,15 @@
+/* pages/bargainactivity/bargainactivity.wxss */
+.bargain{
+  top: 142rpx;
+  left: 348rpx;
+}
+.boxb{
+  top: 10rpx;
+  left: 486rpx;
+}
+.discount{
+  top: 155rpx;
+}
+.h234 {
+  height:234rpx;
+}

@@ -1,0 +1,51 @@
+<!--pages/friendsbargainb/friendsbargainb.wxml-->
+<view class='container pr'>
+    <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
+    <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
+    <view class='brand pa w200 fs28 ta-c'>一车独秀</view> 
+    <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view> 
+    <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
+    <view class='detail pa wp75'>
+       <image src='{{storeba}}' mode='widthFix' class='wp30 fl'></image>
+       <view class='fl ml10 wp65'>
+          <view class='cb'>
+              <view class='fs30 fl mt10' >{{washcoupons}}</view>
+              <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
+          </view>
+          <view class='cb'>
+              <view class='fs45 fl mt40 fw'>￥{{nprice}}</view>
+              <view class='fs25 fl mt60 ml20 txt-throw'>原价￥{{oprice}}</view>
+          </view>
+       </view>
+    </view>
+</view>
+<view class='cb mt500'>
+    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+</view>
+<view class='cb'>
+    <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
+</view>
+<view class='cb'>
+    <view class='fl fs30 ml50'>原价</view>
+    <view class='fl fs30 ml210'>中间价</view>
+    <view class='fr fs30 mr50'>最低价</view>
+</view>
+<view class='cb'>
+    <view class='fl fs30 ml50'>￥{{origprice}}</view>
+    <view class='fl fs30 ml210'>￥{{middleprice}}</view>
+    <view class='fr fs30 mr65'>￥{{bottomprice}}</view>
+</view>
+<view class='cb mt80'>
+    <view class='h80 lh80 w200 fs30 fl fw ml180'>已有{{joinpeople}}人参加</view>
+    <view wx:if='{{joinpeople >= pnuma}}'>
+        <view class='cutsuccess h80 lh80 w300 fs30 fl fw'>好友已砍价成功！</view>
+    </view>
+    <view wx:else>
+      <!--如果过了最后时间人数不够,要提示 好友逾期砍价失败 -->
+    </view>
+</view>
+<button class='cutbtn h90 lh90 wp90 ma ta-c mt280' bindtap='bindViewStart'><text class='color-white fs40'>我也要发起！</text></button>
+
+
+

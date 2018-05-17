@@ -1,0 +1,31 @@
+<!--pages/collectstore/collectstore.wxml-->
+<!--门店列表-->
+<view wx:if="{{havemsg}}">
+
+<block wx:for="{{shopList}}" wx:key="unique">
+    <view class='all cb wp100 h160 border-b pb10 border-b' bindtap='storedetail' data-shopId="{{item.shopId}}">
+        <image src='{{item.facadePhotoUrl}}' class='storePic fl border-1 ml20 mt10 w200 h150'></image>
+        <view class='shopDetail h160 fl w200 ml10'>
+          <view class='fs28 mt10'>{{item.shopName}}</view>
+          <view class='w200 h30 ml140'>
+            <view class='fs20 fl ml10'>{{item.score}}分</view>
+            <view class='fs20 fl ml10'>{{item.amount}}人购买</view>
+          </view>
+
+          <view class='pt10 cb'>
+            <block wx:for="{{item.services}}" wx:key="unique">
+              <view class='change fs20 fl mr30'>{{item.business}}</view>
+            </block>  
+          </view>
+          <view class='color-gray fs25 cb pt10 ohid h30 adds'>{{item.address}}</view>
+        </view>
+        <view class='dis fl w200 okms ml20'>
+          <image src='http://116.62.151.139/res/img/guide.png' class='fl w40 h40' ></image>
+        <text class='fl fs25 w140 ml20 h40 mt10'>100.00km</text>
+      </view>
+    </view>
+</block>
+</view>
+<view wx:else>
+  <text class='fs28'>您还没有添加收藏~</text>
+</view>

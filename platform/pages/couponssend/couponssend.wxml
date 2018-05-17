@@ -1,0 +1,17 @@
+<block wx:for="{{couponsList}}">
+<view class='couponsMain border-t border-b pr wp100'>
+  <view class='couponsFace color-white pr'>
+    <text class='currency pa'>{{item.currency}}</text>
+    <text class='price pa'>{{item.price}}</text>
+    <text class='require pa fs18'>{{item.require1}}</text>
+  </view>
+
+  <text class='couponsName pa'>{{item.couponsName1}}</text>
+  <text class='couponsTime pa border-b-d fs23 dis-b'>{{item.couponsTime1}}</text>
+  <text class='couponsRange pa fs23'>{{item.couponsRange1}}</text>
+
+  <view class='getButton pa color-white ta-c fs16 rad20' bindtap='btClick'>{{item.getButton1}}</view>
+</view>
+</block>
+
+

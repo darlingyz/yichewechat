@@ -1,0 +1,204 @@
+.gps {
+  background: url(http://116.62.151.139/res/img/position.png) no-repeat center left;background-size:30rpx;
+  width:90rpx;
+  }
+.searchIcon {
+background: url(http://116.62.151.139/res/img/search.png) no-repeat center center;background-size:38rpx;
+width:70rpx;
+}
+.searchGpsIcon {
+background: url(http://116.62.151.139/res/img/searchgps.png) no-repeat center left;background-size:38rpx;
+width:160rpx;
+}
+.cs {
+background: url(http://116.62.151.139/res/img/cs.png) no-repeat center center;
+background-size:44rpx;
+width:70rpx;
+}
+.signInIcon {
+background: url(http://116.62.151.139/res/img/signin.png) no-repeat center left;background-size:38rpx;
+  }
+.myCar {
+  background: #ccc;
+   border:1rpx solid #fff;
+   }
+.bg-green {
+  background-color: #00A465;
+}
+.hotIcon {
+background: url(http://116.62.151.139/res/img/catehot.png) no-repeat center center;background-size:73rpx;
+width:73rpx;
+height:35rpx;}
+.panicbuyIcon {
+  background: url(http://116.62.151.139/res/img/panicbuying.png) no-repeat center center;        background-size:100rpx;
+  width:100rpx;
+  height:100rpx; 
+  top: -35rpx;
+}
+.navbox {
+  width:130rpx;
+  }
+.roll{
+  overflow-x: auto;
+}
+.bargain{
+  top: 142rpx;
+  left: 348rpx;
+}
+.boxb{
+  top: 10rpx;
+  left: 500rpx;
+}
+.discount{
+  top: 155rpx;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  height: 570rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 77rpx;
+  top: 22%;
+  z-index: 9999;
+  background: #da251c;
+  border-radius: 36rpx;
+}
+.couponbtn{
+  background-color: #fff500;
+  line-height: 56rpx;
+}
+.delect{
+  position: fixed;
+  left: 656rpx;
+  top: 19%;
+  z-index: 9999;
+}
+.middle{
+  overflow-y: scroll;
+}
+.box_pic{
+  width: 250rpx;
+  height: 150rpx;
+  margin-right: 50rpx;
+}
+.recompic{
+  max-width: 100%;
+  max-height:100%;
+}
+.boxc{
+position: relative;
+top: 0;
+float: right;
+overflow: hidden;
+ height:500rpx;
+}
+.boxa{
+  position: absolute;
+  top:15%;
+  right:5%;
+  height: 300rpx;
+  border-radius: 20rpx;
+}
+.actname{
+  position:absolute;
+  left:60%;
+  top: 20%;
+}
+.desname{
+  position:absolute;
+  left:60%;
+  top: 28%;
+}
+.disname{
+  position: absolute;
+  left: 60%;
+  top: 35%;
+}
+.discount{
+  position: absolute;
+  left: 60%;
+  top: 60%;
+}
+.wpic{
+  width: 100%;
+  max-height: 400rpx;
+}
+.boxPic{
+  display: none
+}
+.boxModal{
+  background: #fff;
+  
+}
+.obtn{
+font-size: 28rpx;
+}
+.contbox{
+    width: 600rpx;
+    height:300rpx;
+    background: #fff;
+    font-size: 28rpx;
+    border-radius: 12rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.prompt{
+  width: 100%;
+  height:90rpx;
+  border: none;
+  outline: none;
+  background: #fff; 
+}
+.obtn{
+  width: 500rpx;
+  height:80rpx;
+  background: #00A465;
+  border-radius: 12rpx;
+  color: #fff;
+}
+.cancel{
+  margin-top: 20rpx;
+  width: 500rpx;
+  height:80rpx;
+  background: #00A465;
+  color: #fff;
+  border-radius: 12rpx;
+}
+.chanName{
+  text-indent: 10rpx;
+  width: 20%;
+  float: left;
+}
+.address{
+  width: 60%;
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.distance{
+  width: 10%;
+  float: left;
+  text-align: left;
+}
+.nomg{
+  text-align: center;
+margin-left: 200rpx;
+}
+/* .kanjia{
+  display: none
+} */

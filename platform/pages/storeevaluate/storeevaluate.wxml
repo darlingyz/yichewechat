@@ -1,0 +1,55 @@
+<!--pages/storeevaluate/storeevaluate.wxml-->
+<view class='border-b wp100 h80'>
+  <view class='fl h80 lh80 wp50' bindtap='bindViewStoredetailb'>
+     <text class='ml120'>门店详情</text>
+  </view>
+  <view class='fl h80 lh80 wp50 '>
+     <text class='ml120 color-green '>门店评价</text>
+  </view>
+</view>
+<view class='allcont' wx:if="{{havamsg}}">
+<view class='wp100 h170 border-b box'>
+<view class="startbox">
+  <view class='fl wp20 ta-c num color-green fs50 lh170' >{{score}}</view>
+</view>
+  <view class='fl wp70 biz'>
+      <view class='contstart'>
+      <block wx:for='{{score / 2}}' wx:key="unique">
+        <image src='{{startSrc}}' class='w30 fl ml10 startpic' mode='widthFix'></image>
+      </block>
+      </view>
+      <view class='full boxfullb fl vcomlist'>
+          <text class='fl fs28 satisfy ml45'>服务满意度</text>
+          <text class='fl fs28 satisfy ml20 '>共{{commentpe}}人点评</text>
+      </view>
+  </view>
+</view>
+<block wx:for='{{evaluateList}}' wx:key="unique">
+  <view class='wp100 border-b mt20 blockbox'>
+  <!--头像img  -->
+    <image src='{{item.portait}}' class=' ml10 w100 conttnum' mode='widthFix'></image>
+    <view class='fr wp80 ml20 itembox'>
+        <view class='ml10 usename'>
+            <text class='fl fs28'>{{item.userName}}</text>
+            <text class='fl fs28 datatime'>{{item.evaluateTime}}</text>
+        </view>
+        
+        <view class='picstat'>
+          <block wx:for="{{item.satisfaction / 2}}" wx:key="unique">
+            <image src='{{startSrc}}' class='startSrc statbox' mode='widthFix'></image>
+          </block>
+        </view>
+        
+        <view class='cb'>
+            <text class='fs25 ml10'>{{item.desn}}</text>
+        </view>
+        <view class='commbox'>
+            <image src='{{item.picture}}' class='commmpic' mode='widthFix'></image>
+        </view>
+    </view>
+  </view>
+</block>
+</view>
+ <view class='nomsg' wx:else>
+<text class='msg fs28'>暂无评论~</text> 
+</view>

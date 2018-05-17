@@ -1,0 +1,18 @@
+<view  class='hv bg-gray wp100'>
+  <view id='bd'>
+    <view class='bd'>
+      <view class='fp border-b bg-white'>
+      <image class='ft' src='http://116.62.151.139/res/img/absmall.png'></image>
+      <text class='list_1'>一车独秀</text>
+      </view>
+    <view class='sed bg-white'>
+      <image class='set' src='http://116.62.151.139/res/img/absmall.png'></image>
+      <text class='list_2'>享来享去</text>
+      </view>
+      <view class='thr bg-white'>
+      <image class='tht' src='http://116.62.151.139/res/img/absmall.png'></image>
+      <text class='list_3'>淦隆汽车</text>
+      </view>
+    </view> 
+  </view>
+</view>

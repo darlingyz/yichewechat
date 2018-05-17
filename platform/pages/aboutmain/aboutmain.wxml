@@ -1,0 +1,31 @@
+<!--//关于一车独秀  -->
+<view class='conter'>
+<view class='interduce'>
+    <image class='log' src='../../images/logo.png' mode='widthFix'></image>
+    <text class='wename'> 一车独秀</text>
+</view>
+    <text class='about'>
+    '一车独秀'小程序主要为广大爱车的车主们提供各种方便快捷的汽车服务，洗车养车代办车务，让车辆维护更便捷，让广大车主更省心。
+    </text>
+    <view class='inter01'>
+        <text class='name01'> 服务类目</text>
+        <text class='name02'>养车/修车</text>
+    </view><view class='inter02'>
+        <text class='name01'> 服务主题</text>
+        <text class='name02'>预设内容</text>
+    </view>
+    <view class='inter03' bindtap='abouts'>
+      <text class='name031'>服务类目</text>
+      <view class='name03'>
+        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
+        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
+        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
+      </view>
+    </view>
+    <button  open-type="switchTab" hover-class="other-navigator-hover"  class='wxbtn wp90 h70 lh70 rad10 color-white ma mt40' bindtap='goindex' >
+        进入小程序
+    </button>
+    <button open-type='share' class='wxbtn wp90 h70 lh70 rad10 color-white ma mt40'>
+        推荐给朋友
+    </button>
+</view>

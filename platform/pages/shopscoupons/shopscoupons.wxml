@@ -1,0 +1,23 @@
+<block wx:for="{{CouponsList}}">
+<view class='coupons-main-1 border-1 pr wp100'>
+  <image class='store fl ml10' src='{{item.store}}'></image>
+  <view class='coupons-face-1 color-white pr fl'>
+    <text class='currency pa mt50'>{{item.currency}}</text>
+    <text class='price pa mt20 ml80'>{{item.price}}</text>
+    <text class='require pa'>{{item.require}}</text>
+  </view>
+
+  <text class='couponsName pa fs23 ml10 mt10'>{{item.couponsNname}}</text>
+  <text class='couponsTime pa border-b-d dis-b fs18'>{{item.couponsTime}}</text>
+  <text class='couponsRange pa fs18'>{{item.couponsRange}}</text>
+
+  <view class='shops h30 fs18'>
+    <text class='shopPlace'>{{item.shopPlace}}</text>
+    <text class='shopDistance'>{{item.shopDistance}}</text>
+    <text class='shopName'>{{item.shopName}}</text>
+    <image class='arrow' src='http://192.168.1.111:90/yellow-arrow.png'></image>
+  </view>
+
+  <view class='getButton pa color-white ta-c fs16 rad20'>立即领取</view>
+</view>
+</block>

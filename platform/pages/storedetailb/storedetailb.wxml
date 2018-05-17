@@ -1,0 +1,66 @@
+<!--pages/storedetailb/storedetailb.wxml-->
+<view class='border-b wp100 h80'>
+  <view class='fl h80 lh80 wp50'>
+     <text class='ml120 color-green'>门店详情</text>
+  </view>
+  <view class='fl h80 lh80 wp50' bindtap='bindViewStoreevaluate'>
+     <text class='ml120'>门店评价</text>
+  </view>
+</view>
+<image src='http://116.62.151.139/res/img/ckgreen.png' class='fl w370' mode='widthFix'></image>
+<view class='wp100 h60 cb'>
+  <view class='fs40 fl h60 lh60 ml20 wp100'>{{data.storeName}}</view>
+</view>
+<view class='wp100 other'>
+<view class='fl wp70 h120 cb'>
+  <view class='wp100 h60'>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>{{data.score}}分</view>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>|</view>
+    <view class='fs28 fl h60 lh60 ml20 color-degray'>{{data.amount}}人购买>></view>
+  </view>
+  <view class='wp100 h60 cb'>
+  <block wx:for="{{data.services}}" wx:key="unique">
+    <view class='fs28 fl h60 lh60 ml20 color-blue'>{{item.businessName}}</view>
+  </block>
+  </view>
+</view>
+<view class='fl wp30 h120'>
+  <image src='http://116.62.151.139/res/img/call.png' mode='widthFix' class='w80 fl'></image>
+  <image src='http://116.62.151.139/res/img/clineg.png' class='fl ml10 h80 w5'></image>
+  <image src='http://116.62.151.139/res/img/guidemap.png' mode='widthFix' class='w80 fl ml10'></image>
+</view>
+
+</view>
+<view class='wp100 detailbox'>
+<view class='worktime'>
+    <image src='http://116.62.151.139/res/img/businesshours.png' mode='widthFix' class='w30 fl ml20 pt20'></image>
+  <view class='fs25 fl h60 lh70 ml20 color-degray'>营业时间:{{data.startTime}}-{{data.endTime}}</view>
+</view>
+
+<view class='workadress'>
+  <image src='http://116.62.151.139/res/img/locationb.png' mode='widthFix' class='w25 fl ml20 pt20 dis-b'></image>
+  <text class='fs25 wp90 fl h30 lh30 ml20 color-degray mt10'>{{data.facadeAdd}} 距离大约{{data.distance}}km</text>
+</view>
+</view>
+<image src='http://116.62.151.139/res/img/cutlineh.png' mode='widthFix' class='wp100'></image>
+<view class='wp100 h60 lh50 ta-c border-b fs35'>-店铺公告-</view>
+<view class='wp100 h100 ta-c border-b fs30 color-degray mt20'>{{data.announcement}}</view>
+<!--店铺服务环境 图片轮播  -->
+<view class='wp100 h60 lh60 ta-c border-b fs35'>-服务环境-</view>
+<view class='imgList wp100'>      
+  <view class='imgList-li' wx:for='{{imgArr}}' wx:key="unique">
+    <image class='bigimg wp100' mode='widthFix' src='{{item}}' data-index='{{index}}' bindtap='previewImg'></image>
+  </view>
+</view>
+<view class='wp100 h60 lh60 ta-c border-b border-t fs35 mt10'>-服务类目-</view>
+<view class='wp100 h100 lh100 ta-c border-b border-t fs35 mt10 color-green'>-全部服务-</view>
+<block wx:for="{{data.titleServcies}}" wx:key="unique">
+  <view class='wp100 h100 lh100 border-b'>
+    <view class='fl fs30 wp33 ta-c'>{{item.businessName}}</view>
+    <view class='fl textview fs30 wp33 ta-c'>{{item.serviceName}}</view>
+    <view class='fl fs30 wp33 ta-c'>￥{{item.price}}</view>
+  </view>
+</block>
+<!--回到顶部-->
+<image src='http://116.62.151.139/res/img/returntop.png' mode='widthFix' class='returntop w80 fr mr30 pf' bindtap='bindViewStoredetailb'></image>
+<view class='cb wp100 h50'></view>

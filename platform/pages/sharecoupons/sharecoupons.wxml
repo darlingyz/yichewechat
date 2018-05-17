@@ -1,0 +1,49 @@
+<!--pages/sharecoupons/sharecoupons.wxml-->
+<view class='cb'>
+  <view class='container pr'>
+      <image src='http://192.168.1.111:90/info.png' mode='widthFix' class='bg wp90 pa'></image>
+      <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
+      <view class='brand pa w200 fs28 ta-c'>一车独秀</view> 
+      <view class='callon pa wp90 fs30 ta-c'>我分享给你一个超实用的优惠券，快领取吧！</view> 
+      <view class='detail pa wp90 ml45'>
+        <view class='bg-orange h180 wp30 fl'>
+          <view class='cb ml50 mt10'>
+              <text class='fs40 color-white fl mt50'>￥</text>
+              <text class='fs80 color-white fl'>{{couponprice}}</text>
+          </view>
+          <view class='cb fs25 ta-c color-white'>满{{enprice}}元可用</view>
+        </view>
+        <view class='bg-white h180 wp55 fl pl10'>
+            <view class='cb h50 lh50'>
+                <view class='fs30 fl mt10 color-orange'>{{sharecoupons}}</view>
+                <view class='fr mt15 bg-green rad20 w80 ta-c mr10 h40 lh30'>
+                  <text class='color-white fs20'>{{status}}</text>
+                </view>
+            </view>
+            <view class='cb border-b-d h40 lh40 mt20'>
+                <view class='fs20 fl color-gray'>使用期限：{{usetime}}</view>
+            </view>
+            <view class='cb h40 lh40 mt20'>
+                <view class='fs20 fl color-gray'>{{useplace}}</view>
+            </view>
+        </view>
+      </view>
+  </view>
+</view>
+<view class='mt500 color-gray fs25 ml30'>优惠券已存入您的账户{{account}}，快来使用吧~</view>
+<view class='mt60 fs30 container'>-看看大家-</view>
+<view class='mt40'>
+  <block wx:for="{{shareList}}">
+    <view class='h130 border-b wp100 cb'>
+      <image src='http://192.168.1.111:91/frienduser.png' mode='widthFix' class='w100 fl mt10 pl20'></image>
+      <view class='fl w500 h130 ml20 mt20'>
+        <view class='fs30'>{{item.username}}</view>
+        <view class='fs25 color-gray mt10'>领取时间：{{item.receivetime}}</view>
+      </view>
+      <view class='fl fs35 color-orange w100 h130 lh130'>{{item.shareprice}}元</view>
+      </view>
+    </block>
+</view>
+<button class='bg-green ta-c h90 lh90 wp90 mt50'  bindtap='bindViewHome'><text class='color-white fs30'>打开一车独秀小程序</text></button>
+
+

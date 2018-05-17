@@ -1,0 +1,4 @@
+/* pages/userprotocol/userprotocol.wxss */
+.container{
+  font-size: 30rpx;
+}

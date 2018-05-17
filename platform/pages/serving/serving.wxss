@@ -1,0 +1,35 @@
+.all {
+  color: #4a4947;
+}
+
+.needPay {
+  color: #4a4947;
+}
+
+.serveing {
+  color: #07bb04;
+  border-bottom: 6rpx solid #07bb04;
+}
+
+.needAssess {
+  color: #4a4947;
+}
+
+.emptyshoppingcart {
+  width: 283rpx;
+  height: 283rpx;
+  padding-left: 239rpx;
+  padding-top: 225rpx;
+}
+
+.remind {
+  margin-left: 240rpx;
+}
+
+.buttonPay {
+  border: 1rpx solid #e0b794;
+  width: 190rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin-left: 290rpx;
+}

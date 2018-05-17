@@ -1,0 +1,6 @@
+/* pages/selectionmodel/selectionmodel.wxss */
+.texta{
+ width: 500rpx;
+ font-family: KaiTi;
+ padding-top: 5rpx;
+}

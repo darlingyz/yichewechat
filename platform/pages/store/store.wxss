@@ -1,0 +1,57 @@
+/* pages/store/store.wxss */
+.searchicon{
+  background-color: #dededc;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.searico{
+  margin-top: 8px;
+}
+.searchInput{
+  background-color: #dededc;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.location{
+  margin-top: 8rpx;
+}
+.middle{
+  padding-bottom: 35rpx;
+}
+.change{
+  color: #279bce;
+}
+.dropa{
+  height: 800rpx;
+  top: 183rpx;
+  z-index: 9999;
+}
+.dropb{
+  top: 183rpx;
+  z-index: 9999;
+}
+.dropc{
+  left: 202rpx;
+  top: 183rpx;
+  z-index: 9999;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 183rpx;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.searchbtn{
+  border: 1rpx solid #09bc1a;
+}
+.dropd{
+  left: 202rpx;
+  top: 500rpx;
+  z-index: 9999;
+}

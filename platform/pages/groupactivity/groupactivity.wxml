@@ -1,0 +1,23 @@
+<text class='fs28'>活动准备中,敬请期待~</text>
+<view wx:for="{{activityList}}" wx:key="unique" wx:if="{{nomsg}}">
+  <view class='.box_top wp100 pr mt10' data-id='{{item.id}}' bindtap='bindViewgroupdetails'>
+    <image class='store' src='{{item.img}}'></image>
+    <image class='group_icon pa' src='{{group_icon}}'>
+    </image>
+    <view class='all_price pr rad8'>
+      <text class='wash fw pa dis-b w100'>{{item.activityName}}</text>
+      <text class='onsale pa fs20'>{{item.description}}</text>
+      <text class='onsale1 pa fs22'></text>
+      <text class='price pa fw'>￥</text>
+      <text class='price1 pa fw'>{{item.groupPrice}}</text>
+      <text class='ex_price pa fs20 txt-throw'>原价:￥{{item.price}}</text>
+      <text class='discount pa bg-white dis-b rad15 fs18'>砍价低至{{item.groupPrice / item.price * 10}}折</text>
+    </view>
+  </view>
+  <view class='location wp100 pr border-b'>
+    <text class='store_name ml20 pa fs26 '>{{item.merchangtName}}</text>
+    <text class='store_location pa fs26'>{{item.address}}</text>
+    <text class='store_distanca pa fs26'>{{item.distance}}km</text>
+  </view>
+</view>
+

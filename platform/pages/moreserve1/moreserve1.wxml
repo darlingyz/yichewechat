@@ -1,0 +1,66 @@
+<view class="ml15 mr15">
+  <view class="fs30 ta-c h60 lh60 border-b">-限时优惠活动-</view>
+</view>
+<!--父元素，最大的盒子  -->
+<view wx:if="{{havamsg}}">
+  <view class='wp100 wpbox' >
+    <block wx:for="{{odata}}" wx:key="unique">
+    <!--子元素，每个小盒子  -->
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goActive'>
+        <!--公司活动图片-->
+          <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+          <!--其他内容 -->
+          <view class='chil_box'>
+             <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+              <view class='fs30 fw actname'>{{item.activityName}}</view>
+              <view class='fs30 fw desname'>{{item.description}}</view>
+               <view class='pt40 disname'>
+                    <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
+                    <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+                </view>
+              <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+          </view>
+          <!--地址  -->
+          <view class='cb border-b wp100 h80 lh100'>
+            <view class='fl h80 lh80 fs28 mr20'>{{item.merchangtName}}</view>
+            <view class='fl h80 lh80 fs28 mr20 color-gray'>{{item.address}}</view>
+            <!--距离  -->
+            <view class='f1 h80 lh80 fs28 color-gray'>{{item.distance}}km</view>
+          </view>
+
+        </view>  
+    </block>
+  </view>
+
+<!--拼团  -->
+  <view class='wp100 wpbox'>
+    <block wx:for="{{ogroup}}" wx:key="unique">
+    <!--子元素，每个小盒子  -->
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goGroup'>
+        <!--公司活动图片-->
+          <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+          <!--其他内容 -->
+          <view class='chil_box'>
+             <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+              <view class='fs30 fw actname'>{{item.activityName}}</view>
+              <view class='fs30 fw desname'>{{item.description}}</view>
+               <view class='pt40 disname'>
+                    <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
+                    <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+                </view>
+              <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+          </view>
+          <!--地址  -->
+          <view class='cb border-b wp100 h80 lh100'>
+            <view class='fl h80 lh80 fs28 mr20'>{{item.merchangtName}}</view>
+            <view class='fl h80 lh80 fs28 mr20 color-gray'>{{item.address}}</view>
+            <!--距离  -->
+            <view class='f1 h80 lh80 fs28 color-gray'>{{item.distance}}km</view>
+          </view>
+        </view>  
+    </block>
+  </view>
+</view>
+<view wx:else>
+  <text class='msg'>暂无优惠活动,敬请期待~</text>
+</view>

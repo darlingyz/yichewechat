@@ -1,0 +1,34 @@
+<view class='illegalCar pr wp100'>
+  <image class='illegalPic pa h100 ml30' src='{{illegalList.carLogo}}'></image>
+  <text class='illegalModel pa fs30'>{{illegalList.carName}}</text>
+  <text class='licenseNumber pa'>{{illegalList.carNo}}</text>
+</view>
+
+<view class='activelist wp100 border-t bordet-b pr'>
+  <view wx:if="{{hasList}}">
+    <view wx:for="{{breakRules}}" wx:key="unique" class='box'>
+      <view class='wp100 illtime ml10'>
+        违章时间:
+        <text class='illegalTime pa fs27 ml28'>{{item.time}}</text>
+      </view>
+      <view class='wp100 illplace ml10'>
+        违章地点:
+        <text class='illegalPlace pa fs27 ml28'>{{item.address}}</text>
+      </view>
+      <view class='wp100 illreson ml10'>
+        违章原因:
+        <text class='illegalReason pa fs27 ml28'>{{item.reason}}</text>
+      </view>
+      <view class='wp100 illmoney ml10'>
+        罚款金额:
+        <text class='illegalPrice pa fs27 ml28'>{{item.money}}元</text>
+      </view>
+      <view class='wp100 illscoe ml10'>
+        <text class='illegalPoints pa fs27'>扣分:{{item.degree}} 分</text>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="no-data">没有违章信息~</view>
+  </view>
+</view>

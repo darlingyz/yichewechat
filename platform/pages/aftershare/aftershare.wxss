@@ -1,0 +1,127 @@
+.store{ height: 242rpx;
+        width: 452rpx;}
+.box_top{ height: 242rpx;
+          background-color:  #F4CB01;}
+.all_price{ height: 223rpx;
+            width:276rpx;
+            background-color: #F4CB01;
+            border: 2rpx dotted;
+            margin-left:461rpx;
+            margin-top: -243rpx;}
+.wash{ left: 111rpx;
+       height: 34rpx;
+       color: #2A1573;
+       top: 12rpx;
+       font-size: 34rpx;}
+.onsale{font-size:19rpx;
+        left:67rpx;
+        top: 60rpx;
+        color: #2A1573;}
+.onsale1{font-size:19rpx;
+        left:151rpx;
+        top:60rpx;color: #2A1573;}
+.price{left: 15rpx;
+        top: 103rpx;
+        color: #2A1573;}
+.price1{left: 66rpx;
+        top: 102rpx;
+        color: #2A1573;}
+.ex_price{top: 137rpx;
+          left:164rpx;}
+.discount{ height: 27rpx;
+           width: 177rpx;
+          top: 175rpx;
+          left:25rpx;
+          padding-left:48rpx;}
+
+.servr_detail{height: 43rpx;
+              padding-left:313rpx ;
+              width: 57%;}
+
+.serve_end{ height: 97rpx;
+            font-size:24rpx;
+            width: 96%;
+            color: #777777;
+            padding-top: 17rpx; }
+
+.serve_place{height: 58rpx;
+               padding-left:313rpx ;
+              width: 58%;
+             line-height: 55rpx;}
+
+.contact{ height: 110rpx;}
+
+.place_dot{ height: 28rpx;margin-left:33rpx ;}
+
+.telphone{margin-left:33rpx ;margin-top:73rpx;}
+
+.place{color: #777777;margin-left:69rpx ;margin-top:17rpx;}
+
+.phone_number{color: #777777;margin-left:69rpx ;margin-top:70rpx;}
+
+
+.none{ height: 33rpx;
+        width: 746rpx;}
+.none .arrow{height: 17rpx;
+             width: 34rpx;
+             padding-bottom: 17rpx;}
+
+.team_show{ height: 346rpx;
+           width: 692rpx;
+           background-color: #EFEFED; 
+           margin: 33rpx auto;}
+.count{ margin-left: 54rpx;
+        padding-top: 47rpx;
+        font-size: 36rpx;}
+.people{ font-size: 35rpx;
+        margin-left: 587rpx;
+        padding-top: 47rpx;}
+.residueNumbers{margin-left: 555rpx;}
+.residue-time{color: #777674;
+                 margin-left: 235rpx;
+                  margin-top: 117rpx;}
+.time{ padding-left:4rpx ;
+        padding-right:4rpx ;}
+.colonel{height: 38rpx;
+         background-color: #0293D8;
+         margin-top:266rpx;
+         margin-left: 184rpx;
+         font-size: 21rpx;
+         line-height: 38rpx;}
+.pic_1{margin-top: 188rpx;
+      margin-left: 171rpx;
+      height: 98rpx;}
+.pic_2{margin-top: 188rpx;
+      margin-left: 298rpx;
+       height: 98rpx;}
+.pic_3{margin-top: 188rpx;
+      margin-left: 422rpx;
+       height: 98rpx;}
+.group_invite{color: #777777;
+               margin-left: 24rpx;}
+.group_rule{color: #777777;
+               margin-left: 60rpx;}
+.group_arrow{width: 26rpx;
+             padding-top: 16rpx;}
+
+.button-1{ height: 86rpx;
+           width: 696rpx;
+           background-color: #09BA07;
+            line-height: 86rpx;
+            margin-top: 61rpx;}              
+
+.button-2{ height: 86rpx;
+           width: 696rpx;
+           background-color: #09BA07;
+            line-height: 86rpx;
+            margin-top: 18rpx;}
+.button-3{height: 86rpx;
+           width: 696rpx;
+            line-height: 86rpx;}
+
+.guess-w{ height: 46rpx;
+              padding-left:313rpx ;
+              width: 57%;
+              margin-top: 112rpx; }
+.like_1{ height:287rpx ; width: 749rpx;}
+.like_2{ height:287rpx ; width: 749rpx;}

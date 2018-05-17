@@ -1,0 +1,11 @@
+/* pages/collectstore/collectstore.wxss */
+.change{
+  color: #279bce;
+}
+.shopDetail{
+  width: 300rpx;
+  }
+
+.okms{
+  margin-top: 120rpx;
+}

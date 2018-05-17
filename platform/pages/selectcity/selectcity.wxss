@@ -1,0 +1,48 @@
+/* pages/selectcity/selectcity.wxss */
+.searchAr{border-bottom-left-radius: 6rpx;border-top-left-radius: 6rpx;}
+.closeL{border-bottom-right-radius: 6rpx;border-top-right-radius: 6rpx;}
+page{height:100%;}
+.city_box{
+  height:100%;
+  background: #fff;
+  display: flex;
+}
+.city_left{
+  flex: 1;
+}
+.city_right{
+  width: 60rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.letter_item{
+  flex: 1;
+  display: block;
+  font-size: 24rpx;
+  color: #a0b3c2;
+  text-align: center;
+}
+
+.city_first_letter{
+  line-height: 60rpx;
+  height: 60rpx;
+  padding-left: 25rpx;
+  font-size: 28rpx;
+  background: #eee;
+  color: #999;
+}
+.city_name{
+  display: block;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-bottom: 1px solid #efefef;
+  font-size: 28rpx;
+  color: #333;
+  padding-left: 25rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

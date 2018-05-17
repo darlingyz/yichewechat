@@ -1,0 +1,114 @@
+.store{ height: 242rpx;
+        width: 452rpx;}
+.box_top{ height: 242rpx;
+          background-color:  #F4CB01;}
+.all_price{ height: 223rpx;
+            width:276rpx;
+            background-color: #F4CB01;
+            border: 2rpx dotted;
+            border-radius: 8rpx;
+            margin-left:461rpx;
+            margin-top: -240rpx;}
+.wash{ left: 111rpx;
+       height: 34rpx;
+       width: 100rpx;
+       color: #2A1573;
+       top: 12rpx;
+       font-size: 34rpx;
+       font-weight: bold;}
+.onsale{font-size:19rpx;
+        left:67rpx;
+        top: 60rpx;
+        color: #2A1573;}
+.onsale1{font-size:19rpx;
+        left:151rpx;
+        top:60rpx;color: #2A1573;}
+.price{font-size:50rpx;
+        left: 15rpx;
+        top: 110rpx;
+        color: #2A1573;
+        font-weight: bold;}
+.price1{font-size:50rpx;
+        left: 66rpx;
+        top: 102rpx;
+        color: #2A1573;
+        font-weight: bold;}
+.ex_price{top: 137rpx;
+          left:164rpx;}
+.discount{ height: 27rpx;
+           width: 177rpx;
+          top: 175rpx;
+          left:25rpx;
+          padding-left:48rpx;}
+
+.none{ height: 40rpx;
+        width: 746rpx;}
+.none .arrow{height: 17rpx;
+             width: 34rpx;}
+
+.team_show{ height: 352rpx;
+           width: 692rpx;
+           background-color: #EFEFED; 
+           margin: 34rpx auto;}
+.count{ margin-left: 54rpx;
+        padding-top: 47rpx;
+        font-size: 36rpx;}
+.people{ font-size: 35rpx;
+        margin-left: 587rpx;
+        padding-top: 47rpx;}
+.residueNumbers{font-size: 50rpx;
+                 font-weight: bold;
+                 margin-left: 555rpx;
+                  margin-top: 33rpx;}
+.residue-time{    font-size:26rpx ;
+                 color: #777674;
+                 margin-left: 235rpx;
+                  margin-top: 117rpx;}
+.time{ padding-left:4rpx ;
+        padding-right:4rpx ;}
+.colonel{height: 38rpx;
+         width: 70rpx;
+         background-color: #0293D8;
+         margin-top:266rpx;
+         margin-left: 184rpx;
+         font-size: 21rpx;
+         line-height: 38rpx;}
+.pic_1{margin-top: 188rpx;
+      margin-left: 171rpx;
+      height: 98rpx;}
+.pic_2{margin-top: 188rpx;
+      margin-left: 298rpx;
+       height: 98rpx;}
+.pic_3{margin-top: 188rpx;
+      margin-left: 422rpx;
+       height: 98rpx;}
+.group_invite{color: #777777;
+               margin-left: 24rpx;}
+.group_rule{color: #777777;
+               margin-left: 80rpx;}
+.group_arrow{ height: 20rpx;
+              width: 26rpx;
+             margin-left:1rpx;
+             margin-top: 20rpx;}
+
+.button-1{ height: 86rpx;
+           width: 696rpx;
+           background-color: #09BA07;
+           border-radius:8rpx;
+            line-height: 86rpx;
+            margin-top: 61rpx;
+            margin-left: 26rpx;}              
+
+.button-2{ height: 86rpx;
+           width: 696rpx;
+           background-color: #09BA07;
+           border-radius:8rpx;
+            line-height: 86rpx;
+            margin-top: 18rpx;
+            margin-left: 26rpx;}
+.button-3{height: 86rpx;
+           width: 696rpx;
+           border-radius:8rpx;
+            font-size: 35rpx;
+            line-height: 86rpx;
+            margin-left: 26rpx;}

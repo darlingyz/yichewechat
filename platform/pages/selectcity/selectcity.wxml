@@ -1,0 +1,48 @@
+<!--pages/selectcity/selectcity.wxml-->
+<view class='wp00 bg-light-gray hv'>
+<!--搜索栏-->
+<view class='mt20 pl30 h60 bg-white pb20'  bindtap="search"> 
+   <view class='searchAr bg-gray h60 w80 pr fl'>
+     <image class='w35 mt15 ml20 pa' src='http://116.62.151.139/res/img/searchlogo.png' mode='widthFix'></image>
+   </view>
+   <input class="bg-gray h60 wp60 fs30 fl"  placeholder-style="color:white" placeholder="城市" value="{{searchValue}}"/>
+   <view class='closeL w70 bg-gray h60 fl pr'>
+       <image class='w35 mt15 ml20 pa' src='http://116.62.151.139/res/img/searchdelet.png' mode='widthFix'></image>
+   </view>   
+  <!-- <view class='fs35 ml40 mt5 fl'>搜索</view>   -->
+</view> 
+<view class='cb fs35 h80 lh80 ml20 '>定位城市</view>
+<view class='cb h70 lh70 pl20 bg-white pt20'>
+  <view class='h50 lh50 w200 border-1'>
+    <image src='http://116.62.151.139/res/img/locationbrand.png' mode='widthFix' class='w25 fl mt10 ml10'></image>
+    <view class='fl fs30 ml20' >{{currentCity}}</view>
+  </view>
+</view>
+<view class='cb fs35 h80 lh80 ml20'>热门城市</view>
+<view class='cb h180 lh180 pl20 bg-white pt20'>
+<block  wx:for='{{newcity}}' wx:key='this' data-types='new' catchtap='cityTap' data-val='{{item}}'>
+  <view class='h50 lh50 w120 border-1 ta-c fl mr20 mb20'>
+      <text class='fs30'>{{item}}</text>
+  </view>
+</block>
+</view>
+
+<view class='city_box'>
+  <view class='city_left'>
+      <scroll-view scroll-y style='width:100%;height:100%;' scroll-with-animation scroll-into-view='{{cityListId}}'>
+        <view class='city_list_box'>
+          <block wx:for='{{citylist}}' wx:key='this' wx:for-item='letterItem' wx:for-index='letterIndex'>
+            <view class='city_first_letter' id='{{letterItem.letter}}'>{{letterItem.letter}}</view>
+            <text class='city_name' wx:for='{{letterItem.data}}' wx:key='this' data-types='list' catchtap='cityTap' data-index='{{index}}' data-val='{{item}}'>{{item.cityName}}</text>
+          </block>
+        </view>
+      </scroll-view>
+  </view>
+  <view class='city_right'>
+      <text class='letter_item' wx:for='{{letter}}' wx:key='this' catchtap='letterTap' data-item='{{item}}'>{{item}}</text>
+  </view>
+</view>
+
+
+</view>
+

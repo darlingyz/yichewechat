@@ -1,0 +1,9 @@
+<!--pages/selectionmodel/selectionmodel.wxml-->
+<view class='border-b wp100 h50 cb mt20 pb20' wx:for="{{array}}" key="unique"> 
+    <view bindtap='selectcar' data-item='{{item}}' class='texta h50 fl ml20 fs30'>{{item.name}}</view>
+</view>
+
+
+
+
+

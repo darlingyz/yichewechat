@@ -1,0 +1,60 @@
+<!--pages/friendsbargain/friendsbargain.wxml-->
+<view class='container pr'>
+    <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
+    <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
+    <view class='brand pa w200 fs28 ta-c'>{{userName}}</view> 
+    <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view> 
+    <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
+    <view class='detail pa wp75'>
+       <image src='{{storeba}}' mode='widthFix' class='wp30 fl'></image>
+       <view class='fl ml10 wp65'>
+          <view class='cb'>
+              <view class='fs30 fl mt10' >{{washcoupons}}</view>
+              <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
+          </view>
+          <view class='cb'>
+              <view class='fs45 fl mt40 fw'>￥{{nprice}}</view>
+              <view class='fs25 fl mt60 ml20 txt-throw'>原价￥{{oprice}}</view>
+          </view>
+       </view>
+    </view>
+</view>
+<view class='cb mt500'>
+    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+</view>
+<view class='cb'>
+    <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
+</view>
+<view class='cb'>
+    <view class='fl fs30 ml50'>原价</view>
+    <view class='fl fs30 ml210'>中间价</view>
+    <view class='fr fs30 mr50'>最低价</view>
+</view>
+<view class='cb'>
+    <view class='fl fs30 ml50'>￥{{origprice}}</view>
+    <view class='fl fs30 ml210'>￥{{middleprice}}</view>
+    <view class='fr fs30 mr65'>￥{{bottomprice}}</view>
+</view>
+<view class='cutdetial wp90 h300 rad10 mt50 ma'>
+<view class='h280 middle'>
+  <block wx:for="{{friendsCutList}}">
+      <view class='pr pt90'>
+          <view class='bgbox wp90 h80 lh80 pa'>
+            <view class='pr'>
+              <image src='{{item.userHelpPortait}}' class='frienduserSrc w60 pa' mode='widthFix'></image>
+              <view class='friendsname w150 pa fs28'>{{item.userHelpName}}</view>
+              <view class='cutnum w200 pa fs28'>砍了一刀</view>
+              <view class='date w100 pa fs28'>{{item.helpTime}}</view>
+            </view>
+          </view> 
+      </view>
+  </block>
+  </view>
+</view>
+<button class='cutbtn h90 lh90 wp90 ma ta-c mt80' bindtap='bindViewHelpcut'><text class='color-white fs40'>帮他砍价！</text></button>
+<view class='h60 lh60 wp100 ta-c fs30 border-t border-b mt150'>-猜你喜欢-</view>
+<block wx:for='{{adsList}}'>
+  <image src='{{item.adsSrc}}' mode='widthFix' class='wp100 mt20'></image>
+</block>
+

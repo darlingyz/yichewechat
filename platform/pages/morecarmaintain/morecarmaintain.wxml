@@ -1,0 +1,51 @@
+<view class='pat_top pr border-t border-b wp100'>
+    <!--头部--> 
+     <view class='dh'>
+        <text class='sever pa dis-b fs28'>我常用保养养护服务</text>
+        <button class='an pa mt10 h40 fs22 ta-c lh40' bindtap='editTap'>{{editModel ? "完成" : "编辑"}}</button>
+     </view>
+    <!--头部结束--> 
+
+    <!--上部常用活动区域-->
+     <view class='usuallyserve wp100 mt90'>
+      <block wx:for="{{servelList}}" wx:key="unique">
+         <view class='serve1 fl eachbox' data-id="{{item.businessId}}" 
+         data-rank="{{item.rank}}" data-ser="{{item.serviceId}}" bindtap="deleteTap">
+           <image class='serve1P h98 w98 pr' src='{{item.img}}'></image>
+           <text class='fs26 txt'>{{item.businessName}}</text>
+            <image hidden='{{!editModel}}' class='del_1 h28 w28 pa point' src='{{delImg}}'></image> 
+         </view>
+      </block>
+     </view>
+      <!--上部常用活动区域结束-->
+  </view>
+
+  <view class='none wp100'></view>
+
+  <text class='list_2 fs28 dis-b h30 ml60 lh30'>全部保养服务</text>
+
+<!--下部活动区域-->
+  <view class='allserve wp100'>
+     <block wx:for="{{conserveServices}}" wx:key="unique">
+         <view class='serve1 fl itembox' data-id="{{item.businessId}}" data-rank="{{item.rank}}" data-ser="{{item.serviceId}}" data-list='{{conserveServices}}' bindtap="addTap">
+           <image class='serve1P h98 w98 pr' src='{{item.img}}'></image>
+            <text class='fs28 txt'>{{item.businessName}}</text>
+           <image hidden='{{!editModel}}' class='del_1 h28 w28 pa point' src='{{addImg}}'></image> 
+         </view>
+      </block>
+  </view>
+  <!--下部活动区域结束-->
+
+<text class='list_2 fs28 dis-b h30 ml60 lh30'>全部养护服务</text>
+ 
+  <view class='allmatainList wp100'>
+     <block wx:for="{{maintianServices}}" wx:key="unique">
+         <view class='serve1 fl allbox' data-id="{{item.businessId}}" data-rank="{{item.rank}}" data-ser="{{item.serviceId}}" data-list='{{maintianServices}}' bindtap="addTap">
+           <image class='serve1P h98 w98 pr' src='{{item.img}}'></image>
+            <text class='fs28 txt'>{{item.businessName}}</text>
+           <image hidden='{{!editModel}}' class='del_1 h28 w28 pa point' src='{{addImg}}'></image> 
+         </view>
+      </block>
+  </view>
+  
+  

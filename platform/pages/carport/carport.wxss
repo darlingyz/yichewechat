@@ -1,0 +1,17 @@
+.illegalCar{height: 157rpx; width: 95%;margin-left: 18rpx;border-top-left-radius: 20rpx;                  margin-top: 15rpx;border-top-right-radius: 20rpx;}
+    .illegalPic{width:135rpx ;margin-left: 16rpx;margin-top:28rpx ;height: 95rpx;}
+    .illegalModel{margin-left: 182rpx;margin-top: 25rpx;}
+    .licenseNumber{margin-left: 183rpx;margin-top: 62rpx;}
+    .distance{margin-left: 183rpx;margin-top: 96rpx;}
+    .compile{width: 120rpx;border:1rpx solid #D8B79C;margin-left: 568rpx;}
+
+.illegalMark{height: 58rpx;width: 95%; background-color: #EFEFED;margin-left: 18rpx;
+             border-bottom-left-radius: 20rpx; border-bottom-right-radius: 20rpx; }
+    .illegalRecoud{margin-left: 22rpx;}
+    .illegalW{font-size: 19rpx;margin-top: 13rpx;color: #535250;}
+    .wacth{margin-left:621rpx ;color: #DF7E27;margin-top: 15rpx;}
+    .arrow{height: 16rpx;width: 25rpx; margin-top: 19rpx; margin-left: 670rpx;}
+
+.addCar{height: 46rpx;width: 190rpx;border:1rpx solid #E3C5A9;margin-left:535rpx;                     margin-top:28rpx ;}
+    .addLogo{margin-top:6rpx ;margin-left:-74rpx ;}
+    .addCarW{margin-top: -6rpx;margin-left:-18rpx;}

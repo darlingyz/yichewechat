@@ -1,0 +1,86 @@
+    .allList{border-bottom: 6rpx solid #07BB04;
+         color:#07BB04; }
+    .needPay{color: #4A4947;}
+    .serveing{color: #4A4947;}
+    .needAssess{color: #4A4947;}
+
+.appDdownlode{height: 86rpx;background-color: #EFEFED;width: 675rpx;margin-top: 16rpx;}
+    .fork{margin-left:18rpx;}
+    .appGeneralize{line-height: 86rpx;margin-left: 69rpx;}
+    .downlodeButton{background-color: #F4CA03;font-size: 29rpx;width: 140rpx;margin-left:512rpx;margin-top: 25rpx;}
+
+.order{height:54rpx;margin-top: 17rpx;}
+    .orderName{font-size: 22rpx;color: #747474;}
+    .orderNumber{font-size: 24rpx;color: #747474;margin-left: 125rpx;}
+    .orderState{color:#747474;
+                float:right;
+                margin-left:562rpx;
+                display:block;
+                text-align:right;
+                width:180rpx;
+                 }
+
+.order2{ height: 54rpx;}
+
+.serve1{height: 158rpx;}
+    .serveLogo{width:111rpx;margin-top:26rpx ;margin-left:23rpx; }
+    .serveName{font-size: 33rpx;margin-left:153rpx ;margin-top:35rpx ;}
+    .serveDetail{margin-left:153rpx ;margin-top:91rpx ; color: #747474;}
+    .servePrice{font-size: 25rpx;margin-top:13rpx ;margin-left:661rpx;text-align: right;width: 75rpx;}
+    .serveNumber{font-size: 25rpx;margin-top:105rpx ;margin-left:695rpx;}
+
+.sum{height: 87rpx;}
+    .sumWords{margin-left:460rpx;}
+    .words{margin-left:530rpx;}
+    .total{margin-left:590rpx;}
+    .sumPrice{margin-left:660rpx;
+              display:block;
+              text-align:right;
+              width:73rpx;
+}
+
+.buttonDo{height:87rpx; border-bottom:10rpx solid #efefef;}
+    .buttonLeave{border: 1rpx solid #E0B794;width:150rpx ;height: 46rpx;                                             line-height: 46rpx;margin-left: 400rpx;}
+    .buttonPay{border: 1rpx solid #E0B794;width:150rpx ;height: 46rpx;                                            line-height: 46rpx;margin-left:579rpx;}
+
+.serve2{height: 156rpx;}
+    .serveLogo2{width: 105rpx; margin-left: 24rpx; margin-top: 35rpx;}
+    .serveName2{font-size: 31rpx;margin-left:140rpx; margin-top: 26rpx;}
+    .serveDescribe2{font-size: 24rpx;margin-left:140rpx ; margin-top: 83rpx;}
+    .servePrice2{font-size: 25rpx;margin-top: 6rpx;margin-left: 654rpx;}
+    .exPlace2{font-size: 25rpx;text-decoration:line-through;margin-top: 40rpx;margin-left: 661rpx;text-align:right;width:75rpx;}
+    .serveNumber2{font-size: 24rpx; margin-top: 104rpx;margin-left: 694rpx;}
+.serve3{height: 156rpx;}
+
+
+.waitCommend{border-top: 10rpx solid #eaeaea;height: 300rpx;}
+.order3{height: 54rpx;}
+    .orderState3{color: #2EB51D;margin-left: 575rpx;}
+    .buttonCommend{height:87rpx;}
+    .buttonCommend1{border: 1rpx solid #E0B794;width:150rpx ;height: 46rpx;                                            line-height: 46rpx;margin-left:579rpx;}
+
+.finished{height: 304rpx;width: 100%; border:none;margin-top:97rpx;border-top: 10rpx solid #eaeaea;}
+
+.order4{height: 54rpx;}
+.orderState4{color: #DD2519;margin-left: 655rpx;}
+
+
+.bomb{height: 290rpx;width: 553rpx;top:309rpx;left:92rpx ;z-index: 2000;}
+    .warmPrompt{font-size: 34rpx; margin-top: 55rpx; margin-left: 208rpx;}
+    .warmPromptW{margin-top: 127rpx; margin-left: 155rpx;}
+ .all{margin-top: 187rpx;}
+    .btGroup{display:block;height:98rpx;width: 265rpx;margin-top:188rpx;text-align: center;line-height: 98rpx;}
+    .sureBt{display:block;height: 98rpx;width: 280rpx;margin-top: 188rpx;margin-left:270rpx;text-align: center;line-height: 98rpx;}
+
+
+.commodity_screen {
+ height: 100%;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 1000;
+  color: #fff;
+}
+
+
+

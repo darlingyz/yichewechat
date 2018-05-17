@@ -1,0 +1,48 @@
+.title{
+  width: 100%;
+  font-size: 26rpx;
+  display: block;
+  text-align: center;
+margin-top: 10%
+  }
+.goset{
+  width: 100%;
+  font-size: 35rpx;
+  text-align: center;
+  display: block;
+}
+
+.obtn{
+   background-color: #09ba07;
+}
+.modal-dialog {
+  height: 570rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 77rpx;
+  top: 22%;
+  z-index: 9999;
+  background: #da251c;
+  border-radius: 36rpx;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.couponbtn{
+  background-color: #fff500;
+  line-height: 56rpx;
+}
+.delect{
+  position: fixed;
+  left: 656rpx;
+  top: 19%;
+  z-index: 9999;
+}

@@ -1,0 +1,161 @@
+<!--pages/store/store.wxml-->
+<!--搜索栏-->
+<view class='wp100 h70 lh70 mt10'>
+  <view class='searchicon fl ml40 h70 lh70 w100'>
+    <image src='http://192.168.1.111:90/searchb.png' class='searico w40 ml20' mode='widthFix'></image>
+  </view>
+  <input placeholder='输入服务内容' type='text' class='searchInput wp65 h70 lh70 fl' placeholder-style='font-size:30rpx;'></input>
+  <image src='http://192.168.1.111:90/location.png' class='location w60 lh50 mr30 fr' mode='widthFix'></image>
+</view>
+<!--选项栏-->
+<view class='cb h100 border-t border-b mt10'>
+  <view class='fl wp33'>
+    <view class='ta-c mt30 fs28'>{{area}}
+      <image src='{{downarrow}}' class='w30 ml10 mt10' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='fl wp33 border-r border-l middle' bindtap="showAllservice">
+    <view class=' ta-c mt30 fs28'>全部服务
+    <image wx:if="{{!allservice}}" src='{{downarrow}}' class='w30 ml10 mt10' mode='widthFix'></image>
+    <image wx:if="{{allservice}}" src='{{uparrow}}' class='w30 ml10 mt10' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='fl wp33' bindtap="showNearfirst">
+    <view class=' ta-c mt30 fs28'>附近优先
+      <image wx:if="{{!nearfirst}}" src='{{downarrow}}' class='w30 ml10 mt10' mode='widthFix'></image>
+      <image wx:if="{{nearfirst}}" src='{{uparrow}}' class='w30 ml10 mt10' mode='widthFix'></image>
+    </view>
+  </view>
+</view>
+<!--门店列表-->
+<block wx:for="{{shopList}}">
+    <view class='cb wp100 h160 border-t mt10' bindtap='storedetail'>
+      <image src='{{item.facadePhotoUrl}}' class='fl w200 ml10 mt10 h150' ></image>
+      <view class='fl w350 h160 ml10'>
+        <view class='fs28 mt10'>{{item.shopName}}</view>
+        <view class='pt10'>
+          <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+          <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+          <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+          <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+          <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+          <view class='fs20 fl ml20'>{{item.score}}分</view>
+          <view class='fs20 fl ml20'>{{item.amount}}人购买</view>
+        </view>
+        <view class='pt10 cb' wx:for="{{item.services}}" wx:for-item="serivces">
+          <view class='change fs20 fl'>{{serivces.business}}</view>
+          <view class='color-gray fs20 fl ml10 mr20'>|</view>
+        </view>
+        <view class='color-gray fs25 cb pt10 w350 ohid'>{{item.address}}</view>
+      </view>
+      <view class='fr w150 mr20'>
+        <image src='{{guideSrc}}' class='fl w40 pt120' mode='widthFix'></image>
+        <text class='fl fs25 ml10 w40 h40 pt125'>{{item.distance}}km</text>
+      </view>
+    </view>
+</block>
+<!--遮罩-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!--弹层 下拉列表-附近优先-->
+<view class='dropb cb pa bg-white wp100 h300' wx:if="{{nearfirst}}">
+    <view class='h100 lh100 wp100 border-b fs28 pl50' bindtap=''>附近优先</view>
+    <view class='h100 lh100 wp100 border-b fs28 pl50' bindtap=''>销量最高</view>
+    <view class='h99 lh100 wp100 border-b fs28 pl50' bindtap=''>评分最高</view>
+</view>
+<!--弹层 下拉列表-全部服务-->
+<view class='dropa cb pa bg-white wp100' wx:if="{{allservice}}">
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>全部服务</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>洗车服务</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50 {{changetyre ? "color-green" : ""}}' bindtap="showChangetyre">轮胎更换</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50 {{carbeauty ? "color-green" : ""}}' bindtap="showCarbeauty">汽车美容</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>保养服务</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>养护清洗</view>
+    <view class='h100 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>代办业务</view>
+    <view class='h90 lh100 wp20 border-b border-r fs28 pl50' bindtap=''>其他</view>
+</view>
+<!--汽车美容-->
+<view class='dropc cb pa bg-white wp100' wx:if="{{carbeauty}}">
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/allclean.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100 w300 fs28 fl' bindtap=''>全车精洗</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/polishing.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>汽车抛光</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/wax.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28  fl' bindtap=''>汽车打蜡</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/glazing.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>汽车封釉</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/cleanin.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>内饰清洁</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/coating.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>汽车镀膜</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/crystal.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>汽车镀晶</view>
+  </view>
+  <view class='border-b cb wp100'>
+    <image src='http://192.168.1.111:90/nursing.png' mode='widthFix' class='w60 fl mt20 pr40 pl170'></image>
+    <view class='h100 lh100  w300 fs28 fl' bindtap=''>真皮护理</view>
+  </view>
+</view>
+<!--轮胎更换-->
+<view class='dropc cb pa bg-white wp100' wx:if="{{changetyre}}">
+  <view class='border-b cb wp100'>
+    <view class='h100 lh100 w100 fs28 fl ml20' bindtap=''>{{carbrand}}</view>
+    <view class='h100 lh100 w210 fs28 fl pr50' bindtap=''>{{carmodel}}</view>
+    <view class='h100 lh100 w10 fs28 fl pr30 color-gray' bindtap=''>|</view>
+    <view class='h100 lh100 w180 fs25 fl' bindtap='bindViewModelmatch'>更换车辆>></view>
+  </view>
+  <view class='border-b cb wp100'>
+    <view class='h100 lh100 w150 fs28 fl ml20' bindtap=''>当前规格</view>
+    <view class='h100 lh100 w210 fs28 fl ' bindtap=''>{{currentformat}}</view>
+    <view class='h100 lh100 w10 fs28 fl pr30 color-gray' bindtap=''>|</view>
+    <view class='h100 lh100 w180 fs25 fl' bindtap='bindViewSelectstandard'>切换规格>></view>
+  </view>
+  <view class='border-b cb wp100'>
+    <view class='h100 lh100 w150 fs28 fl ml20' bindtap=''>当前品牌</view>
+    <view class='h100 lh100 w210 fs28 fl' bindtap=''>{{currentbrand}}</view>
+    <view class='h100 lh100 w10 fs28 fl pr30 color-gray' bindtap=''>|</view>
+    <view class='h100 lh100 w100 fs25 fl' bindtap="showSelectbrand">选品牌</view>
+    <image wx:if="{{!selectbrand}}" src='{{downarrow}}' class='w20 fl mt45' mode='widthFix'></image>
+    <image wx:if="{{selectbrand}}" src='{{uparrow}}' class='w20 fl mt45' mode='widthFix'></image>
+  </view>
+  <button class='searchbtn w300 h80 lh70 rad40 bg-white mt280 mr330'><text class='color-green fs30 ta-c'>搜索门店</text></button>
+</view>
+<!--选品牌-->
+<view class='dropd cb pa bg-white wp100 ' wx:if="{{selectbrand}}">
+  <view class='cb'>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>固特异</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>米其林  </text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>邓禄普</text></button>
+   </view>
+   <view class='cb'>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>普利司通</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>倍耐力</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>三角</text></button>
+   </view>
+   <view class='cb'>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>耐克森</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>玲珑</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>玛吉斯</text></button>
+   </view>
+   <view class='cb'>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>韩泰</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>佳通</text></button>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>回力</text></button>
+   </view>
+   <view class='cb'>
+      <button class='w150 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>锦湖</text></button>
+      <button class='w320 h70 lh60 rad10 bg-white fl ml20 mt10'><text class='fs30 ta-c'>其他品牌</text></button>
+   </view>
+</view>
