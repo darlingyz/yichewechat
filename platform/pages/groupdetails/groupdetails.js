@@ -32,6 +32,7 @@ Page({
         that.setData({
           activityId: res.data
         });
+        console.log(app.globalData.userId, res.data)
         wx.request({
           url: app.globalData.testUrl + '/activity/groupDetail',
           method: 'post',
@@ -43,6 +44,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (msg) {
+
             console.log(msg);
             //userGroup==null表示没有参与拼团，即没有支付，显示支付，否则显示去查看拼团信息
             var rdata = msg.data.data;
@@ -105,26 +107,35 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'//默认值
         },
         success: function (msg) {
-          // console.log(msg);
-          // var msg=msg.data.data;
-          // //拼过团，不让拼团
-          // if (msg==null){
-          //     that.setData({
-
-          //     })
-          // }
-       //   console.log(that.data.activityId, app.globalData.userId, carId);
-          var odata = msg.data.data;
-          wx.setStorage({
-            key: 'codedata',
-            data: msg,
-          })
-
-          // app.globalData.activityId = msg.data.data.id;
-         // console.log(msg.data.data.userGroupId);
-          wx.navigateTo({
-            url: '../paygroup/paygroup',
-          })
+          console.log(msg)
+          var odata=msg.data.data;
+          if(odata==null){
+            console.log("您已经拼过该团,不能贪心哦")
+            wx.showModal({
+              title: '提示',
+              content: '您已经拼过该团,不能贪心哦',
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                  wx.navigateTo({
+                    url: '../startgroup /startgroup',
+                  })
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
+            }),
+            console.log("去付钱--")
+          }else{
+            var odata = msg.data.data;
+            wx.setStorage({
+              key: 'codedata',
+              data: msg,
+            })
+            wx.navigateTo({
+              url: '../paygroup/paygroup',
+            })
+          }
         }
       })
     }

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     appGeneralize: '汽车服务全包揽 , 用一车独秀APP',
+    activityId:""
   },
 
   /**
@@ -18,9 +19,6 @@ Page({
           console.log(res)
       }
     })
-    var arr = wx.canIUse('${param }')
-    console.log(arr);
-    
     wx.request({
       url: app.globalData.testUrl + '/project/searchMyActivity',
       method: 'post',
@@ -40,9 +38,13 @@ Page({
     })
   },
   bargainDetailView:function(e){
+    var that=this;
     var status = e.currentTarget.dataset.status;
     var activityId = e.currentTarget.dataset.id;
     console.log(activityId)
+    that.setData({
+      activityId: activityId
+    })
     wx.setStorage({
       key: 'activityId',
       data: activityId,
@@ -66,6 +68,7 @@ Page({
     }
   },
   groupDetailView : function(e){
+    var that=this;
     var status = e.currentTarget.dataset.status
     wx.setStorage({
       key: 'activityId',
@@ -77,7 +80,7 @@ Page({
       })
     }else if(status == 0){//拼团中
       wx.navigateTo({
-        url: '../startgroup2/startgroup2?activityId=30',
+        url: '../startgroup/startgroup',
       })
     }else{//成功
       wx.navigateTo({

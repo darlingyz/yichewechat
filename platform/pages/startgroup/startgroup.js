@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activityId:""
+    activityId:"",
+    userGroupId:""
   },
 
   onLoad: function (option) {
@@ -21,10 +22,10 @@ Page({
           activityId: activityId
         }),
         wx.request({
-          url: app.globalData.testUrl + '/activity/userStartGroupActivity',
+          url: app.globalData.testUrl + '/activity/SearchUserGroupActivity',
           method: 'post',
           data: {
-            activityId: 30,
+            activityId: activityId,
             userId: app.globalData.userId
           },
           header: {
@@ -32,6 +33,7 @@ Page({
           },
           success: function (msg) {
             console.log(msg);
+            var userGroupId = msg.data.data.Activity.userGroupId;
             //console.log(userGroupId)
             that.setData({
               store: msg.data.data.Activity.activityImg,
@@ -47,7 +49,8 @@ Page({
               helpsMsg: msg.data.data.helps,
               group_arrow: 'http://116.62.151.139/res/img/detailed_arrow.png',
               needNum: msg.data.data.Activity.groupNum - 1,
-              activityId: msg.data.data.Activity.id
+              activityId: msg.data.data.Activity.id,
+              userGroupId: userGroupId
             })
           }
         })
@@ -74,7 +77,7 @@ Page({
     }
     return {
       title: "提示",
-      path: '/pages/startgroup2/startgroup2?activityId' + that.data.activityId,
+      path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
       success: function (res) {
         wx.showShareMenu({
           // 要求小程序返回分享目标信息

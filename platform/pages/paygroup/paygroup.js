@@ -106,9 +106,7 @@ Page({
           'signType': 'MD5',
           'paySign': msg.data.data.paySign,
           'success': function (res) {
-            console.log("222222222222222222")
             //支付成功，设定一个全局变量，用来设定去是否查看拼团还是支付
-            app.globalData.num=1;
             wx.navigateTo({
               url: '../startgroup/startgroup',
             })
@@ -116,7 +114,6 @@ Page({
           'fail': function (res) {
             console.log(orderCode, app.globalData.openId)
             console.log(res);
-            conosole.log("333333333333333333")
             var err=res.errMsg;
             if (err =="requestPayment:fail cancel"){
                 wx.showToast({

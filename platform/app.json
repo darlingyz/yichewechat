@@ -66,7 +66,9 @@
     "pages/moreserve1/moreserve1",
     "pages/map/map",
     "pages/paygroup/paygroup",
-    "pages/shopcar/shopcar"
+    "pages/shopcar/shopcar",
+    "pages/friendpaygroup/friendpaygroup",
+    "pages/friendgroup/friendgroup"
   
   ],
   "window": {

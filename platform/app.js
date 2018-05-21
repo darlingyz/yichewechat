@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var that=this;
+    var that = this;
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -21,9 +21,7 @@ App({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            console.log(res);
             that.globalData.openId = res.data.openid;
-
             console.log(that.globalData.openId)
             // that.globalData.sessionKey = msg.data.session_key
           }
@@ -32,12 +30,10 @@ App({
     })
     wx.getShareInfo({
       shareTicket: this.globalData.shareTickets,
-      success:function(res){
+      success: function (res) {
         console.log(res)
       }
     })
-
-
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
@@ -45,21 +41,23 @@ App({
     imgUrl: 'http://116.62.151.139/res/img/',
     //testUrl: 'https://api-wechat.glongcar.com/api',
     testUrl: 'http://121.40.148.153:802/api',
+    getuser: null,
     openId: null,
     sessionKey: null,
     userId: null,
     userInfo: null,
-    carId:null,
-    merchantName:null,
-    businessId:null,
-    shopcarId:null,
-    activeId:null,
-    sign:null,
-    orderId:null,
-    discountId:0,
-    nickName:"",
-    vatarUrl:"",
-    shareTickets:"",
-    num:null,
+    carId: null,
+    merchantName: null,
+    businessId: null,
+    shopcarId: null,
+    activeId: null,
+    sign: null,
+    orderId: null,
+    discountId: 0,
+    nickName: "",
+    vatarUrl: "",
+    shareTickets: "",
+    num: null,
+    getuser: null
   }
 })

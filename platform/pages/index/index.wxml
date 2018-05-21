@@ -528,7 +528,7 @@
       <text class='titles'>获取你的公开信息（昵称，头像等）</text>
     </view>
     <view class='allbtn'>
-    <button open-type="getUserInfo" class='obtn' bindtap='getUserInfo'>确认</button>
+    <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
     <button class='cancel' bindtap='close'>取消</button>
     </view>
   </view>

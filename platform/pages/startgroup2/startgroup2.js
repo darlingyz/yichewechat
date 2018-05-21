@@ -19,7 +19,6 @@ Page({
       url: '../home/home',
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -27,23 +26,25 @@ Page({
     console.log(options)
     var that = this;
     //获取活动传过来的活动id,获取该活动页面的信息
-    var activityId = options.activityId;
-    var nums = parseInt(activityId);
+    var userGroupId = options.userGroupId;
+    var nums = parseInt(userGroupId);
+    console.log(nums);
+    app.globalData.nums = nums;//设置全局,拼团的ID
     that.setData({
-      activityId: nums
+      userGroupId: nums
     })
     wx.request({
-      url: app.globalData.testUrl + '/activity/userStartGroupActivity',
+      url: app.globalData.testUrl + '/activity/SearchheadGroupDetail',
       method: 'post',
       data: {
-        activityId: that.data.activityId,
-        userId: app.globalData.userId
+        userGroupId: 161
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
         console.log(msg);
+        console.log(that.data.activityId)
         //console.log(userGroupId)
         that.setData({
           store: msg.data.data.Activity.activityImg,
@@ -156,11 +157,7 @@ Page({
   },
   //去支付界面
   gopaygroup:function(e){
-    // console.log("666666666colData.carId)
     var that = this;
-    // console.log(e);
-    // var otype = e.currentTarget.dataset.type;
-    // console.log(otype);
     var carId = app.globalData.carId;
     if (carId == null) {
       wx.showModal({
@@ -179,13 +176,13 @@ Page({
       })
     } else {
       wx.request({
-        url: app.globalData.testUrl + '/activity/userGroupActivity',
+        url: app.globalData.testUrl + '/activity/HelpGroupActivity',
         method: 'post',
         data: {
-          activityId: that.data.activityId,
-          userId: app.globalData.userId,
-          carId: carId,
-          type: 2
+          headGroupId: app.globalData.nums,
+          userId:333,//拼团用户的id
+          carId:154,
+          type:2
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -198,7 +195,7 @@ Page({
             data: msg,
           })
           wx.navigateTo({
-            url: '../paygroup/paygroup',
+            url: '../friendpaygroup/friendpaygroup',
           })
         }
       })
