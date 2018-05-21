@@ -3,7 +3,7 @@ Page({
 
  
   data: {
-         store:'http://192.168.1.111:91/stores.png',
+    store:'http://116.62.151.139/res/img//absmall.png',
          wash:'洗车',
          onsale:'限时优惠',
          onsale1:'新年感恩',
@@ -11,20 +11,21 @@ Page({
          price1: '9.9',
          ex_price:'原价40.0',
          discount:'-砍价低至2.5折-',
-         beginLogo1:'http://192.168.1.111:91/userPic.png',
+         beginLogo1:'http://116.62.151.139/res/img//absmall.png',
          beginName1:'淦隆汽车',
          beginTime1:'2018-02-14 13：31发起',
-         beginLogo2:'http://192.168.1.111:91/userPic.png',
+         beginLogo2:'http://116.62.151.139/res/img//absmall.png',
          beginName2:'享来享趣',
          beginTime2:'2018-02-14 13：33参与',
-         beginLogo3:'http://192.168.1.111:91/userPic.png',
+         beginLogo3:'http://116.62.151.139/res/img//absmall.png',
          beginName3: '一车独秀',
          beginTime3: '2018-02-14 13：33参与',
+         mobile: '(021)58180562',
   },
 
   bindViewhome: function () {
     wx.switchTab({
-      url: '../home/home',
+      url: '../index/index',
     })
   },
   bindVieworderdetailed: function () {
@@ -32,16 +33,26 @@ Page({
       url: '../orderdetailed/orderdetailed'
     });
   },
-  onLoad:function(){
+  gophone:function(){
+    var that=this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.mobile,
+    })
+  },
+  gomap:function(){
+      var that=this;
+      wx.navigateTo({
+        url: '../searchmap/searchmap',
+      })
+  },
+  onLoad: function (options){
+    var group = options.group;
     var that =this;
-    wx.getStorage({
-      key: 'activityId',
-      success: function(res) {
         wx.request({
           url: app.globalData.testUrl + '/activity/GroupSuccess',
           method: 'post',
           data: {
-            userGroupId : res.data
+            userGroupId: group
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值
@@ -65,7 +76,6 @@ Page({
             })
           }
         })
-      },
-    })
+
   },
 })

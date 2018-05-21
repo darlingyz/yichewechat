@@ -25,7 +25,7 @@
   <text class='begin-time pa fs25'>{{beginTime1}}</text>
 </view>
 <view wx:if='{{helpsMsg}}'>
-  <view wx:for='{{helpsMsg}}'>
+  <view wx:for='{{helpsMsg}}' wx:key="unique">
     <view class='begin-detail1 pr  border-b'>
       <image class='begin-logo pa' src='{{item.portait}}'></image>
       <text class='begin-name pa fs26 ml120'>{{item.userName}}</text>
@@ -36,14 +36,14 @@
 
 <text class='serve-place wp100 dis-b border-b fs26 ta-c'>-服务地点-</text>
 
-<view class='contact pr wp100 border-b'>
+<view class='contact pr wp100 border-b h180'>
   <image class='place_dot pa mt20 w20' src='http://116.62.151.139/res/img/place.png'></image>
-  <image class='telphone pa h30 w20' src='http://116.62.151.139/res/img/telphone.png'></image>
-  <text class='place pa fs26'>{{address}}</text>
-  <text class='phone_number pa fs26'>{{mobile}}</text>
-  <image class='phone-logo pa w70 h70' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <image class='telphone pa h30 w20' src='http://116.62.151.139/res/img/telphone.png' ></image>
+  <text class='place pa fs26 wp60'>{{address}}</text>
+  <text class='phone_number pa fs26  h70 lh60'>{{mobile}}</text>
+  <image class='phone-logo pa w70 h70' src='http://116.62.151.139/res/img/greenphone.png' bindtap='gophone'></image>
   <image class='line' src='http://116.62.151.139/res/img/veryicalline.png'></image>
-  <image class='navigetion pa h70 w70' src='http://116.62.151.139/res/img/navigation.png'></image>
+  <image class='navigetion pa h70 w70' src='http://116.62.151.139/res/img/navigation.png' bindtap='gomap'></image>
 </view>
 
 <view class='button-1 color-white ta-c fs35 rad8' bindtap='bindVieworderdetailed'>

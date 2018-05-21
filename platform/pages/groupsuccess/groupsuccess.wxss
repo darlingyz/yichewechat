@@ -1,86 +1,180 @@
-.store{ height: 242rpx;
-        width: 454rpx;}
-.box_top{ height: 242rpx;
-          background-color:  #F4CB01;}
-.all_price{ height: 223rpx;
-            width:276rpx;
-            background-color: #F4CB01;
-            border: 2rpx dotted;
-            margin-left:461rpx;
-            margin-top: -237rpx;}
-.wash{ left: 111rpx;
-       height: 34rpx;
-       color: #2A1573;
-       top: 12rpx;
-       font-size: 34rpx;}
-.onsale{font-size:19rpx;
-        left:67rpx;
-        top: 60rpx;
-        color: #2A1573;}
-.onsale1{font-size:19rpx;
-        left:151rpx;
-        top:60rpx;color: #2A1573;}
-.price{left: 15rpx;
-        top: 103rpx;
-        color: #2A1573;}
-.price1{left: 66rpx;
-        top: 102rpx;
-        color: #2A1573;}
-.ex_price{top: 137rpx;
-          left:164rpx;}
-.discount{ height: 27rpx;
-           width: 177rpx;
-          top: 175rpx;
-          left:25rpx;
-          padding-left:48rpx;}
-  
-.success-logo{ height: 48rpx;
-               width: 48rpx;
-               margin-left: 203rpx;
-               margin-top:50rpx; }
-.success-word{ font-size: 31rpx;
-               margin-top: 56rpx;
-               margin-left: 280rpx;}
+.store {
+  height: 242rpx;
+  width: 454rpx;
+}
 
-.group-detail{ height: 43rpx;
-              width: 58%;
-              padding-left:310rpx ;
-              margin-top: 134rpx; }
+.box_top {
+  height: 242rpx;
+  background-color: #f4cb01;
+}
 
-.begin-detail1{  height: 98rpx;}
-.begin-logo{height:75rpx ;
-            width: 75rpx;margin-top: 8rpx;margin-left: 38rpx;}
-.colonel{ width:55rpx;
-         background-color: #0293D8;
-         margin-top:66rpx;
-         margin-left: 49rpx;
-         font-size: 17rpx;
-         line-height: 30rpx;}
-.begin-name{line-height: 97rpx;}
-.begin-time{font-size: 25rpx; color: #625F60;line-height:97rpx;margin-left: 447rpx;}
+.all_price {
+  height: 223rpx;
+  width: 276rpx;
+  background-color: #f4cb01;
+  border: 2rpx dotted;
+  margin-left: 461rpx;
+  margin-top: -237rpx;
+}
 
-.serve-place{height: 53rpx;line-height: 53rpx;}
+.wash {
+  left: 111rpx;
+  height: 34rpx;
+  color: #2a1573;
+  top: 12rpx;
+  font-size: 34rpx;
+}
 
-.contact{ height: 114rpx;}
+.onsale {
+  font-size: 19rpx;
+  left: 67rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
 
-.place_dot{ height: 28rpx;margin-left:33rpx ;}
+.onsale1 {
+  font-size: 19rpx;
+  left: 151rpx;
+  top: 60rpx;
+  color: #2a1573;
+}
 
-.telphone{margin-left:33rpx ;margin-top:73rpx;}
+.price {
+  left: 15rpx;
+  top: 103rpx;
+  color: #2a1573;
+}
 
-.place{color: #777777;margin-left:69rpx ;margin-top:17rpx;}
+.price1 {
+  left: 66rpx;
+  top: 102rpx;
+  color: #2a1573;
+}
 
-.phone_number{color: #777777;margin-left:69rpx ;margin-top:70rpx;}
-.phone-logo{margin-left:508rpx ; margin-top:18rpx ;}
-.line{width: 1rpx;height:58rpx; margin-left:599rpx ; margin-top:24rpx }
-.navigetion{ margin-left:25rpx ; margin-top:18rpx ;}
+.ex_price {
+  top: 137rpx;
+  left: 164rpx;
+}
 
-.button-1{ height: 86rpx;
-           width: 696rpx;
-           background-color: #09BA07;
-            line-height: 86rpx;
-            margin-top: 66rpx;
-            margin-left: 26rpx;}
-.button-2{height: 86rpx;
-           width: 696rpx;
-            line-height: 86rpx;
-            margin-left: 26rpx;}
+.discount {
+  height: 27rpx;
+  width: 177rpx;
+  top: 175rpx;
+  left: 25rpx;
+  padding-left: 48rpx;
+}
+
+.success-logo {
+  height: 48rpx;
+  width: 48rpx;
+  margin-left: 203rpx;
+  margin-top: 50rpx;
+}
+
+.success-word {
+  font-size: 31rpx;
+  margin-top: 56rpx;
+  margin-left: 280rpx;
+}
+
+.group-detail {
+  height: 43rpx;
+  width: 58%;
+  padding-left: 310rpx;
+  margin-top: 134rpx;
+}
+
+.begin-detail1 {
+  height: 98rpx;
+}
+
+.begin-logo {
+  height: 75rpx;
+  width: 75rpx;
+  margin-top: 8rpx;
+  margin-left: 38rpx;
+}
+
+.colonel {
+  width: 55rpx;
+  background-color: #0293d8;
+  margin-top: 66rpx;
+  margin-left: 49rpx;
+  font-size: 17rpx;
+  line-height: 30rpx;
+}
+
+.begin-name {
+  line-height: 97rpx;
+}
+
+.begin-time {
+  font-size: 25rpx;
+  color: #625f60;
+  line-height: 97rpx;
+  margin-left: 447rpx;
+}
+
+.serve-place {
+  height: 53rpx;
+  line-height: 53rpx;
+}
+
+.contact {
+  height: 114rpx;
+}
+
+.place_dot {
+  height: 28rpx;
+  margin-left: 33rpx;
+}
+
+.telphone {
+  margin-left: 33rpx;
+  margin-top: 73rpx;
+}
+
+.place {
+  color: #777;
+  margin-left: 69rpx;
+  margin-top: 17rpx;
+}
+
+.phone_number {
+  color: #777;
+  margin-left: 69rpx;
+  margin-top: 70rpx;
+}
+
+.phone-logo {
+  margin-left: 508rpx;
+  margin-top: 18rpx;
+}
+
+.line {
+  width: 1rpx;
+  height: 58rpx;
+  margin-left: 599rpx;
+  margin-top: 24rpx;
+}
+
+.navigetion {
+  margin-left: 25rpx;
+  margin-top: 18rpx;
+}
+
+.button-1 {
+  height: 86rpx;
+  width: 696rpx;
+  background-color: #09ba07;
+  line-height: 86rpx;
+  margin-top: 66rpx;
+  margin-left: 26rpx;
+}
+
+.button-2 {
+  height: 86rpx;
+  width: 696rpx;
+  line-height: 86rpx;
+  margin-left: 26rpx;
+}

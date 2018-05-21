@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activityId: ""
+    userGroupId: ""
   },
   //登陆获取用户信息
   bindViewrules: function () {
@@ -37,14 +37,14 @@ Page({
       url: app.globalData.testUrl + '/activity/SearchheadGroupDetail',
       method: 'post',
       data: {
-        userGroupId: 161
+        userGroupId: nums
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
         console.log(msg);
-        console.log(that.data.activityId)
+        //console.log(that.data.activityId)
         //console.log(userGroupId)
         that.setData({
           store: msg.data.data.Activity.activityImg,
@@ -110,7 +110,7 @@ Page({
     }
     return {
       title: "提示",
-      path: '/pages/startgroup2/startgroup2?activityId' + that.data.activityId,
+      path: '/pages/startgroup2/startgroup2?userGroupId' + that.data.userGroupId,
       success: function (res) {
         wx.showShareMenu({
           // 要求小程序返回分享目标信息

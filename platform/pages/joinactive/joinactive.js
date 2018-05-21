@@ -69,22 +69,23 @@ Page({
   },
   groupDetailView : function(e){
     var that=this;
-    var status = e.currentTarget.dataset.status
+    var status = e.currentTarget.dataset.status;
+    var group = e.currentTarget.dataset.group;
     wx.setStorage({
       key: 'activityId',
       data: e.currentTarget.dataset.id,
     })
     if (status == -1) {//失败页
       wx.navigateTo({
-        url: '../groupfailure/groupfailure',
+        url: '../groupfailure/groupfailure?group=' + group,
       })
     }else if(status == 0){//拼团中
       wx.navigateTo({
-        url: '../startgroup/startgroup',
+        url: '../startgroup/startgroup?group=' + group,
       })
     }else{//成功
       wx.navigateTo({
-        url: '../groupsuccess/groupsuccess',
+        url: '../groupsuccess/groupsuccess?group=' + group,
       })
     }
 

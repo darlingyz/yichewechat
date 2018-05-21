@@ -24,13 +24,13 @@
 </view>
 
 <view wx:if='{{helpsMsg}}'>
-  <view wx:for='{{helpsMsg}}'>
+  <view wx:for='{{helpsMsg}}' wx:key="unique"class="mt20 h80" >
     <view class='begin-detail1 pr  border-b'>
-      <image class='begin-logo pa' src='{{item.portait}}'></image>
-      <text class='begin-name pa fs26 ml120'>{{item.userName}}</text>
-      <text class='begin-time pa'>{{item.stime}}</text>
+      <image class='beginLogo pa h75 w75 ml38' src='{{item.portait}}'></image>
+      <text class='beginName pa fs26 ml120'>{{item.userName}}</text> 
+      <text class='beginTime pa fs25'>{{item.stime}}</text>
     </view>
   </view>
 </view>
 
-<view class='button-1 border-t border-b border-l border-r ml20 ta-c fs35 rad8' bindtap='bindViewhome'><text class='back-home'>去首页逛逛</text></view>
+<view class='button-1 border-t border-b border-l border-r ml20 ta-c fs35 rad8 mt30' bindtap='bindViewhome'><text class='back-home'>去首页逛逛</text></view>

@@ -17,11 +17,11 @@
   <text class='call-friend pa'>人，快喊好友来一起拼团吧！</text>
   <text class='residueTime pa'>{{residueTime}}</text>
   <view class='w100 ml10'>
-    <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
+    <image class='pic_11 pa w100' src='{{pic_1}}'></image>
     <text class='colonel  dis-b ta-c color-white pa'>团长</text>
   </view>
-  <view wx:for='{{helpsMsg}}' wx:key="unique" class='ml10'>
-    <image class='pic_2 pa .w100 ml10' src='{{item.portait}}'></image>
+  <view wx:for='{{helpsMsg}}' wx:key="unique" class='ml10 w100 h100'>
+    <image class='pic_{{index}} pa w100 ml10 h100 ' src='{{item.portait}}'></image>
   </view>
 </view>
 

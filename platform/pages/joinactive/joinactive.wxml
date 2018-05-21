@@ -15,7 +15,7 @@
 </view>
 </block>
 <block wx:for="{{groupList}}" wx:key="unique">
-<view class='activelist wp100 border-t pr' data-id='{{item.activityId}}' data-status='{{item.status}}' bindtap='groupDetailView'>
+<view class='activelist wp100 border-t pr' data-id='{{item.activityId}}' data-status='{{item.status}}' data-group="{{item.userGroupId}}" bindtap='groupDetailView'>
     <text class='activeState pa fs23 ml20'>{{item.msg}}</text>
     <image class='activePic pa border-1' src='{{item.img}}'></image>
     <text class='activeName pa'>{{item.activityName}}</text>

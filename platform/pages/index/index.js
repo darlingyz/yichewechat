@@ -35,6 +35,9 @@ Page({
           console.log("授权成功~~~")
           wx.getUserInfo({
             success: res => {
+              // console.log(res);
+              // var odata = JSON.parse(res.rawData);
+              // console.log(odata)
               // 可以将 res 发送给后台解码出 unionId
               app.globalData.userInfo = res.userInfo
               var userInfo = res.userInfo;
@@ -62,7 +65,6 @@ Page({
                   that.setData({
                     userId: userId
                   })
-                 
                 },
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回

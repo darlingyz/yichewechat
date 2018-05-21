@@ -8,31 +8,29 @@ Page({
           price1:'9.9', 
           exPrice:'原价￥40.0',
           discount:'-砍价低至2.5折-',
-          beginLogo:'http://192.168.1.111:91/userPic.png',
+          beginLogo:'http://116.62.151.139/res/img//absmall.png',
           beginName:'淦隆汽车',
           beginTime:'2018-02-14 13：31发起',
-          beginLogo2:'http://192.168.1.111:91/userPic.png',
+          beginLogo2:'http://116.62.151.139/res/img//absmall.png',
           beginName2:'享来享趣',
           beginTime2:'2018-02-14 13：31参与',
-          beginLogo3:'http://192.168.1.111:91/userPic.png',
+          beginLogo3:'http://116.62.151.139/res/img//absmall.png',
           beginName3:'一车独秀',
           beginTime3:'2018-02-14 13：31参与',
           },
   bindViewhome: function () {
     wx.switchTab({
-      url: '../home/home',
+      url: '../index/index',
     })
   },
-  onLoad:function(){
+  onLoad:function(options){
+    var group = options.group;
     var that = this;
-    wx.getStorage({
-      key: 'activityId',
-      success: function(res) {
         wx.request({
           url: app.globalData.testUrl + '/activity/GroupSuccess',
           method: 'post',
           data: {
-            userGroupId: res.data
+            userGroupId: group
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值
@@ -56,7 +54,6 @@ Page({
             })
           }
         })
-      },
-    })
+
   }
 })
