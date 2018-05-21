@@ -13,6 +13,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.getSystemInfo({
+      success:function(res){
+          console.log(res)
+      }
+    })
+    var arr = wx.canIUse('${param }')
+    console.log(arr);
+    
     wx.request({
       url: app.globalData.testUrl + '/project/searchMyActivity',
       method: 'post',
@@ -32,10 +40,12 @@ Page({
     })
   },
   bargainDetailView:function(e){
-    var status = e.currentTarget.dataset.status
+    var status = e.currentTarget.dataset.status;
+    var activityId = e.currentTarget.dataset.id;
+    console.log(activityId)
     wx.setStorage({
       key: 'activityId',
-      data: e.currentTarget.dataset.id,
+      data: activityId,
     })
     if(status == -1){//失败页
       wx.navigateTo({
@@ -67,7 +77,7 @@ Page({
       })
     }else if(status == 0){//拼团中
       wx.navigateTo({
-        url: '../startgroup/startgroup',
+        url: '../startgroup2/startgroup2?activityId=30',
       })
     }else{//成功
       wx.navigateTo({

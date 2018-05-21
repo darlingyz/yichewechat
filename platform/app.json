@@ -30,7 +30,7 @@
     "pages/joinactive/joinactive",
     "pages/groupsuccess/groupsuccess",
     "pages/groupfailure/groupfailure",
-
+    "pages/cashOrder/cashOrder",
     "pages/groupactivity/groupactivity",
     "pages/evaluateorder/evaluateorder",
     "pages/carport1/carport1",

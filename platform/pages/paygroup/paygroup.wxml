@@ -17,7 +17,7 @@
 </view>
 <view class='border-b wp100 h50 cb mt20 pb20'> 
     <text class='w300 h50 fl fs30 ml20'>需支付</text>
-    <text class='w300 h50 fr fs30 ta-r mr20 color-black w300'>{{data.balance}}元</text>
+    <text class='w300 h50 fr fs30 ta-r mr20 color-black w300'>{{data.actualPayment}}元</text>
 </view>
 <view>
     <button class='btna ma h100 lh100 rad20 ta-c w700' bindtap='paypay'>

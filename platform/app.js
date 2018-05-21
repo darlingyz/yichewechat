@@ -30,13 +30,21 @@ App({
         })
       }
     })
+    wx.getShareInfo({
+      shareTicket: this.globalData.shareTickets,
+      success:function(res){
+        console.log(res)
+      }
+    })
+
+
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
-   // testUrl: 'http://192.168.1.130:802/api',  
+    //testUrl: 'http://192.168.1.130:802/api',  
     imgUrl: 'http://116.62.151.139/res/img/',
     //testUrl: 'https://api-wechat.glongcar.com/api',
-   testUrl: 'http://121.40.148.153:802/api',
+    testUrl: 'http://121.40.148.153:802/api',
     openId: null,
     sessionKey: null,
     userId: null,
@@ -50,6 +58,8 @@ App({
     orderId:null,
     discountId:0,
     nickName:"",
-    vatarUrl:""
+    vatarUrl:"",
+    shareTickets:"",
+    num:null,
   }
 })

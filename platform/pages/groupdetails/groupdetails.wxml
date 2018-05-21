@@ -45,7 +45,14 @@
   data-price='{{odata.price}}' data-type="1">¥{{odata.price}}元 立即购买
   </view>
 
-  <view class='pinafter' 
+<view class='pinafter' 
   bindtap='bindViewpay' data-type="2"
-  data-price='{{odata.groupPrice}}'>¥{{odata.groupPrice}}元 {{odata.groupNum}}人拼团</view>
+  data-price='{{odata.groupPrice}}' wx:if="{{nopay}}">¥{{odata.groupPrice}}元 {{odata.groupNum}}人拼团</view>
+
+  <view class='pinafter' 
+  bindtap='lookdetail' data-type="3" wx:else
+  data-price='{{odata.groupPrice}}'>查看拼团详情</view>
 </view>
+
+
+

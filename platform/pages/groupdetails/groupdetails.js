@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nopay:true,
     price1: "",
     odata: "",
     activityId:""
@@ -13,10 +14,20 @@ Page({
   onLoad: function () {
     //页面详情
     var that = this;
+    var num = app.globalData.num;
+    if(num==1){
+     that.setData({
+       nopay: false,
+     })
+    }else{
+      that.setData({
+        nopay: true,
+      })
+    }
     wx.getStorage({
       key: 'activityId',
       success: function (res) {
-        //activityId = res.data;
+        var activityId = res.data;
         console.log(res);
         that.setData({
           activityId: res.data
@@ -25,6 +36,7 @@ Page({
           url: app.globalData.testUrl + '/activity/groupDetail',
           method: 'post',
           data: {
+            userId:app.globalData.userId,
             id: res.data
           },
           header: {
@@ -32,6 +44,7 @@ Page({
           },
           success: function (msg) {
             console.log(msg);
+            //userGroup==null表示没有参与拼团，即没有支付，显示支付，否则显示去查看拼团信息
             var rdata = msg.data.data;
             console.log(rdata);
             that.setData({
@@ -57,36 +70,65 @@ Page({
   },
   //跳转至支付页
   bindViewpay: function (e) {
-    // console.log("66666666666666666");
-    // console.log(app.globalData.carId)
+    // console.log("666666666colData.carId)
     var that = this;
+  console.log(e);
     var otype = e.currentTarget.dataset.type;
+    console.log(otype);
     var carId = app.globalData.carId;
-    wx.request({
-      url: app.globalData.testUrl + '/activity/userGroupActivity',
-      method: 'post',
-      data: {
-        activityId: that.data.activityId,
-        userId: app.globalData.userId,
-        carId: carId,
-        type: otype
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
-      },
-      success: function (msg) {
-        console.log(msg);
-        console.log(that.data.activityId, app.globalData.userId, carId);
-        var odata = msg.data.data;
-        wx.setStorage({
-          key: 'codedata',
-          data: msg,
-        })
-        wx.navigateTo({
-          url: '../paygroup/paygroup',
-        })
-      }
-    })
+    if (carId==null){
+      wx.showModal({
+        title: '提示',
+        content: '你还没有设置默认车辆不能参加活动！',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '../carport/carport',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }else{
+      wx.request({
+        url: app.globalData.testUrl + '/activity/userGroupActivity',
+        method: 'post',
+        data: {
+          activityId: that.data.activityId,
+          userId: app.globalData.userId,
+          carId: carId,
+          type: otype
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'//默认值
+        },
+        success: function (msg) {
+          // console.log(msg);
+          // var msg=msg.data.data;
+          // //拼过团，不让拼团
+          // if (msg==null){
+          //     that.setData({
+
+          //     })
+          // }
+       //   console.log(that.data.activityId, app.globalData.userId, carId);
+          var odata = msg.data.data;
+          wx.setStorage({
+            key: 'codedata',
+            data: msg,
+          })
+
+          // app.globalData.activityId = msg.data.data.id;
+         // console.log(msg.data.data.userGroupId);
+          wx.navigateTo({
+            url: '../paygroup/paygroup',
+          })
+        }
+      })
+    }
+
   },
   imageLoad: function (e) {
     //获取图片真实宽度  

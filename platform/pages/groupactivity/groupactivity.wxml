@@ -1,4 +1,4 @@
-<text class='fs28'>活动准备中,敬请期待~</text>
+<!-- <text class='fs28'>活动准备中,敬请期待~</text> -->
 <view wx:for="{{activityList}}" wx:key="unique" wx:if="{{nomsg}}">
   <view class='.box_top wp100 pr mt10' data-id='{{item.id}}' bindtap='bindViewgroupdetails'>
     <image class='store' src='{{item.img}}'></image>

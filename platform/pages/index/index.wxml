@@ -417,7 +417,7 @@
  <view class="ml15 mr15" >
   <view class="fs30 ta-c h60 lh60 border-b">-限时优惠活动-</view>
 </view> 
-<text class='wp100 fs28 ta-c'>敬请期待~</text>
+<!-- <text class='wp100 fs28 ta-c'>敬请期待~</text> -->
 <!--父元素，最大的盒子  -->
 <view class='wp100 wpbox kanjia'>
   <block wx:for="{{odata}}" wx:key="unique">
@@ -519,8 +519,17 @@
 <!--模态框  -->
 <view class="modal-mask" wx:if="{{maskModal}}">
   <view class="contbox">
-    <button class='prompt'>提示</button>
-    <button open-type="getUserInfo" class='obtn' bindtap='getUserInfo'>请点击确认一车独秀获得您的信息</button>
-    <button class='cancel' bindtap='close'>退出小程序</button>
+    <button class='prompt'>微信授权</button>
+    <view class='pic wp100 h160'>
+        <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
+    <text class='applyuser'>一车独秀申请获得一下授权</text>
+    </view>
+    <view class='advise'>
+      <text class='titles'>获取你的公开信息（昵称，头像等）</text>
+    </view>
+    <view class='allbtn'>
+    <button open-type="getUserInfo" class='obtn' bindtap='getUserInfo'>确认</button>
+    <button class='cancel' bindtap='close'>取消</button>
+    </view>
   </view>
 </view>

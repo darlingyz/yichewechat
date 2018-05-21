@@ -60,7 +60,7 @@
   </view>
   <view wx:if='{{item.paymentStatus ==1}}'>
     <view class='buttonDo wp100 pr'>
-      <view class='buttonLeave pa rad8 ta-c mt20 fs26' data-id='{{item.id}}' bindtap='txClick'>取消订单</view>
+      <view class='buttonLeave pa rad8 ta-c mt20 fs26' data-id='{{item.id}}' data-code='{{item.orderCode}}'bindtap='txClick'>取消订单</view>
       <view class='buttonPay pa rad8 ta-c mt20 fs26' data-id='{{item.id}}' bindtap='bindViewpay'>立即付款</view>
     </view>
   </view>

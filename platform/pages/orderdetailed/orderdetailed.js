@@ -44,7 +44,7 @@ Page({
       data: e.currentTarget.dataset.id,
     })
     var status = e.currentTarget.dataset.status;
-
+    console.log(status);
     if(status == 1){
       wx.navigateTo({
         url: '../cashOrder/cashOrder',
@@ -88,17 +88,27 @@ Page({
   },
 
   txClick: function (e) {
-
+      console.log(e)
+      var code = e.currentTarget.dataset.code;
     wx.request({
-      url: app.globalData.testUrl + '/',
+      url: app.globalData.testUrl + '/order/cancelOrder',
       method: 'post',
       data: {
+        orderCode: code
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg)
+        console.log(msg);
+        var odata=msg.data.data;
+        if (odata == "成功"){
+            wx.showToast({
+              title: '取消成功',
+              icon:'success',
+              duration:1000
+            })
+        }
       }
     })
   },

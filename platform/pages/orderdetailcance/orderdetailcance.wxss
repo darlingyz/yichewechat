@@ -57,7 +57,7 @@
 .personalPhonenumber {
   height: 93rpx;
   width: 50%;
-  margin-top: -94rpx;
+  /* margin-top: -94rpx; */
 }
 
 .phoneLogo {

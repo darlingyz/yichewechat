@@ -28,6 +28,7 @@ Page({
  */
   //获取用户信息
   getUserInfo: function (e) {
+    console.log("9999999999999")
     var that = this;
     wx.getSetting({
       success: res => {
@@ -156,7 +157,7 @@ Page({
     this.initShopInfo();// 初始化门店推荐
     this.initAdsInfo();// 初始化中屏广告
     this.initlocation();//初始定位
-    //this.initactive();//附近优惠活动
+    this.initactive();//附近优惠活动
    // this.initbao();//初始化红包
     this.setData({
       //所有图片的高度  
@@ -331,7 +332,7 @@ Page({
     })
   },
   //优惠活动
-  /**initactive: function (event) {
+  initactive: function (event) {
     var that = this;
     wx.getLocation({
       success: function (res) {
@@ -363,7 +364,7 @@ Page({
         })
       },
     })
-  },**/
+  },
 
 
   /**

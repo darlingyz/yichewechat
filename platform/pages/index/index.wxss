@@ -1,68 +1,90 @@
 .gps {
-  background: url(http://116.62.151.139/res/img/position.png) no-repeat center left;background-size:30rpx;
-  width:90rpx;
-  }
+  background: url(http://116.62.151.139/res/img/position.png) no-repeat center left;
+  background-size: 30rpx;
+  width: 90rpx;
+}
+
 .searchIcon {
-background: url(http://116.62.151.139/res/img/search.png) no-repeat center center;background-size:38rpx;
-width:70rpx;
+  background: url(http://116.62.151.139/res/img/search.png) no-repeat center center;
+  background-size: 38rpx;
+  width: 70rpx;
 }
+
 .searchGpsIcon {
-background: url(http://116.62.151.139/res/img/searchgps.png) no-repeat center left;background-size:38rpx;
-width:160rpx;
+  background: url(http://116.62.151.139/res/img/searchgps.png) no-repeat center left;
+  background-size: 38rpx;
+  width: 160rpx;
 }
+
 .cs {
-background: url(http://116.62.151.139/res/img/cs.png) no-repeat center center;
-background-size:44rpx;
-width:70rpx;
+  background: url(http://116.62.151.139/res/img/cs.png) no-repeat center center;
+  background-size: 44rpx;
+  width: 70rpx;
 }
+
 .signInIcon {
-background: url(http://116.62.151.139/res/img/signin.png) no-repeat center left;background-size:38rpx;
-  }
+  background: url(http://116.62.151.139/res/img/signin.png) no-repeat center left;
+  background-size: 38rpx;
+}
+
 .myCar {
   background: #ccc;
-   border:1rpx solid #fff;
-   }
-.bg-green {
-  background-color: #00A465;
+  border: 1rpx solid #fff;
 }
+
+.bg-green {
+  background-color: #00a465;
+}
+
 .hotIcon {
-background: url(http://116.62.151.139/res/img/catehot.png) no-repeat center center;background-size:73rpx;
-width:73rpx;
-height:35rpx;}
+  background: url(http://116.62.151.139/res/img/catehot.png) no-repeat center center;
+  background-size: 73rpx;
+  width: 73rpx;
+  height: 35rpx;
+}
+
 .panicbuyIcon {
-  background: url(http://116.62.151.139/res/img/panicbuying.png) no-repeat center center;        background-size:100rpx;
-  width:100rpx;
-  height:100rpx; 
+  background: url(http://116.62.151.139/res/img/panicbuying.png) no-repeat center center;
+  background-size: 100rpx;
+  width: 100rpx;
+  height: 100rpx;
   top: -35rpx;
 }
+
 .navbox {
-  width:130rpx;
-  }
-.roll{
+  width: 130rpx;
+}
+
+.roll {
   overflow-x: auto;
 }
-.bargain{
+
+.bargain {
   top: 142rpx;
   left: 348rpx;
 }
-.boxb{
+
+.boxb {
   top: 10rpx;
   left: 500rpx;
 }
-.discount{
+
+.discount {
   top: 155rpx;
 }
+
 .modal-mask {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
   overflow: hidden;
   z-index: 9000;
   color: #fff;
 }
+
 .modal-dialog {
   height: 570rpx;
   overflow: hidden;
@@ -73,132 +95,208 @@ height:35rpx;}
   background: #da251c;
   border-radius: 36rpx;
 }
-.couponbtn{
+
+.couponbtn {
   background-color: #fff500;
   line-height: 56rpx;
 }
-.delect{
+
+.delect {
   position: fixed;
   left: 656rpx;
   top: 19%;
   z-index: 9999;
 }
-.middle{
+
+.middle {
   overflow-y: scroll;
 }
-.box_pic{
+
+.box_pic {
   width: 250rpx;
   height: 150rpx;
   margin-right: 50rpx;
 }
-.recompic{
+
+.recompic {
   max-width: 100%;
-  max-height:100%;
+  max-height: 100%;
 }
-.boxc{
-position: relative;
-top: 0;
-float: right;
-overflow: hidden;
- height:500rpx;
+
+.boxc {
+  position: relative;
+  top: 0;
+  float: right;
+  overflow: hidden;
+  height: 500rpx;
 }
-.boxa{
+
+.boxa {
   position: absolute;
-  top:15%;
-  right:5%;
+  top: 15%;
+  right: 5%;
   height: 300rpx;
   border-radius: 20rpx;
 }
-.actname{
-  position:absolute;
-  left:60%;
+
+.actname {
+  position: absolute;
+  left: 60%;
   top: 20%;
 }
-.desname{
-  position:absolute;
-  left:60%;
+
+.desname {
+  position: absolute;
+  left: 60%;
   top: 28%;
 }
-.disname{
+
+.disname {
   position: absolute;
   left: 60%;
   top: 35%;
 }
-.discount{
+
+.discount {
   position: absolute;
   left: 60%;
   top: 60%;
 }
-.wpic{
+
+.wpic {
   width: 100%;
   max-height: 400rpx;
 }
-.boxPic{
-  display: none
+
+.boxPic {
+  display: none;
 }
-.boxModal{
+
+.boxModal {
   background: #fff;
-  
 }
-.obtn{
-font-size: 28rpx;
+
+.obtn {
+  font-size: 28rpx;
 }
-.contbox{
-    width: 600rpx;
-    height:300rpx;
-    background: #fff;
-    font-size: 28rpx;
-    border-radius: 12rpx;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
+
+.contbox {
+  width: 650rpx;
+  height: 440rpx;
+  background: #fff;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
 }
-.prompt{
+
+.advise {
   width: 100%;
-  height:90rpx;
+  height: 100rpx;
+  /* border-bottom: 1rpx solid #eaeaea; */
+}
+
+.titles {
+  width: 80%;
+  height: 100rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-left: 10%;
+  color: #999;
+}
+
+.prompt {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
   border: none;
   outline: none;
-  background: #fff; 
+  background: #fff;
+  border-bottom: 1rpx solid #eaeaea;
 }
-.obtn{
-  width: 500rpx;
-  height:80rpx;
-  background: #00A465;
-  border-radius: 12rpx;
-  color: #fff;
+
+.logopic {
+  width: 100rpx;
+  display: block;
+  margin: 10rpx auto;
 }
-.cancel{
-  margin-top: 20rpx;
-  width: 500rpx;
-  height:80rpx;
-  background: #00A465;
-  color: #fff;
-  border-radius: 12rpx;
+
+.pic {
+  border-bottom: 1rpx solid #eaeaea;
 }
-.chanName{
+
+.applyuser {
+  margin-left: 30rpx;
+}
+
+.obtn {
+  width: 50%;
+  height: 80rpx;
+  float: left;
+  border: none;
+  /* border-right: 1rpx solid #eaeaea; */
+  box-sizing: border-box;
+  color: #09ba07;
+  font-size: 30rpx;
+  background: #fff;
+  outline: none;
+}
+
+.cancel {
+  width: 50%;
+  height: 80rpx;
+  background: #fff;
+  float: left;
+  color: #000;
+  font-size: 30rpx;
+  border: none;
+  outline: none;
+  padding-left: -14px;
+}
+
+.allbtn {
+  width: 100%;
+  height: 80rpx;
+  /* border-bottom: 1rpx solid #eaeaea; */
+  z-index: 9999
+}
+
+.applyuser {
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #000;
+}
+
+.chanName {
   text-indent: 10rpx;
   width: 20%;
   float: left;
 }
-.address{
+
+.address {
   width: 60%;
   float: left;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.distance{
+
+.distance {
   width: 10%;
   float: left;
   text-align: left;
 }
-.nomg{
+
+.nomg {
   text-align: center;
-margin-left: 200rpx;
+  margin-left: 200rpx;
 }
+
 /* .kanjia{
   display: none
 } */

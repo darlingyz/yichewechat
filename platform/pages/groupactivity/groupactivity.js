@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      nomsg:false
   },
   onReady: function () {
     this.initCouponsList();
@@ -31,6 +31,7 @@ Page({
           success: function (msg) {
             console.log(msg);
             that.setData({
+              nomsg:true,
               activityList: msg.data.data,
               group_icon: 'http://116.62.151.139/res/img/group-icon.png',
             })
@@ -44,6 +45,7 @@ Page({
       key: 'activityId',
       data: e.currentTarget.dataset.id,
     })
+    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../groupdetails/groupdetails',
     })
