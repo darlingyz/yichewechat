@@ -38,13 +38,20 @@ Page({
           },
           success: function (res) {
             console.log(res);
-            var ogroups = res.data.data.groupActivities;
-            var ores = res.data.data.bargainActivities;
-            //console.log(ogroups);
-            that.setData({
-              odata: ores,
-              ogroup: ogroups
-            })
+            var adata=res.data.data;
+            var bargainActivities = adata.bargainActivities;
+            var groupActivities = adata.groupActivities;
+            if (bargainActivities.length == 0 && groupActivities.length==0){
+                that.setData({
+                  havamsg: false,
+                })
+            } else {
+              that.setData({
+                havamsg: true,
+                odata: bargainActivities,
+                ogroup: groupActivities
+              })
+            }
           }
         })
       },

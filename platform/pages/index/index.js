@@ -58,13 +58,45 @@ Page({
                 },
                 method: 'post',
                 success: function (res) {
-                  var userId = res.data.data.userId;
+                  var data = res.data.data;
+                  if (data == null) {
+                    wx.showModal({
+                      title: '温馨提示',
+                      content: '请先绑定手机号!',
+                      success: function (res) {
+                        if (res.confirm) {
+                          //console.log('用户点击确定去注册手机号')
+                          wx.navigateTo({
+                            url: '../phonelogin/phonelogin',
+                          })
+                        } else if (res.cancel) {
+                          //用户点击取消退出小程序
+                          wx.navigateBack({
+                            delta: 0
+                          })
+                        }
+                      }
+                    })
+                  } else {
+                    var userId = res.data.data.userId;
+                    app.globalData.userId = userId;
+                    that.initshowCar(userId);
+                    that.initbao(userId);
+                    that.setData({
+                      userId: userId
+                    })
+                    //console.log(that.globalData.userId);
+                  }
+                  /**var userId = res.data.data.userId;
                   console.log(userId)
                   app.globalData.userId = userId;
-                  that.initshowCar(userId);
+                  that.initshowCar(userId);//车辆
+                  that.initbao(userId);//红包
                   that.setData({
                     userId: userId
                   })
+                  
+                  **/
                 },
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -89,9 +121,7 @@ Page({
     this.initShopInfo();// 初始化门店推荐
     this.initAdsInfo();// 初始化中屏广告
     this.initlocation();//初始定位
-    this.initactive();//附近优惠活动
-    // this.initbao();//初始化红包
-
+    this.initactive();//附近优惠活
     this.setData({
       //所有图片的高度  
       imgheights: [],
@@ -124,13 +154,47 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        var userId = res.data.data.userId;
+        var data = res.data.data;
+        if (data == null) {
+          wx.showModal({
+            title: '温馨提示',
+            content: '请先绑定手机号!',
+            success: function (res) {
+              if (res.confirm) {
+                //console.log('用户点击确定去注册手机号')
+                wx.navigateTo({
+                  url: '../phonelogin/phonelogin',
+                })
+              } else if (res.cancel) {
+                //用户点击取消退出小程序
+                wx.navigateBack({
+                  delta: 0
+                })
+              }
+            }
+          })
+        } else {
+          var userId = res.data.data.userId;
+          app.globalData.userId = userId;
+          that.initshowCar(userId);
+          that.initbao(userId);
+          that.setData({
+            userId: userId
+          })
+          console.log(that.globalData.userId);
+        }
+      /** var userId = res.data.data.userId;
         console.log(userId)
         app.globalData.userId = userId;
         that.initshowCar(userId);//车辆
+       that.initbao(userId);//红包
         that.setData({
           userId: userId,
-        })
+        })**/
+
+
+
+
       },
     })
     app.globalData.userInfo = res.detail.userInfo;

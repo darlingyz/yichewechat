@@ -1,0 +1,37 @@
+<view class='.box_top wp100 pr'>
+  <image class='store' src='{{store}}'></image>
+  <view class='all_price pr'>
+    <text class='wash fw pa dis-b'>{{wash}}</text>
+    <text class='onsale pa'>{{onsale}}</text>
+    <text class='onsale1 pa'>{{onsale1}}</text>
+    <text class='price pa'>{{price}}</text>
+    <text class='price1 pa'>{{price1}}</text>
+    <text class='ex_price pa fs16 txt-throw'>{{ex_price}}</text>
+    <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text>
+  </view>
+</view>
+
+<view class='team_show pr'>
+  <text class='count pa fs35'>还差{{residueNumbers}}</text>
+  <!-- <text class='residueNumbers pa'></text> -->
+  <text class='call-friend pa'>人，快喊好友来一起拼团吧！</text>
+  <text class='residueTime pa'>{{residueTime}}</text>
+  <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
+  <text class='colonel  dis-b ta-c color-white pa'>团长</text>
+  <view wx:for='{{helpsMsg}}' wx:key="unique">
+    <image class='pic_2 pa .w100' src='{{item.portait}}'></image>
+  </view>
+</view>
+
+<view class='group_way wp100 border-b fs25 h60 .border-t pr'>
+  <text class='group_invite lh60'>支付开团后，可邀请{{needNum}}人参团，人数不足自动退款</text>
+  <text class='group_rule fs25' bindtap='bindViewrules'>详细规则</text>
+  <image class='group_arrow pa' src='{{group_arrow}}' bindtap='bindViewrules'></image>
+</view>
+
+<button class='button-1 color-white ml20 ta-c fs35' open-type='share'>
+  <text class='share-friend'>分享给好友来拼团</text>
+</button>
+<view class='button-2 border-t border-b border-l border-r mt20 ml20 ta-c' bindtap='bindViewhome'>
+  <text class='back-home'>返回首页</text>
+</view>
