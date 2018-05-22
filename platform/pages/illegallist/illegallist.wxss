@@ -26,7 +26,8 @@ font-size: 30rpx;
 padding-top: 20rpx;
 }
 .illreson{
-  min-height: 30rpx;
+  height: auto;
+  min-height: 60rpx;
 }
 .illegalReason{
   width: 70%;
@@ -38,13 +39,9 @@ padding-top: 20rpx;
 .illplace
 .illmoney
 .illscoe{
-  height: 60rpx;
-  line-height: 60rpx;
-  margin-top: 20rpx;
-}
-.illreson{
-  min-height: 60rpx;
-  display:block
+  height: 80rpx;
+  line-height: 80rpx;
+
 }
 .no-data{
   width: 100%;
@@ -62,4 +59,5 @@ padding-top: 20rpx;
 .illegalReason{
   min-height: 30rpx;
   line-height: 30rpx;
+  height: auto;
 }

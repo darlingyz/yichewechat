@@ -7,10 +7,6 @@ Page({
   bindViewpay: function (event) {
     var orderId = event.currentTarget.dataset.id;
     app.globalData.orderId = orderId;
-    // wx.setStorage({
-    //   key: 'code',
-    //   data: event.currentTarget.dataset.code
-    // })
     wx.navigateTo({
       url: '../pay/pay'
     })
@@ -30,7 +26,6 @@ Page({
       },
       success: function (msg) {
         console.log(msg);
-
         that.setData({
           orderListMsg : msg.data.data
         })
@@ -89,6 +84,7 @@ Page({
 
   txClick: function (e) {
       console.log(e)
+      console.log("99999999999")
       var code = e.currentTarget.dataset.code;
     wx.request({
       url: app.globalData.testUrl + '/order/cancelOrder',
@@ -109,6 +105,9 @@ Page({
               duration:1000
             })
         }
+        wx.navigateTo({
+          url: '../orderdetailcance/orderdetailcance',
+        })
       }
     })
   },

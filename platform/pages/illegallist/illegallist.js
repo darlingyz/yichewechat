@@ -22,7 +22,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data:{
-        userId:227,//app.globalData.userId, //298
+        userId:app.globalData.userId, //298
       },
       success:function(res){
           that.setData({
