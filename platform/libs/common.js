@@ -34,6 +34,7 @@ function getopenid(){
                 },
                 method: 'post',
                 success: function (res) {
+                  
                   console.log(res);
                   var userId = res.data.data.userId
                   app.globalData.userId = userId;
@@ -47,3 +48,31 @@ function getopenid(){
     }
   })
 };
+function modalTap(data) {  //弹出提示框
+  wx.showModal({
+    title: "提示信息",
+    content: data,
+    showCancel: false,
+    confirmText: "确定"
+  });
+}
+
+function loading(data, msg) {
+  wx.showToast({
+    title: msg,
+    icon: "loading",
+    duration: data
+  })
+}
+
+function DoSuccess(data) {
+  wx.showToast({
+    title: data,
+    icon: "success",
+    duration: 2000
+  })
+}
+exports.DoSuccess = DoSuccess
+exports.loading = loading
+exports.modalTap = modalTap
+exports.getopenid = getopenid

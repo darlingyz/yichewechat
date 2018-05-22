@@ -9,6 +9,7 @@ Page({
     userInfo:{}
   },
   onLoad: function (options) {
+    wx.showLoading({ title: '努力加载中...' }),
     wx.clearStorage();
     this.setData({
       srcActivity: 'http://121.40.148.153/img/1381294047390736.png',
@@ -35,6 +36,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (msg) {
+        wx.hideLoading()
         that.setData({
           srcUser: app.globalData.vatarUrl,
           design: app.globalData.nickName,
@@ -230,7 +232,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    wx.showLoading({ title: '努力加载中...' });
+    this.onLoad();
+    wx.stopPullDownRefresh();
   },
 
   /**

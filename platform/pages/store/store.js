@@ -102,6 +102,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({ title: '努力加载中...' }),
     this.setData({
       downarrow: app.globalData.imgUrl + '/downarrow.png',
       uparrow: app.globalData.imgUrl + '/uparrow.png',
@@ -377,6 +378,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (result) {
+        wx.hideLoading()
         var msg = result.data.data;
         //遍历这个对象
         if (msg) {
@@ -407,10 +409,9 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (result) {
-
-
+        wx.hideLoading()
         var msg = result.data.data;
-        //console.log(msg);
+        console.log(msg);
         //遍历这个对象
         if (msg) {
           for (var i = 0; i < msg.length; i++) {

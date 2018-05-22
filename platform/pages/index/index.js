@@ -28,6 +28,7 @@ Page({
  */
   onLoad: function (options) {
     var that = this;
+    wx.showLoading({ title: '努力加载中...' }),
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -35,9 +36,6 @@ Page({
           console.log("授权成功~~~")
           wx.getUserInfo({
             success: res => {
-              // console.log(res);
-              // var odata = JSON.parse(res.rawData);
-              // console.log(odata)
               // 可以将 res 发送给后台解码出 unionId
               app.globalData.userInfo = res.userInfo
               var userInfo = res.userInfo;
@@ -58,6 +56,7 @@ Page({
                 },
                 method: 'post',
                 success: function (res) {
+                  wx.hideLoading();
                   var data = res.data.data;
                   if (data == null) {
                     wx.showModal({
@@ -183,18 +182,6 @@ Page({
           })
           console.log(that.globalData.userId);
         }
-      /** var userId = res.data.data.userId;
-        console.log(userId)
-        app.globalData.userId = userId;
-        that.initshowCar(userId);//车辆
-       that.initbao(userId);//红包
-        that.setData({
-          userId: userId,
-        })**/
-
-
-
-
       },
     })
     app.globalData.userInfo = res.detail.userInfo;
@@ -425,6 +412,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.onLoad();
   },
   /**
    * 页面上拉触底事件的处理函数

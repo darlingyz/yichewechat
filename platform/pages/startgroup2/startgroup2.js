@@ -9,23 +9,62 @@ Page({
     userGroupId: ""
   },
   //登陆获取用户信息
-  bindViewrules: function () {
-    wx.navigateTo({
-      url: '../rules/rules'
-    });
-  },
-  bindViewhome: function () {
-    wx.switchTab({
-      url: '../home/home',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
-    var that = this;
+    wx.request({
+      url: this.globalData.testUrl + '/Wx/aaa',
+      method: "post",
+      data: {
+        code: res.code
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        app.globalData.openId = res.data.openid;
+        var openid = res.data.openid;
+        wx.getUserInfo({
+          success: function (res) {
+            var odata = JSON.parse(res.rawData);
+            var nickName = odata.nickName;//昵称
+            var avatarUrl = odata.avatarUrl;//头像
+            wx.request({
+              url: app.globalData.testUrl + '/login/wxLittleLogin',
+              data: {
+                openId: openid,
+                userName: nickName,
+                portait: avatarUrl
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              method: 'post',
+              success: function (res) {
+                console.log(res);
+                var userId = res.data.data.userId
+                app.globalData.userId = userId;
+                //app.globalData.
+              }
+            })
+          }
+        })
+      }
+    })
+
+
+
+
+
+
+
+
+
     //获取活动传过来的活动id,获取该活动页面的信息
+    var that = this;
     var userGroupId = options.userGroupId;
     var nums = parseInt(userGroupId);
     console.log(nums);
@@ -44,8 +83,6 @@ Page({
       },
       success: function (msg) {
         console.log(msg);
-        //console.log(that.data.activityId)
-        //console.log(userGroupId)
         that.setData({
           store: msg.data.data.Activity.activityImg,
           wash: msg.data.data.Activity.activityName,
@@ -65,40 +102,19 @@ Page({
       }
     })
   },
-  //用户点击获取用户的id和活动id,用来给拼团活动发送接口
-  /*wx.request({
-    url: app.globalData.testUrl + '/activity/SearchUserGroupActivity',
-    method: 'post',
-    data: {
-      userId: app.globalData.userId,
-      activityId: 127
-    },
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'//默认值
-    },
-    success: function (msg) {
-      console.log(msg);
-      console.log(app.globalData.userId, that.data.activityId)
-      that.setData({
-        store: msg.data.data.Activity.activityImg,
-        wash: msg.data.data.Activity.activityName,
-        onsale: msg.data.data.Activity.description,
-        price: '￥',
-        price1: msg.data.data.Activity.groupPrice,
-        ex_price: '原价￥' + msg.data.data.Activity.price,
-        discount: '-砍价低至' + (msg.data.data.Activity.groupPrice / msg.data.data.Activity.price * 10).toFixed(1) + '折-',
-        residueNumbers: msg.data.data.Activity.shortNum,
-        residueTime: msg.data.data.Activity.etime,
-        pic_1: msg.data.data.Activity.portrait,
-        helpsMsg: msg.data.data.helps,
-        group_arrow: 'http://116.62.151.139/res/img/detailed_arrow.png',
-        needNum: msg.data.data.Activity.groupNum - 1,
-        activityId: msg.data.data.Activity.id
-      })
-    }
-  })*/
+  //拼团规则
+  bindViewrules: function () {
+    wx.navigateTo({
+      url: '../rules/rules'
+    });
+  },
+  //去首页
+  bindViewhome: function () {
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   //使用分享过来的id进行参与活动,我这里写死一个
-  //付过钱的活动的详情===或者付过钱首页进入后的
   //传的值为id
   // 分享
   onShareAppMessage: function (res) {
