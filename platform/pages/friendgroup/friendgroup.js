@@ -1,3 +1,4 @@
+//好友付完钱后跳转的页面
 var app = getApp();
 Page({
 
@@ -8,12 +9,11 @@ Page({
     activityId:"",
     userGroupId:""
   },
-
   onLoad: function (option) {
     var that = this;
-    if (openid == null || openid == "") {
-      common.getopenid();
-    }
+    // if (openid == null || openid == "") {
+    //   common.getopenid();
+    // }
     var sendinfo = option.sendinfo;
     console.log(option);
     //此处要获取支付页面跳转过来后 传过来的活动id
@@ -28,8 +28,9 @@ Page({
           url: app.globalData.testUrl + '/activity/userHelpGroupActivity',
           method: 'post',
           data: {
-            headGroupId: app.globalData.nums,
-            userId: app.globalData.userId,//分享后好友的ID333
+            headGroupId:187,//app.globalData.nums,//团长拼团的id
+            userId: 333,//分享后好友的ID333
+            orderId:801,
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值

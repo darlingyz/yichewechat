@@ -1,14 +1,66 @@
-.appDdownlode{height: 86rpx;background-color: #EFEFED;width: 675rpx;margin-top: 16rpx;}
-    .fork{margin-left:18rpx;}
-    .appGeneralize{line-height: 86rpx;margin-left: 69rpx;}
-    .downlodeButton{background-color: #F4CA03;font-size: 29rpx;width: 140rpx;margin-left:512rpx;margin-top: 25rpx;}
+.appDdownlode {
+  height: 86rpx;
+  background-color: #efefed;
+  width: 675rpx;
+  margin-top: 16rpx;
+}
 
-.activelist{border-bottom: 15rpx solid #eaeaea;height:285rpx;}
-    .activeState{margin-top:37rpx ;color: #727272;}
-    .activePic{height: 196rpx;width: 236rpx;margin-top: 70rpx;                    margin-left: 14rpx;}
-    .activeName{font-size: 34rpx;margin-left: 288rpx;margin-top: 97rpx;}
-    .activePrice{font-size: 50rpx;margin-left: 278rpx;margin-top: 188rpx;color: #2B196C;}
-    .exPrice{text-decoration:line-through;margin-top: 210rpx;                              margin-left:427rpx ;color: #2B196C;}
-    .arrow{width: 23rpx;margin-top: 157rpx;margin-left:684rpx;}
+.fork {
+  margin-left: 18rpx;
+}
 
-  
+.appGeneralize {
+  line-height: 86rpx;
+  margin-left: 69rpx;
+}
+
+.downlodeButton {
+  background-color: #f4ca03;
+  font-size: 29rpx;
+  width: 140rpx;
+  margin-left: 512rpx;
+  margin-top: 25rpx;
+}
+
+.activelist {
+  border-bottom: 15rpx solid #eaeaea;
+  height: 285rpx;
+}
+
+.activeState {
+  margin-top: 37rpx;
+  color: #727272;
+}
+
+.activePic {
+  height: 196rpx;
+  width: 236rpx;
+  margin-top: 70rpx;
+  margin-left: 14rpx;
+}
+
+.activeName {
+  font-size: 34rpx;
+  margin-left: 288rpx;
+  margin-top: 97rpx;
+}
+
+.activePrice {
+  font-size: 50rpx;
+  margin-left: 278rpx;
+  margin-top: 188rpx;
+  color: #2b196c;
+}
+
+.exPrice {
+  text-decoration: line-through;
+  margin-top: 210rpx;
+  margin-left: 427rpx;
+  color: #2b196c;
+}
+
+.arrow {
+  width: 23rpx;
+  margin-top: 157rpx;
+  margin-left: 684rpx;
+}

@@ -1,4 +1,4 @@
-//付款之后跳转的页面，只能在付款之后出现
+//我的页面 拼团活动中心
 var app = getApp();
 Page({
 
@@ -19,17 +19,15 @@ Page({
       key: 'activityId',
       success: function (res) {
         var activityId=res.data;
-        console.log(activityId,app.globalData.userId, app.globalData.orderId)
         that.setData({
           activityId: activityId
         }),
         wx.request({
-          url: app.globalData.testUrl + '/activity/userStartGroupActivity',
+          url: app.globalData.testUrl + '/activity/SearchUserGroupActivity',
           method: 'post',
           data: {
             activityId: activityId,
             userId: app.globalData.userId,
-            orderId: app.globalData.orderId
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值

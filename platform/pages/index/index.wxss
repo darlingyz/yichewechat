@@ -296,7 +296,9 @@
   text-align: center;
   margin-left: 200rpx;
 }
-
+.itemname{
+  overflow: hidden
+}
 /* .kanjia{
   display: none
 } */

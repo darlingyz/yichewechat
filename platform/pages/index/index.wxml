@@ -24,12 +24,12 @@
 <view class="container pr fs25" style="top:-14rpx;" bindtap='goillegal'>
   <view class="wp90 dis-flex flex-row rad10 h70 lh70 myCar" wx:if="{{havemsg}}">
     <image class="w80 ha ml10 mr10" mode="aspectFit" src="{{myCar.carLogo}}"></image>
-    <view class="mr20 wp40">{{myCar.carName}}</view>
-    <view class="mr20 wp40">行驶里程 {{myCar.carMileage}}km</view>
-    <view class="wp30 ta-r pr20" wx:if="{{reson}}">
+    <view class="mr20 wp40 itemname">{{myCar.carName}}</view>
+    <view class="wp40">行驶里程 {{myCar.carMileage}}km</view>
+    <view class="wp20 ta-c" wx:if="{{reson}}">
       <view>违章</view>
     </view>
-    <view class="wp30 ta-r pr20" wx:else>
+    <view class="wp20 ta-c" wx:else>
       <view>无违章</view>
     </view>
   </view>

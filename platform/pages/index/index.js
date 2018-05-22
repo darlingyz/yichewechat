@@ -260,9 +260,9 @@ Page({
             havemsg: false
           })
         } else {
-          if (breakRules == null) {
-            var breakRules = res.data.data;
-            app.globalData.carId = res.data.data.carId;//直接查询把车辆Id直接赋值为全局变量
+          var breakRules = res.data.data;
+          app.globalData.carId = res.data.data.carId;//直接查询把车辆Id直接赋值为全局变量
+          if (breakRules.breakRules == null) {
             that.setData({
               nomsg: false,
               havemsg: true,

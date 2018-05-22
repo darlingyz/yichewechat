@@ -67,6 +67,7 @@ wx.getLocation({
         that.setData({
           bussinessId: thisBusinessId
         }),
+          console.log(thisBusinessId, olat, olng)
           wx.request({
             url: app.globalData.testUrl + '/storeInformation/storeDetail',
             method: 'post',

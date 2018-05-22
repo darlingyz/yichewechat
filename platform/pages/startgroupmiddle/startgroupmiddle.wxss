@@ -15,7 +15,7 @@
   border: 2rpx dotted;
   border-radius: 8rpx;
   margin-left: 461rpx;
-  margin-top: -240rpx;
+  margin-top: -238rpx;
 }
 
 .wash {
@@ -71,16 +71,6 @@
   padding-left: 48rpx;
 }
 
-.none {
-  height: 40rpx;
-  width: 746rpx;
-}
-
-.none .arrow {
-  height: 17rpx;
-  width: 34rpx;
-}
-
 .team_show {
   height: 352rpx;
   width: 692rpx;
@@ -89,58 +79,66 @@
 }
 
 .count {
-  margin-left: 54rpx;
+  margin-left: 76rpx;
   padding-top: 47rpx;
-  font-size: 36rpx;
+  text-align: center;
 }
 
-.people {
-  font-size: 35rpx;
-  margin-left: 587rpx;
+.call-friend {
+  font-size: 36rpx;
+  margin-left: 177rpx;
   padding-top: 47rpx;
 }
+
 .residueNumbers {
   font-size: 50rpx;
   font-weight: bold;
-  margin-left: 530rpx;
-  margin-top: 33rpx;
-}
-.residue-time {
-  font-size: 26rpx;
-  color: #777674;
-  margin-left: 235rpx;
-  margin-top: 117rpx;
+  margin-left: 145rpx;
+  margin-top: 25rpx;
 }
 
-.time {
-  padding-left: 4rpx;
-  padding-right: 4rpx;
+.residueTime {
+  font-size: 26rpx;
+  color: #777674;
+  margin-left: 225rpx;
+  margin-top: 117rpx;
 }
 
 .colonel {
   height: 38rpx;
   width: 70rpx;
   background-color: #0293d8;
+  border-radius: 40rpx;
   margin-top: 266rpx;
-  margin-left: 184rpx;
-  font-size: 21rpx;
+  margin-left: 84rpx;
+  font-size: 22rpx;
   line-height: 38rpx;
 }
 
-.pic_1 {
+.pic_11 {
   margin-top: 188rpx;
-  margin-left: 171rpx;
+  margin-left: 71rpx;
   height: 98rpx;
+  float: left;
 }
 
-.pic_2 {
+.pic_0,.pic_1,.pic_2 {
   margin-top: 188rpx;
-  margin-left: 298rpx;
   height: 98rpx;
 }
+.pic_0{
+margin-left: 220rpx;
+}
 
+.pic_1{
+ margin-top: 90rpx;
+margin-left: 360rpx;
+}
+.pic_2{
+margin-top: -10rpx;
+margin-left: 500rpx;
+}
 .pic_3 {
-  margin-top: 188rpx;
   margin-left: 422rpx;
   height: 98rpx;
 }
@@ -152,13 +150,13 @@
 
 .group_rule {
   color: #777;
-  margin-left: 80rpx;
+  margin-left: 60rpx;
 }
 
 .group_arrow {
   height: 20rpx;
   width: 26rpx;
-  margin-left: 1rpx;
+  margin-left: 3rpx;
   margin-top: 20rpx;
 }
 
@@ -168,25 +166,13 @@
   background-color: #09ba07;
   border-radius: 8rpx;
   line-height: 86rpx;
-  margin-top: 61rpx;
-  margin-left: 26rpx;
+  margin-top: 66rpx;
 }
 
 .button-2 {
   height: 86rpx;
   width: 696rpx;
-  background-color: #09ba07;
-  border-radius: 8rpx;
-  line-height: 86rpx;
-  margin-top: 18rpx;
-  margin-left: 26rpx;
-}
-
-.button-3 {
-  height: 86rpx;
-  width: 696rpx;
   border-radius: 8rpx;
   font-size: 35rpx;
   line-height: 86rpx;
-  margin-left: 26rpx;
 }

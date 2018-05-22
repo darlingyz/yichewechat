@@ -116,18 +116,20 @@ Page({
               content: '您已经拼过该团,不能贪心哦',
               success: function (res) {
                 if (res.confirm) {
-                  console.log('用户点击确定')
+                  console.log('用户点击确定，去拼团页面')
                   wx.navigateTo({
-                    url: '../startgroup /startgroup',
+                    url: "../startgroupmiddle/startgroupmiddle"
                   })
                 } else if (res.cancel) {
-                  console.log('用户点击取消')
+                  console.log('用户点击取消不去拼团页面')
                 }
               }
-            }),
-            console.log("去付钱--")
+            })
           }else{
+            console.log("去付钱--")
             var odata = msg.data.data;
+            var orderId= msg.data.data.orderId;
+            app.globalData.orderId = orderId;
             wx.setStorage({
               key: 'codedata',
               data: msg,

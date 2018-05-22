@@ -19,7 +19,7 @@
   <text class='count pa '>好友邀请你参加他的拼团 , 只差</text>
   <text class='residueNumbers pa'>{{residueNumbers}}</text>
   <text class='people pa'>人 !</text>
-  <text class='residue-time pa'>剩余<text class='time'>{{time}}</text>结束 </text>
+  <text class='residue-time pa'>截至<text class='time'>{{time}}</text>结束 </text>
   <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
   <text class='colonel  dis-b ta-c color-white pa rad40'>团长</text>
   <view wx:for='{{helpsMsg}}' wx:key="unique">
@@ -28,7 +28,7 @@
 </view>
 
 <view class='group_way wp100 border-b fs25 h60 .border-t pr'>
-  <text class='group_invite lh60'>支付开团后,可邀请{{needNum}}人参团，人数不足自动退款</text>
+  <text class='group_invite lh60'>支付开团后,可邀请{{needNum-1}}人参团，人数不足自动退款</text>
   <text class='group_rule fs25' bindtap='bindViewrules'>详细规则</text>
   <image class='group_arrow ml10 pa' src='http://116.62.151.139/res/img/detailed_arrow.png' bindtap='bindViewrules'></image>
 </view>

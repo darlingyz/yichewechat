@@ -1,5 +1,6 @@
+//好友点开拼图链接，分享出去的页面
 var app = getApp();
-var common = require('../../libs/common.js');
+//var common = require('../../libs/common.js');
 Page({
 
   /**
@@ -14,8 +15,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    wx.request({
-      url: this.globalData.testUrl + '/Wx/aaa',
+   /** wx.request({
+      url: app.globalData.testUrl + '/Wx/aaa',
       method: "post",
       data: {
         code: res.code
@@ -53,19 +54,14 @@ Page({
           }
         })
       }
-    })
-
-
-
-
-
+    })**/
 
 
 
 
     //获取活动传过来的活动id,获取该活动页面的信息
     var that = this;
-    var userGroupId = options.userGroupId;
+    var userGroupId = options.group;
     var nums = parseInt(userGroupId);
     console.log(nums);
     app.globalData.nums = nums;//设置全局,拼团的ID
@@ -97,7 +93,8 @@ Page({
           helpsMsg: msg.data.data.helps,
           group_arrow: 'http://116.62.151.139/res/img/detailed_arrow.png',
           needNum: msg.data.data.Activity.groupNum - 1,
-          activityId: msg.data.data.Activity.id
+          activityId: msg.data.data.Activity.id,
+          time: msg.data.data.Activity.etime
         })
       }
     })
@@ -211,7 +208,7 @@ Page({
             data: msg,
           })
           wx.navigateTo({
-            url: '../friendpaygroup/friendpaygroup',
+            url: '../paygroupfriend/paygroupfriend',
           })
         }
       })

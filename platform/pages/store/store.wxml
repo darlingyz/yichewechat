@@ -8,9 +8,6 @@
   <image src='http://116.62.151.139/res/img/location.png' class='location w60 lh50 mr30 fr' mode='widthFix' bindtap='gosearchMap'></image>
 </view>
 <!--选项栏-->
-<!-- <view class='content' wx:if="{{nodata}}">
-  <text class='detail'>暂无服务</text>
-</view> -->
 <view class='cb h100 border-t border-b mt10'>
   <view class='fl wp33'>
     <view class='ta-c mt30 fs28'>{{area}}

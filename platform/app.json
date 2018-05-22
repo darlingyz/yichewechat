@@ -68,7 +68,8 @@
     "pages/paygroup/paygroup",
     "pages/shopcar/shopcar",
     "pages/friendpaygroup/friendpaygroup",
-    "pages/friendgroup/friendgroup"
+    "pages/friendgroup/friendgroup",
+    "pages/startgroupmiddle/startgroupmiddle"
   
   ],
   "window": {

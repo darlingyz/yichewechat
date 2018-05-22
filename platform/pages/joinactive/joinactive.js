@@ -81,7 +81,7 @@ Page({
       })
     }else if(status == 0){//拼团中
       wx.navigateTo({
-        url: '../startgroup/startgroup?group=' + group,
+        url: '../startgroupmiddle/startgroupmiddle?group=' + group,
       })
     }else{//成功
       wx.navigateTo({
