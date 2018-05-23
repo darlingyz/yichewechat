@@ -19,8 +19,6 @@ Page({
       key: 'codedata',
       success: function (res) {
         var odata=res.data;
-        //console.log(odata);
-        //console.log(odata.data.data)
         var orderdata=odata.data.data;
         orderId = orderdata.orderId;
         that.setData({

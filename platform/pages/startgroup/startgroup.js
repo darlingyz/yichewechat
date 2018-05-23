@@ -32,7 +32,7 @@ Page({
             orderId: app.globalData.orderId
           },
           header: {
-            'content-type': 'application/x-www-form-urlencoded'//默认值
+            'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (msg) {
             console.log(msg);
@@ -90,27 +90,27 @@ Page({
         var shareTickets = res.shareTickets[0];
         app.globalData.shareTickets = shareTickets;
         console.log(shareTickets);
-        console.log("分享成功！===============")
+        console.log("分享成功！")
         wx.getShareInfo({
           //shareTicket: res.shareTickets[0],
           success: function (res) {
             console.log(res)
-            console.log("success===获取信息成功======")
+            console.log("success获取信息成功")
           },
           fail: function (res) {
             console.log(res)
-            console.log("fail====获取信息失败====5555")
+            console.log("fail获取信息失败")
           },
           complete: function (res) {
             console.log(res);
-            console.log(res + "complete========")
+            console.log(res + "complet")
           }
         });
       },
       fail: function (res) {
         // 分享失败
         console.log(res)
-        console.log("fail=分享失败==============")
+        console.log("fail分享失败")
       }
     }
   },

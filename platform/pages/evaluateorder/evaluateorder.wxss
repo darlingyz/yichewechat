@@ -8,3 +8,9 @@
   width: 25rpx;
   height: 50rpx;
 }
+.loadpic{
+  background: #f66;
+  width: 200rpx;
+  height: 200rpx;
+  z-index: 9999
+}

@@ -32,7 +32,7 @@ bindViewrules: function() {
 //跳转至首页
   bindViewhome: function () {
     wx.switchTab({
-      url: '../home/home',
+      url: '../index/index',
     })
     },
 })

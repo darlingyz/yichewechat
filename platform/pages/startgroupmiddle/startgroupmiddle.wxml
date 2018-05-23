@@ -31,7 +31,7 @@
   <image class='group_arrow pa' src='{{group_arrow}}' bindtap='bindViewrules'></image>
 </view>
 
-<button class='button-1 color-white ml20 ta-c fs35' open-type='share'>
+<button class='button-1 color-white ml20 ta-c fs35' open-type="share">
   <text class='share-friend'>分享给好友来拼团</text>
 </button>
 <view class='button-2 border-t border-b border-l border-r mt20 ml20 ta-c' bindtap='bindViewhome'>

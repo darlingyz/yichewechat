@@ -516,7 +516,7 @@
 <!--遮罩-->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 
-<!--模态框  -->
+<!-- 确认授权的模态框  -->
 <view class="modal-mask" wx:if="{{maskModal}}">
   <view class="contbox">
     <button class='prompt'>微信授权</button>

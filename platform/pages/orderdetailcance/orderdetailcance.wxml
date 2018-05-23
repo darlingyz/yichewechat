@@ -32,8 +32,7 @@
 </view>
 
 <text class='serve dis-b'>| 服务</text>
-
-<block wx:for="{{OrderList}}">
+<block wx:for="{{OrderList}}" wx:key="unique">
   <view class='serve1 pr wp100 border-b border-t'>
     <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
     <text class='serveName pa'>{{item.businessName}}</text>
@@ -72,9 +71,11 @@
 </view>
 
 <view class='contactBox wp100 border-b border-t pr'>
-  <image class='serveLogo1 pa' src='http://116.62.151.139/res/img/onLionServe.png'></image>
+  <contact-button class='serveLogo1 pa' type="default-darke" size="28" session-from="weapp"></contact-button>
+  <!-- <image class='serveLogo1 pa' src='http://116.62.151.139/res/img/onLionServe.png'></image> -->
   <text class='onlionServe pa fs28'>一车独秀在线客服</text>
+
   <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png' bindtap='goPhome'></image>
   <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>

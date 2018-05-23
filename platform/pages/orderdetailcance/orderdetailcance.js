@@ -50,11 +50,14 @@ Page({
       },
     })
   },
-  bindViewpay: function () {
+  goPhome:function(){
+    wx.makePhoneCall({
+      phoneNumber: '(021)58180562',
+    })
+  },
+  bindViewpay: function (){
     wx: wx.navigateTo({
       url: '../pay/pay',
-
     })
-
   }
 })

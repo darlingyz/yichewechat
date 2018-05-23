@@ -1,4 +1,5 @@
-// pages/evaluateorder/evaluateorder.js
+// pages/evaluateorder/evaluateorder.js //1.2.9
+var app=getApp();
 Page({
 
   /**
@@ -8,22 +9,27 @@ Page({
    * 统一满分为5星 
    */
   data: {
+    orderId:'',
     productInfo: {} ,
     stars: [0, 1, 2, 3, 4], 
-    nonestar: 'http://139.224.235.32:8088/img/nonestar.png ',
-    star: 'http://139.224.235.32:8088/img/star.png',
-    halfstar: 'http://139.224.235.32:8088/img/halfstar.png',
-    
+    nonestar: 'http://116.62.151.139/res/img//nonestar.png ',
+    star: 'http://116.62.151.139/res/img//star.png',
+    halfstar: 'http://116.62.151.139/res/img//halfstar.png',
     key: 0,//评分
+    personcom:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  this.setData({
-  
-  })
+    
+    console.log(options)
+    var orderstr = options.orderId;
+    var orderId = parseInt(orderstr);
+      this.setData({
+        orderId: orderId
+      })
   },
   //点击右边,半颗星
   selectLeft: function (e) {
@@ -57,7 +63,7 @@ Page({
     this.setData({
       commentList:[
         {
-          comment: '好'
+          comment: '好评'
         },
       ]
     })
@@ -69,7 +75,47 @@ Page({
   onShow: function () {
   
   },
-
+  //评论
+  itemcommont:function(e){
+    var that=this;
+      console.log(e)
+      var itemcont = e.detail.value;
+        that.setData({
+          personcom: itemcont
+        })
+  },
+//发表评论
+  gocommont:function(event){
+    var that=this;
+    wx.request({
+      url: app.globalData.testUrl +'/order/wxAppraise',
+      method:'post',
+      header:{
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      data:{
+        userId: app.globalData.userId,
+        orderId: that.data.orderId,//订单id
+        satisfaction:that.data.key,//满意度,
+        desn: that.data.personcom,//描述
+        picture:"null"//图片
+      },
+      success:function(res){
+          console.log(res)
+          var codes = res.data.code;
+          if(codes==1){
+            wx.showToast({
+              title: '评价成功',
+              icon:"success",
+              duration:1000
+            })
+            wx.navigateTo({
+              url: '../orderdetailed/orderdetailed',
+            })
+          }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -105,9 +151,9 @@ Page({
   
   },
   //添加Banner  
-bindChooiceProduct: function () {
+bindChooiceProduct: function (e) {
     var that = this;
-
+    console.log("55555555555555")
     wx.chooseImage({
       count: 3,  //最多可以选择的图片总数  
       sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有  
@@ -125,17 +171,18 @@ bindChooiceProduct: function () {
         var uploadImgCount = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           wx.uploadFile({
-            url: util.getClientSetting().domainName + '/home/uploadfilenew',
-            filePath: tempFilePaths[i],
+            url: app.globalData.testUrl + '/upload/upforJsonFullPath',
+            filePath: tempFilePaths[0],
             name: 'uploadfile_ant',
             formData: {
-              'imgIndex': i
+              'user': 'test'
             },
             header: {
-              "Content-Type": "multipart/form-data"
+              'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
               uploadImgCount++;
+              console.log(res)
               var data = JSON.parse(res.data); 
               var productInfo = that.data.productInfo;
               if (productInfo.bannerInfo == null) {
