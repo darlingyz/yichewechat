@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/index/index",
     "pages/about/about",
     "pages/besurepass/besurepass",
@@ -18,7 +19,7 @@
     "pages/illegallist/illegallist",
     "pages/vehicledetails/vehicledetails",
     "pages/store/store",
-    "pages/startgroup2/startgroup2",
+"pages/startgroup2/startgroup2",
     "pages/startgroup/startgroup",
     "pages/serving/serving",
     "pages/waitevaluate/waitevaluate",
@@ -69,8 +70,8 @@
     "pages/shopcar/shopcar",
     "pages/friendpaygroup/friendpaygroup",
     "pages/friendgroup/friendgroup",
-    "pages/startgroupmiddle/startgroupmiddle"
-  
+    "pages/startgroupmiddle/startgroupmiddle",
+    "pages/paygroupfriend/paygroupfriend"
   ],
   "window": {
     "backgroundTextStyle": "light",

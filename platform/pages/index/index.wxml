@@ -309,7 +309,7 @@
 </view>
 <view class="border-b-15"></view>
 <!--导航菜单-->
-<view class="container fs28 mb20">
+<view class="container fs28 mb20 adverother">
   <view class="container dis-flex flex-row wp90 ta-c mt10">
     <navigator>
       <view class="navbox">

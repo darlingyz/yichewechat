@@ -28,12 +28,6 @@ App({
         })
       }
     })
-    wx.getShareInfo({
-      shareTicket: this.globalData.shareTickets,
-      success: function (res) {
-        console.log(res)
-      }
-    })
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',

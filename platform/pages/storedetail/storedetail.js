@@ -207,7 +207,7 @@ wx.getLocation({
             num: that.data.count
           },
           success: function (res) {
-            console.log(res);
+            console.log(app.globalData.userId, id, that.data.count);
             let msg = res.data.code;
             if (msg == 1) {
               wx.showToast({

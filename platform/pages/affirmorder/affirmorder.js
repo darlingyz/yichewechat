@@ -62,17 +62,23 @@ Page({
           success: function (res) {
             var odata = res.data.data;
             var arr = [];
-            for (var i = 0; i < odata.length; i++) {
-              var omerchat = odata[i].merchantId;
-              if (merchantId == omerchat) {
-                arr.push(odata[i])
-              } else {
+            console.log(res)
+            console.log(odata)
+            if (odata==null){
                 return
-              }
-            };
-            that.setData({
-              couponsList: arr
-            })
+            }else{
+              for (var i = 0; i < odata.length; i++) {
+                var omerchat = odata[i].merchantId;
+                if (merchantId == omerchat) {
+                  arr.push(odata[i])
+                } else {
+                  return
+                }
+              };
+              that.setData({
+                couponsList: arr
+              })
+            }
           }
         })
       }

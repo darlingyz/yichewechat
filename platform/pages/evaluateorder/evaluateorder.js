@@ -16,7 +16,10 @@ Page({
     star: 'http://116.62.151.139/res/img//star.png',
     halfstar: 'http://116.62.151.139/res/img//halfstar.png',
     key: 0,//评分
-    personcom:""
+    personcom:"",
+    src:'',
+    havepic:true,
+    picture:""
   },
 
   /**
@@ -98,7 +101,7 @@ Page({
         orderId: that.data.orderId,//订单id
         satisfaction:that.data.key,//满意度,
         desn: that.data.personcom,//描述
-        picture:"null"//图片
+        picture: that.data.picture//图片
       },
       success:function(res){
           console.log(res)
@@ -153,14 +156,18 @@ Page({
   //添加Banner  
 bindChooiceProduct: function (e) {
     var that = this;
-    console.log("55555555555555")
     wx.chooseImage({
-      count: 3,  //最多可以选择的图片总数  
+      count: 1,  //最多可以选择的图片总数  
       sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有  
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有  
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片  
         var tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths[0])
+        that.setData({
+          havepic:false,
+         src: tempFilePaths
+        })
         //启动上传等待中...  
         wx.showToast({
           title: '正在上传...',
@@ -168,7 +175,27 @@ bindChooiceProduct: function (e) {
           mask: true,
           duration: 10000
         })
-        var uploadImgCount = 0;
+        wx.uploadFile({
+          url: app.globalData.testUrl + '/upload/upforJsonFullPath',
+          filePath: tempFilePaths[0],
+          name: '评论图片',
+          formData: {
+            'user': 'test'
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success:function(res){
+            console.log(res)
+            var data = JSON.parse(res.data);
+            var picture=data.data;
+            that.setData({
+              picture: picture
+            })
+          }
+        })
+
+       /** var uploadImgCount = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           wx.uploadFile({
             url: app.globalData.testUrl + '/upload/upforJsonFullPath',
@@ -212,7 +239,7 @@ bindChooiceProduct: function (e) {
               })
             }
           });
-        }
+        }**/
       }
     });
   }  

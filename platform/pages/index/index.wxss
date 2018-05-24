@@ -299,6 +299,6 @@
 .itemname{
   overflow: hidden
 }
-/* .kanjia{
+ .adverother{
   display: none
-} */
+} 
