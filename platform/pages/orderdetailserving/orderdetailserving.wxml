@@ -1,6 +1,6 @@
 <view class='needPayBg wp100 pr'>
    <text class='needPayWd pa fs30'>服务中-等待门店确认完成服务</text>
-   <image class='headBg wp100' src='http://192.168.1.111:90/servingBg.png'></image>
+   <image class='headBg wp100' src='http://116.62.151.139/res/img/waitEvaluation.png'></image>
 </view>
 
 <view class='personalDetails wp100 h90'>
@@ -22,25 +22,25 @@
    <text class='shopsName pa'>{{shopsName}}</text>
    <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
    <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
-   <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png'></image>
+   <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png' bindtap='shopPhone'></image>
    <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
-   <image class='shopsNavigation w48 h48'  src='http://116.62.151.139/res/img/navigation.png'></image>
+   <image class='shopsNavigation w48 h48'  src='http://116.62.151.139/res/img/navigation.png' bindtap='shopMap'></image>
 </view>
 
-<button class='shareButton color-white pr'>分享领优惠券
+<!-- <button class='shareButton color-white pr'>分享领优惠券
 <image class='sharelg pa' src='http://116.62.151.139/res/img/sharelogo.png'></image>
-</button>
+</button> -->
 
 <text class='serve dis-b border-b'>| 服务</text>
 
 
-<block wx:for="{{OrderList}}">
+<block wx:for="{{OrderList}}" wx:key="unique">
 <view class='serve1 pr wp100 border-b border-t'>
     <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
     <text class='serveName pa'>{{item.businessName}}</text>
     <text class='serveDetail pa'>{{item.brandName}}</text>
     <text class='servePrice pa fs25'>¥{{item.price}}</text>
-    <text class='servePrice pa fs25'>¥{{item.privilegePrice}}</text>
+    <!-- <text class='servePrice pa fs25 mt20'>¥{{item.privilegePrice}}</text> -->
     <text class='serveNumber pa fs25'>{{item.amount}}</text>
 </view>
 </block>
@@ -73,13 +73,12 @@
 
 </view>
 <view class='contactBox wp100 border-b border-t pr'>
-    <image class='serveLogo1 pa' src='http://116.62.151.139/res/img/onLionServe.png'></image>
+  <contact-button class='serveLogo1 pa' type="default-darke" size="28" session-from="weapp"></contact-button>
     <text class='onlionServe pa fs28'>一车独秀在线客服</text>
     <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
-    <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png'></image>
+    <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png' bindtap='goPhone'></image>
     <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>
-
 <view class='remind wp100 pr'>
     <text class='remindW pa'>如果对订单不满意,可以联系客服哦！</text>
 </view>

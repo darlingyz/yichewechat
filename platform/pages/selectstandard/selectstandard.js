@@ -37,6 +37,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  wx.request({
+    url: app.globalData.testUrl + '/cartServcie/addShoppingCart',
+    method: "post",
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+  })
+
     this.setData({
       tyreselected: 'http://116.62.151.139/res/img/tyreselect.png',
     })

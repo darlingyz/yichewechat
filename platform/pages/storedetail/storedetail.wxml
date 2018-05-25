@@ -78,7 +78,7 @@
     <view wx:if="{{showstoreactivity}}">
       <!-- 砍价活动 -->
       <view class='bargainActivitis fs28 mt20 ml20'>
-        暂无门店活动
+      
         <view wx:for="{{bargainActivitis}}" wx:key="unique">
           <!-- <image src='{{item.img}}' class='picimg'></image> -->
           <view>
@@ -96,8 +96,14 @@
       </view>
       <!--拼团活动  -->
       <view class='groupActivitis'>
-        <view wx:for="{{groupActivitis}}" wx:key="unique">
-
+        <view wx:for="{{groupActivitis}}" wx:key="unique" class='groupbox color-degray'>
+            <image src='{{item.img}}' class='shoplogo fl mr20'></image>
+            <view class='fl listbox'>
+                 <text class='sername'>{{item.activityName}}</text>
+                <text class='serndec'>{{item.description}}</text> 
+                <text class='priec fs28'>￥{{item.groupPrice}} </text>
+                <text class='orginprice fs28'>原价:￥{{item.price}}</text>
+            </view>
         </view>
       </view>
     </view>

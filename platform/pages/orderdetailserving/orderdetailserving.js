@@ -7,22 +7,21 @@ Page({
   data: {
     personName: '淦隆汽车小设计',
     phoneNumber: '18939979659',
-    shopLogo: 'http://192.168.1.111:91/shopsdetail.png',
+    shopLogo: '',
     shopsName: '淦隆汽车',
     shopsPlace: '上海浦东新区华夏东路2518号',
     shopsDistance: '15.8km',
-
+    shopphon:"",
     OrderList: [
       {
-        serveLogo: 'http://192.168.1.111:91/oil.png',
+        serveLogo: '',
         serveName: '更换机油',
         serveDetail: '美孚金装4L',
         servePrice: '￥259.00',
         serveNumber: '×1',
-
       },
       {
-        serveLogo: 'http://192.168.1.111:91/oilcleaner.png',
+        serveLogo: '',
         serveName: '更换机油滤清器',
         serveDetail: '美孚金装',
         servePrice: '￥30.00',
@@ -81,6 +80,7 @@ Page({
                 var data = msg.data.data;
                 console.log(msg);
                 that.setData({
+                  shopphon: data.merchantMsg.mobile,
                   personName: data.userMsg.user_name,
                   phoneNumber: data.userMsg.mobile,
                   shopsName: data.merchantMsg.merchant_name,
@@ -93,7 +93,8 @@ Page({
                   payPrice: data.orderMsg.payPrice,
                   orderCode: data.orderMsg.orderCode,
                   orderDate: data.orderMsg.orderDate,
-                  portait: data.userMsg.portait
+                  portait: data.userMsg.portait,
+                
                 })
               }
             })
@@ -102,11 +103,30 @@ Page({
       },
     })
   },
+  //拨打店铺电话
+  shopPhone:function(){
+    var that=this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.shopphon,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  //地图
+  shopMap:function(){
+    wx.navigateTo({
+      url: '../searchmap/searchmap',
+    })
+  },
   bindViewpay: function () {
     wx: wx.navigateTo({
       url: '../pay/pay',
-
     })
-
-  }
+  },
+  goPhone: function () {
+    wx.makePhoneCall({
+      phoneNumber: '(021)58180562',
+    })
+  },
 })

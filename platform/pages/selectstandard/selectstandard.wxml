@@ -12,9 +12,7 @@
 <view>
   <view class='h80 lh80 wp100'>
     <view class='w200 fs35 fl ml30'>胎面宽</view>
-
     <view class='wp40 fs35 ta-c fl'>扁平比</view>
-
     <view class='wp200 fs35 fr mr40'>直径</view>
   </view>
   <view>

@@ -282,7 +282,7 @@
                 <text class='serveName pa'>{{service.businessName}}</text>
                 <text class='serveDetail pa fs26'>{{service.brandName}}</text>
                 <view wx:if='{{service.privilegePrice > 0}}'>
-                  <text class='servePrice pa'>¥{{service.privilegePrice}}</text>
+                  <!-- <text class='servePrice pa'>¥{{service.privilegePrice}}</text> -->
                   <text class='exPlace2 pa'>¥{{service.price}}</text>
                 </view>
                 <view wx:else>

@@ -192,7 +192,7 @@ Page({
       url: app.globalData.testUrl + '/project/wxPersonalCenter',
       method: 'post',
       data: {
-        userId: app.globalData.userId,
+        userId:app.globalData.userId,
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded' 

@@ -64,7 +64,7 @@ Page({
       method: 'post',
       data: {
         userId: app.globalData.userId,
-        orderState: 4
+        orderState: 2
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
@@ -165,7 +165,6 @@ Page({
         console.log(msg);
         wx.startPullDownRefresh()
         var odata = msg.data.data;
-        
         if (odata == "成功") {
           wx.showToast({
             title: '取消成功',

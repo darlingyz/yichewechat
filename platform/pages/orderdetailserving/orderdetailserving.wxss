@@ -1,53 +1,220 @@
-.needPayBg{height: 238rpx; margin-top: 10rpx;}
-    .headBg{height: 238rpx;}
-    .needPayWd{margin-top:98rpx ;margin-left:55rpx ;}
+.needPayBg {
+  height: 238rpx;
+  margin-top: 10rpx;
+}
 
-.personalDetails{ border-bottom: 10rpx solid #eaeaea;}
-.personalName{height:93rpx;width:49%;}
-    .personPic{height: 44rpx;margin-top: 26rpx; margin-left: 68rpx;}
-    .personName{margin-left:34rpx ;line-height: 93rpx;}
-.personalPhonenumber{height:93rpx;width:50%;margin-top:-95rpx ;}
-    .phoneLogo{height: 38rpx;margin-top: 26rpx;}
-    .phoneNumber{margin-left:36rpx ;line-height: 93rpx;}
+.headBg {
+  height: 238rpx;
+}
 
-.shopDetail{height: 213rpx;}
-    .shopLogo{width: 140rpx;}
-    .shopsName{font-size: 31rpx;margin-left:190rpx ;margin-top:37rpx ;}
-    .shopsPlace{margin-left:190rpx ;color:#4A4947;}
-    .shopsDistance{margin-left:536rpx ;color:#4A4947;}
-    .shopsPhone{margin-left: 583rpx;margin-top:36rpx ;}
-    .cutline{width: 1rpx;height: 45rpx;margin-left: 645rpx;}
-    .shopsNavigation{margin-left: 663rpx;margin-top:36rpx ;}
+.needPayWd {
+  margin-top: 98rpx;
+  margin-left: 55rpx;
+}
 
-.shareButton{height: 55rpx;width: 418rpx;background-color: #A4D055;line-height: 55rpx;
-            font-size: 31rpx;border-radius: 55rpx;margin-top: -14rpx;}
+.personalDetails {
+  border-bottom: 10rpx solid #eaeaea;
+}
 
-.sharelg{height:26rpx;width:26rpx;margin-left: 10rpx;margin-top:15rpx;}
+.personalName {
+  height: 93rpx;
+  width: 49%;
+}
 
-.serve{height: 62rpx;line-height: 62rpx; padding-left: 34rpx;font-size: 31rpx;
-       width: 90rpx;}
+.personPic {
+  height: 44rpx;
+  margin-top: 26rpx;
+  margin-left: 68rpx;
+}
 
-.serve1{height: 140rpx;}
-    .serveLogo{margin-top:26rpx ;margin-left:23rpx; }
-    .serveName{font-size: 31rpx;margin-left:153rpx ;margin-top:29rpx ;}
-    .serveDetail{margin-left:153rpx ;margin-top:81rpx ; color: #747474; font-size: 22rpx;}
-    .servePrice{margin-top:13rpx ;margin-left:628rpx;}
-    .serveNumber{margin-top:105rpx ;margin-left:695rpx;}
+.personName {
+  margin-left: 34rpx;
+  line-height: 93rpx;
+}
 
-.orderCollect{height: 400rpx;}
-    .projectName{margin-left: 35rpx;}
-    .projectPrice{margin-left: 629rpx;}
-  .projectSBox{ color: #6D6B6C;}
-    .orderState{margin-top: 8rpx;margin-left:35rpx ;}
-    .orderStateN{margin-top: 8rpx;margin-left:160rpx;}
+.personalPhonenumber {
+  height: 93rpx;
+  width: 50%;
+  /* margin-top: -95rpx; */
+}
 
+.phoneLogo {
+  height: 38rpx;
+  margin-top: 26rpx;
+}
 
-.contactBox{height: 85rpx;}
-    .serveLogo1{height: 46rpx;width: 46rpx;margin-left: 45rpx;margin-top: 18rpx;}
-    .onlionServe{margin-left: 111rpx;margin-top: 22rpx;}
-    .blackLine{height: 52rpx; width: 1rpx;margin-left: 374rpx;margin-top: 16rpx;}
-    .consultLogo{ height: 46rpx;width: 46rpx;margin-left: 422rpx;margin-top: 18rpx;}
-    .consultW{margin-left: 490rpx;margin-top: 22rpx;}
+.phoneNumber {
+  margin-left: 36rpx;
+  line-height: 93rpx;
+}
 
-.remind{height: 73rpx;background-color:#EFEFED ;margin-top: 73rpx;}
-    .remindW{font-size:23rpx;color: #6D6B6C;margin-left: 53rpx;margin-top: 22rpx;}
+.shopDetail {
+  height: 213rpx;
+}
+
+.shopLogo {
+  width: 140rpx;
+}
+
+.shopsName {
+  font-size: 31rpx;
+  margin-left: 190rpx;
+  margin-top: 37rpx;
+}
+
+.shopsPlace {
+  margin-left: 190rpx;
+  color: #4a4947;
+}
+
+.shopsDistance {
+  margin-left: 536rpx;
+  color: #4a4947;
+}
+
+.shopsPhone {
+  margin-left: 583rpx;
+  margin-top: 36rpx;
+}
+
+.cutline {
+  width: 1rpx;
+  height: 45rpx;
+  margin-left: 645rpx;
+}
+
+.shopsNavigation {
+  margin-left: 663rpx;
+  margin-top: 36rpx;
+}
+
+.shareButton {
+  height: 55rpx;
+  width: 418rpx;
+  background-color: #a4d055;
+  line-height: 55rpx;
+  font-size: 31rpx;
+  border-radius: 55rpx;
+  margin-top: -14rpx;
+}
+
+.sharelg {
+  height: 26rpx;
+  width: 26rpx;
+  margin-left: 10rpx;
+  margin-top: 15rpx;
+}
+
+.serve {
+  height: 62rpx;
+  line-height: 62rpx;
+  padding-left: 34rpx;
+  font-size: 31rpx;
+  width: 90rpx;
+}
+
+.serve1 {
+  height: 140rpx;
+}
+
+.serveLogo {
+  margin-top: 26rpx;
+  margin-left: 23rpx;
+}
+
+.serveName {
+  font-size: 31rpx;
+  margin-left: 153rpx;
+  margin-top: 29rpx;
+}
+
+.serveDetail {
+  margin-left: 153rpx;
+  margin-top: 81rpx;
+  color: #747474;
+  font-size: 22rpx;
+}
+
+.servePrice {
+  margin-top: 13rpx;
+  margin-left: 628rpx;
+}
+
+.serveNumber {
+  margin-top: 105rpx;
+  margin-left: 695rpx;
+}
+
+.orderCollect {
+  height: 400rpx;
+}
+
+.projectName {
+  margin-left: 35rpx;
+}
+
+.projectPrice {
+  margin-left: 629rpx;
+}
+
+.projectSBox {
+  color: #6d6b6c;
+}
+
+.orderState {
+  margin-top: 8rpx;
+  margin-left: 35rpx;
+}
+
+.orderStateN {
+  margin-top: 8rpx;
+  margin-left: 160rpx;
+}
+
+.contactBox {
+  height: 85rpx;
+}
+
+.serveLogo1 {
+  height: 46rpx;
+  width: 46rpx;
+  margin-left: 45rpx;
+  margin-top: 18rpx;
+}
+
+.onlionServe {
+  margin-left: 111rpx;
+  margin-top: 22rpx;
+}
+
+.blackLine {
+  height: 52rpx;
+  width: 1rpx;
+  margin-left: 374rpx;
+  margin-top: 16rpx;
+}
+
+.consultLogo {
+  height: 46rpx;
+  width: 46rpx;
+  margin-left: 422rpx;
+  margin-top: 18rpx;
+}
+
+.consultW {
+  margin-left: 490rpx;
+  margin-top: 22rpx;
+}
+
+.remind {
+  height: 73rpx;
+  background-color: #efefed;
+  margin-top: 73rpx;
+}
+
+.remindW {
+  font-size: 23rpx;
+  color: #6d6b6c;
+  margin-left: 53rpx;
+  margin-top: 22rpx;
+}

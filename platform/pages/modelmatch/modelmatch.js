@@ -13,9 +13,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      carsign: 'http://192.168.1.111:90/carsign.png',
+      carsign: 'http://116.62.151.139/res/img/carsign.png',
       cartype:'奔驰GLC 200 2017款',
-      tyreselected: 'http://192.168.1.111:91/tyreselect.png',
+      tyreselected: 'http://116.62.151.139/res/img/tyreselect.png',
     })
   },
 

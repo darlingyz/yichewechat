@@ -22,9 +22,9 @@
   <text class='shopsName pa'>{{shopsName}}</text>
   <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
   <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
-  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png' bindtap='shopPhone'></image>
   <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png'></image>
+  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png' bindtap='shopMap'></image>
 </view>
 
 <text class='serve dis-b'>| 服务</text>
@@ -67,9 +67,9 @@
 </view>
 
 <view class='contactBox wp100 border-b border-t pr'>
-  <image class='serveLogo1 pa' src='http://116.62.151.139/res/img/onLionServe.png'></image>
+ <contact-button class='serveLogo1 pa' type="default-darke" size="28" session-from="weapp"></contact-button>
   <text class='onlionServe pa fs28'>一车独秀在线客服</text>
   <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png' bindtap='goPhone'></image>
   <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>

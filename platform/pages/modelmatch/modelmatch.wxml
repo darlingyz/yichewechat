@@ -1,5 +1,8 @@
 <!--pages/selectstandard/selectstandard.wxml-->
-<view class='border-b wp100 h80'>
+
+
+
+ <view class='border-b wp100 h80'>
   <view class='fl h80 lh80 wp50'>
      <text class='ml120 color-green'>车型适配</text>
   </view>
@@ -18,4 +21,4 @@
     <view class='fs30'>{{item.carkind}}</view>
   </view>
 </block>
-<image src='{{tyreselected}}' class='wp100 mt80' mode='widthFix'></image>
+<image src='{{tyreselected}}' class='wp100 mt80' mode='widthFix'></image> 

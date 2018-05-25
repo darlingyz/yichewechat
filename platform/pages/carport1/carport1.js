@@ -54,7 +54,6 @@ Page({
     var tcShow = this.data.showModalStatus;
     this.setData({ showModalStatus: !tcShow });
   },
-
   bindViewcarport: function () {
     var that =this;
     wx.request({
@@ -75,8 +74,6 @@ Page({
         console.log(msg);
       }
     })
-
-
     wx.navigateTo({
       url: '../carport/carport',
     })
@@ -126,7 +123,24 @@ Page({
           url: '../carport/carport',
         })
         }else{
-          //这里提示 msg.data.msg 的错误消息
+         var omsg=msg.data.data;
+         if (omsg == "删除失败,默认车不能删"){
+           wx.showModal({
+             title: '提示',
+             content: '删除失败,默认车不能删!',
+             success:function(res){
+               if (res.confirm){
+                    wx.switchTab({
+                      url: '../my/my',
+                    })
+               }else{
+                 wx.navigateTo({
+                   url: '../carport/carport',
+                 })
+               }
+             }
+           }) 
+         }
         }
       }
     })
@@ -136,7 +150,6 @@ Page({
       url: '../carport1/carport1',
     })
   },
-
   illicenseNumber : function(e){
     this.setData({
       illicenseNumber: e.detail.value
@@ -162,5 +175,4 @@ Page({
       dailyMileage: e.detail.value
     })
   }
-
 })

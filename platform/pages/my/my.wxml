@@ -6,17 +6,17 @@
   <text class='design w100 h60 lh60 fs35'>{{design}}</text>
   <text wx:if="{{mobile === ''}}" class='bindPhone w100 h60 lh60 fs28 ml20' bindtap='bindViewBindPhone'>{{bindPhone}}</text>
 </view>
-<view class='wp100 h100 clicktap' wx:if='{{carId == null || carId == "" || carId == 0}}' bindtap='bindViewCarList'>
-  <image src='http://116.62.151.139/res/img/aboutCar.png' class='w100 fl ml80 mt20' mode='widthFix'></image>
-  <view class='fl mt20 h100 ml30'>
+<view class='wp100 h150 clicktap' wx:if='{{carId == null || carId == "" || carId == 0}}' bindtap='bindViewCarList'>
+  <image src='http://116.62.151.139/res/img/aboutCar.png' class='w100 fl ml80 mt20 h100' mode='widthFix'></image>
+  <view class='fl ml20 h100 wp50 mt10'>
     <view class='fs35' bindtap='bindViewCarList'>添加爱车 , 享受定制服务</view>
     <view class='remind fs28 pt10'>保养提醒 换轮胎...</view>
   </view>
   <view class='navto fl mt40 h100 ml90'>></view>
 </view>
-<view class='wp100 h100 clicktap' bindtap='bindViewCarList' wx:else>
-  <image src='{{carLogo}}' class='w180 fl ml80 mt10' mode='widthFix'></image>
-  <view class='fl mt20 h100 ml30'>
+<view class='wp100 h100 clicktap h150' bindtap='bindViewCarList' wx:else>
+  <image src='{{carLogo}}' class='w180 fl ml80 mt10 h100' mode='widthFix'></image>
+  <view class='fl mt20 h100 ml20 wp50 '>
     <view class='fs35' bindtap='bindViewCarList'>{{carName}}</view>
     <view class='fl fs28 pt10'>行驶里程</view>
     <view class='fl fs28 pt10'>{{strokeCount}} km</view>

@@ -153,6 +153,7 @@ Page({
       openId: app.globalData.openId,
       phoneNumber: that.data.phoneNum,
       verificationCode: that.data.verificationCode,
+      portait: app.globalData.vatarUrl,
       type:1
     },
     header: {

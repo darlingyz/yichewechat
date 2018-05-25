@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lng: "",  
+    lng: "",
     lat: "",
     noshow: true,
     showstoreactivity: true,
@@ -46,7 +46,7 @@ Page({
     bargainActivitis: "",
     discounts: "",
     groupActivitis: "",
-    phone:"",
+    phone: "",
     startSrc: 'http://116.62.151.139/res/img/star.png'
   },
 
@@ -56,134 +56,131 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-wx.getLocation({
-  success: function(res) {
-    var olat = res.latitude;
-    var olng = res.longitude;
-    wx.getStorage({
-      key: 'businessId',
+    wx.getLocation({
       success: function (res) {
-        thisBusinessId = res.data;
-        that.setData({
-          bussinessId: thisBusinessId
-        }),
-          console.log(thisBusinessId, olat, olng)
-          wx.request({
-            url: app.globalData.testUrl + '/storeInformation/storeDetail',
-            method: 'post',
-            data: {
-              businessId: thisBusinessId,
-              lat: olat,
-              lng: olng
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: function (msg) {
-              console.log(msg);
-              var score = msg.data.data.score;
-              console.log(score);
-              wx.setStorage({
-                key: 'score',
-                data: score,
-              })
-              wx.getLocation({
-                type: 'wgs84',
-                success: function (res) {
-                  var distance = that.getDistance(msg.data.data.lat, msg.data.data.lng, res.latitude, res.longitude);
-                  that.setData({
-                    distance: distance,
-                  })
-                }
-              })
-              var state = msg.data.data.businessState;
-              app.globalData.merchantName = msg.data.data.storeName
-              wx.setStorage({
-                key: 'status',
-                data: state,
-              })
-              that.setData({
-                businessState: msg.data.data.businessState,
-                storedetail: msg.data.data.facadePhotoUrl,
-                storeName: msg.data.data.storeName,
-                score: msg.data.data.score,
-                people: msg.data.data.amount,
-                address: msg.data.data.facadeAdd,
-                starttime: msg.data.data.startTime,
-                endtime: msg.data.data.endTime,
-                phonecall: msg.data.data.phone
-              })
-            }
-          })
-        //请求商户服务
-        wx.request({
-          url: app.globalData.testUrl + '/search/wxStoreService',
-          method: 'post',
-          data: {
-            shopId: that.data.bussinessId
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' 
-          },
-          success: function (msg) {
-            that.setData({
-              showListMsg: msg.data.data,
-              showList: true
-            })
-          }
-        })
-        wx.request({
-          url: app.globalData.testUrl + '/search/judgeCollectStore',
-          method: 'post',
-          data: {
-            merchantId: that.data.bussinessId,
-            userId: app.globalData.userId
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (msg) {
-            that.setData({
-              showCollect: msg.data.data
-            })
-          }
-        })
-      },
-    })
-  }
-})
-
-
-
-
-    // 店铺活动
-  //  console.log(thisBusinessId);
-  /**  wx.getStorage({
-      key: 'status',
-      success: function (res) {
-        console.log(res.data);
-        var status = res.data;
-        wx.request({
-          url: app.globalData.testUrl + '/search/searchMerActivity',
-          method: 'post',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-            merchantId: that.data.bussinessId,
-            status: status
-          },
+        var olat = res.latitude;
+        var olng = res.longitude;
+        wx.getStorage({
+          key: 'businessId',
           success: function (res) {
+            console.log(res)
+            thisBusinessId = res.data;
             that.setData({
-              bargainActivitis: res.data.data.bargainActivitis,
-              discounts: res.data.data.discounts,
-              groupActivitis: res.data.data.groupActivitis
+              bussinessId: thisBusinessId
+            }),
+              console.log(thisBusinessId, olat, olng)
+            wx.request({
+              url: app.globalData.testUrl + '/storeInformation/storeDetail',
+              method: 'post',
+              data: {
+                businessId: thisBusinessId,
+                lat: olat,
+                lng: olng
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: function (msg) {
+                console.log(msg);
+                var score = msg.data.data.score;
+                console.log(score);
+                wx.setStorage({
+                  key: 'score',
+                  data: score,
+                })
+                wx.getLocation({
+                  type: 'wgs84',
+                  success: function (res) {
+                    var distance = that.getDistance(msg.data.data.lat, msg.data.data.lng, res.latitude, res.longitude);
+                    that.setData({
+                      distance: distance,
+                    })
+                  }
+                })
+                var state = msg.data.data.businessState;
+                app.globalData.merchantName = msg.data.data.storeName
+                wx.setStorage({
+                  key: 'status',
+                  data: state,
+                })
+                that.setData({
+                  businessState: msg.data.data.businessState,
+                  storedetail: msg.data.data.facadePhotoUrl,
+                  storeName: msg.data.data.storeName,
+                  score: msg.data.data.score,
+                  people: msg.data.data.amount,
+                  address: msg.data.data.facadeAdd,
+                  starttime: msg.data.data.startTime,
+                  endtime: msg.data.data.endTime,
+                  phonecall: msg.data.data.phone
+                })
+              }
             })
-          }
+            //请求商户服务
+            wx.request({
+              url: app.globalData.testUrl + '/search/wxStoreService',
+              method: 'post',
+              data: {
+                shopId: that.data.bussinessId
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (msg) {
+                that.setData({
+                  showListMsg: msg.data.data,
+                  showList: true
+                })
+              }
+            })
+            wx.request({
+              url: app.globalData.testUrl + '/search/judgeCollectStore',
+              method: 'post',
+              data: {
+                merchantId: that.data.bussinessId,
+                userId: app.globalData.userId
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (msg) {
+                that.setData({
+                  showCollect: msg.data.data
+                })
+              }
+            })
+            // 店铺活动
+            wx.getStorage({
+              key: 'status',
+              success: function (res) {
+                console.log(res.data);
+                var status = res.data;
+                wx.request({
+                  url: app.globalData.testUrl + '/search/searchMerActivity',
+                  method: 'post',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  data: {
+                    merchantId: thisBusinessId,
+                    status: status
+                  },
+                  success: function (res) {
+                    console.log(res)
+                    console.log(thisBusinessId, status)
+                    that.setData({
+                      bargainActivitis: res.data.data.bargainActivitis,
+                      discounts: res.data.data.discounts,
+                      groupActivitis: res.data.data.groupActivitis
+                    })
+                  }
+                })
+              },
+            })
+          },
         })
-      },
-    })*/
-
+      }
+    })
   },
   // 加入购物车
   addPlus: function (e) {
@@ -251,12 +248,12 @@ wx.getLocation({
   },
 
   //  客服电话
-   callPhone: function (e) {
-     var that=this;
-     wx.makePhoneCall({
-       phoneNumber: that.data.phonecall
-     })
-   },
+  callPhone: function (e) {
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.phonecall
+    })
+  },
   goMap: function (e) {
     wx.navigateTo({
       url: '../searchmap/searchmap',
@@ -310,7 +307,7 @@ wx.getLocation({
   */
   //店铺活动
   showStoreactivity: function () {
-    var that=this;
+    var that = this;
     that.setData({
       noshow: true,
       shopServiceList: false,
@@ -376,7 +373,7 @@ wx.getLocation({
         //console.log("返回成功啦111111111");
         // console.log(msg);
         that.setData({
-          noshow:false,
+          noshow: false,
           shopServicesMsg: msg.data.data
         })
         var isShow = that.data.shopServiceList;
@@ -455,29 +452,29 @@ wx.getLocation({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (msg) {
-         console.log(msg)
-         var oarr=msg.data.data;
-         if(oarr.length==0){
+        console.log(msg)
+        var oarr = msg.data.data;
+        if (oarr.length == 0) {
           that.setData({
             showModaleva: false,
             nocommsg: true,
-            showList:false,
+            showList: false,
             showstoreactivity: false,
             showChangetyre: false,
             shopServiceList: false
           })
-         }else{
-           var isShow = that.data.showModaleva;
-           that.setData({
-             evaluateList: msg.data.data,
-             showModaleva: true,
-             showList: false,
-             nocommsg: false,
-             showstoreactivity: false,
-             showChangetyre: false,
-             shopServiceList: false
-           })
-         }
+        } else {
+          var isShow = that.data.showModaleva;
+          that.setData({
+            evaluateList: msg.data.data,
+            showModaleva: true,
+            showList: false,
+            nocommsg: false,
+            showstoreactivity: false,
+            showChangetyre: false,
+            shopServiceList: false
+          })
+        }
       }
     })
   },
