@@ -9,35 +9,29 @@ Page({
     activityId:"",
     userGroupId:""
   },
-  onLoad: function (option) {
+  onLoad: function (options) {
     var that = this;
-    // if (openid == null || openid == "") {
-    //   common.getopenid();
-    // }
-    var sendinfo = option.sendinfo;
-    console.log(option);
+    var userGroupId = options.userGroupId;
+    var nums = parseInt(userGroupId);
+    console.log(nums)
+    that.setData({
+      userGroupId: nums
+    })
     //此处要获取支付页面跳转过来后 传过来的活动id
-    wx.getStorage({
-      key: 'activityId',
-      success: function (res) {
-        var activityId=res.data;
-        that.setData({
-          activityId: activityId
-        }),
         wx.request({
           url: app.globalData.testUrl + '/activity/userHelpGroupActivity',
           method: 'post',
           data: {
-            headGroupId: app.globalData.nums,//团长拼团的id187,//
-            userId: app.globalData.userId ,//333,//分享后好友的ID333
-            orderId: app.globalData.orderId,//
+            headGroupId:nums,//团长拼团的id187,//
+            userId:app.globalData.userId,//333,//分享后好友的ID333
+            orderId:app.globalData.orderId,//
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
             console.log(msg);
-            console.log(app.globalData.userId);
+            console.log(that.data.userGroupId, app.globalData.userId, app.globalData.orderId)
             var userGroupId = msg.data.data.Activity.userGroupId;
             //console.log(userGroupId)
             that.setData({
@@ -59,8 +53,7 @@ Page({
             })
           }
         })
-      },
-    })
+  
   },
   bindViewrules: function () {
     wx.navigateTo({

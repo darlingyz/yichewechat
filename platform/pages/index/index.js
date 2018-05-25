@@ -28,7 +28,7 @@ Page({
  */
   onLoad: function (options) {
     var that = this;
-    wx.showLoading({ title: '努力加载中...' }),
+   // wx.showLoading({ title: '努力加载中...' }),
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -58,6 +58,7 @@ Page({
                 success: function (res) {
                   wx.hideLoading();
                   var data = res.data.data;
+                  console.log(data)
                   if (data == null) {
                     wx.showModal({
                       title: '温馨提示',
@@ -180,7 +181,6 @@ Page({
           that.setData({
             userId: userId
           })
-          console.log(that.globalData.userId);
         }
       },
     })

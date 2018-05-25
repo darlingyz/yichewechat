@@ -96,13 +96,13 @@
       </view>
       <!--拼团活动  -->
       <view class='groupActivitis'>
-        <view wx:for="{{groupActivitis}}" wx:key="unique" class='groupbox color-degray'>
+        <view wx:for="{{groupActivitis}}" wx:key="unique" class='groupbox color-degray' bindtap='gogroupActivitis'>
             <image src='{{item.img}}' class='shoplogo fl mr20'></image>
             <view class='fl listbox'>
                  <text class='sername'>{{item.activityName}}</text>
                 <text class='serndec'>{{item.description}}</text> 
                 <text class='priec fs28'>￥{{item.groupPrice}} </text>
-                <text class='orginprice fs28'>原价:￥{{item.price}}</text>
+                <text class='orginprice fs28 '>原价:￥{{item.price}}</text>
             </view>
         </view>
       </view>

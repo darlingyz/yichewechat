@@ -35,7 +35,6 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (msg) {
-            console.log(msg);
             var userGroupId = msg.data.data.Activity.userGroupId;
             //console.log(userGroupId)
             that.setData({
@@ -57,7 +56,6 @@ Page({
             })
           }
         })
-
       },
     })
   },
@@ -75,48 +73,21 @@ Page({
     var that=this;
     withShareTicket: true;
     if (res.from === 'button') {
-      // 来自页面内转发按钮
       console.log(res.target)
-    }
-    return {
-      title: "提示",
-      path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
-      success: function (res) {
-        wx.showShareMenu({
-          // 要求小程序返回分享目标信息
-          withShareTicket: true
-        });
-        console.log(res);
-        var shareTickets = res.shareTickets[0];
-        app.globalData.shareTickets = shareTickets;
-        console.log(shareTickets);
-        console.log("分享成功！")
-        wx.getShareInfo({
-          //shareTicket: res.shareTickets[0],
-          success: function (res) {
-            console.log(res)
-            console.log("success获取信息成功")
-          },
-          fail: function (res) {
-            console.log(res)
-            console.log("fail获取信息失败")
-          },
-          complete: function (res) {
-            console.log(res);
-            console.log(res + "complet")
-          }
-        });
-      },
-      fail: function (res) {
-        // 分享失败
-        console.log(res)
-        console.log("fail分享失败")
+      return {
+        title: "提示",
+        path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
+        success: function (res) {
+          console.log(res);
+          console.log("分享成功！")
+        },
+        fail: function (res) {
+          console.log(res)
+          console.log("fail分享失败")
+        }
       }
     }
   },
   onReady:function(){
-    wx.showShareMenu({
-      withShareTicket: true
-    })
   }
 })

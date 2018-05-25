@@ -7,14 +7,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: ""
+    data: "",
+    userGroupId:"",
+    orderId:"",
   },
   //事件处理函数
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (option) {
     var that = this;
+    var userGroupId = option.userGroupId;
+    var nums = parseInt(userGroupId);
+    console.log(nums);
+      that.setData({
+        userGroupId:nums
+      })
     wx.getStorage({
       key: 'codedata',
       success: function (res) {
@@ -23,8 +31,10 @@ Page({
         //console.log(odata.data.data)
         var orderdata=odata.data.data;
         orderId = orderdata.orderId;
+        app.globalData.orderId = orderId;
         that.setData({
-          data:odata.data.data
+          data:odata.data.data,
+          orderId:""
         })
         if (res.statusCode == 200) {
           console.log("活动进入支付中");
@@ -107,7 +117,7 @@ Page({
           'success': function (res) {
             //支付成功，设定一个全局变量，用来设定去是否查看拼团还是支付
             wx.navigateTo({
-              url: '../friendgroup/friendgroup',
+              url: '../friendgroup/friendgroup?userGroupId=' + that.data.userGroupId,
             })
           },
           'fail': function (res) {

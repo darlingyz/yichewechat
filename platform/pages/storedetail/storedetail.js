@@ -504,6 +504,12 @@ Page({
       showcartdetail: !isShow,
     })
   },
+  //点击跳转到拼团页面
+  gogroupActivitis:function(){
+    wx.navigateTo({
+      url: '../groupactivity/groupactivity',
+    })
+  },
   /**
    * 弹出框蒙层截断touchmove事件
    */

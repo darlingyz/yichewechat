@@ -117,6 +117,7 @@ Page({
           shoppingCarId: app.globalData.shopcarId
         },
         success: function (res) {
+          console.log(app.globalData.userId, app.globalData.merchantName, app.globalData.businessId, app.globalData.carId, app.globalData.shopcarId)
           var orderId = res.data.data;
           app.globalData.orderId = orderId;
           if (res.data.code == 1) {

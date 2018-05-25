@@ -160,7 +160,7 @@ Page({
       'content-type': 'application/x-www-form-urlencoded'//默认值
     },
     success: function (res) {
-     // console.log(res);
+      console.log(res);
       //console.log(app.globalData.openId, that.data.phoneNum, that.data.verificationCode)
       var code=res.data.code;
       if(code==1){
@@ -171,6 +171,7 @@ Page({
               url: '../besurepass/besurepass',
             })
         }else{
+          //老用户
           var userId=res.data.data.id;
           app.globalData.userId = userId;
           wx.switchTab({
@@ -187,11 +188,7 @@ Page({
       }
     }
   })
-
-
-
-
-  },
+},
   //事件处理函数
   //跳转到一车独秀用户协议页
   bindViewAgreement: function () {

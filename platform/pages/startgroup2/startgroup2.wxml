@@ -16,7 +16,7 @@
 </view>
 
 <view class='team_show pr'>
-  <text class='count pa '>好友邀请你参加他的拼团 , 只差</text>
+  <text class='count pa mr10'>好友邀请你参加他的拼团,只差</text>
   <text class='residueNumbers pa'>{{residueNumbers}}</text>
   <text class='people pa'>人 !</text>
   <text class='residue-time pa'>截至<text class='time'>{{time}}</text>结束 </text>

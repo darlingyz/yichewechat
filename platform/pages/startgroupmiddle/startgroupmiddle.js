@@ -9,11 +9,10 @@ Page({
     activityId:"",
     userGroupId:""
   },
-
   onLoad: function (option) {
     var that = this;
     var userGroupId = option.group;
-    console.log(userGroupId);
+   // console.log(userGroupId);
     //此处要获取支付页面跳转过来后 传过来的活动id
     wx.getStorage({
       key: 'activityId',
@@ -33,9 +32,8 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-            console.log(msg);
+           // console.log(msg);
             var userGroupId = msg.data.data.Activity.userGroupId;
-            //console.log(userGroupId)
             that.setData({
               store: msg.data.data.Activity.activityImg,
               wash: msg.data.data.Activity.activityName,
@@ -80,7 +78,7 @@ Page({
         path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
           wx.request({
-            url: 'http://121.40.148.153:802/api' + '/activity/SearchheadGroupDetail',
+            url: app.globalData.testUrl  + '/activity/SearchheadGroupDetail',
             method: 'post',
             data: {
               userGroupId: that.data.userGroupId

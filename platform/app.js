@@ -33,8 +33,8 @@ App({
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
     //testUrl: 'http://192.168.1.130:802/api',  
     imgUrl: 'http://116.62.151.139/res/img/',
-  testUrl: 'https://api-wechat.glongcar.com/api',
-   //testUrl: 'http://121.40.148.153:802/api',
+    //testUrl:'https://api-wechat.glongcar.com/api',
+    testUrl: 'https://jk.glongcar.com/api',
     getuser: null,
     openId: null,
     sessionKey: null,
@@ -52,6 +52,7 @@ App({
     vatarUrl: "",
     shareTickets: "",
     num: null,
-    getuser: null
+    getuser: null,
+    fail:null,//flag表示调用授权失败,去调用button
   }
 })
