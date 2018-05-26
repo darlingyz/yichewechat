@@ -19,9 +19,9 @@
 }
 
 .wash {
-  left: 111rpx;
+  left: 80rpx;
   height: 34rpx;
-  width: 100rpx;
+  width: 150rpx;
   color: #2a1573;
   top: 12rpx;
   font-size: 34rpx;
@@ -76,6 +76,7 @@
   width: 692rpx;
   background-color: #efefed;
   margin: 34rpx auto;
+  overflow: hidden
 }
 
 .count {
@@ -109,10 +110,13 @@
   width: 70rpx;
   background-color: #0293d8;
   border-radius: 40rpx;
-  margin-top: 266rpx;
-  margin-left: 184rpx;
+  /* margin-top: 266rpx;
+  margin-left: 184rpx; */
   font-size: 22rpx;
   line-height: 38rpx;
+  position: absolute;
+  left: 6rpx;
+  top: 78rpx;
 }
 
 .pic_1 {
@@ -165,4 +169,10 @@
   border-radius: 8rpx;
   font-size: 35rpx;
   line-height: 86rpx;
+}
+.helpmsg{
+  width: 90%;
+  height: 80rpx;
+  margin-top:180rpx;
+  position: relative;
 }

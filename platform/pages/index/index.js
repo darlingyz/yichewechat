@@ -56,10 +56,19 @@ Page({
                 },
                 method: 'post',
                 success: function (res) {
+                  console.log("登录成功,返回信息")
                   wx.hideLoading();
                   var data = res.data.data;
-                  console.log(data)
-                  if (data == null) {
+                  if (data != null) {
+                    var userId = res.data.data.userId;
+                    app.globalData.userId = userId;
+                    that.initshowCar(userId);
+                    that.initbao(userId);
+                    that.setData({
+                      userId: userId
+                    })
+                  } else {
+                    console.log("没有返回信息~提醒绑定手机~~~")
                     wx.showModal({
                       title: '温馨提示',
                       content: '请先绑定手机号!',
@@ -77,26 +86,7 @@ Page({
                         }
                       }
                     })
-                  } else {
-                    var userId = res.data.data.userId;
-                    app.globalData.userId = userId;
-                    that.initshowCar(userId);
-                    that.initbao(userId);
-                    that.setData({
-                      userId: userId
-                    })
-                    //console.log(that.globalData.userId);
                   }
-                  /**var userId = res.data.data.userId;
-                  console.log(userId)
-                  app.globalData.userId = userId;
-                  that.initshowCar(userId);//车辆
-                  that.initbao(userId);//红包
-                  that.setData({
-                    userId: userId
-                  })
-                  
-                  **/
                 },
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -155,7 +145,15 @@ Page({
       method: 'post',
       success: function (res) {
         var data = res.data.data;
-        if (data == null) {
+        if (data != null) {
+          var userId = res.data.data.userId;
+          app.globalData.userId = userId;
+          that.initshowCar(userId);
+          that.initbao(userId);
+          that.setData({
+            userId: userId
+          })
+        } else {
           wx.showModal({
             title: '温馨提示',
             content: '请先绑定手机号!',
@@ -172,14 +170,6 @@ Page({
                 })
               }
             }
-          })
-        } else {
-          var userId = res.data.data.userId;
-          app.globalData.userId = userId;
-          that.initshowCar(userId);
-          that.initbao(userId);
-          that.setData({
-            userId: userId
           })
         }
       },
@@ -278,8 +268,6 @@ Page({
             })
           }
         }
-        //app.globalData.carId = breakRules.carId;
-
       }
     })
   },
@@ -391,7 +379,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   
   },
 
   /**
@@ -413,6 +401,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.onLoad();
+   
   },
   /**
    * 页面上拉触底事件的处理函数

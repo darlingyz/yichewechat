@@ -96,9 +96,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        //console.log(orderId, app.globalData.openId)
-        console.log(msg);
-        console.log("111111111")
         wx.requestPayment({
           'timeStamp': msg.data.data.timeStamp,
           'nonceStr': msg.data.data.nonceStr,
@@ -112,8 +109,6 @@ Page({
             })
           },
           'fail': function (res) {
-            console.log(orderCode, app.globalData.openId)
-            console.log(res);
             var err=res.errMsg;
             if (err =="requestPayment:fail cancel"){
                 wx.showToast({

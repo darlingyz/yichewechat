@@ -15,10 +15,10 @@
   <view class='navto fl mt40 h100 ml90'>></view>
 </view>
 <view class='wp100 h100 clicktap h150' bindtap='bindViewCarList' wx:else>
-  <image src='{{carLogo}}' class='w180 fl ml80 mt10 h100' mode='widthFix'></image>
-  <view class='fl mt20 h100 ml20 wp50 '>
-    <view class='fs35' bindtap='bindViewCarList'>{{carName}}</view>
-    <view class='fl fs28 pt10'>行驶里程</view>
+  <image src='{{carLogo}}' class='w180 fl ml80 mt10 h100 mb20' mode='widthFix'></image>
+  <view class='fl mt20 h150 ml20 wp50 '>
+    <view class='fs30 ohid h80 mt10' bindtap='bindViewCarList'>{{carName}}</view>
+    <view class='fl fs28 pt10 mr10'>行驶里程</view>
     <view class='fl fs28 pt10'>{{strokeCount}} km</view>
   </view>
   <view class='navto fr mt40 h100 mr40'>></view>

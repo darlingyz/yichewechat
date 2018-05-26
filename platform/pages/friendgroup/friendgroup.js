@@ -22,9 +22,9 @@ Page({
           url: app.globalData.testUrl + '/activity/userHelpGroupActivity',
           method: 'post',
           data: {
-            headGroupId:nums,//团长拼团的id187,//
-            userId:app.globalData.userId,//333,//分享后好友的ID333
-            orderId:app.globalData.orderId,//
+            headGroupId:nums,//团长拼团的id222,//
+            userId:app.globalData.userId,//325,//分享后好友的ID333
+            orderId:app.globalData.orderId,//31
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值

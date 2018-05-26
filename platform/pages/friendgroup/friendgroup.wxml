@@ -16,11 +16,17 @@
   <!-- <text class='residueNumbers pa'></text> -->
   <text class='call-friend pa'>人，快喊好友来一起拼团吧！</text>
   <text class='residueTime pa'>{{residueTime}}</text>
-  <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
-  <text class='colonel  dis-b ta-c color-white pa'>团长</text>
-  <view wx:for='{{helpsMsg}}' wx:key="unique">
-    <image class='pic_2 pa .w100' src='{{item.portait}}'></image>
+  <view class='helpmsg wp80 ma'>
+      <view wx:for='{{helpsMsg}}' wx:key="unique" class='fl w80 h80 mt20 picbox mr20'>
+        <image src="{{item.portait}}" mode='widthFix' class='w80 h80'></image>
+      </view>
+       <text class='colonel ta-c color-white pa w40 h20 fl'>团长</text>
   </view>
+  <!-- <image class='pic_1 pa .w100' src='{{pic_1}}'></image>
+  <text class='colonel  dis-b ta-c color-white pa'>团长</text>
+  <view wx:for='{{helpsMsg}}' wx:key="unique" class='fl w80 h80 mt20'>
+    <image src='{{item.portait}}' mode='widthFix' class='w80 h80'></image>
+  </view> -->
 </view>
 
 <view class='group_way wp100 border-b fs25 h60 .border-t pr'>

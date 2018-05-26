@@ -28,14 +28,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-
-        console.log(res);
         var odetail = res.data;
         that.setData({
           data: odetail
         })
-        //console.log(app.globalData.userId, app.globalData.orderId, app.globalData.discountId)
-        //console.log("66666666666666666")
       }
     })
   },
@@ -90,7 +86,6 @@ Page({
   },
   paypay: function () {
     var that = this;
-    console.log(app.globalData.orderId, app.globalData.openId)
     console.log("进入支付" + app.globalData.orderId);
     wx.request({
       url: app.globalData.testUrl + "/Wx/getPrePayId",
@@ -111,15 +106,11 @@ Page({
           'signType': 'MD5',
           'paySign': msg.data.data.paySign,
           'success': function (res) {
-            //console.log("此时支付成功");
-            //console.log(res);
             wx.navigateTo({
               url: '../orderdetailed/orderdetailed',
             })
           },
           'fail': function (res) {
-           // console.log("此时支付错了 +++++++++++");
-            //console.log(res);
             var err=res.errMsg;
             if (err =="requestPayment:fail cancel"){
                 wx.showToast({
