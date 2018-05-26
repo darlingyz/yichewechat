@@ -20,8 +20,8 @@
     </view>
 </view>
 <view class='cb mt500'>
-    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
-    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
 </view>
 <view class='cb'>
     <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
@@ -38,23 +38,26 @@
 </view>
 <view class='cutdetial wp90 h300 rad10 mt50 ma'>
 <view class='h280 middle'>
-  <block wx:for="{{friendsCutList}}">
-      <view class='pr pt90'>
-          <view class='bgbox wp90 h80 lh80 pa'>
+<view class='pr pt20' wx:if="{{friendlist}}">
+  <block wx:for="{{friendsCutList}}" wx:key="unique">
+          <view class='bgbox wp90 h80 lh80'>
             <view class='pr'>
               <image src='{{item.userHelpPortait}}' class='frienduserSrc w60 pa' mode='widthFix'></image>
               <view class='friendsname w150 pa fs28'>{{item.userHelpName}}</view>
-              <view class='cutnum w200 pa fs28'>砍了一刀</view>
-              <view class='date w100 pa fs28'>{{item.helpTime}}</view>
+              <view class='cutnum w150 pa fs28'>砍了一刀</view>
+              <view class='date w200 pa fs28'>{{item.helpTime}}</view>
             </view>
           </view> 
-      </view>
   </block>
+</view>
+    <view wx:else>
+      <text class='fs28'> 暂无好友帮他砍价,赶紧帮他砍一刀吧~</text>
+    </view>
   </view>
 </view>
 <button class='cutbtn h90 lh90 wp90 ma ta-c mt80' bindtap='bindViewHelpcut'><text class='color-white fs40'>帮他砍价！</text></button>
 <view class='h60 lh60 wp100 ta-c fs30 border-t border-b mt150'>-猜你喜欢-</view>
-<block wx:for='{{adsList}}'>
+<block wx:for='{{adsList}}' wx:key="unique">
   <image src='{{item.adsSrc}}' mode='widthFix' class='wp100 mt20'></image>
 </block>
 

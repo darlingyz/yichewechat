@@ -17,11 +17,6 @@
 bottom: 5rpx;
 left: 330rpx;
 }
-.frscir{
- bottom: 10rpx;
- right: 10rpx;
-top: 10rpx;
-}
 .discount{
   top: 155rpx;
 }
@@ -30,8 +25,8 @@ top: 10rpx;
   bottom: 0;
   left: 0; 
   width: 100%;
-  height: 70rpx;
-  background: #f66;
+  height: 80rpx;
+ line-height: 82rpx;
 }
 .gocar{
   border:1px solid #ccc;
@@ -40,19 +35,24 @@ top: 10rpx;
    text-align: center;
 }
  .sharebox{
+
   background: url("http://116.62.151.139/res/img/bottom.png") no-repeat center center;
   text-indent: 10rpx;
 }
 .obtn{
+  width:100rpx;
   position: absolute;
   top: 0;
   right: 0;
-  width: 80rpx;
   margin: 0 auto;
+  background: #00a43c;
+  outline: none;
+  border: none;
 } 
 .btnpic{
+  width: 80rpx;
   display: inline-block;
   display: -webkit-inline-box;
-  margin-top: 10%;
   margin:0 auto;
+  left: 10rpx;
 }

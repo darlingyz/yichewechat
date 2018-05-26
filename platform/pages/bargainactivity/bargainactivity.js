@@ -7,13 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
     status: 0,
     type: 2,
     bargainList: "",
-    couponSrc: 'http://116.62.151.139/res/img/coupon.png'
+    couponSrc: 'http://116.62.151.139/res/img/coupon.png',
+    nomsg:false,
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,8 +29,6 @@ Page({
         that.initBargainList(res.latitude, res.longitude);
       }
     });
-
-
   },
 
   /**
@@ -44,7 +41,6 @@ Page({
   //数组循环砍价活动列表方法
   initBargainList: function (lat, lng) {
     let that = this;
-
     console.log(lat);
     wx.request({
       url: app.globalData.testUrl + '/activity/findActivity',
@@ -62,31 +58,35 @@ Page({
         var msg = result.data.data;
         console.log(msg);
         //遍历这个对象
-        if (msg) {
-          for (var i = 0; i < msg.length; i++) {
-            console.log(that.data.lat);
-            console.log(that.data.lng);
-            msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
-          }
-        }
+        // if (msg) {
+        //   for (var i = 0; i < msg.length; i++) {
+        //     console.log(that.data.lat);
+        //     console.log(that.data.lng);
+        //     msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
+        //   }
+        // }
         that.setData({
+          nomsg: true,
           bargainList: msg
         })
       }
     })
   },
   bargaindetail: function (e) {
+    console.log(e);
+    var activityId = e.currentTarget.dataset.id;
     wx.request({
       url: app.globalData.testUrl + '/activity/bargainDetail',
       method: 'post',
       data: {
-        id: e.currentTarget.dataset.id,
+        activityId: activityId,
         userId: app.globalData.userId
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
+        console.log(activityId, app.globalData.userId)
         console.log(msg);
         if (msg.data.code == 1) {
           console.log("调到未完");
@@ -95,7 +95,7 @@ Page({
             data: msg,
           })
             wx.navigateTo({
-              url: '../bargain/bargain',
+              url: '../bargain/bargain?activityId=' + activityId,
             })
         }else{
           console.log("跳到成功页面");

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    userBargainId:""
   },
 
   /**
@@ -14,15 +14,17 @@ Page({
    */
   onLoad: function (options) {
     var that =this;
-    wx.getStorage({
-      key: 'userBargainId',
-      success: function(res) {
-        console.log(res.data);
+    var userBargainId = options.userBargainId;
+    var userNum = parseInt(userBargainId);
+      that.setData({
+        userBargainId: userNum
+      })
+    console.log(userNum)
         wx.request({
           url: app.globalData.testUrl + '/activity/helpResult',
           method: 'post',
           data: {
-            userBargainId : res.data
+            userBargainId: userNum
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值
@@ -43,19 +45,16 @@ Page({
               pnumb: msg.data.data.minNum,
               userName: msg.data.data.userName,
               storeba: msg.data.data.img,
-              
             })
           }
         })
-      },
-    })
- 
   },
   //事件处理函数
   //我也要发起
   bindViewStart: function () {
+    var that=this;
     wx.navigateTo({
-      url: '../friendsbargain/friendsbargain'
+      url: '../friendsbargain/friendsbargain?userBargainId?=' + that.data.userBargainId
     })
   },
 

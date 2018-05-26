@@ -463,7 +463,7 @@
           <view class='fs40 fl fw'>￥{{item.groupPrice}}</view>
           <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
         </view>
-        <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+        <view class='cb ml40 fs20 h20 pa discount'>---拼团低至{{item.distance}}折-</view>
       </view>
       <!--地址  -->
       <view class='cb border-b wp100 h80 lh80'>

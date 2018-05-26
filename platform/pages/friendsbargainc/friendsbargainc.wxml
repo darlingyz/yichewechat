@@ -38,7 +38,7 @@
 </view>
 <view class='cutdetial wp90 h300 rad10 mt50 ma'>
 <view class='h280 middle'>
-  <block wx:for="{{friendsCutList}}">
+  <block wx:for="{{friendsCutList}}" wx:key="unique">
       <view class='pr pt90'>
           <view class='bgbox wp90 h80 lh80 pa'>
             <view class='pr'>

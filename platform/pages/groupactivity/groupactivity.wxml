@@ -1,5 +1,5 @@
-<!-- <text class='fs28'>活动准备中,敬请期待~</text> -->
-<view wx:for="{{activityList}}" wx:key="unique" wx:if="{{nomsg}}">
+<view class='havamsg' wx:if="{{nomsg}}">
+<view wx:for="{{activityList}}" wx:key="unique" >
   <view class='.box_top wp100 pr mt10' data-id='{{item.activityId}}' bindtap='bindViewgroupdetails'>
     <image class='store' src='{{item.img}}'></image>
     <image class='group_icon pa' src='{{group_icon}}'>
@@ -20,4 +20,8 @@
     <text class='store_distanca pa fs26'>{{item.distance}}km</text>
   </view>
 </view>
+</view>
+ <view class='onmsg' wx:else>
+  <text class='fs28'>活动准备中,敬请期待~</text>
+</view> 
 

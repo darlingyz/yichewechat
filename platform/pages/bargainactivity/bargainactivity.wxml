@@ -1,6 +1,7 @@
 <!--pages/bargainactivity/bargainactivity.wxml-->
-<text class='fs28'>活动准备中,敬请期待~</text>
-<view wx:for="{{bargainList}}" wx:key="unique" wx:if="{{nomsg}}">
+
+<view wx:if="{{nomsg}}">
+<view wx:for="{{bargainList}}" wx:key="unique" >
     <view class='wp100' bindtap='bargaindetail' data-id="{{item.id}}">
       <view class="pr" >
         <image src='{{item.img}}' class='wp60 fl mt10 h234'></image>
@@ -28,4 +29,8 @@
         <view class='fl h80 lh80 fs28 ml10 color-gray ohid w320'>{{item.address}}</view>
         <view class='fr h80 lh80 fs28 mr10 color-gray w100'bindtap='calculate'>{{item.distance}}km</view>
     </view>
+</view>
+</view>
+<view wx:else>
+<text class='fs28'>活动准备中,敬请期待~</text>
 </view>

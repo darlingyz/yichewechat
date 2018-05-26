@@ -344,7 +344,6 @@ Page({
     var that = this;
     wx.getLocation({
       success: function (res) {
-        // console.log(res);
         var latitude = res.latitude;
         var longitude = res.longitude;
         //定位成功，请求接口去查找信息
@@ -359,9 +358,7 @@ Page({
             lng: longitude
           },
           success: function (res) {
-            // console.log(latitude, longitude);
-            // console.log(res);
-            //console.log("333333333333333333")
+            console.log(res)
             var ogroups = res.data.data.groupActivities;
             var ores = res.data.data.bargainActivities;
             that.setData({
@@ -666,7 +663,7 @@ Page({
       data: businessId,
     });
     wx.navigateTo({
-      url: '../bargainb/bargainb',
+      url: '../bargainactivity/bargainactivity',
     })
   },
   goGroup: function (e) {

@@ -25,8 +25,7 @@
 }
 .bgbox{
   background-color: #fff;
-  top:20rpx;
-  left: 30rpx;
+  margin: 15rpx auto;
 }
 .frienduserSrc{
   top: 10rpx;
@@ -34,12 +33,17 @@
 }
 .friendsname{
   left: 80rpx;
+  overflow: hidden;
+  text-align: center;
 }
 .cutnum{
-  left: 260rpx;
+  left: 230rpx;
 }
 .date{
-  left: 430rpx;
+  height: 80rpx;
+  left: 400rpx;
+  overflow: hidden;
+  text-align: center
 }
 .time{
  right: -10rpx;
