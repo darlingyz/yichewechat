@@ -34,18 +34,18 @@
     </view>
   </view>
   <view class="wp90 dis-flex flex-row rad10 h70 lh70 myCar ta-c nomsg" wx:if="{{nomsg}}">
-      <text class='nomg'>没有默认车辆请设置!</text>
+    <text class='nomg'>没有默认车辆请设置!</text>
   </view>
 </view>
 <view wx:if="{{showit}}">
-<view class="container fs28 mt5">
-  <view class="contenter h40 lh40 pb20">
-    <view class="signInIcon wp70 ti50 fl">每周签到送优惠券哦！</view>
-    <view class="fr bg-light-green rad40 w150 ta-c fs25 color-white" bindtap='coupondetail'>
-      点击领取
+  <view class="container fs28 mt5">
+    <view class="contenter h40 lh40 pb20">
+      <view class="signInIcon wp70 ti50 fl">每周签到送优惠券哦！</view>
+      <view class="fr bg-light-green rad40 w150 ta-c fs25 color-white" bindtap='coupondetail'>
+        点击领取
+      </view>
     </view>
   </view>
-</view>
 </view>
 <view class="border-b-5"></view>
 <!-- 栏目 -->
@@ -414,72 +414,73 @@
 </view>
 <view class="border-b-15"></view>
 <!--限时优惠活动-->
- <view class="ml15 mr15" >
+<view class="ml15 mr15">
   <view class="fs30 ta-c h60 lh60 border-b">-限时优惠活动-</view>
-</view> 
+</view>
 <!-- <text class='wp100 fs28 ta-c'>敬请期待~</text> -->
 <!--父元素，最大的盒子  -->
-<view class='wp100 wpbox kanjia'>
-  <block wx:for="{{odata}}" wx:key="unique">
-    <!--子元素，每个小盒子  -->
-    <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goActive'>
-      <!--公司活动图片-->
-      <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
-      <!--其他内容 -->
-      <view class='chil_box'>
-        <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
-        <view class='fs30 fw actname'>{{item.activityName}}</view>
-        <view class='fs30 fw desname'>{{item.description}}</view>
-        <view class='pt40 disname'>
-          <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
-          <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+<view class='activebox'>
+  <view class='list' wx:if="{{activemsg}}">
+    <view class='wp100 wpbox kanjia'>
+      <block wx:for="{{odata}}" wx:key="unique">
+        <!--子元素，每个小盒子  -->
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goActive'>
+          <!--公司活动图片-->
+          <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+          <!--其他内容 -->
+          <view class='chil_box'>
+            <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+            <view class='fs30 fw actname'>{{item.activityName}}</view>
+            <view class='fs30 fw desname'>{{item.description}}</view>
+            <view class='pt40 disname'>
+              <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
+              <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+            </view>
+            <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+          </view>
+          <!--地址  -->
+          <view class='cb border-b wp100 h80 lh100'>
+            <view class='fl h80 lh80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
+            <view class='fl h80 lh80 fs28 mr20 color-gray address'>{{item.address}}</view>
+            <!--距离  -->
+            <view class='f1 h80 lh80 fs28 color-gray distance'>{{item.distance}}km</view>
+          </view>
         </view>
-        <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
-      </view>
-      <!--地址  -->
-      <view class='cb border-b wp100 h80 lh100'>
-        <view class='fl h80 lh80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
-        <view class='fl h80 lh80 fs28 mr20 color-gray address'>{{item.address}}</view>
-        <!--距离  -->
-        <view class='f1 h80 lh80 fs28 color-gray distance'>{{item.distance}}km</view>
-      </view>
-
+      </block>
     </view>
-  </block>
-</view>
-<!--拼团  -->
-<view class='wp100 wpbox'>
-  <block wx:for="{{ogroup}}" wx:key="unique">
-    <!--子元素，每个小盒子  -->
-    <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goGroup'>
-      <!--公司活动图片-->
-      <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
-      <!--其他内容 -->
-      <view class='chil_box'>
-        <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
-        <view class='fs30 fw actname'>{{item.activityName}}</view>
-        <view class='fs30 fw desname'>{{item.description}}</view>
-        <view class='pt40 disname'>
-          <view class='fs40 fl fw'>￥{{item.groupPrice}}</view>
-          <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+    <!--拼团  -->
+    <view class='wp100 wpbox'>
+      <block wx:for="{{ogroup}}" wx:key="unique">
+        <!--子元素，每个小盒子  -->
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goGroup'>
+          <!--公司活动图片-->
+          <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
+          <!--其他内容 -->
+          <view class='chil_box'>
+            <image src='http://116.62.151.139/res/img/coupon.png' class='boxa wp40'></image>
+            <view class='fs30 fw actname'>{{item.activityName}}</view>
+            <view class='fs30 fw desname'>{{item.description}}</view>
+            <view class='pt40 disname'>
+              <view class='fs40 fl fw'>￥{{item.groupPrice}}</view>
+              <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
+            </view>
+            <view class='cb ml40 fs20 h20 pa discount'>---拼团低至{{item.distance}}折-</view>
+          </view>
+          <!--地址  -->
+          <view class='cb border-b wp100 h80 lh80'>
+            <view class='fl h80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
+            <view class='fl h80 fs28 mr20 color-gray address'>{{item.address}}</view>
+            <!--距离  -->
+            <view class='f1 h80 fs28 color-gray distance'>{{item.distance}}km</view>
+          </view>
         </view>
-        <view class='cb ml40 fs20 h20 pa discount'>---拼团低至{{item.distance}}折-</view>
-      </view>
-      <!--地址  -->
-      <view class='cb border-b wp100 h80 lh80'>
-        <view class='fl h80 fs28 mr20 chanName'>{{item.merchangtName}}</view>
-        <view class='fl h80 fs28 mr20 color-gray address'>{{item.address}}</view>
-        <!--距离  -->
-        <view class='f1 h80 fs28 color-gray distance'>{{item.distance}}km</view>
-      </view>
-
+      </block>
     </view>
-  </block>
+  </view>
+  <view wx:else>
+    <text class='fs28'> 活动准备中,敬请期待~</text>
+  </view>
 </view>
-
-
-
-
 <!--优惠券弹窗-->
 <view wx:if="{{showcoupondetail}}">
   <view class="modal-dialog wp80">
@@ -504,9 +505,9 @@
             </view>
           </view>
         </view>
-          <view class='couponbtn rad40 h60 w200 ta-c mt30 ma' data-id="{{item.couponId}}" bindtap='gomoney'>
-            <text class='fs30'>立即领取</text>
-          </view>
+        <view class='couponbtn rad40 h60 w200 ta-c mt30 ma' data-id="{{item.couponId}}" bindtap='gomoney'>
+          <text class='fs30'>立即领取</text>
+        </view>
       </block>
     </view>
 
@@ -521,15 +522,15 @@
   <view class="contbox">
     <button class='prompt'>微信授权</button>
     <view class='pic wp100 h160'>
-        <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
-    <text class='applyuser'>一车独秀申请获得一下授权</text>
+      <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
+      <text class='applyuser'>一车独秀申请获得一下授权</text>
     </view>
     <view class='advise'>
       <text class='titles'>获取你的公开信息（昵称，头像等）</text>
     </view>
     <view class='allbtn'>
-    <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
-    <button class='cancel' bindtap='close'>取消</button>
+      <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
+      <button class='cancel' bindtap='close'>取消</button>
     </view>
   </view>
 </view>

@@ -62,5 +62,5 @@
   </view>
 </view>
 <view wx:else>
-  <text class='msg'>暂无优惠活动,敬请期待~</text>
+  <text class='msg'>活动准备中,敬请期待~</text>
 </view>

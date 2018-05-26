@@ -6,6 +6,7 @@ Page({
     havemsg: false,
     showit: true,
     reson: false,
+    activemsg:false,
     showcoupondetail: false,
     showModal: false,
     maskModal: false,
@@ -359,12 +360,20 @@ Page({
           },
           success: function (res) {
             console.log(res)
+
             var ogroups = res.data.data.groupActivities;
             var ores = res.data.data.bargainActivities;
-            that.setData({
-              odata: ores,
-              ogroup: ogroups
-            })
+            if (ogroups.length == 0 & ores==0 ){
+              that.setData({
+                activemsg: false,
+              })
+            }else{
+              that.setData({
+                activemsg: true,
+                odata: ores,
+                ogroup: ogroups
+              })
+            }
           }
         })
       },

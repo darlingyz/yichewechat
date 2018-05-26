@@ -30,11 +30,18 @@ Page({
           },
           success: function (msg) {
             console.log(msg);
-            that.setData({
-              nomsg:true,
-              activityList: msg.data.data,
-              group_icon: 'http://116.62.151.139/res/img/group-icon.png',
-            })
+            var odata=msg.data.data;
+              if(odata.length==0){
+              that.setData({
+                nomsg: false
+              })
+            }else{
+                that.setData({
+                  nomsg: true,
+                  activityList: msg.data.data,
+                  group_icon: 'http://116.62.151.139/res/img/group-icon.png',
+                })
+            }
           }
         })
       },

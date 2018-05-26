@@ -56,7 +56,17 @@ Page({
       },
       success: function (result) {
         var msg = result.data.data;
-        console.log(msg);
+          if(msg.length==0){
+              that.setData({
+                nomsg: false,
+              })
+          }else{
+            that.setData({
+              nomsg: true,
+              bargainList: msg
+            })
+          }
+       // console.log(msg);
         //遍历这个对象
         // if (msg) {
         //   for (var i = 0; i < msg.length; i++) {
@@ -65,10 +75,7 @@ Page({
         //     msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
         //   }
         // }
-        that.setData({
-          nomsg: true,
-          bargainList: msg
-        })
+
       }
     })
   },
