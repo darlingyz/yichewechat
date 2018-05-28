@@ -1,55 +1,87 @@
 /* pages/friendsbargainc/friendsbargainc.wxss */
-.userPic{
+
+.userPic {
   top: 20rpx;
 }
-.bg{
+
+.bg {
   top: 70rpx;
 }
-.brand{
+
+.brand {
   top: 125rpx;
 }
-.callon{
+
+.callon {
   top: 165rpx;
 }
-.discountbg{
+
+.discountbg {
   top: 232rpx;
 }
-.detail{
+
+.detail {
   top: 250rpx;
 }
-.pnum{
+
+.pnum {
   background-color: #f4cc00;
 }
-.cutdetial{
+
+.cutdetial {
   background-color: #f4cb01;
 }
-.bgbox{
+
+.bgbox {
   background-color: #fff;
-  top:20rpx;
-  left: 30rpx;
+  margin: 0 auto;
+ margin-top: 15rpx;
+
 }
-.frienduserSrc{
+
+.frienduserSrc {
   top: 10rpx;
   left: 10rpx;
 }
-.friendsname{
+
+.friendsname {
   left: 80rpx;
 }
-.cutnum{
+
+.cutnum {
   left: 260rpx;
 }
-.date{
-  left: 430rpx;
+
+.date {
+  left: 400rpx;
 }
-.time{
- right: -10rpx;
+
+.time {
+  right: -10rpx;
 }
-.cuttext{
-bottom: 5rpx;
-left: 330rpx;
+
+.cuttext {
+  bottom: 5rpx;
+  left: 330rpx;
 }
-.frscir{
- bottom: 10rpx;
- right: 22rpx;
+
+.frscir {
+  bottom: 10rpx;
+  right: 22rpx;
 }
-.middle{overflow-y: scroll;}
+
+.middle {
+  overflow-y: scroll;
+}
+
+.sharebox {
+  background: #00a43c;
+  height: 80rpx;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 80rpx;
+  border-radius: 0;
+  z-index: 999999;
+}

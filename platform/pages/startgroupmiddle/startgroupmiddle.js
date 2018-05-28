@@ -75,7 +75,7 @@ Page({
       console.log(res.target)
       return {
         title: "提示",
-        path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
+        path:'/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
           wx.request({
             url: app.globalData.testUrl  + '/activity/SearchheadGroupDetail',

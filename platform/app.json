@@ -49,7 +49,7 @@
     "pages/bargain/bargain",
     "pages/bargainb/bargainb",
     "pages/bargainactivity/bargainactivity",
-    "pages/friendsbargain/friendsbargain",
+  "pages/friendsbargain/friendsbargain",
     "pages/friendsbargainb/friendsbargainb",
     "pages/friendsbargainc/friendsbargainc",
     "pages/friendsbargaind/friendsbargaind",
@@ -71,7 +71,8 @@
     "pages/startgroup2/startgroup2",
     "pages/friendgroup/friendgroup",
     "pages/startgroupmiddle/startgroupmiddle",
-    "pages/paygroupfriend/paygroupfriend"
+    "pages/paygroupfriend/paygroupfriend",
+    "pages/waitpay/waitpay"
   ],
   "window": {
     "backgroundTextStyle": "light",

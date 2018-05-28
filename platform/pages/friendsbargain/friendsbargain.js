@@ -11,34 +11,38 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载   
    */
   onLoad: function (options) {
     var that = this;
     var userBargainId = options.userBargainId;
-    var BargainNum = 40;//parseInt(userBargainId);//砍价活动的id
+    var BargainNum = parseInt(userBargainId);//砍价活动的id
+    //console.log(BargainNum);
     that.setData({
       userBargainId: BargainNum
     })
-    wx.request({
-      url: app.globalData.testUrl + '/activity/userBargainDetail',
-      method: 'post',
-      data: {
-        userBargainId: BargainNum
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
-      },
-      success: function (msg) {
-        console.log(msg);
-        var userlist = msg.data.data.userBargainHelps;
-        console.log(userlist);
-        if (userlist.length==0){
+        wx.request({
+          url: 'https://jk.glongcar.com/api' + '/activity/userBargainDetail',
+          method: 'post',
+          data: {
+            userBargainId: BargainNum
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'//默认值
+          },
+          success: function (msg) {
+            console.log(msg);
+            console.log(that.data.userBargainId);
+            console.log("分享给好友的信息+++++++++++++++++")
+            console.log(msg.data.data.attendAmount)
+            var userlist = msg.data.data.userBargainHelps;
+            console.log(userlist);
+            if (userlist.length == 0) {
               that.setData({
                 friendlist: false,
                 userSrc: msg.data.data.portait,
                 washcoupons: msg.data.data.activityName,
-                pnum: '888',
+                // pnum: msg.data.data.attendAmount,
                 nprice: msg.data.data.minPrice,
                 oprice: msg.data.data.originalPrice,
                 origprice: msg.data.data.originalPrice,
@@ -50,36 +54,37 @@ Page({
                 storeba: msg.data.data.img,
                 friendsCutList: msg.data.data.userBargainHelps
               })
-        }else{
-          that.setData({
-            friendlist: true,
-            userSrc: msg.data.data.portait,
-            washcoupons: msg.data.data.activityName,
-            pnum: '888',
-            nprice: msg.data.data.minPrice,
-            oprice: msg.data.data.originalPrice,
-            origprice: msg.data.data.originalPrice,
-            middleprice: msg.data.data.middlePrice,
-            bottomprice: msg.data.data.minPrice,
-            pnuma: msg.data.data.middleNum,
-            pnumb: msg.data.data.minNum,
-            userName: msg.data.data.userName,
-            storeba: msg.data.data.img,
-            friendsCutList: msg.data.data.userBargainHelps
-          })
-        }
-      }
-    })
+            } else {
+              that.setData({
+                friendlist: true,
+                userSrc: msg.data.data.portait,
+                washcoupons: msg.data.data.activityName,
+                pnum: msg.data.data.attendAmount,
+                nprice: msg.data.data.minPrice,
+                oprice: msg.data.data.originalPrice,
+                origprice: msg.data.data.originalPrice,
+                middleprice: msg.data.data.middlePrice,
+                bottomprice: msg.data.data.minPrice,
+                pnuma: msg.data.data.middleNum,
+                pnumb: msg.data.data.minNum,
+                userName: msg.data.data.userName,
+                storeba: msg.data.data.img,
+                friendsCutList: msg.data.data.userBargainHelps
+              })
+            }
+          }
+        })
+     
   },
   //事件处理函数
   //帮他砍价
   bindViewHelpcut: function () {
     var that = this;
     wx.request({
-      url: app.globalData.testUrl + '/activity/helpBargain',
+      url: 'https://jk.glongcar.com/api' + '/activity/helpBargain',
       method: 'post',
       data: {
-        userId: 298,//app.globalData.userId,//用户id
+        userId:app.globalData.userId,//用户id
         //这里需要从上个页面获取 参与活动成功的返回值:活动id
         userBargainId: that.data.userBargainId
       },
@@ -88,7 +93,7 @@ Page({
       },
       success: function (msg) {
         console.log(msg);
-        console.log(that.data.userBargainId)
+        //console.log(that.data.userBargainId)
         if(msg.data.code == 1){
           wx.navigateTo({
             url: '../friendsbargainb/friendsbargainb?userBargainId=' + that.data.userBargainId
@@ -101,7 +106,7 @@ Page({
             data: 20,
           })
           wx.navigateTo({
-            url: '../friendsbargainb/friendsbargainb'
+            url: '../friendsbargainb/friendsbargainb?userBargainId=' + that.data.userBargainId
           })
         }
       }

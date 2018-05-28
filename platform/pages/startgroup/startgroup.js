@@ -75,7 +75,7 @@ Page({
     if (res.from === 'button') {
       console.log(res.target)
       return {
-        title: "提示",
+        title: "一车独秀拼团活动",
         path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
           console.log(res);

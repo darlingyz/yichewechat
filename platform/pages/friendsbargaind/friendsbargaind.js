@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userBargainId:""
   },
 
   /**
@@ -14,18 +14,19 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.getStorage({
-      key: 'activityId',
-      success: function(res) {
+    var userBargainId = options.userBargainId;
+    that.setData({
+      userBargainId: userBargainId
+    })
         wx.request({
           url: app.globalData.testUrl + '/activity/userBargainDetail',
           method: 'post',
           data: {
             //从上个页面获取
-            userBargainId: res.data
+            userBargainId: 40,//userBargainId
           },
           header: {
-            'content-type': 'application/x-www-form-urlencoded'//默认值
+            'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (msg) {
             console.log(msg);
@@ -33,7 +34,7 @@ Page({
               userSrc: msg.data.data.portait,
               storeba: msg.data.data.img,
               washcoupons: msg.data.data.activityName,
-              pnum: '888',
+              pnum: msg.data.data.attendAmount,
               nprice: msg.data.data.minPrice,
               oprice: msg.data.data.originalPrice,
               origprice: msg.data.data.originalPrice,
@@ -48,8 +49,7 @@ Page({
           }
         })
 
-      },
-    })
+    
   },
   //事件处理函数
   //查看订单去付款
@@ -74,35 +74,35 @@ Page({
           time: '13:38',
         },
         {
-          frienduserSrc: 'http://192.168.1.111:91/frienduser.png',
+          frienduserSrc: 'http://116.62.151.139/res/img/success.png',
           friendsname: '淦隆汽车',
           cutnum: '一',
           date: '03-02 ',
           time: '13:38',
         },
         {
-          frienduserSrc: 'http://192.168.1.111:91/frienduser.png',
+          frienduserSrc: 'http://116.62.151.139/res/img/success.png',
           friendsname: '一车独秀',
           cutnum: '一',
           date: '03-02 ',
           time: '13:38',
         },
         {
-          frienduserSrc: 'http://192.168.1.111:91/frienduser.png',
+          frienduserSrc: 'http://116.62.151.139/res/img/success.png',
           friendsname: '小确幸',
           cutnum: '一',
           date: '03-02 ',
           time: '13:38',
         },
         {
-          frienduserSrc: 'http://192.168.1.111:91/frienduser.png',
+          frienduserSrc: 'http://116.62.151.139/res/img/success.png',
           friendsname: '淦隆汽车',
           cutnum: '一',
           date: '03-02 ',
           time: '13:38',
         },
         {
-          frienduserSrc: 'http://192.168.1.111:91/frienduser.png',
+          frienduserSrc: 'http://116.62.151.139/res/img/success.png',
           friendsname: '一车独秀',
           cutnum: '一',
           date: '03-02 ',

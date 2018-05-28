@@ -57,20 +57,23 @@ Page({
                 },
                 method: 'post',
                 success: function (res) {
-                  console.log("登录成功,返回信息")
+                  console.log("登录成功,返回信息*******")
+                  console.log(res)
                   wx.hideLoading();
                   var data = res.data.data;
                   if (data != null) {
                     var userId = res.data.data.userId;
                     app.globalData.userId = userId;
+                    console.log(userId)
                     that.initshowCar(userId);
                     that.initbao(userId);
                     that.setData({
                       userId: userId
                     })
                   } else {
-                    console.log("没有返回信息~提醒绑定手机~~~")
-                    wx.showModal({
+                    console.log("没有返回信息~提醒绑定手机~~~");
+                    console.log(res)
+                   /* wx.showModal({
                       title: '温馨提示',
                       content: '请先绑定手机号!',
                       success: function (res) {
@@ -86,7 +89,7 @@ Page({
                           })
                         }
                       }
-                    })
+                    })*/
                   }
                 },
               })
@@ -149,6 +152,7 @@ Page({
         if (data != null) {
           var userId = res.data.data.userId;
           app.globalData.userId = userId;
+          console.log(userId)
           that.initshowCar(userId);
           that.initbao(userId);
           that.setData({
@@ -277,6 +281,7 @@ Page({
    */
   onReady: function () {
 
+
   },
   // 循环优惠券列表方法
   coupondetail: function () {
@@ -385,7 +390,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
   },
 
   /**

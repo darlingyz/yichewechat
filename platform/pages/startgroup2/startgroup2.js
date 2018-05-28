@@ -30,11 +30,12 @@ Page({
     that.setData({
       userGroupId: nums
     })
+    //https://api-wechat.glongcar.com/api
     wx.updateShareMenu({
       withShareTicket: true,
       success: function () {
         wx.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
+          url: 'https://api-wechat.glongcar.com/api,' + '/activity/SearchheadGroupDetail',
           method: 'post',
           data: {
             userGroupId: nums
@@ -71,7 +72,7 @@ Page({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
+          url: 'https://api-wechat.glongcar.com/api,' + '/Wx/aaa',
           method: "post",
           data: {
             code: res.code
@@ -109,7 +110,7 @@ Page({
               app.globalData.nickName = nickName;
               app.globalData.vatarUrl = vatarUrl;
               wx.request({
-                url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+                url: 'https://api-wechat.glongcar.com/api,' + '/login/wxLittleLogin',
                 data: {
                   openId: openid,
                   userName: nickName,
@@ -124,7 +125,9 @@ Page({
                   wx.hideLoading();
                   var data = res.data.data;
                   if (data == null) {
-                    wx.showModal({
+                    console.log("没有绑定手机号,需要绑定,分享登陆~")
+                    //设定一个全局当
+                    /*wx.showModal({
                       title: '温馨提示',
                       content: '请先绑定手机号!',
                       success: function (res) {
@@ -140,7 +143,7 @@ Page({
                           })
                         }
                       }
-                    })
+                    })*/
                   } else {
                     var userId = res.data.data.userId;
                     var carId = res.data.data.carId;
@@ -186,7 +189,7 @@ Page({
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
     wx.request({
-      url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+      url: 'https://api-wechat.glongcar.com/api,' + '/login/wxLittleLogin',
       data: {
         openId: openid,
         userName: nickName,
@@ -228,8 +231,7 @@ Page({
   },
   //使用分享过来的id进行参与活动,我这里写死一个
   //传的值为id// 分享
-  onShareAppMessage: function (res) {
-    
+  onShareAppMessage: function (res) { 
     withShareTicket: true;
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -241,7 +243,7 @@ Page({
         success: function (res) {
           console.log(res);
           wx.request({
-            url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
+            url: 'https://api-wechat.glongcar.com/api,' + '/activity/SearchheadGroupDetail',
             method: 'post',
             data: {
               userGroupId: that.data.userGroupId
@@ -324,7 +326,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'https://api-wechat.glongcar.com/api' + '/activity/HelpGroupActivity',
+        url: 'https://api-wechat.glongcar.com/api,' + '/activity/HelpGroupActivity',
         method: 'post',
         data: {
           headGroupId:app.globalData.nums,

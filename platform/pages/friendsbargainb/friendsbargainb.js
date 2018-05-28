@@ -20,6 +20,7 @@ Page({
         userBargainId: userNum
       })
     console.log(userNum)
+    
         wx.request({
           url: app.globalData.testUrl + '/activity/helpResult',
           method: 'post',
@@ -35,7 +36,7 @@ Page({
               joinpeople: msg.data.data.helpNum,
               userSrc: msg.data.data.portait,
               washcoupons: msg.data.data.activityName,
-              pnum: '888',
+              pnum: msg.data.data.attendAmount,
               nprice: msg.data.data.minPrice,
               oprice: msg.data.data.originalPrice,
               origprice: msg.data.data.originalPrice,
@@ -53,8 +54,10 @@ Page({
   //我也要发起
   bindViewStart: function () {
     var that=this;
+    console.log(that.data.userBargainId)
+    console.log("我也要发发起活动")
     wx.navigateTo({
-      url: '../friendsbargain/friendsbargain?userBargainId?=' + that.data.userBargainId
+      url: '../bargainactivity/bargainactivity',//?activityId= + that.data.userBargainId
     })
   },
 

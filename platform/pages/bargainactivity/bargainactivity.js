@@ -55,6 +55,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (result) {
+        console.log(result);
         var msg = result.data.data;
           if(msg.length==0){
               that.setData({
@@ -95,25 +96,16 @@ Page({
       success: function (msg) {
         console.log(activityId, app.globalData.userId)
         console.log(msg);
-        if (msg.data.code == 1) {
-          console.log("调到未完");
-          wx.setStorage({
-            key: 'msg',
-            data: msg,
-          })
-            wx.navigateTo({
-              url: '../bargain/bargain?activityId=' + activityId,
-            })
+        wx.navigateTo({
+          url: '../bargain/bargain?activityId=' + activityId,
+        })
+       /* if (msg.data.code == 1) {
         }else{
           console.log("跳到成功页面");
-          wx.setStorage({
-            key: 'activityId',
-            data: e.currentTarget.dataset.id,
-          })
           wx.navigateTo({
-            url: '../friendsbargainc/friendsbargainc',
+            url: '../friendsbargainc/friendsbargainc?activityId=' + activityId,
           })
-        }
+        }*/
       }
     })
   },

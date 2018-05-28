@@ -37,10 +37,11 @@
   left: 80rpx;
 }
 .cutnum{
+  width: 130rpx;
   left: 260rpx;
 }
 .date{
-  left: 430rpx;
+  left: 400rpx;
 }
 .time{
  right: -10rpx;

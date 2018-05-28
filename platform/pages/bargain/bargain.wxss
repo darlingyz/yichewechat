@@ -1,4 +1,14 @@
 /* pages/bargain/bargain.wxss */
+button::after{
+  border:none;
+  border-radius: 0;
+}
+input{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+
 .boxa{
   height: 235rpx;
 }
@@ -35,9 +45,15 @@ left: 330rpx;
    text-align: center;
 }
  .sharebox{
-
-  background: url("http://116.62.151.139/res/img/bottom.png") no-repeat center center;
-  text-indent: 10rpx;
+  background: #00a43c;
+  height: 80rpx;
+  margin-left: 0;
+  margin-right:0;
+  padding-left:0;
+  padding-right: 0;
+  line-height: 80rpx;
+  border-radius: 0;
+  z-index: 999999
 }
 .obtn{
   width:100rpx;
@@ -48,6 +64,9 @@ left: 330rpx;
   background: #00a43c;
   outline: none;
   border: none;
+  background: #fff;
+  z-index: 9999;
+    border-radius: 0;
 } 
 .btnpic{
   width: 80rpx;

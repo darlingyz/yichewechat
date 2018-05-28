@@ -1,4 +1,4 @@
-// pages/bargain/bargain.js
+// pages/bargain/bargain.js// pages/bargain/bargain.js
 var app = getApp();
 Page({
 
@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    acitivityId: ""
+    acitivityId: "",
+    userBargainId:""
   },
 
   /**
@@ -27,37 +28,51 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success:function(res){
-        console.log(res);
-        console.log("加载信息......")
-      }
-    })
-    wx.getStorage({
-      key: 'msg',
-      success: function (res) {
-        var msg = res.data;
-        console.log(msg);
+        var msg = res.data.data;
+        console.log(msg)
+        console.log(res)
         that.setData({
-          storeSrc: msg.data.data.img,
+          storeSrc: msg.img,
           couponSrc: 'http://116.62.151.139/res/img/coupon.png',
-          bargainSrc: msg.data.data.img,
-          washcar: msg.data.data.activityName,
-          slogana: msg.data.data.description,
-          currentPrice: '￥' + msg.data.data.minPrice,
-          originalPrice: '￥' + msg.data.data.price,
-          discount: (msg.data.data.minPrice / msg.data.data.price * 10).toFixed(1),
-          bottomprice: msg.data.data.minPrice,
-          origprice: msg.data.data.price,
-          middleprice: msg.data.data.middlePrice,
-          pnuma: msg.data.data.middleNum,
-          pnumb: msg.data.data.minNum,
-          saleprice: msg.data.data.price,
-          cutedprice: msg.data.data.minPrice,
-          acitivityId: msg.data.data.id,
-          service: msg.data.data.service //页面上要有服务详情的明细的,现在页面上没有
+          bargainSrc: msg.img,
+          washcar: msg.activityName,
+          slogana: msg.description,
+          currentPrice: '￥' + msg.minPrice,
+          originalPrice: '￥' + msg.price,
+          discount: (msg.minPrice / msg.price * 10).toFixed(1),
+          bottomprice: msg.minPrice,
+          origprice: msg.price,
+          middleprice: msg.middlePrice,
+          pnuma: msg.middleNum,
+          pnumb: msg.minNum,
+          saleprice: msg.price,
+          cutedprice: msg.minPrice,
+          acitivityId: msg.id,
+          service: msg.service //页面上要有服务详情的明细的,现在页面上没有
         })
       }
     })
   },
+  //分享给朋友
+  /**onShareAppMessage:function (res) {
+    var that = this;
+    withShareTicket: true;
+    console.log("分享给好友,为什么....")
+    if (res.from === 'button') {
+      console.log(res.target)
+      return {
+        title:"一车独秀砍价活动",
+        path:'/pages/friendsbargain/friendsbargain?userBargainId=55',//+that.data.userBargainId,
+        success:function (res) {
+          console.log(res)
+          console.log("分享成功~~")
+        },
+        fail:function(req) {
+          console.log(req);
+        },
+      }
+    }
+  },**/
   //立即购买
   bindViewBuy: function () {
     var that = this;
@@ -96,42 +111,21 @@ Page({
       success: function (msg) {
         console.log(msg);
         var userBargainId = msg.data.data.userBargainId;
-        console.log(userBargainId+"砍价活动的id该参数要传递给分享好友的页面");
+        console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
         that.setData({
           userBargainId: userBargainId
         })
-        that.onShareAppMessage();
       }
     })
   },
-  //分享给朋友
-  onShareAppMessage:function (res) {
-    var that=this;
-    withShareTicket:true;
-    if (res.from === 'button'){
-      console.log(res.target);
-      return {
-        title: '一车独秀砍价活动',
-        desc: '请帮你的好友砍一刀吧!',
-        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,
-        success(e) {
-          console.log(e)
-          wx.showShareMenu({
-            withShareTicket: true
-          });
-        },
-        fail(e) {
-          console.log(e);
-        },
-        complete() { },
-      }
-    }
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
 
   /**
@@ -172,7 +166,23 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    var that = this;
+    withShareTicket: true;
+    if (res.from === 'button') {
+      console.log(res.target)
+      return {
+        title: "一车独秀砍价活动",
+        path: '/pages/friendsbargain/friendsbargain?userBargainId='+that.data.userBargainId,
+        success: function (res) {
+          console.log(res)
+          console.log("分享成功~~")
+          console.log(that.data.userBargainId)
+        },
+        fail: function (req) {
+          console.log(req);
+        },
+      }
+    }
   }
 })

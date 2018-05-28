@@ -6,7 +6,8 @@ Page({
    */
   data: {
     appGeneralize: '汽车服务全包揽 , 用一车独秀APP',
-    activityId:""
+    activityId:"",
+    userBargainId:""
   },
 
   /**
@@ -37,36 +38,34 @@ Page({
       }
     })
   },
+  //点击跳转到砍价
   bargainDetailView:function(e){
     var that=this;
     var status = e.currentTarget.dataset.status;
-    var activityId = e.currentTarget.dataset.id;
-    console.log(activityId)
+    var userBargainId = e.currentTarget.dataset.id;
+    console.log(userBargainId,status)
     that.setData({
-      activityId: activityId
-    })
-    wx.setStorage({
-      key: 'activityId',
-      data: activityId,
+      userBargainId: userBargainId
     })
     if(status == -1){//失败页
       wx.navigateTo({
-        url: '../friendsbargaine/friendsbargaine',
+        url: '../friendsbargaine/friendsbargaine?userBargainId=' + userBargainId,
       })
     }else if(status == 0){//等待中
       wx.navigateTo({
-        url: '../friendsbargainc/friendsbargainc',
+        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId,
       })
     }else if(status == 1){//中间价
       wx.navigateTo({
-        url: '../friendsbargainc/friendsbargainc',
+        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId,
       })
     }else{//完成
       wx.navigateTo({
-        url: '../friendsbargaind/friendsbargaind',
+        url: '../friendsbargaind/friendsbargaind?userBargainId=' + userBargainId,
       })
     }
   },
+  //点击跳转到拼团
   groupDetailView : function(e){
     var that=this;
     var status = e.currentTarget.dataset.status;
