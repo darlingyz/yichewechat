@@ -61,3 +61,20 @@
   <image src='{{item.adsSrc}}' mode='widthFix' class='wp100 mt20'></image>
 </block>
 
+<!-- 确认授权的模态框  -->
+<view class="modal-mask" wx:if="{{maskModal}}">
+  <view class="contbox">
+    <button class='prompt'>微信授权</button>
+    <view class='pic wp100 h160'>
+        <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
+    <text class='applyuser'>一车独秀申请获得一下授权</text>
+    </view>
+    <view class='advise'>
+      <text class='titles'>获取你的公开信息（昵称，头像等）</text>
+    </view>
+    <view class='allbtn'>
+    <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
+    <button class='cancel' bindtap='close'>取消</button>
+    </view>
+  </view>
+</view>

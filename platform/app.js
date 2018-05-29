@@ -11,6 +11,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res.code);
+        this.globalData.code=res.code;
         wx.request({
           url: this.globalData.testUrl + '/Wx/aaa',
           method: "post",
@@ -31,10 +32,11 @@ App({
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
-    //testUrl: 'http://192.168.1.130:802/api',  
+    //testUrl: 'http://192.168.1.137:802/api',
     imgUrl: 'http://116.62.151.139/res/img/',
-    testUrl:'https://api-wechat.glongcar.com/api',
-    //testUrl: 'https://jk.glongcar.com/api',
+   // testUrl:'https://api-wechat.glongcar.com/api',
+    testUrl: 'https://jk.glongcar.com/api',
+    code:"",
     getuser: null,
     openId: null,
     sessionKey: null,

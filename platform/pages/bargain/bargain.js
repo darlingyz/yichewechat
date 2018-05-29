@@ -54,7 +54,7 @@ Page({
     })
   },
   //分享给朋友
-  /**onShareAppMessage:function (res) {
+  /*onShareAppMessage:function (res) {
     var that = this;
     withShareTicket: true;
     console.log("分享给好友,为什么....")
@@ -62,7 +62,7 @@ Page({
       console.log(res.target)
       return {
         title:"一车独秀砍价活动",
-        path:'/pages/friendsbargain/friendsbargain?userBargainId=55',//+that.data.userBargainId,
+        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,//
         success:function (res) {
           console.log(res)
           console.log("分享成功~~")
@@ -72,7 +72,7 @@ Page({
         },
       }
     }
-  },**/
+  },*/
   //立即购买
   bindViewBuy: function () {
     var that = this;
@@ -123,9 +123,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.showShareMenu({
-      withShareTicket: true
-    })
   },
 
   /**
