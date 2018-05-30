@@ -77,21 +77,34 @@
   <view class='bg-white wp78 h200 fr mt10' wx:if="{{noshow}}">
     <view wx:if="{{showstoreactivity}}">
       <!-- 砍价活动 -->
-      <view class='bargainActivitis fs28 mt20 ml20'>
-      
-        <view wx:for="{{bargainActivitis}}" wx:key="unique">
-          <!-- <image src='{{item.img}}' class='picimg'></image> -->
+      <view class='bargainActivitis'>
+        <view wx:for="{{bargainActivitis}}" wx:key="unique" class=' wp100 h150 bargin-box' bindtap='gobargin'>
+          <view class='leftpic fl wp30 h150'>
+             <image src='{{item.img}}' class='picimg' mode='widthFix'></image> 
+          </view>
+           <view class='rightbox fl wp60 h150'>
+              <text class='fs26 mr20'>{{item.activityName}}</text>
+              <text class='fs20 fr mr10 lh40'>{{item.num}}人已抢</text>
+              <view class='fs20 lh40'>{{item.description}}</view>
+              <text class='fs26 mr20'>￥{{item.minPrice}}</text> 
+              <text class='fs20 max-price'>￥{{item.price}}</text> 
+           </view>
           <view>
-            <!-- <text>{{item.activityName}}</text>
-                <text>{{item.description}}</text>
-                <text>{{item.activityName}}</text> -->
           </view>
         </view>
       </view>
       <!--折扣活动  -->
       <view class='discounts'>
-        <view wx:for="{{discounts}}" wx:key="unique">
+        <view wx:for="{{discounts}}" wx:key="unique" class='wp100 h150 coupsbox'>
+              <view class='wp30 coups h150 fl'>￥{{item.price}}</view>
+             <view class='fl wp60 h150 detailcups'>
+             <text class='coupsdetail fs25'>{{item.title}}</text>
 
+             <text class='fs20'>剩余时间:{{item.endDay}}天</text>
+             <text class='fs20'>适用于本店</text>
+              <text class='coupsdetail fs20 ml10'>满{{item.discountPrice}}元可用</text>
+    <button class='fs22 ml20 w120 h50 gosolve' bindtap='gosolve' data-id='{{item.id}}' disabled='{{!disabled}}'>{{datatypes}}</button>
+             </view> 
         </view>
       </view>
       <!--拼团活动  -->

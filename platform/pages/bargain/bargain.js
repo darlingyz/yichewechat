@@ -99,7 +99,7 @@ Page({
     var that = this;
     console.log(app.globalData.userId, that.data.acitivityId)
     wx.request({
-      url: app.globalData.testUrl + '/activity/useBargainActivity',
+      url:'app.globalData.testUrl' + '/activity/useBargainActivity',
       method: 'post',
       data: {
         userId: app.globalData.userId,
@@ -115,10 +115,30 @@ Page({
         that.setData({
           userBargainId: userBargainId
         })
+        console.log("点击获取分享个会好友的id")
       }
     })
   },
-
+  onShareAppMessage: function (res) {
+    console.log("分享给好友,aaaa")
+    var that = this;
+    withShareTicket: true;
+    if (res.from === 'button') {
+      console.log(res.target)
+      return {
+        title: "一车独秀砍价活动",
+        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,
+        success: function (res) {
+          console.log(res)
+          console.log("分享成功~~")
+          console.log(that.data.userBargainId)
+        },
+        fail: function (req) {
+          console.log(req);
+        },
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -163,23 +183,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    var that = this;
-    withShareTicket: true;
-    if (res.from === 'button') {
-      console.log(res.target)
-      return {
-        title: "一车独秀砍价活动",
-        path: '/pages/friendsbargain/friendsbargain?userBargainId='+that.data.userBargainId,
-        success: function (res) {
-          console.log(res)
-          console.log("分享成功~~")
-          console.log(that.data.userBargainId)
-        },
-        fail: function (req) {
-          console.log(req);
-        },
-      }
-    }
-  }
+
 })

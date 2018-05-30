@@ -1,8 +1,8 @@
-<view class='appDdownlode pr ml40 mb20'>
+<!-- <view class='appDdownlode pr ml40 mb20'>
   <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img/fork.png' mode='widthFix'></image>
   <text class='appGeneralize pa fs26'>{{appGeneralize}}</text>
   <view class='downlodeButton pa rad8 h40 ta-c lh40' bindtap='godown'>点击下载</view>
-</view>
+</view> -->
 
 <block wx:for="{{bargainactiveList}}" wx:key="unique">
   <view class='activelist wp100 border-t pr' data-id='{{item.userBargainId}}' data-status='{{item.status}}' bindtap='bargainDetailView'>

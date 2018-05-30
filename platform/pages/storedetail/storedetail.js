@@ -9,6 +9,8 @@ Page({
     lng: "",
     lat: "",
     noshow: true,
+    disabled: false,
+    datatypes:"领取",
     showstoreactivity: true,
     showChangetyre: false,
     showBrand: false,
@@ -47,7 +49,8 @@ Page({
     discounts: "",
     groupActivitis: "",
     phone: "",
-    startSrc: 'http://116.62.151.139/res/img/star.png'
+    startSrc: 'http://116.62.151.139/res/img/star.png',
+    merchantId:""
   },
 
   /**
@@ -112,7 +115,8 @@ Page({
                   address: msg.data.data.facadeAdd,
                   starttime: msg.data.data.startTime,
                   endtime: msg.data.data.endTime,
-                  phonecall: msg.data.data.phone
+                  phonecall: msg.data.data.phone,
+                  merchantId: msg.data.data.merchantId
                 })
               }
             })
@@ -153,7 +157,6 @@ Page({
             wx.getStorage({
               key: 'status',
               success: function (res) {
-                console.log(res.data);
                 var status = res.data;
                 wx.request({
                   url: app.globalData.testUrl + '/search/searchMerActivity',
@@ -162,17 +165,42 @@ Page({
                     'content-type': 'application/x-www-form-urlencoded'
                   },
                   data: {
+                    userId: app.globalData.userId,
                     merchantId: thisBusinessId,
                     status: status
                   },
                   success: function (res) {
                     console.log(res)
-                    console.log(thisBusinessId, status)
-                    that.setData({
-                      bargainActivitis: res.data.data.bargainActivitis,
-                      discounts: res.data.data.discounts,
-                      groupActivitis: res.data.data.groupActivitis
-                    })
+                    var discounts=res.data.data.discounts;
+                    if(discounts.length==0){
+                      that.setData({
+                        noshow: true,
+                        bargainActivitis: res.data.data.bargainActivitis,
+                        //discounts: res.data.data.discounts,
+                        groupActivitis: res.data.data.groupActivitis
+                      })
+                    }else{
+                       for (var i = 0; i < discounts.length; i++) {
+                         if (discounts[i].receive == false) {
+                           console.log(discounts[i].receive)
+                           that.setData({
+                             disabled: false,
+                             datatypes: "已领取"
+                           })
+                         } else if (discounts[i].receive == true) {
+                           that.setData({
+                             disabled: true,
+                             datatypes: "领取"
+                           })
+                         }
+                       }
+                      that.setData({
+                        noshow: true,
+                        bargainActivitis: res.data.data.bargainActivitis,
+                        discounts: res.data.data.discounts,
+                        groupActivitis: res.data.data.groupActivitis
+                      })
+                    }
                   }
                 })
               },
@@ -181,6 +209,63 @@ Page({
         })
       }
     })
+  },
+  //店铺活动
+  showStoreactivity: function () {
+    var that = this;
+    that.setData({
+      noshow: true,
+      shopServiceList: false,
+      showstoreactivity: true,
+      showModal: false,
+      showChangetyre: false,
+      showBrand: false,
+      nocommsg: false,
+    })
+  },
+  //领取优惠券
+  gosolve:function(e){
+      console.log(e);
+      var that=this;
+      var couponId = e.currentTarget.dataset.id;
+      wx.request({
+        url: app.globalData.testUrl + '/coupon/getMerCoupon',
+        method: "post",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          userId: app.globalData.userId,
+          couponId: couponId
+        },
+        success:function(res){
+          console.log(res)
+          var ocode=res.data.code;
+          if(ocode==1){
+            wx.showToast({
+              title: '领取成功',
+              icon:"success",
+              duration:1000
+            })
+            that.setData({
+              disabled: false,
+              datatypes: "已领取"
+            })
+          }else{
+            wx.showToast({
+              title: '领取失败',
+              icon: "success",
+              duration: 1000
+            })
+          }
+        }
+      })
+  },
+  //点击去砍价活动页面
+  gobargin:function(){
+      wx.navigateTo({
+        url: '../bargainactivity/bargainactivity',
+      })
   },
   // 加入购物车
   addPlus: function (e) {
@@ -305,19 +390,7 @@ Page({
   /**
   * 弹窗
   */
-  //店铺活动
-  showStoreactivity: function () {
-    var that = this;
-    that.setData({
-      noshow: true,
-      shopServiceList: false,
-      showstoreactivity: true,
-      showModal: false,
-      showChangetyre: false,
-      showBrand: false,
-      nocommsg: false,
-    })
-  },
+
   //轮胎更换
   showChangetyre: function () {
     var isShow = this.data.showChangetyre;

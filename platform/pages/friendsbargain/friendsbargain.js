@@ -1,5 +1,6 @@
 //砍价活动,好友分享后打开的页面
 var app = getApp();
+
 Page({
 
   /**
@@ -15,6 +16,15 @@ Page({
    * 生命周期函数--监听页面加载   
    */
   onLoad: function (options) {
+    var pages = getCurrentPages();
+    var currentPage = pages[pages.length - 1] ;
+    var url = currentPage.route; //当前页面url
+    console.log(pages);
+    console.log(url);
+    console.log("uri============")
+
+
+
     wx.clearStorage();
     var that = this;
     console.log(options)
@@ -33,7 +43,8 @@ Page({
           url: 'https://jk.glongcar.com/api' + '/activity/userBargainDetail',
           method: 'post',
           data: {
-            userBargainId: BargainNum
+            userBargainId: BargainNum,
+            //BargainNum
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'//默认值

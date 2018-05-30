@@ -14,7 +14,8 @@
         <text class='name01'> 服务主题</text>
         <text class='name02'>预设内容</text>
     </view>
-    <view class='inter03' bindtap='abouts'>
+    <view class='inter03' >   
+      <!-- ///bindtap='abouts' -->
       <text class='name031'>服务类目</text>
       <view class='name03'>
         <image class='logs' src='../../images/logo.png' mode='widthFix'></image>

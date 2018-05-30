@@ -55,7 +55,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    var that = this;
+    withShareTicket: true;
+    if (res.from === 'button') {
+      return {
+        title: "一车独秀拼团活动",
+        path: '/pages/index/index',
+        success: function (res) {
+          console.log(res);
+          console.log("分享成功！")
+        },
+        fail: function (res) {
+          console.log(res)
+          console.log("fail分享失败")
+        }
+      }
+    }
   },
 
   /**
