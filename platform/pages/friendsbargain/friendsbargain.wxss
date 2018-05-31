@@ -1,21 +1,35 @@
 /* pages/friendsbargain/friendsbargain.wxss */
-.userPic{
-  top: 20rpx;
-}
-.bg{
-  top: 70rpx;
-}
-.brand{
-  top: 125rpx;
-}
-.callon{
-  top: 165rpx;
+.container-box {
+  width:100%;
+  height:500rpx;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
 }
 .discountbg{
-  top: 232rpx;
+  top:240rpx;
 }
+ .userPic{
+  top: 40rpx;
+}
+.bg{
+  top: 90rpx;
+}
+.brand{
+  top: 145rpx;
+}
+.callon{
+  top: 190rpx;
+}
+
 .detail{
-  top: 250rpx;
+  top: 270rpx;
+}
+.list-detail{
+  width: 100%;
+  height: 200rpx;
 }
 .pnum{
   background-color: #f4cc00;
@@ -37,7 +51,8 @@
   text-align: center;
 }
 .cutnum{
-  left: 230rpx;
+  left: 250rpx;
+  text-align: center
 }
 .date{
   height: 80rpx;
@@ -91,7 +106,6 @@
 .advise {
   width: 100%;
   height: 100rpx;
-  /* border-bottom: 1rpx solid #eaeaea; */
 }
 
 .titles {
@@ -132,7 +146,6 @@
   height: 80rpx;
   float: left;
   border: none;
-  /* border-right: 1rpx solid #eaeaea; */
   box-sizing: border-box;
   color: #09ba07;
   font-size: 30rpx;
@@ -155,7 +168,7 @@
 .allbtn {
   width: 100%;
   height: 80rpx;
-  /* border-bottom: 1rpx solid #eaeaea; */
+
   z-index: 9999
 }
 
@@ -164,4 +177,4 @@
   line-height: 40rpx;
   font-size: 28rpx;
   color: #000;
-}
+}   

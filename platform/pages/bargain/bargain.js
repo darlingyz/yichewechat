@@ -29,8 +29,8 @@ Page({
       },
       success:function(res){
         var msg = res.data.data;
-        console.log(msg)
-        console.log(res)
+       // console.log(msg)
+       // console.log(res)
         that.setData({
           storeSrc: msg.img,
           couponSrc: 'http://116.62.151.139/res/img/coupon.png',
@@ -53,30 +53,10 @@ Page({
       }
     })
   },
-  //分享给朋友
-  /*onShareAppMessage:function (res) {
-    var that = this;
-    withShareTicket: true;
-    console.log("分享给好友,为什么....")
-    if (res.from === 'button') {
-      console.log(res.target)
-      return {
-        title:"一车独秀砍价活动",
-        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,//
-        success:function (res) {
-          console.log(res)
-          console.log("分享成功~~")
-        },
-        fail:function(req) {
-          console.log(req);
-        },
-      }
-    }
-  },*/
-  //立即购买==========================
+  //立即购买
   bindViewBuy: function () {
     var that = this;
-    console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
+   // console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
     wx.request({
       url: app.globalData.testUrl + '/activity/bargainPay',
       method: 'post',
@@ -89,12 +69,12 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (res) {
-        console.log(res)
+       // console.log(res)
         wx.setStorage({
           key: 'paybargain',
           data: res,
         })
-        console.log(res)
+       // console.log(res)
          wx.navigateTo({
            url: '../paybargain/paybargain',
          })
@@ -104,7 +84,7 @@ Page({
 //发起砍价活动的接口
   createBargain: function () {
     var that = this;
-    console.log(app.globalData.userId, that.data.acitivityId)
+    //console.log(app.globalData.userId, that.data.acitivityId)
     wx.request({
       url:app.globalData.testUrl + '/activity/useBargainActivity',
       method: 'post',
@@ -116,40 +96,19 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg);
+       // console.log(msg);
         var userBargainId = msg.data.data.userBargainId;
-        console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
+ //     console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
         that.setData({
           userBargainId: userBargainId
         })
         wx.navigateTo({
           url: '../barginstart/barginstart?userBargainId=' + that.data.userBargainId+'&acitivityId=' + that.data.acitivityId,
         })
-        console.log("点击获取分享个会好友的id")
+       // console.log("点击获取分享个会好友的id")
       }
     })
   },
- /* onShareAppMessage: function (res) {
-    var that = this;
-    console.log("分享给好友,aaaa")
-    withShareTicket: true;
-    if (res.from === 'button') {
-      console.log(res.target)
-      return {
-        title: "一车独秀砍价活动",
-        path: '/pages/friendsbargain/friendsbargain?userBargainId='+ that.data.userBargainId,
-        // + that.data.userBargainId,
-        success: function (res) {
-          console.log(res)
-          console.log("分享成功~~")
-          console.log(that.data.userBargainId)
-        },
-        fail: function (req) {
-          console.log(req);
-        },
-      }
-    }
-  },*/
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

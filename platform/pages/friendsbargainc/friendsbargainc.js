@@ -1,4 +1,4 @@
- // pages/friendsbargainc/friendsbargainc.js
+// pages/friendsbargainc/friendsbargainc.js
 var app = getApp();
 Page({
   /**
@@ -6,8 +6,10 @@ Page({
    */
   data: {
     havemsg: false,
-    userBargainId:"",
-    acitivityId:""
+    counbanrgin: true,
+    userBargainId: "",
+    acitivityId: "",
+    orderId: ""
   },
 
   /**
@@ -15,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options)
+    // console.log(options)
     var userBargainId = options.userBargainId;
     var oacitivity = options.activityId;
     var acitivityId = parseInt(oacitivity);
@@ -75,11 +77,47 @@ Page({
         }
       }
     })
+    wx.request({
+      url: app.globalData.testUrl + '/activity/checkBargainOrder',
+      method: 'post',
+      data: {
+        //从上个页面获取
+        userId: app.globalData.userId,
+        activityId: acitivityId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      success: function (res) {
+        //console.log(app.globalData.userId, acitivityId)
+        console.log(res);
+        var odata = res.data.data;
+        if (odata == -1) {
+          //console.log("没有订单，继续分享")
+          that.setData({
+            counbanrgin: true
+          })
+        } else {
+          //console.log("已有订单，召唤好友隐藏")
+          var orderId = odata;
+          that.setData({
+            counbanrgin: false,
+            orderId: orderId
+          })
+        }
+      }
+    })
+  },
+  //查看订单
+  seeorder: function () {
+    var that = this;
+    wx.navigateTo({
+      url: '../waitpay/waitpay?orderId=' + that.data.orderId,
+    })
   },
   //立即购买
   bindViewBuy: function () {
-    var that=this;
-    console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
+    var that = this;
     wx.request({
       url: app.globalData.testUrl + '/activity/bargainPay',
       method: 'post',
@@ -92,41 +130,18 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         wx.setStorage({
           key: 'paybargain',
           data: res,
         })
-        console.log(res)
+        //console.log(res)
         wx.navigateTo({
           url: '../paybargain/paybargain',
         })
       }
     })
   },
-  //分享给朋友
- /* binsViewShare: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.testUrl + '/activity/useBargainActivity',
-      method: 'post',
-      data: {
-        userId: app.globalData.userId,
-        activityId: that.data.acitivityId
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
-      },
-      success: function (msg) {
-        console.log(msg);
-        var userBargainId = msg.data.data.userBargainId;
-        console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
-        that.setData({
-          userBargainId: userBargainId
-        })
-      }
-    })
-  },*/
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -151,7 +166,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -174,16 +188,27 @@ Page({
   onShareAppMessage: function (res) {
     var that = this;
     withShareTicket: true;
-    console.log("分享给好友,为什么....")
     if (res.from === 'button') {
-      console.log(res.target)
       return {
         title: "一车独秀砍价活动",
         path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,
         success: function (res) {
-          console.log(res)
+          //console.log(res)
           console.log("分享成功~~")
-          console.log(that.data.userBargainId)
+          //console.log(that.data.userBargainId)
+        },
+        fail: function (req) {
+          console.log(req);
+        },
+      }
+    } else {
+      return {
+        title: "一车独秀砍价活动",
+        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,
+        success: function (res) {
+          // console.log(res)
+          console.log("分享成功~~")
+          // console.log(that.data.userBargainId)
         },
         fail: function (req) {
           console.log(req);

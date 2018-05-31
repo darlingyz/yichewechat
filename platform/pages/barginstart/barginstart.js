@@ -9,16 +9,13 @@ Page({
     userBargainId:"",
      acitivityId:""
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options)
     var userBargainId = options.userBargainId;
     var acitivityId = options.acitivityId;
-    console.log(userBargainId);
     that.setData({
       userBargainId: userBargainId,
       acitivityId: acitivityId
@@ -34,7 +31,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg);
         var help = msg.data.data.userBargainHelps;
         if (help.length == 0) {
           that.setData({
@@ -52,7 +48,7 @@ Page({
             pnumb: msg.data.data.minNum,
             saleprice: msg.data.data.currentPrice,
             cutedprice: msg.data.data.minPrice,
-            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表
           })
         } else {
           that.setData({
@@ -70,7 +66,7 @@ Page({
             pnumb: msg.data.data.minNum,
             saleprice: msg.data.data.currentPrice,
             cutedprice: msg.data.data.minPrice,
-            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表
           })
         }
       }
@@ -79,7 +75,6 @@ Page({
   //立即购买
   bindViewBuy: function () {
     var that=this;
-    console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
     wx.request({
       url: app.globalData.testUrl + '/activity/bargainPay',
       method: 'post',
@@ -92,7 +87,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (res) {
-        console.log(res)
         wx.setStorage({
           key: 'paybargain',
           data: res,
@@ -104,29 +98,6 @@ Page({
       }
     })
   },
-  //分享给朋友
- /* binsViewShare: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.testUrl + '/activity/useBargainActivity',
-      method: 'post',
-      data: {
-        userId: app.globalData.userId,
-        activityId: that.data.acitivityId
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
-      },
-      success: function (msg) {
-        console.log(msg);
-        var userBargainId = msg.data.data.userBargainId;
-        console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
-        that.setData({
-          userBargainId: userBargainId
-        })
-      }
-    })
-  },*/
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -174,9 +145,20 @@ Page({
   onShareAppMessage: function (res) {
     var that = this;
     withShareTicket: true;
-    console.log("分享给好友,为什么....")
     if (res.from === 'button') {
-      console.log(res.target)
+      return {
+        title: "一车独秀砍价活动",
+        path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,
+        success: function (res) {
+          console.log(res)
+          console.log("分享成功~~")
+          console.log(that.data.userBargainId)
+        },
+        fail: function (req) {
+          console.log(req);
+        },
+      }
+    }else{
       return {
         title: "一车独秀砍价活动",
         path: '/pages/friendsbargain/friendsbargain?userBargainId=' + that.data.userBargainId,

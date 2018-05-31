@@ -57,11 +57,14 @@
   </view>
 </view>
 <view class='cb wp100 pa pf b0'>
-  <view class='wp40 fl fs28 h70 lh80 border-t ta-c' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
-  <!-- <image src='http://116.62.151.139/res/img/bottom.png' mode='widthFix' class='wp60 fl pr'></image> -->
+<view class='banrgn-box' wx:if="{{counbanrgin}}">
+ <view class='wp40 fl fs28 h80 lh80 border-t ta-c' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
   <button class='wp60 fl color-white sharebox' open-type="share">
     <text>召唤好友砍到￥{{cutedprice}}元</text>
   </button>
-  <!-- <view class='cuttext fl h70 lh70 ta-c pa color-white fs35'>召唤好友砍到￥{{cutedprice}}！</view>
-  <image src='http://116.62.151.139/res/img/friends.png' mode='widthFix' class='frscir w60 fl pa' bindtap='binsViewShare'></image> -->
+</view>
+ <view class='nobargin' wx:else>
+ <view class='wp100 fs28 h80 lh80 border-t ta-c' bindtap='seeorder'>查看订单</view>
+ </view>
+
 </view>

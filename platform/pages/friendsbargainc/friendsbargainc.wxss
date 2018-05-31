@@ -85,3 +85,7 @@
   border-radius: 0;
   z-index: 999999;
 }
+.nobargin{
+  background: #00a43c;
+  color: #fff;
+}

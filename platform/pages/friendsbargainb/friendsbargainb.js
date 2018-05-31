@@ -20,7 +20,6 @@ Page({
         userBargainId: userNum
       })
     console.log(userNum)
-    
         wx.request({
           url: app.globalData.testUrl + '/activity/helpResult',
           method: 'post',
@@ -31,7 +30,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-            console.log(msg);
+            //console.log(msg);
             that.setData({
               joinpeople: msg.data.data.helpNum,
               userSrc: msg.data.data.portait,
@@ -54,10 +53,9 @@ Page({
   //我也要发起
   bindViewStart: function () {
     var that=this;
-    console.log(that.data.userBargainId)
-    console.log("我也要发发起活动")
+    //console.log("我也要发发起活动")
     wx.navigateTo({
-      url: '../bargainactivity/bargainactivity',//?activityId= + that.data.userBargainId
+      url: '../bargainactivity/bargainactivity',
     })
   },
 
