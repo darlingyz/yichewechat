@@ -67,16 +67,6 @@ Page({
               bargainList: msg
             })
           }
-       // console.log(msg);
-        //遍历这个对象
-        // if (msg) {
-        //   for (var i = 0; i < msg.length; i++) {
-        //     console.log(that.data.lat);
-        //     console.log(that.data.lng);
-        //     msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
-        //   }
-        // }
-
       }
     })
   },
@@ -99,13 +89,6 @@ Page({
         wx.navigateTo({
           url: '../bargain/bargain?activityId=' + activityId,
         })
-       /* if (msg.data.code == 1) {
-        }else{
-          console.log("跳到成功页面");
-          wx.navigateTo({
-            url: '../friendsbargainc/friendsbargainc?activityId=' + activityId,
-          })
-        }*/
       }
     })
   },

@@ -1,63 +1,74 @@
 /* pages/friendsbargainc/friendsbargainc.wxss */
 
-.userPic {
-  top: 20rpx;
+.container-box {
+  width:100%;
+  height:500rpx;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+.discountbg{
+  top:240rpx;
+}
+ .userPic{
+  top: 40rpx;
+}
+.bg{
+  top: 90rpx;
+}
+.brand{
+  top: 145rpx;
+}
+.callon{
+  top: 190rpx;
 }
 
-.bg {
-  top: 70rpx;
+.detail{
+  top: 270rpx;
 }
-
-.brand {
-  top: 125rpx;
+.list-detail{
+  width: 100%;
+  height: 200rpx;
 }
-
-.callon {
-  top: 165rpx;
-}
-
-.discountbg {
-  top: 232rpx;
-}
-
-.detail {
-  top: 250rpx;
-}
-
-.pnum {
+.pnum{
   background-color: #f4cc00;
 }
-
-.cutdetial {
+.cutdetial{
   background-color: #f4cb01;
 }
-
-.bgbox {
+.bgbox{
   background-color: #fff;
-  margin: 0 auto;
- margin-top: 15rpx;
-
+  margin: 15rpx auto;
 }
-
-.frienduserSrc {
+.frienduserSrc{
   top: 10rpx;
   left: 10rpx;
 }
-
-.friendsname {
+.friendsname{
   left: 80rpx;
+  overflow: hidden;
+  text-align: center;
 }
-
-.cutnum {
-  left: 260rpx;
+.cutnum{
+  left: 250rpx;
+  text-align: center
 }
-
-.date {
+.date{
+  height: 80rpx;
   left: 400rpx;
+  overflow: hidden;
+  text-align: center
 }
-
-.time {
-  right: -10rpx;
+.time{
+ right: -10rpx;
+}
+.cutbtn{
+  background-color: #00a23d;
+}
+.middle{
+  overflow-y: scroll;
 }
 
 .cuttext {

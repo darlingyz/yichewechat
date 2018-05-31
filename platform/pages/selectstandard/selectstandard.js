@@ -58,7 +58,7 @@ Page({
   },
   //获取轮胎规格
   bindChange: function (e) {
-    console.log(e);
+    //console.log(e);
     var detail = e.detail.value;
     var num01 = detail[0] + 1,
       num02 = '/',
@@ -66,7 +66,7 @@ Page({
       num04 = 'R',
       num05 = detail[4] + 1,
       str = num01 + num02 + num03 + num04 + num05;
-    console.log(str);
+   // console.log(str);
     var that = this;
     that.setData({
       spec: str
@@ -76,7 +76,7 @@ Page({
   //点击搜索门店
   gosearch:function(){
     var that=this;
-    console.log(app.globalData.userId, app.globalData.carId, that.data.lat, that.data.lng)
+    //console.log(app.globalData.userId, app.globalData.carId, that.data.lat, that.data.lng)
     wx.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       method: "post",

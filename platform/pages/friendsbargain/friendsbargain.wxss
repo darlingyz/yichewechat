@@ -178,3 +178,6 @@
   font-size: 28rpx;
   color: #000;
 }   
+.cutbtn{
+  background-color: #09ba07;
+}

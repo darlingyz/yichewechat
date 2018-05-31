@@ -6,7 +6,7 @@ Page({
     havemsg: false,
     showit: true,
     reson: false,
-    activemsg:false,
+    activemsg: false,
     showcoupondetail: false,
     showModal: false,
     maskModal: false,
@@ -29,7 +29,7 @@ Page({
  */
   onLoad: function (options) {
     var that = this;
-   // wx.showLoading({ title: '努力加载中...' }),
+    // wx.showLoading({ title: '努力加载中...' }),
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -72,24 +72,24 @@ Page({
                     })
                   } else {
                     console.log("没有返回信息~提醒绑定手机~~~");
-                   // console.log(res)
-                   /* wx.showModal({
-                      title: '温馨提示',
-                      content: '请先绑定手机号!',
-                      success: function (res) {
-                        if (res.confirm) {
-                          //console.log('用户点击确定去注册手机号')
-                          wx.navigateTo({
-                            url: '../phonelogin/phonelogin',
-                          })
-                        } else if (res.cancel) {
-                          //用户点击取消退出小程序
-                          wx.navigateBack({
-                            delta: 0
-                          })
-                        }
-                      }
-                    })*/
+                    // console.log(res)
+                    /* wx.showModal({
+                       title: '温馨提示',
+                       content: '请先绑定手机号!',
+                       success: function (res) {
+                         if (res.confirm) {
+                           //console.log('用户点击确定去注册手机号')
+                           wx.navigateTo({
+                             url: '../phonelogin/phonelogin',
+                           })
+                         } else if (res.cancel) {
+                           //用户点击取消退出小程序
+                           wx.navigateBack({
+                             delta: 0
+                           })
+                         }
+                       }
+                     })*/
                   }
                 },
               })
@@ -245,7 +245,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        userId:userId
+        userId: userId
       },
       success: function (res) {
         var msg = res.data.msg;
@@ -364,15 +364,14 @@ Page({
             lng: longitude
           },
           success: function (res) {
-            console.log(res)
-
+            //console.log(res)
             var ogroups = res.data.data.groupActivities;
             var ores = res.data.data.bargainActivities;
-            if (ogroups.length == 0 & ores==0 ){
+            if (ogroups.length == 0 & ores == 0) {
               that.setData({
                 activemsg: false,
               })
-            }else{
+            } else {
               that.setData({
                 activemsg: true,
                 odata: ores,
@@ -384,7 +383,6 @@ Page({
       },
     })
   },
-
 
   /**
    * 生命周期函数--监听页面显示
@@ -411,7 +409,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.onLoad();
-   
+
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -424,12 +422,20 @@ Page({
    */
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
-      // 来自页面内转发按钮
-      //console.log(res.target)
+      return {
+        title: '一车独秀',
+        path: '/pages/index/index',
+        success: function (res) {
+          // 转发成功
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
     }
     return {
       title: '一车独秀',
-      path: '/pages/index/index?id=123',
+      path: '/pages/index/index',
       success: function (res) {
         // 转发成功
       },
@@ -451,7 +457,6 @@ Page({
         position: 1
       },
       success: function (res) {
-        // console.log(res);
         var oimg = res.data.data;
         that.setData({
           adsInfo: oimg
@@ -460,33 +465,34 @@ Page({
     })
   },
   //初始化定位
-   initlocation: function () {
-      var that = this;
-      var BMap = new bmap.BMapWX({
-        ak: 'ymNQk372B1LOebIHILNz0kHzbSDnHH2V'
-      });
-      wx.getLocation({
-        success: function (res) {
-          //console.log(res);
-          var latitude = res.latitude;
-          var longitude = res.longitude;
-          // console.log(latitude, longitude);
-          //定位成功，调取百度接口去逆解析地址
-          BMap.regeocoding({
-            location: latitude + ',' + longitude,
-            success: function (res) {
-              var odata = res.originalData.result.addressComponent;
-              that.setData({
-                currentCity: odata.city
-              })
-            },
-            fail: function () {
-              //console.log('小程序得到坐标失败')
-            },
-          })
-        },
-      })
-    },
+  initlocation: function () {
+    var that = this;
+    var BMap = new bmap.BMapWX({
+      ak: 'ymNQk372B1LOebIHILNz0kHzbSDnHH2V'
+    });
+    wx.getLocation({
+      success: function (res) {
+        //console.log(res);
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        // console.log(latitude, longitude);
+        //定位成功，调取百度接口去逆解析地址
+        BMap.regeocoding({
+          location: latitude + ',' + longitude,
+          success: function (res) {
+            var odata = res.originalData.result.addressComponent;
+            that.setData({
+              currentCity: odata.city
+            })
+          },
+          fail: function (res) {
+            //console.log('小程序得到坐标失败')
+            console.log(res)
+          },
+        })
+      },
+    })
+  },
   // 初始化门店推荐
   initShopInfo: function () {
     var that = this;
@@ -507,8 +513,6 @@ Page({
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
           success: function (res) {
-            //console.log(res);
-
             that.setData({
               shopInfo: res.data.data
             })

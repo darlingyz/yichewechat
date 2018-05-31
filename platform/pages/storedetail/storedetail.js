@@ -66,12 +66,12 @@ Page({
         wx.getStorage({
           key: 'businessId',
           success: function (res) {
-            console.log(res)
+           // console.log(res)
             thisBusinessId = res.data;
             that.setData({
               bussinessId: thisBusinessId
             }),
-              console.log(thisBusinessId, olat, olng)
+             // console.log(thisBusinessId, olat, olng)
             wx.request({
               url: app.globalData.testUrl + '/storeInformation/storeDetail',
               method: 'post',
@@ -84,9 +84,9 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded' // 默认值
               },
               success: function (msg) {
-                console.log(msg);
+                //console.log(msg);
                 var score = msg.data.data.score;
-                console.log(score);
+                //console.log(score);
                 wx.setStorage({
                   key: 'score',
                   data: score,
@@ -170,7 +170,7 @@ Page({
                     status: status
                   },
                   success: function (res) {
-                    console.log(res)
+                    //console.log(res)
                     var discounts=res.data.data.discounts;
                     if(discounts.length==0){
                       that.setData({
@@ -182,7 +182,7 @@ Page({
                     }else{
                        for (var i = 0; i < discounts.length; i++) {
                          if (discounts[i].receive == false) {
-                           console.log(discounts[i].receive)
+                          // console.log(discounts[i].receive)
                            that.setData({
                              disabled: false,
                              datatypes: "已领取"
@@ -225,7 +225,7 @@ Page({
   },
   //领取优惠券
   gosolve:function(e){
-      console.log(e);
+      //console.log(e);
       var that=this;
       var couponId = e.currentTarget.dataset.id;
       wx.request({
@@ -239,7 +239,7 @@ Page({
           couponId: couponId
         },
         success:function(res){
-          console.log(res)
+          //console.log(res)
           var ocode=res.data.code;
           if(ocode==1){
             wx.showToast({
@@ -289,7 +289,7 @@ Page({
             num: that.data.count
           },
           success: function (res) {
-            console.log(app.globalData.userId, id, that.data.count);
+            //console.log(app.globalData.userId, id, that.data.count);
             let msg = res.data.code;
             if (msg == 1) {
               wx.showToast({
@@ -525,7 +525,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
         var oarr = msg.data.data;
         if (oarr.length == 0) {
           that.setData({

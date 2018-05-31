@@ -1,33 +1,46 @@
 /* pages/friendsbargaind/friendsbargaind.wxss */
-.userPic{
-  top: 20rpx;
-}
-.bg{
-  top: 70rpx;
-}
-.brand{
-  top: 125rpx;
-}
-.callon{
-  top: 165rpx;
+
+.container-box {
+  width:100%;
+  height:500rpx;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
 }
 .discountbg{
-  top: 232rpx;
+  top:240rpx;
 }
+ .userPic{
+  top: 40rpx;
+}
+.bg{
+  top: 90rpx;
+}
+.brand{
+  top: 145rpx;
+}
+.callon{
+  top: 190rpx;
+}
+
 .detail{
-  top: 250rpx;
+  top: 270rpx;
+}
+.list-detail{
+  width: 100%;
+  height: 200rpx;
 }
 .pnum{
   background-color: #f4cc00;
 }
 .cutdetial{
   background-color: #f4cb01;
-  overflow-y: scroll;
 }
 .bgbox{
   background-color: #fff;
-  top:20rpx;
-  left: 30rpx;
+  margin: 15rpx auto;
 }
 .frienduserSrc{
   top: 10rpx;
@@ -35,13 +48,18 @@
 }
 .friendsname{
   left: 80rpx;
+  overflow: hidden;
+  text-align: center;
 }
 .cutnum{
-  width: 130rpx;
-  left: 260rpx;
+  left: 250rpx;
+  text-align: center
 }
 .date{
+  height: 80rpx;
   left: 400rpx;
+  overflow: hidden;
+  text-align: center
 }
 .time{
  right: -10rpx;

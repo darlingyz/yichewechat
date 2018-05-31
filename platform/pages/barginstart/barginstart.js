@@ -15,6 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var userBargainId = options.userBargainId;
+    console.log(userBargainId)
     var acitivityId = options.acitivityId;
     that.setData({
       userBargainId: userBargainId,

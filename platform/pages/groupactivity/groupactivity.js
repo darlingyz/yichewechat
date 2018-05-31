@@ -29,7 +29,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-            console.log(msg);
+            //console.log(msg);
             var odata=msg.data.data;
               if(odata.length==0){
               that.setData({
@@ -52,7 +52,7 @@ Page({
       key: 'activityId',
       data: e.currentTarget.dataset.id,
     })
-    console.log(e.currentTarget.dataset.id)
+    //console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../groupdetails/groupdetails',
     })

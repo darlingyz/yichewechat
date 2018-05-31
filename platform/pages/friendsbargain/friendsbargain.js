@@ -258,7 +258,7 @@ Page({
       url: 'https://jk.glongcar.com/api' + '/activity/helpBargain',
       method: 'post',
       data: {
-        userId: 339,//app.globalData.userId,
+        userId:app.globalData.userId,
         userBargainId: that.data.userBargainId
       },
       header: {
