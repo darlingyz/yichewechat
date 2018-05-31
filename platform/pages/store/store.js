@@ -69,7 +69,7 @@ Page({
   },
   // 汽车美容
   showCarbeauty: function () {
-    var that=this;
+    var that = this;
     this.setData({
       showModal: true,
       carbeauty: true,
@@ -85,7 +85,7 @@ Page({
       carbeauty: false,
     })
     var carId = app.globalData.carId;
-    if(carId==null){
+    if (carId == null) {
       wx.showModal({
         title: '温馨提示',
         content: '您还没有绑定好手机号,请前往绑定！',
@@ -95,13 +95,13 @@ Page({
               url: '../carport/carport',
             })
           } else if (res.cancel) {
-           wx.switchTab({
-             url: '../store/store',
-           })
+            wx.switchTab({
+              url: '../store/store',
+            })
           }
         }
       })
-    }else{
+    } else {
       wx.request({
         url: app.globalData.testUrl + '/search/checkByTireSpec',
         method: 'post',
@@ -114,8 +114,8 @@ Page({
         success: function (res) {
           console.log(res)
           console.log("返回信息~");
-          var msg=res.data.msg;
-          if (msg == "请选择轮胎规格"){
+          var msg = res.data.msg;
+          if (msg == "请选择轮胎规格") {
             wx.showModal({
               title: '温馨提示',
               content: '请选择轮胎规格！',
@@ -131,10 +131,10 @@ Page({
                 }
               }
             })
-          }else{
-            var msg =res.data.data;
+          } else {
+            var msg = res.data.data;
             that.setData({
-              currentformat:msg
+              currentformat: msg
             })
           }
         },
@@ -188,7 +188,7 @@ Page({
     })
   },
   storedetail: function (e) {
-    console.log(e.currentTarget.dataset.shopid)
+    //console.log(e.currentTarget.dataset.shopid)
     wx.setStorage({
       key: 'businessId',
       data: e.currentTarget.dataset.shopid
@@ -215,10 +215,10 @@ Page({
       success: function (res) {
         var lat = res.latitude,
           lng = res.longitude;
-          that.setData({
-            lat: lat,
-            lng: lng
-          })
+        that.setData({
+          lat: lat,
+          lng: lng
+        })
         //调用 数组循环门店列表的方法
         wx.request({
           url: app.globalData.testUrl + '/search/wxSearchStore',
@@ -264,7 +264,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that=this;
+    var that = this;
     wx.getStorage({
       key: 'typestyle',
       success: function (res) {
@@ -273,53 +273,53 @@ Page({
         that.setData({
           currentformat: odata
         })
-     
+
       },
     })
   },
   //轮胎规格
-  godata:function(){
-    var that=this;
-  wx.request({
-    url: app.globalData.testUrl + '/search/wxSearchStore',
-    data: {
-      spec: that.data.currentformat,
-      searchType: 4,
-      lat: that.data.lat,
-      lng: that.data.lng,
-      carId: app.globalData.carId,
-      userId: app.globalData.userId
-    },
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
-    method: 'post',
-    success: function (res) {
-      console.log(res)
-      var omsg=res.data.data;
-      if(omsg.length==0){
-        wx.showModal({
-          title: '提示',
-          content: '没有找到需要的轮胎,请重新搜索！',
-          success: function (res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            } else if (res.cancel) {
-              console.log('用户点击取消')
+  godata: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.testUrl + '/search/wxSearchStore',
+      data: {
+        spec: that.data.currentformat,
+        searchType: 4,
+        lat: that.data.lat,
+        lng: that.data.lng,
+        carId: app.globalData.carId,
+        userId: app.globalData.userId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'post',
+      success: function (res) {
+        //console.log(res)
+        var omsg = res.data.data;
+        if (omsg.length == 0) {
+          wx.showModal({
+            title: '提示',
+            content: '没有找到需要的轮胎,请重新搜索！',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
-          }
-        })
-      }else{
-        that.setData({
-          allservice:false,
-          selectbrand: false,
-          shopList: omsg
-        })
-        that.hideModal();
-      }
-    },
-  })
-},
+          })
+        } else {
+          that.setData({
+            allservice: false,
+            selectbrand: false,
+            shopList: omsg
+          })
+          that.hideModal();
+        }
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -506,7 +506,6 @@ Page({
         that.setData({
           shopList: msg,
         })
-
       }
     })
   },
@@ -528,7 +527,7 @@ Page({
       success: function (result) {
         wx.hideLoading()
         var msg = result.data.data;
-        console.log(msg);
+        // console.log(msg);
         //遍历这个对象
         if (msg) {
           for (var i = 0; i < msg.length; i++) {

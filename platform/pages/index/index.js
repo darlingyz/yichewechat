@@ -57,8 +57,8 @@ Page({
                 },
                 method: 'post',
                 success: function (res) {
-                  console.log("登录成功,返回信息*******")
-                  console.log(res)
+                  //console.log("登录成功,返回信息*******")
+                  //console.log(res)
                   wx.hideLoading();
                   var data = res.data.data;
                   if (data != null) {
@@ -72,7 +72,7 @@ Page({
                     })
                   } else {
                     console.log("没有返回信息~提醒绑定手机~~~");
-                    console.log(res)
+                   // console.log(res)
                    /* wx.showModal({
                       title: '温馨提示',
                       content: '请先绑定手机号!',

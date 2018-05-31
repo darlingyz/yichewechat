@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userBargainId:""
+    userBargainId:"",
+    orderId:""
   },
 
   /**
@@ -44,7 +45,8 @@ Page({
               pnumb: msg.data.data.minNum,
               saleprice: msg.data.data.currentPrice,
               cutedprice: msg.data.data.minPrice,
-              friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+              friendsCutList: msg.data.data.userBargainHelps,//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+              orderId: msg.data.data.orderId
             })
           }
         })
@@ -54,8 +56,9 @@ Page({
   //事件处理函数
   //查看订单去付款
   bindViewPay: function () {
+    var that=this;
     wx.navigateTo({
-      url: '../waitpay/waitpay'
+      url: '../waitpay/waitpay?orderId=' + that.data.orderId,
     })
   },
   onReady: function () {

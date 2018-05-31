@@ -22,9 +22,10 @@
 }
 
 .personPic {
-  height: 44rpx;
-  margin-top: 26rpx;
-  margin-left: 68rpx;
+  height: 80rpx;
+  margin-top:5rpx;
+  margin-left: 50rpx;
+  border-radius: 50%;
 }
 
 .personName {
@@ -38,8 +39,8 @@
 }
 
 .phoneLogo {
-  height: 38rpx;
-  margin-top: 26rpx;
+  height: 30px;
+  margin-top: 20rpx;
 }
 
 .phoneNumber {

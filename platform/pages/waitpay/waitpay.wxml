@@ -5,53 +5,58 @@
 
 <view class='personalDetails wp100 h90'>
   <view class='personalName border-1 fl pr'>
-    <image class='personPic w30' src='http://192.168.1.111:91/usernamepic.png'></image>
-    <text class='personName pa fs27'>{{personName}}</text>
+    <image class='personPic w80' src='{{userMsg.portait}}'></image>
+    <text class='personName pa fs27'>{{userMsg.user_name}}</text>
   </view>
   <view class='personalPhonenumber border-t border-b fr pr'>
-    <image class='phoneLogo w20 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
-    <text class='phoneNumber pa fs25'>{{phoneNumber}}</text>
+    <image class='phoneLogo w30 ml60' src='http://116.62.151.139/res/img/phone.png'></image>
+    <text class='phoneNumber pa fs25'>{{userMsg.mobile}}</text>
   </view>
 </view>
 
 <view class='shopDetail wp100  pr'>
   <view class='shopCase pa border-1 mt30 ml20'>
-    <image class='shopLogo' mode='widthFix' src='{{shopLogo}}'></image>
+    <image class='shopLogo' mode='widthFix' src='{{merchantMsg.merchant_img}}'></image>
   </view>
-  <text class='shopsName pa'>{{shopsName}}</text>
-  <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
-  <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
-  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <text class='shopsName pa'>{{merchantMsg.merchant_name}}</text>
+  <text class='shopsPlace pa fs25 mt100'>{{merchantMsg.address}}</text>
+  <text class='shopsDistance pa fs25 mt100'>{{distance}}km</text>
+  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png' bindtap='callphone'></image>
   <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png'></image>
+  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png' bindtap='gomap'></image>
 </view>
 
 <text class='serve dis-b  border-b'>| 服务</text>
 
-<block wx:for="{{OrderList}}" wx:key="unqiue">
+<block wx:for="{{orderServices}}" wx:key="unqiue">
   <view class='serve1 pr wp100 border-t border-b'>
-    <image class='serveLogo pa w90' src='{{item.serveLogo}}' mode='widthFix'></image>
-    <text class='serveName pa'>{{item.serveName}}</text>
-    <text class='serveDetail pa'>{{item.serveDetail}}</text>
-    <text class='servePrice pa fs25'>{{item.servePrice}}</text>
-    <text class='serveNumber pa fs25'>{{item.serveNumber}}</text>
+    <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
+    <text class='serveName pa'>{{item.businessName}}</text>
+    <text class='serveDetail pa'>{{item.brandName}}</text>
+    <text class='servePrice pa fs25'>￥{{item.price}}</text>
+    <text class='serveNumber pa fs25'>x{{item.amount}}</text>
   </view>
 </block>
 
 <view class='orderCollect pr wp100'>
-  <block wx:for="{{projectList}}" wx:key="unqiue">
+<!--付款  -->
     <view class="projectBox h80">
-      <text class='projectName pr fl dis-b fs26 mt20'>{{item.projectName}}</text>
-      <text class='projectPrice pa fr dis-b fs26 mt20'>{{item.projectPrice}}</text>
+      <text class='projectName pr fl dis-b fs26 mt20'>商品总额</text>
+      <text class='projectPrice pa fr dis-b fs26 mt20'>￥{{orderMsg.totalMoney}}</text>
     </view>
-  </block>
-
-  <block wx:for="{{orderNumbertList}}" wx:key="unqiue">
+    <view class="projectBox h80">
+        <text class='projectName pr fl dis-b fs26 mt20'>实付款</text>
+       <text class='projectPrice pa fr dis-b fs26 mt20'>￥{{orderMsg.payPrice}}</text>
+    </view>
+<!--订单编号  -->
     <view class="projectSBox h50">
-      <text class='orderState pr fl dis-b fs25'>{{item.orderState}}</text>
-      <text class='orderStateN pa fr dis-b fs25'>{{item.orderStateN}}</text>
+      <text class='orderState pr fl dis-b fs25'>订单编号：</text>
+      <text class='orderStateN pa fr dis-b fs25'>{{orderMsg.orderCode}}</text>
     </view>
-  </block>
+    <view class="projectSBox h50">
+      <text class='orderState pr fl dis-b fs25'>订单时间：</text>
+      <text class='orderStateN pa fr dis-b fs25'>{{orderMsg.orderDate}}</text>
+    </view>
 </view>
 
 <view class='contactBox wp100 border-t border-b pr'>
@@ -62,5 +67,5 @@
   <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>
 
-<button class='cancelOrder fl fs27 color-white'>取消订单</button>
+<button class='cancelOrder fl fs27 color-white' bindtap='cancel'>取消订单</button>
 <button class='payNow fr fs27 color-white' bindtap='bindViewpay'>立即付款</button>

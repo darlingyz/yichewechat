@@ -1,68 +1,167 @@
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    personName: '淦隆汽车小设计',
-    phoneNumber: '18939979659',
-    shopLogo: 'http://116.62.151.139/res/img//oilcard.png',
-    shopsName: '淦隆汽车',
-    shopsPlace: '上海浦东新区华夏东路2518号',
-    shopsDistance:'15.8km',
-
-    OrderList: [
-      {
-        serveLogo: 'http://116.62.151.139/res/img//oilcard.png',
-        serveName: '更换机油',
-        serveDetail: '美孚金装4L',
-        servePrice: '￥259.00',
-        serveNumber: '×1',
-
+    merchantMsg: "",
+    orderMsg: "",
+    orderServices: "",
+    userMsg: "",
+    distance: "",
+    orderId:"",
+    orderCode:"",
+    shopPhone:""
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    var aorderId = options.orderId;
+    wx.getLocation({
+      success: function (res) {
+        var lng = res.longitude;
+        var lat = res.latitude;
+        wx.request({
+          url: app.globalData.testUrl + '/order/wxOrderDetails',
+          method: 'post',
+          data: {
+            orderId: aorderId,
+            lng: lng,
+            lat: lat
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'//默认值
+          },
+          success: function (msg) {
+            console.log(msg);
+            var data = msg.data.data;
+            var merchantMsg = data.merchantMsg;
+            var orderMsg = data.orderMsg;
+            var orderServices = data.orderMsg.orderServices;
+            var userMsg = data.userMsg;
+            that.setData({
+              distance: data.distance2,
+              merchantMsg: merchantMsg,
+              orderMsg: orderMsg,
+              orderServices: orderServices,
+              userMsg: userMsg,
+              orderId: orderMsg.id,
+              orderCode: orderMsg.orderCode,
+              shopPhone: merchantMsg.mobile
+            })
+          }
+        })
       },
-      {
-        serveLogo: 'http://116.62.151.139/res/img//oilcard.png',
-        serveName: '更换机油滤清器',
-        serveDetail: '美孚金装',
-        servePrice: '￥30.00',
-        serveNumber: '×1',
+    })
+  },
+  //去付款
+  bindViewpay: function () {
+    var that=this;
+    app.globalData.orderId = that.data.orderId;
+    wx: wx.navigateTo({
+      url: '../pay/pay',
+    })
+  },
+  //取消订单
+  cancel:function(){
+    var that=this;
+    wx.request({
+      url: app.globalData.testUrl + '/order/cancelOrder',
+      method: 'post',
+      data: {
+        orderCode: that.data.orderCode
       },
-    ],
-    projectList:[
-       {
-        projectName:'商品总额',
-        projectPrice:'￥30.00',
-       },
-       {
-         projectName: '优惠券',
-         projectPrice: '-￥5.00',
-       },
-       {
-         projectName: '实付款',
-         projectPrice: '￥25.00',
-       },
-       ],
-    orderNumbertList:[
-        {
-        orderState:'订单编号：',
-        orderStateN:'D2018022405080003483508',
-        },
-        {
-          orderState: '订单时间：',
-          orderStateN: '2018-02-24',
-        },
-        {
-          orderState: '订单编号：',
-          orderStateN: 'D2018032905080003483508',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      success: function (msg) {
+        console.log(msg);
+        var odata = msg.data.data;
+        if (odata == "成功") {
+          wx.showToast({
+            title: '取消成功',
+            icon: 'success',
+            duration: 1000
+          })
         }
-     ],
+        wx.setStorage({
+          key: 'id',
+          data: that.data.orderId,
+        })
+        wx.navigateTo({
+          url: '../orderdetailcance/orderdetailcance',
+        })
+      }
+    })
+  },
+  //店铺电话
+  callphone:function(){
+    var that=this;
+      wx.makePhoneCall({
+        phoneNumber: that.data.shopPhone,
+      })
+  },
+//地图
+  gomap:function(){
+    wx.navigateTo({
+      url: '../searchmap/searchmap',
+    })
+  },
+  //客服电话
+  goPhone:function(){
+    wx.makePhoneCall({
+      phoneNumber: '(021)58180562',
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
-  bindViewpay:function(){
-    wx:wx.navigateTo({
-      url: '../pay/pay',
-     
-    })
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
   }
 })
+

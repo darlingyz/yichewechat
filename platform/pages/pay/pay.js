@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.userId, app.globalData.orderId, app.globalData.discountId)
+    // console.log(app.globalData.userId, app.globalData.orderId, app.globalData.discountId)
     var that = this;
     wx.request({
       url: app.globalData.testUrl + "/order/shoppingCarPay",
