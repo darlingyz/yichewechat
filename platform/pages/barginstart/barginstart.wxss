@@ -1,0 +1,87 @@
+/* pages/friendsbargainc/friendsbargainc.wxss */
+
+.userPic {
+  top: 20rpx;
+}
+
+.bg {
+  top: 70rpx;
+}
+
+.brand {
+  top: 125rpx;
+}
+
+.callon {
+  top: 165rpx;
+}
+
+.discountbg {
+  top: 232rpx;
+}
+
+.detail {
+  top: 250rpx;
+}
+
+.pnum {
+  background-color: #f4cc00;
+}
+
+.cutdetial {
+  background-color: #f4cb01;
+}
+
+.bgbox {
+  background-color: #fff;
+  margin: 0 auto;
+ margin-top: 15rpx;
+
+}
+
+.frienduserSrc {
+  top: 10rpx;
+  left: 10rpx;
+}
+
+.friendsname {
+  left: 80rpx;
+}
+
+.cutnum {
+  left: 260rpx;
+}
+
+.date {
+  left: 400rpx;
+}
+
+.time {
+  right: -10rpx;
+}
+
+.cuttext {
+  bottom: 5rpx;
+  left: 330rpx;
+}
+
+.frscir {
+  bottom: 10rpx;
+  right: 22rpx;
+}
+
+.middle {
+  overflow-y: scroll;
+}
+
+.sharebox {
+  background: #00a43c;
+  height: 80rpx;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 80rpx;
+  border-radius: 0;
+  z-index: 999999;
+}

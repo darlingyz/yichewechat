@@ -7,8 +7,8 @@
      <text class='color-green'>自选规格</text>
   </view>
 </view>
-<!-- <image src='http://116.62.151.139/res/img/ckgreen.png' class='fr w100' mode='widthFix'></image> -->
-<!-- <image src='{{tyreselected}}' class='wp100' mode='widthFix'></image> -->
+ <!-- <image src='../../images/luntai.png' class='fr w100' mode='widthFix'></image> -->
+ <image src='../../images/luntai.png' class='wp100' mode='widthFix'></image> 
 <view>
   <view class='h80 lh80 wp100'>
     <view class='w200 fs35 fl ml30'>胎面宽</view>

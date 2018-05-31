@@ -75,8 +75,8 @@
     </view>
     <view class='contbox'>
       <view class='wp40 fl h80 lh80 color-white fs28 gocar' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
-      <button class='wp60 fl color-white sharebox' open-type="share" bindtap='createBargain'>
-        <text>召唤好友砍到￥{{cutedprice}}元</text>
+      <button class='wp60 fl color-white sharebox' bindtap='createBargain'>
+        <text class='fs28]]'>我要砍价</text>
       </button>
       <!-- <view class='wp60 fl color-white sharebox' >
           <view class='cuttext fl h80 lh80 color-white fs28 wp60 callfriend ml10' >召唤好友砍到￥{{cutedprice}}元</view>

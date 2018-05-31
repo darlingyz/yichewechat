@@ -23,7 +23,7 @@ Page({
           method: 'post',
           data: {
             //从上个页面获取
-            userBargainId: 40,//userBargainId
+            userBargainId:userBargainId
           },
           header: {
             'content-type': 'application/x-www-form-urlencoded'

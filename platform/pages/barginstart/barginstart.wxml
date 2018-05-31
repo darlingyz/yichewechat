@@ -1,4 +1,4 @@
-`<!--pages/friendsbargaine/friendsbargaine.wxml-->
+<!--pages/friendsbargainc/friendsbargainc.wxml-->
 <view class='container pr'>
   <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
   <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
@@ -19,11 +19,7 @@
     </view>
   </view>
 </view>
-<view class='cb mt480'>
-  <image src='http://116.62.151.139/res/img/failure.png' mode='widthFix' class='w50 ml180 fl'></image>
-  <text class='fw fs30 h50 lh50 fl ml20 ls'>很遗憾，逾期砍价失败！</text>
-</view>
-<view class='cb pt20'>
+<view class='cb mt500'>
   <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
   <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
 </view>
@@ -42,9 +38,10 @@
 </view>
 <view class='cutdetial wp90 h300 rad10 mt50 ma'>
   <view class='h280 middle'>
-<view class='pr pt90' wx:if="{{havamsg}}">
-    <block wx:for="{{friendsCutList}}" wx:key="unique">
-        <view class='bgbox wp90 h80 lh80 pa'>
+
+    <view class='pr pt10' wx:if="{{havemsg}}">
+      <block wx:for="{{friendsCutList}}" wx:key="unique">
+        <view class='bgbox wp90 h80 lh80'>
           <view class='pr'>
             <image src='{{item.userHelpPortait}}' class='frienduserSrc w60 pa' mode='widthFix'></image>
             <view class='friendsname w150 pa fs28'>{{item.userHelpName}}</view>
@@ -53,12 +50,18 @@
           </view>
         </view>
       </block>
-      </view>
-      <view class='fs28' wx:else>
-        <text> 暂无好友帮忙砍价~</text>
-      </view>
+    </view>
+    <view wx:else>
+      <text class='fs28'>暂无好友帮你砍价~</text>
+    </view>
   </view>
 </view>
-<button class='cutbtn h90 lh90 wp90 ma ta-c mt40' bindtap='bindViewHome'>
-  <text class='color-white fs40'>去首页逛逛</text>
-</button>
+<view class='cb wp100 pa pf b0'>
+  <view class='wp40 fl fs28 h70 lh80 border-t ta-c' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
+  <!-- <image src='http://116.62.151.139/res/img/bottom.png' mode='widthFix' class='wp60 fl pr'></image> -->
+  <button class='wp60 fl color-white sharebox' open-type="share">
+    <text>召唤好友砍到￥{{cutedprice}}元</text>
+  </button>
+  <!-- <view class='cuttext fl h70 lh70 ta-c pa color-white fs35'>召唤好友砍到￥{{cutedprice}}！</view>
+  <image src='http://116.62.151.139/res/img/friends.png' mode='widthFix' class='frscir w60 fl pa' bindtap='binsViewShare'></image> -->
+</view>

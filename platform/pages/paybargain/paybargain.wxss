@@ -1,0 +1,8 @@
+/* pages/pay/pay.wxss */
+.textb{
+ color: #5f5d5e;
+}
+.btna{
+  background-color:#09ba07;
+  margin-top: 500rpx;
+}

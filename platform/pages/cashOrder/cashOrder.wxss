@@ -31,14 +31,17 @@
 }
 
 .personalName {
-  height: 93rpx;
+  height:100rpx;
   width: 49%;
 }
 
 .personPic {
-  height: 44rpx;
-  margin-top: 26rpx;
+  margin-top: 10rpx;
   margin-left: 68rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  
 }
 
 .personName {
@@ -47,13 +50,15 @@
 }
 
 .personalPhonenumber {
-  height: 93rpx;
+  height: 100rpx;
   width: 50%;
+  border-left: 1rp solid #eaeaea;
+  box-sizing: border-box;
   /* margin-top: -94rpx; */
 }
 
 .phoneLogo {
-  height: 38rpx;
+  height: 50rpx;
   margin-top: 26rpx;
 }
 

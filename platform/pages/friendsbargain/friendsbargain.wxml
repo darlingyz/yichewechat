@@ -20,8 +20,8 @@
     </view>
 </view>
 <view class='cb mt500'>
-    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
-    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
 </view>
 <view class='cb'>
     <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>

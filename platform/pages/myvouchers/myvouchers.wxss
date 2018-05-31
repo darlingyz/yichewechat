@@ -1,33 +1,87 @@
-.couponsNumber{width: 215rpx;
-               margin-left: 67rpx;}
-.vouchersNumber{margin-left: 156rpx;
-                border-bottom: 5rpx solid #07c108;
-                width: 240rpx;}
+.couponsNumber {
+  width: 215rpx;
+  margin-left: 67rpx;
+}
+.vouchersNumber {
+  margin-left: 156rpx;
+  border-bottom: 5rpx solid #07c108;
+  width: 240rpx;
+}
+.coupons-main-1 {
+  height: 155rpx;
+  margin-top: 18rpx;
+}
+.store {
+  height: 155rpx;
+  width: 175rpx;
+}
 
-.coupons-main-1{ height: 155rpx;
-                margin-top: 18rpx;}
-    .store{height: 155rpx;width: 175rpx;}
+.coupons-face-1 {
+  height: 155rpx;
+  width: 155rpx;
+  background-color: #e67817;
+}
 
-    .coupons-face-1{height: 155rpx;
-                width: 155rpx;
-                background-color: #E67817;}
+.currency {
+  font-size: 33rpx;
+  margin-left: 44rpx;
+}
 
-        .currency{ font-size:33rpx; margin-left: 44rpx;}
+.price {
+  font-size: 60rpx;
+}
 
-        .price{font-size: 60rpx;}
+.require {
+  font-size: 15rpx;
+  margin-left: 51rpx;
+  margin-top: 102rpx;
+}
 
-        .require{font-size: 15rpx; margin-left: 51rpx; margin-top: 102rpx;}
+.couponsName {
+  color: #e67817;
+}
 
-        .couponsName{color: #E67817;}
+.couponsTime {
+  color: #757575;
+  padding-bottom: 9rpx;
+  width: 384rpx;
+  margin-top: 46rpx;
+  margin-left: 350rpx;
+}
 
-        .couponsTime{ color:#757575;padding-bottom:9rpx;width: 384rpx;margin-top:46rpx;                                 margin-left:350rpx;}
+.couponsRange {
+  color: #757575;
+  margin-left: 16rpx;
+  margin-top: 85rpx;
+}
 
-         .couponsRange{color:#757575;margin-left:16rpx ;margin-top:85rpx;}
-         
-         .shops{height: 30rpx; width: 413rpx;color:#757575; 
-               margin-left:352rpx ;margin-top:116rpx ;} 
-        .arrow{height: 15rpx;width: 25rpx;}  
-        .shopDistance{margin-left: 17rpx;}  
-        .shopName{margin-left: 28rpx;color: #E67817;}   
+.shops {
+  height: 30rpx;
+  width: 413rpx;
+  color: #757575;
+  margin-left: 352rpx;
+  margin-top: 116rpx;
+}
 
-        .getButton{height: 27rpx; width: 84rpx; background-color:#DB251A;line-height:27rpx;                           margin-top:-138rpx;margin-left:640rpx;}
+.arrow {
+  height: 15rpx;
+  width: 25rpx;
+}
+
+.shopDistance {
+  margin-left: 17rpx;
+}
+
+.shopName {
+  margin-left: 28rpx;
+  color: #e67817;
+}
+
+.getButton {
+  height: 27rpx;
+  width: 84rpx;
+  background-color: #db251a;
+  line-height: 27rpx;
+  margin-top: -138rpx;
+  margin-left: 640rpx;
+}

@@ -7,7 +7,7 @@ Page({
   data: {
     havemsg: false,
     userBargainId:"",
-    acitivityId:""
+     acitivityId:""
   },
 
   /**
@@ -17,8 +17,8 @@ Page({
     var that = this;
     console.log(options)
     var userBargainId = options.userBargainId;
-    var oacitivity = options.activityId;
-    var acitivityId = parseInt(oacitivity);
+    var acitivityId = options.acitivityId;
+    console.log(userBargainId);
     that.setData({
       userBargainId: userBargainId,
       acitivityId: acitivityId

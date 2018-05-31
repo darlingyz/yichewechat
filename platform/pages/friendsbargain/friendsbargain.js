@@ -16,22 +16,11 @@ Page({
    * 生命周期函数--监听页面加载   
    */
   onLoad: function (options) {
-    var pages = getCurrentPages();
-    var currentPage = pages[pages.length - 1] ;
-    var url = currentPage.route; //当前页面url
-    console.log(pages);
-    console.log(url);
-    console.log("uri============")
-
-
-
-    wx.clearStorage();
     var that = this;
     console.log(options)
-    console.log("option==========")
     var models = that.data.maskModal;
     var userBargainId = options.userBargainId;
-    var BargainNum = parseInt(userBargainId);//砍价活动的id91
+    var BargainNum =5;// parseInt(userBargainId);//砍价活动的id91
     console.log(BargainNum)
     wx.updateShareMenu({
       withShareTicket: true,
@@ -268,10 +257,10 @@ Page({
   bindViewHelpcut: function () {
     var that = this;
     wx.request({
-      url: 'https://jk.glongcar.com/api' + '/activity/helpBargain',
+      url: 'http://192.168.1.137:802/api' + '/activity/helpBargain',
       method: 'post',
       data: {
-        userId:app.globalData.userId,
+        userId:178,//app.globalData.userId,
         //这里需要从上个页面获取 参与活动成功的返回值:活动id
         userBargainId: that.data.userBargainId
       },
@@ -285,15 +274,22 @@ Page({
             url: '../friendsbargainb/friendsbargainb?userBargainId=' + that.data.userBargainId
           })
         }else{
+          console.log(msg)
           //如果没成功,给用户一个提示()
-          console.log("错误信息 :" + msg.data.msg);
-          wx.setStorage({
-            key: 'userBargainId',
-            data: 20,
-          })
-          wx.navigateTo({
-            url: '../friendsbargainb/friendsbargainb?userBargainId=' + that.data.userBargainId
-          })
+          var ocode=msg.data.code;
+          if (ocode ==0){
+            wx.showModal({
+              title: '提示',
+              content: msg.data.msg,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
+            })  
+          }
         }
       }
     })

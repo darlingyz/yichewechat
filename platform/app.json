@@ -1,6 +1,6 @@
 {
   "pages": [
-  
+
     "pages/index/index",
     "pages/about/about",
     "pages/besurepass/besurepass",
@@ -47,6 +47,7 @@
     "pages/my/my",
     "pages/mywallet/mywallet",
     "pages/bargain/bargain",
+    "pages/barginstart/barginstart",
     "pages/friendsbargain/friendsbargain",
     "pages/friendsbargainb/friendsbargainb",
     "pages/friendsbargainc/friendsbargainc",
@@ -72,7 +73,9 @@
     "pages/friendgroup/friendgroup",
     "pages/startgroupmiddle/startgroupmiddle",
     "pages/paygroupfriend/paygroupfriend",
-    "pages/waitpay/waitpay"
+    "pages/waitpay/waitpay",
+    "pages/paybargain/paybargain"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",

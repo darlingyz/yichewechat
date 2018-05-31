@@ -4,19 +4,19 @@
   <image class='evaluateArrow pa ' src='http://116.62.151.139/res/img/goevaluatearrow.png'></image>
 </view>
 
-<view class='personalDetails wp100 h90'>
-  <view class='personalName border-1 fl pr'>
-    <image class='personPic w60' src='{{portait}}'></image>
+<view class='personalDetails wp100 h100'>
+  <view class='personalName fl pr'>
+    <image class='personPic' src='{{portait}}'></image>
     <text class='personName pa fs27'>{{personName}}</text>
   </view>
   <view class='personalPhonenumber border-1 fr pr'>
-    <image class='phoneLogo w20 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
+    <image class='phoneLogo w35 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
     <text class='phoneNumber pa fs25'>{{phoneNumber}}</text>
   </view>
 </view>
 
 <view class='shopDetail wp100  pr'>
-  <view class='shopCase pa border-1 mt30 ml20'>
+  <view class='shopCase pa border-1 mt10 ml20'>
     <image class='shopLogo' mode='widthFix' src='{{shopLogo}}'></image>
   </view>
   <text class='shopsName pa'>{{shopsName}}</text>

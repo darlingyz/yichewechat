@@ -43,6 +43,7 @@ Page({
     var that=this;
     var status = e.currentTarget.dataset.status;
     var userBargainId = e.currentTarget.dataset.id;
+    var activityId = e.currentTarget.dataset.activityid;
     console.log(userBargainId,status)
     that.setData({
       userBargainId: userBargainId
@@ -53,15 +54,15 @@ Page({
       })
     }else if(status == 0){//等待中
       wx.navigateTo({
-        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId,
+        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId + '&activityId=' + activityId,
       })
     }else if(status == 1){//中间价
       wx.navigateTo({
-        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId,
+        url: '../friendsbargainc/friendsbargainc?userBargainId=' + userBargainId + '&activityId=' + activityId,
       })
     }else{//完成
       wx.navigateTo({
-        url: '../friendsbargaind/friendsbargaind?userBargainId=' + userBargainId,
+        url: '../friendsbargaind/friendsbargaind?userBargainId=' + userBargainId + '&activityId=' + activityId,
       })
     }
   },
