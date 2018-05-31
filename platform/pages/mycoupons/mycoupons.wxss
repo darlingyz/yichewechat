@@ -129,3 +129,77 @@
   margin-top: -138rpx;
   margin-left: 640rpx;
 }
+.couponsNumber {
+  width: 215rpx;
+  margin-left: 67rpx;
+}
+.vouchersNumber {
+  margin-left: 156rpx;
+  border-bottom: 5rpx solid #07c108;
+  width: 240rpx;
+}
+.coupons-main-1 {
+  height: 155rpx;
+  margin-top: 18rpx;
+}
+ .store {
+  height: 155rpx;
+  width: 175rpx;
+}
+
+.coupons-face-1 {
+  height: 155rpx;
+  width: 155rpx;
+  background-color: #e67817;
+}
+
+.currency {
+  font-size: 33rpx;
+  margin-left: 44rpx;
+}
+.shops {
+  height: 30rpx;
+  width: 413rpx;
+  color: #757575;
+  margin-left: 352rpx;
+  margin-top: 116rpx;
+}
+
+.arrow {
+  height: 15rpx;
+  width: 25rpx;
+}
+.shopDistance {
+  margin-left: 17rpx;
+}
+
+.shopName {
+  margin-left: 28rpx;
+  color: #e67817;
+}
+.require {
+  font-size: 15rpx;
+  margin-left: 51rpx;
+  margin-top: 102rpx;
+}
+ .shop-couponsTime {
+  color: #757575;
+  padding-bottom: 9rpx;
+  width: 384rpx;
+  margin-top:70rpx;
+  margin-left: 350rpx;
+} 
+.price {
+  font-size: 60rpx;
+}
+.shop-couponsName {
+  color: #e67817;
+}
+
+
+
+
+
+
+
+ 

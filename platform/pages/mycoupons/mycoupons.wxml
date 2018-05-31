@@ -13,7 +13,7 @@
           <text class='require pa fs18'>{{item.require1}}</text>
         </view>
         <text class='couponsName pa'>{{item.title}}</text>
-        <text class='couponsTime pa border-b-d fs23 dis-b'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
+        <text class='couponsTime pa fs23 dis-b'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
         <view wx:if='{{item.businessName}}'>
           <text class='couponsRange pa fs23'>使用条件:{{item.businessName}}</text>
         </view>
@@ -36,25 +36,18 @@
           <text class='require pa'>{{item.require}}</text>
         </view>
 
-        <text class='couponsName pa fs23 ml10 mt10'>{{item.title}}</text>
-        <text class='couponsTime pa border-b-d dis-b fs18'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
+        <text class='shop-couponsName pa fs23 ml10 mt10'>{{item.title}}</text>
+        <text class='shop-couponsTime pa dis-b fs20'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
         <text class='couponsRange pa fs18'>{{item.couponsRange}}</text>
 
         <view class='shops h30 fs18' bindtap='bindViewshop' data-id="{{item.merchantId}}">
           <text class='shopPlace'>{{item.address}}</text>
-          <text class='shopDistance'>{{item.distance}}</text>
+          <!-- <text class='shopDistance'>{{item.distance}}</text> -->
           <text class='shopName'>{{item.merchantName}}</text>
-          <image class='arrow' src='http://116.62.151.139/res/img/yellow-arrow.png'></image>
+          <!-- <image class='arrow' src='http://116.62.151.139/res/img/yellow-arrow.png'></image> -->
         </view>
-
-        <view class='getButton pa color-white ta-c fs16 rad20'>立即使用</view>
+        <!-- <view class='getButton pa color-white ta-c fs16 rad20'>立即使用</view> -->
       </view>
     </block>
   </view>
 </view>
-<!-- ========== -->
-<!-- <view class='topBlock wp100 border-t border-b ohid'>
-  <view class='couponsNumber fl color-green h60 fs30 ta-c lh60'>优惠券</view>
-  <view class='vouchersNumber fl fs30 h60 lh60 ta-c' bindtap='bindViewmyvouchers'>商家代金券</view>
-</view> -->
-<!--头部数量提示栏结束-->
