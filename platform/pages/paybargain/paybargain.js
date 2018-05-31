@@ -21,7 +21,7 @@ Page({
       key: 'paybargain',
       success: function (res) {
         console.log(res);
-        var odata=res.data.data;
+        var odata=res.data.data.data;
         orderId = odata.orderId;
         console.log(orderId)
         app.globalData.orderId = orderId;

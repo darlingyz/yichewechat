@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/about/about",
     "pages/besurepass/besurepass",
@@ -68,7 +69,7 @@
     "pages/paygroup/paygroup",
     "pages/shopcar/shopcar",
     "pages/friendpaygroup/friendpaygroup",
-    "pages/startgroup2/startgroup2",
+   "pages/startgroup2/startgroup2",
     "pages/friendgroup/friendgroup",
     "pages/startgroupmiddle/startgroupmiddle",
     "pages/paygroupfriend/paygroupfriend",

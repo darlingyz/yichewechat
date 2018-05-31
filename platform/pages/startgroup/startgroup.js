@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activityId:"",
-    userGroupId:""
+    activityId: "",
+    userGroupId: ""
   },
 
   onLoad: function (option) {
@@ -18,11 +18,15 @@ Page({
     wx.getStorage({
       key: 'activityId',
       success: function (res) {
-        var activityId=res.data;
-        console.log(activityId,app.globalData.userId, app.globalData.orderId)
+        var activityId = res.data;
+        console.log(activityId, app.globalData.userId, app.globalData.orderId)
         that.setData({
           activityId: activityId
         }),
+          wx.setStorage({
+            key: 'activityId',
+            data: activityId,
+          })
         wx.request({
           url: app.globalData.testUrl + '/activity/userStartGroupActivity',
           method: 'post',
@@ -70,7 +74,7 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
-    var that=this;
+    var that = this;
     withShareTicket: true;
     if (res.from === 'button') {
       console.log(res.target)
@@ -88,6 +92,6 @@ Page({
       }
     }
   },
-  onReady:function(){
+  onReady: function () {
   }
 })

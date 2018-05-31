@@ -12,7 +12,7 @@ Page({
   onLoad: function (option) {
     var that = this;
     var userGroupId = option.group;
-   // console.log(userGroupId);
+    console.log(userGroupId);
     //此处要获取支付页面跳转过来后 传过来的活动id
     wx.getStorage({
       key: 'activityId',
@@ -32,7 +32,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-           // console.log(msg);
+            console.log(activityId, app.globalData.userId);
             var userGroupId = msg.data.data.Activity.userGroupId;
             that.setData({
               store: msg.data.data.Activity.activityImg,

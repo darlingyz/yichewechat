@@ -40,7 +40,7 @@
 }
 .bgbox{
   background-color: #fff;
-  margin: 15rpx auto;
+  margin: 15rpx 30rpx;
 }
 .frienduserSrc{
   top: 10rpx;

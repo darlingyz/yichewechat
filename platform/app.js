@@ -32,10 +32,10 @@ App({
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
-   //testUrl: 'http://192.168.1.137:802/api',
+    //testUrl: 'http://192.168.1.137:802/api',
     imgUrl: 'http://116.62.151.139/res/img/',
-    //testUrl:'https://api-wechat.glongcar.com/api',
-    testUrl: 'https://jk.glongcar.com/api',
+    testUrl:'https://api-wechat.glongcar.com/api',
+    //testUrl: 'https://jk.glongcar.com/api',
     code:"",
     getuser: null,
     openId: null,

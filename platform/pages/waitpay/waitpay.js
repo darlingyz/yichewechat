@@ -11,7 +11,8 @@ Page({
     distance: "",
     orderId:"",
     orderCode:"",
-    shopPhone:""
+    shopPhone:"",
+    activityId:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -49,7 +50,8 @@ Page({
               userMsg: userMsg,
               orderId: orderMsg.id,
               orderCode: orderMsg.orderCode,
-              shopPhone: merchantMsg.mobile
+              shopPhone: merchantMsg.mobile,
+              activityId: data.activityId
             })
           }
         })
@@ -59,9 +61,30 @@ Page({
   //去付款
   bindViewpay: function () {
     var that=this;
-    app.globalData.orderId = that.data.orderId;
-    wx: wx.navigateTo({
-      url: '../pay/pay',
+    wx.request({
+      url: app.globalData.testUrl + '/activity/bargainPayPrice',
+      method: 'post',
+      data: {
+        userId: app.globalData.userId,
+        activityId: that.data.activityId,
+        carId: app.globalData.carId,
+        orderId: that.data.orderId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      success: function (res) {
+        console.log(res)
+        console.log(app.globalData.userId, that.data.activityId, app.globalData.carId)
+        wx.setStorage({
+          key: 'paybargain',
+          data: res,
+        })
+        //console.log(res)
+        wx.navigateTo({
+          url: '../paybargain/paybargain',
+        })
+      }
     })
   },
   //取消订单
