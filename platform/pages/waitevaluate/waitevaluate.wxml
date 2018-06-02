@@ -5,13 +5,13 @@
   <image class='evaluateArrow pa ' src='http://116.62.151.139/res/img/goevaluatearrow.png'></image>
 </view>
 
-<view class='personalDetails wp100 h90'>
+<view class='personalDetails wp100 h100'>
     <view class='personalName border-1 fl pr'>
-        <image class='personPic w30' src='{{portait}}'></image>
+        <image class='personPic w80' src='{{portait}}'></image>
         <text class='personName pa fs27'>{{personName}}</text>
     </view>
     <view class='personalPhonenumber border-1 fr pr'>
-        <image class='phoneLogo w20 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
+        <image class='phoneLogo w40 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
         <text class='phoneNumber pa fs25'>{{phoneNumber}}</text>
     </view>
 </view>

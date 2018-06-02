@@ -1,24 +1,30 @@
-<block wx:for="{{carportList}}" wx:key="unique">
-<view class='illegalCar pr border-1'>
-    <view wx:if="{{index==1}}"></view>
-    <image class='illegalPic pa' src='{{item.carLogo}}'></image>
-    <text class='illegalModel pa fs27'>{{item.carName}}</text>
-    <text class='licenseNumber pa fs25'>{{item.carNo}}</text>
-    <text class='distance pa fs25'>当前里程:{{item.carMileage}}Km</text>
-    <button class='compile pa h40 mt90 fs22 lh40 bg-white' data-id='{{item.carId}}' bindtap='bindViewcarport1'>编辑</button>
+<view class='car-box'>
+  <view class='car-box-msg' wx:if="{{hvaemsg}}">
+    <block wx:for="{{carportList}}" wx:key="unique">
+      <view class='illegalCar pr border-1'>
+        <view wx:if="{{index==1}}"></view>
+        <image class='illegalPic pa' src='{{item.carLogo}}'></image>
+        <text class='illegalModel pa fs27'>{{item.carName}}</text>
+        <text class='licenseNumber pa fs25'>{{item.carNo}}</text>
+        <text class='distance pa fs25'>当前里程:{{item.carMileage}}Km</text>
+        <button class='compile pa h40 mt90 fs22 lh40 bg-white' data-id='{{item.carId}}' bindtap='bindViewcarport1'>编辑</button>
+      </view>
+      <view class='illegalMark pr'>
+        <view wx:if='{{item.breakRules.length > 0}}'>
+          <text class='illegalRecoud pa fs20 mt10'>违章记录：</text>
+          <text class='illegalW pa ml120'>{{item.breakRules.time}} 原因: {{item.breakRules.reason}} 罚款:{{item.breakRules.money}}元 扣分:{{item.degree}}</text>
+          <text class='wacth pa fs23' bindtap='bindViewillegallist'>查看</text>
+          <image class='arrow pa' bindtap='bindViewillegallist' src='http://116.62.151.139/res/img/watch.png'></image>
+        </view>
+      </view>
+      <view class='kong wp100 h20'></view>
+    </block>
+  </view>
+  <view class='fs28' wx:else>
+    <text>没有默认车辆，请添加~</text>
+  </view>
+    <button class='addCar pr' bindtap='addCar'>
+      <image class='addLogo pa w30 h30' src='http://116.62.151.139/res/img/addlogo.png'></image>
+      <text class='addCarW pa fs23'>添加爱车</text>
+    </button>
 </view>
-<view class='illegalMark pr'>
-<view wx:if='{{item.breakRules.length > 0}}'>
-    <text class='illegalRecoud pa fs20 mt10'>违章记录：</text>
-    <text class='illegalW pa ml120'>{{item.breakRules.time}} 原因: {{item.breakRules.reason}} 罚款:{{item.breakRules.money}}元 扣分:{{item.degree}}</text>
-    <text class='wacth pa fs23' bindtap='bindViewillegallist'>查看</text>
-    <image class='arrow pa' bindtap='bindViewillegallist'                                   src='http://116.62.151.139/res/img/watch.png'></image>
-</view>
-</view>
-<view class='kong wp100 h20'></view>
-</block>
-
-<button class='addCar pr' bindtap='addCar'>
-    <image class='addLogo pa w30 h30' src='http://116.62.151.139/res/img/addlogo.png'></image>
-    <text class='addCarW pa fs23'>添加爱车</text>
-</button>

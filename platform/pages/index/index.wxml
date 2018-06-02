@@ -489,8 +489,8 @@
     </view>
     <view class='mt60 h300 wp100 cb middle'>
       <block wx:for='{{couponList}}' wx:key="unique">
-        <view class='h180 ml70 mt20'>
-          <view class='bg-orange h180 wp30 fl'>
+        <view class='h180 ml50 mt20'>
+          <view class='bg-orange h180 wp40 fl'>
             <text class='fs40 color-white fl mt60 ml40'>￥</text>
             <text class='fs80 color-white fl mt20'>{{item.price}}</text>
           </view>

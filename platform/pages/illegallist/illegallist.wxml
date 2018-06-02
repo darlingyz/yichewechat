@@ -4,27 +4,28 @@
   <text class='licenseNumber pa'>{{illegalList.carNo}}</text>
 </view>
 
-<view class='activelist wp100 border-t bordet-b pr'>
+<view class='activelist wp100 border-t bordet-b pr fs28'>
   <view wx:if="{{hasList}}">
     <view wx:for="{{breakRules}}" wx:key="unique" class='box'>
       <view class='wp100 illtime ml10'>
         违章时间:
-        <text class='illegalTime pa fs27 ml28'>{{item.time}}</text>
+        <text class='illegalTime pa ml28'>{{item.time}}</text>
       </view>
       <view class='wp100 illplace ml10'>
         违章地点:
-        <text class='illegalPlace pa fs27 ml28'>{{item.address}}</text>
+        <text class='illegalPlace pa ml28'>{{item.address}}</text>
       </view>
       <view class='wp100 illreson ml10'>
         违章原因:
-        <text class='illegalReason pa fs27 ml28'>{{item.reason}}</text>
+        <text class='illegalReason pa ml28'>{{item.reason}}</text>
       </view>
       <view class='wp100 illmoney ml10'>
         罚款金额:
-        <text class='illegalPrice pa fs27 ml28'>{{item.money}}元</text>
+        <text class='illegalPrice pa ml28'>{{item.money}}元</text>
       </view>
       <view class='wp100 illscoe ml10'>
-        <text class='illegalPoints pa fs27'>扣分:{{item.degree}} 分</text>
+      驾照扣分:
+        <text class='illegalPoints pa ml20'>{{item.degree}} 分</text>
       </view>
     </view>
   </view>

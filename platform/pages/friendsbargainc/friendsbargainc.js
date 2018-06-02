@@ -17,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    // console.log(options)
+    console.log(options)
     var userBargainId = options.userBargainId;
     var oacitivity = options.activityId;
     var acitivityId = parseInt(oacitivity);
@@ -54,7 +54,8 @@ Page({
             pnumb: msg.data.data.minNum,
             saleprice: msg.data.data.currentPrice,
             cutedprice: msg.data.data.minPrice,
-            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+            friendsCutList: msg.data.data.userBargainHelps,//好友帮助砍价列表,
+            userName: msg.data.data.userName
           })
         } else {
           that.setData({
@@ -72,7 +73,8 @@ Page({
             pnumb: msg.data.data.minNum,
             saleprice: msg.data.data.currentPrice,
             cutedprice: msg.data.data.minPrice,
-            friendsCutList: msg.data.data.userBargainHelps//好友帮助砍价列表,如果为空要有一个没人帮助的显示效果
+            friendsCutList: msg.data.data.userBargainHelps,//好友帮助砍价列表
+            userName: msg.data.data.userName
           })
         }
       }
@@ -89,6 +91,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (res) {
+        console.log(app.globalData.userId, acitivityId)
         //console.log(app.globalData.userId, acitivityId)
         console.log(res);
         var odata = res.data.data;

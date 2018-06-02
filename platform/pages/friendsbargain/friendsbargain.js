@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载   
    */
   onLoad: function (options) {
-    wx.showLoading({ title: '努力加载中...' });
+    //wx.showLoading({ title: '努力加载中...' });
     var that = this;
     //console.log(options)
     var models = that.data.maskModal;
@@ -32,22 +32,18 @@ Page({
           method: 'post',
           data: {
             userBargainId: BargainNum,
-            //BargainNum
           },
           header: {
-            'content-type': 'application/x-www-form-urlencoded'//默认值
+            'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (msg) {
-            // console.log(msg);
-            // console.log(that.data.userBargainId);
-            wx.hideLoading();
+            // wx.hideLoading();
             var userlist = msg.data.data.userBargainHelps;
             if (userlist.length == 0) {
               that.setData({
                 friendlist: false,
                 userSrc: msg.data.data.portait,
                 washcoupons: msg.data.data.activityName,
-                // pnum: msg.data.data.attendAmount,
                 nprice: msg.data.data.minPrice,
                 oprice: msg.data.data.originalPrice,
                 origprice: msg.data.data.originalPrice,
@@ -85,7 +81,6 @@ Page({
     wx.login({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res.code)
         wx.request({
           url: 'https://jk.glongcar.com/api' + '/Wx/aaa',
           method: "post",
@@ -96,10 +91,8 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            // console.log(res);
             app.globalData.openId = res.data.openid;
             var openid = res.data.openid;
-            //console.log(openid);
             wx.setStorage({
               key: 'openId',
               data: openid
@@ -127,53 +120,57 @@ Page({
               var openid = app.globalData.openId;
               app.globalData.nickName = nickName;
               app.globalData.vatarUrl = vatarUrl;
-              wx.request({
-                url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
-                data: {
-                  openId: openid,
-                  userName: nickName,
-                  portait: vatarUrl
-                },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                method: 'post',
+              wx.getStorage({
+                key: 'openId',
                 success: function (res) {
-                  // console.log(res);
-                  wx.hideLoading();
-                  var data = res.data.data;
-                  if (data == null) {
-                    console.log(data)
-                    console.log("没有绑定手机号,需要绑定,分享登陆~")
-                    //设定一个全局当
-                    /*wx.showModal({
-                      title: '温馨提示',
-                      content: '请先绑定手机号!',
-                      success: function (res) {
-                        if (res.confirm) {
-                          //console.log('用户点击确定去注册手机号')
-                          wx.navigateTo({
-                            url: '../phonelogin/phonelogin',
-                          })
-                        } else if (res.cancel) {
-                          //用户点击取消退出小程序
-                          wx.navigateBack({
-                            delta: 0
-                          })
-                        }
+                  var openId = res.data;
+                  wx.request({
+                    url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
+                    data: {
+                      openId: openId,
+                      userName: nickName,
+                      portait: vatarUrl
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'post',
+                    success: function (res) {
+                      wx.hideLoading();
+                      var data = res.data.data;
+                      if (data == null) {
+                        console.log(data)
+                        console.log("没有绑定手机号,需要绑定,分享登陆~")
+                        //设定一个全局当
+                        wx.showModal({
+                          title: '温馨提示',
+                          content: '请先绑定手机号!',
+                          success: function (res) {
+                            if (res.confirm) {
+                              //console.log('用户点击确定去注册手机号')
+                              wx.navigateTo({
+                                url: '../phonelogin/phonelogin',
+                              })
+                            } else if (res.cancel) {
+                              //用户点击取消退出小程序
+                              wx.navigateBack({
+                                delta: 0
+                              })
+                            }
+                          }
+                        })
+                      } else {
+                        var userId = res.data.data.userId;
+                        var carId = res.data.data.carId;
+                        app.globalData.userId = userId;
+                        app.globalData.carId = carId;
+                        wx.setStorage({
+                          key: 'userId',
+                          data: userId,
+                        })
                       }
-                    })*/
-                  } else {
-                    var userId = res.data.data.userId;
-                    var carId = res.data.data.carId;
-                    app.globalData.userId = userId;
-                    app.globalData.carId = carId;
-                    //console.log(userId)
-                    wx.setStorage({
-                      key: 'userId',
-                      data: userId,
-                    })
-                  }
+                    },
+                  })
                 },
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -258,7 +255,7 @@ Page({
       url: 'https://jk.glongcar.com/api' + '/activity/helpBargain',
       method: 'post',
       data: {
-        userId:app.globalData.userId,
+        userId: app.globalData.userId,
         userBargainId: that.data.userBargainId
       },
       header: {

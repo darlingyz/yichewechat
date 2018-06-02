@@ -170,7 +170,8 @@ Page({
                     status: status
                   },
                   success: function (res) {
-                    //console.log(res)
+                    console.log(res)
+                    console.log(app.globalData.userId, thisBusinessId, status)
                     var discounts=res.data.data.discounts;
                     if(discounts.length==0){
                       that.setData({
@@ -182,7 +183,7 @@ Page({
                     }else{
                        for (var i = 0; i < discounts.length; i++) {
                          if (discounts[i].receive == false) {
-                          // console.log(discounts[i].receive)
+                           console.log(discounts[i].receive)
                            that.setData({
                              disabled: false,
                              datatypes: "已领取"
@@ -239,7 +240,7 @@ Page({
           couponId: couponId
         },
         success:function(res){
-          //console.log(res)
+          console.log(res)
           var ocode=res.data.code;
           if(ocode==1){
             wx.showToast({

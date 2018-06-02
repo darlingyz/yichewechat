@@ -74,8 +74,8 @@ Page({
         console.log(msg);
       }
     })
-    wx.navigateTo({
-      url: '../carport/carport',
+    wx.switchTab({
+      url: '../my/my',
     })
   },
   setDefault : function(){
@@ -91,9 +91,9 @@ Page({
       success: function (msg) {
         console.log(msg);
         //这里修改为默认的之后,在我的页面 显示的还是以前的默认车辆信息,不会更新
-        wx.navigateTo({
-          url: '../carport/carport',
-        })
+       wx.switchTab({
+         url: '../my/my',
+       })
       }
     })
   },

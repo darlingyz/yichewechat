@@ -24,6 +24,10 @@ App({
           success: function (res) {
             that.globalData.openId = res.data.openid;
             console.log(that.globalData.openId)
+            wx.setStorage({
+              key: 'openId',
+              data: res.data.openid,
+            })
             // that.globalData.sessionKey = msg.data.session_key
           }
         })

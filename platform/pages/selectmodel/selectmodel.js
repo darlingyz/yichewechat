@@ -122,7 +122,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg);
+        //console.log(msg);
         that.setData({
           brandList: msg.data.result
         })
@@ -145,10 +145,10 @@ Page({
         appkey: '3d857cc41c4aee47'
       },
       header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (msg) {
-        console.log(msg);
+        //console.log(msg);
         that.setData({
           brandList: msg.data.result
         })
@@ -206,7 +206,6 @@ Page({
   //车型列表接口对接
   modellist:function(){
     let that = this;
-   // console.log("获取车型接口信息");
     wx.request({
       url: 'https://api.jisuapi.com/car/brand',
       method: 'post',
@@ -217,11 +216,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (msg) {
-        console.log(msg);
+        //console.log(msg);
         var carBrand = msg.data.result;//所有品牌结果
         var letter = that.data.letter;//所有字母 26个字母加一个热字
         var modellist = new Array();
-
         for(var j = 0; j<letter.length;j++){
           var obj = new Object();//一个字母下的所有品牌总对象
           var list = new Object();//这个品牌品牌的字母
@@ -242,7 +240,6 @@ Page({
           obj.data = datas;//设置数组
           modellist[j] = obj;//放到总的里面
         }
-        console.log(modellist);
         that.setData({
           modellist: modellist
         })

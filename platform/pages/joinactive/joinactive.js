@@ -15,11 +15,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.getSystemInfo({
-      success:function(res){
-          console.log(res)
-      }
-    })
     wx.request({
       url: app.globalData.testUrl + '/project/searchMyActivity',
       method: 'post',
@@ -30,7 +25,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg);
+        console.log(msg)
         that.setData({
           bargainactiveList:msg.data.data.bargainActivity,
           groupList :msg.data.data.groupActivity

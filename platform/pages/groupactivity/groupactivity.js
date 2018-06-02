@@ -13,6 +13,7 @@ Page({
   },
 
   initCouponsList: function () {
+    wx.showLoading({ title: '努力加载中...' });
     var that = this;
     wx.getLocation({
       success: function (res) {
@@ -29,6 +30,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
+            wx.hideLoading();
             //console.log(msg);
             var odata=msg.data.data;
               if(odata.length==0){

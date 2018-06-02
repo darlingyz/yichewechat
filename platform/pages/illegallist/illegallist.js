@@ -25,6 +25,7 @@ Page({
         userId:app.globalData.userId, //298
       },
       success:function(res){
+        
           that.setData({
             illegalList:res.data.data
           })

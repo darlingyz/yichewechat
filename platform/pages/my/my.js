@@ -10,7 +10,6 @@ Page({
   },
   onLoad: function (options) {
     wx.showLoading({ title: '努力加载中...' });
-    wx.clearStorage();
     this.setData({
       srcActivity: 'http://121.40.148.153/img/1381294047390736.png',
       srcStore: 'http://121.40.148.153/img/1381379545768160.png',
@@ -36,6 +35,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (msg) {
+        console.log(msg)
         wx.hideLoading()
         that.setData({
           srcUser: app.globalData.vatarUrl,

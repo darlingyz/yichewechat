@@ -172,7 +172,7 @@ Page({
             })
         }else{
           //老用户
-          var userId=res.data.data.id;
+          var userId = res.data.data.user1.id;
           app.globalData.userId = userId;
           wx.switchTab({
             url: "../my/my",

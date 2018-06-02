@@ -36,7 +36,7 @@
     <text class='serveDetail pa'>{{item.brandName}}</text>
     <text class='servePrice pa fs25 w100'>¥{{item.price}}元</text>
     <!-- <text class='servePrice pa fs25'>¥{{item.privilegePrice}}元</text> -->
-    <text class='serveNumber pa fs25'>{{item.amount}}</text>
+    <text class='serveNumber pa fs25'>x{{item.amount}}</text>
   </view>
 </block>
 

@@ -17,10 +17,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({ title: '努力加载中...' });
     let that = this;
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
+
         that.setData({
           lat: res.latitude,
           lng: res.longitude
@@ -55,6 +57,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (result) {
+        wx.hideLoading();
         console.log(result);
         var msg = result.data.data;
           if(msg.length==0){

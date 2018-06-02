@@ -40,10 +40,10 @@
 <view class='modeldetail cb pa bg-white wp80 ' wx:if="{{showModeldetail}}">
   <view class='h100 lh100 fs28 pl20 fl' bindtap='hideModal'>返回</view>
   <view class='h100 lh100 fs35 ml210 fl' bindtap=''>{{brandname}}</view>
-  <view wx:for='{{brandList}}'>
+  <view wx:for='{{brandList}}' wx:key="unique">
   <view class='cb h60 lh60 fs25 ml240' >{{item.name}}</view>
   <view>
-  <block wx:for='{{item.list}}'  wx:for-item='i' wx:for-index='letterIndex' >
+  <block wx:for='{{item.list}}'  wx:for-item='i' wx:for-index='letterIndex' wx:key="unique">
     <view class='mbg w298 h70 lh70 ta-c border-b border-r fl fs30' data-id='{{i.id}}' bindtap='cars'>{{i.fullname}}</view>
   </block>
   </view>

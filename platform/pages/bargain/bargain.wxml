@@ -26,8 +26,8 @@
     <view class='fs30 wp100 h50 ta-c mt20'>快快邀请好友帮忙砍到最低价吧</view>
     <view class='cb wp100 h60'></view>
     <view class='cb'>
-        <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
-        <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+        <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+        <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
     </view>
     <view class='cb'>
         <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>

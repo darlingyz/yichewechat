@@ -10,7 +10,7 @@
 </view>
 
 <view class='shopDetail wp100 border-b pr'>
-  <view class='shopCase pa border-1 ml20'>
+  <view class='shopCase pa border-1 ml10'>
     <image class='shopLogo' mode='widthFix' src='{{merchant.merchantImg}}'></image>
   </view>
   <text class='shopsName pa fs31'>{{merchant.merchantName}}</text>
@@ -44,7 +44,7 @@
   </view>
 </view>
 
-<view class='button'>
+<view>
   <view class='discountMoney bg-white fl border-1 h80 ta-c'>￥{{shoppingCar.totalCurrentPrice - price}}元</view>
   <view class='sendOrder fr ta-c color-white' bindtap='bindWiewpay'>提交订单</view>
 </view>

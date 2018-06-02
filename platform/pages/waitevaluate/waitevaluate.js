@@ -24,11 +24,11 @@ Page({
                 lat: res.latitude
               },
               header: {
-                'content-type': 'application/x-www-form-urlencoded'//默认值
+                'content-type': 'application/x-www-form-urlencoded'
               },
               success: function (msg) {
                 var data = msg.data.data;
-                // console.log(msg);
+                 console.log(msg);
                 that.setData({
                   personName: data.userMsg.user_name,
                   phoneNumber: data.userMsg.mobile,
