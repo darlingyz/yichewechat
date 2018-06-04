@@ -28,7 +28,7 @@ Page({
           userBargainId: BargainNum,
         })
         wx.request({
-          url: 'https://jk.glongcar.com/api' + '/activity/userBargainDetail',
+          url: 'https://api-wechat.glongcar.com/api' + '/activity/userBargainDetail',
           method: 'post',
           data: {
             userBargainId: BargainNum,
@@ -82,7 +82,7 @@ Page({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://jk.glongcar.com/api' + '/Wx/aaa',
+          url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
           method: "post",
           data: {
             code: res.code
@@ -125,7 +125,7 @@ Page({
                 success: function (res) {
                   var openId = res.data;
                   wx.request({
-                    url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
+                    url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
                     data: {
                       openId: openId,
                       userName: nickName,
@@ -205,7 +205,7 @@ Page({
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
     wx.request({
-      url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
+      url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
       data: {
         openId: openid,
         userName: nickName,
@@ -252,7 +252,7 @@ Page({
   bindViewHelpcut: function () {
     var that = this;
     wx.request({
-      url: 'https://jk.glongcar.com/api' + '/activity/helpBargain',
+      url: 'https://api-wechat.glongcar.com/api' + '/activity/helpBargain',
       method: 'post',
       data: {
         userId: app.globalData.userId,

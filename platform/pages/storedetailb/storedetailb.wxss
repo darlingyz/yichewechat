@@ -1,4 +1,29 @@
 /* pages/storedetailb/storedetailb.wxss */
+.navbar {
+  flex: none;
+  display: flex;
+  background: #fff;
+  font-size: 30rpx;
+}
+.navbar .item {
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+}
+.navbar .item.active {
+  color:#07bb04;
+}
+.navbar .item.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background:#07bb04;
+}
 .textview{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,3 +69,89 @@
   width: 100%;
   max-height: 100%;
 }
+
+
+/* pages/storeevaluate/storeevaluate.wxss */
+images{
+  margin: 0;
+  padding: 0
+}
+ .satisfy{
+   margin-top: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx
+} 
+.box{
+  width: 100%;
+  height: 150rpx;
+}
+
+.num{
+  width: 25%;
+}
+.biz{
+  float: right;
+  height: 60rpx;
+}
+.startbox{
+  width: 100%;
+  height:30rpx;
+line-height:30rpx;
+}
+.usename{
+  width: 100%;
+  height: 60rpx;
+}
+.conttnum{
+  width: 100rpx;
+  height: auto;
+  float: left;
+  border-radius: 50%;
+  display: block;
+}
+/*stats width*/
+.contstart{
+  background: #000;
+  width:100%
+}
+.datatime{
+  width: 30%;
+  text-align: right;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: right;
+  margin-right: 30rpx;
+}
+.picstat{
+  width:350rpx;
+  height: 60rpx;
+  display: -webkit-inline-block;
+  display: inline-block;
+  float: left;
+}
+.statbox{
+ width: 30rpx;
+ height: 30rpx;
+ display: -webkit-inline-box;
+ display: inline-block;
+}
+.blockbox{
+  min-height: 100rpx;
+  overflow: hidden;
+  padding-bottom: 20rpx;
+}
+.itembox{
+  min-height:100rpx;
+}
+.commbox{
+   width: 120rpx;
+  height: 120rpx;
+  margin-top: 10rpx;
+}
+.commmpic{
+  max-width: 100%;
+  max-height: 100%;
+}
+ .vcomlist{
+  height: 60rpx;
+} 

@@ -46,7 +46,7 @@
       <view class='cb'></view>
       <view class='h30 lh30'>
         <block wx:for="{{item.services}}" wx:for-item="serivces" wx:for-index="index" wx:key="unique">
-          <view class='pt10 fl'>
+          <view class='fl'>
             <view class='w150'>
               <view class='change fs20 fl '>{{serivces.businessName}}</view>
               <view class='color-gray fs20 fl ml10' wx:if='{{index<item.services.length-1}}'>|</view>
@@ -54,7 +54,7 @@
           </view>
         </block>
       </view>
-      <view class='color-gray fs25 w250 h30 ohid wsn fl oaddress'>{{item.address}}</view>
+      <view class='color-gray fs25 w350 h35 ohid wsn fl oaddress'>{{item.address}}</view>
       <view class='w150 mr5 fr kms'>
         <image src='{{guideSrc}}' class='fl w40 pt10' mode='widthFix'></image>
         <text class='fl fs25 ml10 w40 h40 pt15'>{{item.distance}}km</text>

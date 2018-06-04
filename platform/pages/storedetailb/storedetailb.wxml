@@ -1,13 +1,10 @@
 <!--pages/storedetailb/storedetailb.wxml-->
-<view class='border-b wp100 h80'>
-  <view class='fl h80 lh80 wp50'>
-     <text class='ml120 color-green'>门店详情</text>
-  </view>
-  <view class='fl h80 lh80 wp50' bindtap='bindViewStoreevaluate'>
-     <text class='ml120'>门店评价</text>
-  </view>
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
 </view>
-<image src='http://116.62.151.139/res/img/ckgreen.png' class='fl w370' mode='widthFix'></image>
+<!--门店详情  -->
+<view hidden="{{currentTab!==0}}">
+  <view class='shop-box'>
 <view class='wp100 h60 cb'>
   <view class='fs40 fl h60 lh60 ml20 wp100'>{{data.storeName}}</view>
 </view>
@@ -30,7 +27,7 @@
   <image src='http://116.62.151.139/res/img/guidemap.png' mode='widthFix' class='w80 fl ml10' bindtap='goShop'></image>
 </view>
 
-</view>
+</view>    
 <view class='wp100 detailbox'>
 <view class='worktime'>
     <image src='http://116.62.151.139/res/img/businesshours.png' mode='widthFix' class='w30 fl ml20 pt20'></image>
@@ -63,4 +60,63 @@
 </block>
 <!--回到顶部-->
 <image src='http://116.62.151.139/res/img/returntop.png' mode='widthFix' class='returntop w80 fr mr30 pf' bindtap='bindViewStoredetailb'></image>
-<view class='cb wp100 h50'></view>
+<view class='cb wp100 h50'></view> 
+  </view>
+</view>
+<!--评价  -->
+<view hidden="{{currentTab!==1}}">
+  <view class='shop-comment'>
+<view class='allcont' wx:if="{{havamsg}}">
+<view class='wp100 h170 border-b box'>
+<view class="startbox">
+  <view class='fl wp20 ta-c num color-green fs50 lh170' >{{score}}</view>
+</view>
+  <view class='fl wp70 biz'>
+      <view class='contstart'>
+      <block wx:for='{{score / 2}}' wx:key="unique">
+        <image src='{{startSrc}}' class='w30 fl ml10 startpic' mode='widthFix'></image>
+      </block>
+      </view>
+      <view class='full boxfullb fl vcomlist'>
+          <text class='fl fs28 satisfy ml45'>服务满意度</text>
+          <text class='fl fs28 satisfy ml20 '>共{{commentpe}}人点评</text>
+      </view>
+  </view>
+</view>
+<block wx:for='{{evaluateList}}' wx:key="unique">
+  <view class='wp100 border-b mt20 blockbox'>
+  <!--头像img  -->
+    <image src='{{item.portait}}' class=' ml10 w100 conttnum' mode='widthFix'></image>
+    <view class='fr wp80 ml20 itembox'>
+        <view class='ml10 usename'>
+            <text class='fl fs28'>{{item.userName}}</text>
+            <text class='fl fs28 datatime'>{{item.evaluateTime}}</text>
+        </view>
+        
+        <view class='picstat'>
+          <block wx:for="{{item.satisfaction / 2}}" wx:key="unique">
+            <image src='{{startSrc}}' class='startSrc statbox' mode='widthFix'></image>
+          </block>
+        </view>
+        
+        <view class='cb'>
+            <text class='fs25 ml10'>{{item.desn}}</text>
+        </view>
+        <view class='commbox'>
+            <image src='{{item.picture}}' class='commmpic' mode='widthFix'></image>
+        </view>
+    </view>
+  </view>
+</block>
+</view>
+ <view class='nomsg' wx:else>
+<text class='msg fs28'>暂无评论~</text> 
+</view>
+
+
+
+
+
+
+  </view>
+</view>

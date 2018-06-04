@@ -30,12 +30,12 @@ Page({
     that.setData({
       userGroupId: nums
     })
-    //https://jk.glongcar.com/api
+    //https://api-wechat.glongcar.com/api
     wx.updateShareMenu({
       withShareTicket: true,
       success: function () {
         wx.request({
-          url: 'https://jk.glongcar.com/api' + '/activity/SearchheadGroupDetail',
+          url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
           method: 'post',
           data: {
             userGroupId: nums
@@ -72,7 +72,7 @@ Page({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'https://jk.glongcar.com/api' + '/Wx/aaa',
+          url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
           method: "post",
           data: {
             code: res.code
@@ -110,7 +110,7 @@ Page({
               app.globalData.nickName = nickName;
               app.globalData.vatarUrl = vatarUrl;
               wx.request({
-                url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
+                url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
                 data: {
                   openId: openid,
                   userName: nickName,
@@ -189,7 +189,7 @@ Page({
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
     wx.request({
-      url: 'https://jk.glongcar.com/api' + '/login/wxLittleLogin',
+      url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
       data: {
         openId: openid,
         userName: nickName,
@@ -243,7 +243,7 @@ Page({
         success: function (res) {
           console.log(res);
         /*  wx.request({
-            url: 'https://jk.glongcar.com/api' + '/activity/SearchheadGroupDetail',
+            url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
             method: 'post',
             data: {
               userGroupId: that.data.userGroupId
@@ -326,7 +326,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'https://jk.glongcar.com/api' + '/activity/HelpGroupActivity',
+        url: 'https://api-wechat.glongcar.com/api' + '/activity/HelpGroupActivity',
         method: 'post',
         data: {
           headGroupId:app.globalData.nums,

@@ -74,8 +74,6 @@ Page({
                     },
                     method: 'post',
                     success: function (res) {
-                      console.log(res)
-                      console.log("===================")
                       wx.hideLoading();
                       var data = res.data.data;
                       if (data != null) {

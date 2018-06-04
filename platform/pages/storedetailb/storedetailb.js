@@ -2,16 +2,26 @@
 var app = getApp();
 var shopId;
 var thisdistance;
+var score;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    distance : 0,
-    data:"",
-    imgArr:"",
-    shopPhone:""
+    navbar: ['门店详情', '门店评价'],
+    currentTab: 0,
+    distance: 0,
+    data: "",
+    imgArr: "",
+    shopPhone: "",
+    startSrc: 'http://116.62.151.139/res/img/star.png',
+    havamsg: false
+  },
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,42 +38,89 @@ Page({
       success: function (res) {
         var olat = res.latitude;
         var olng = res.longitude;
-     
+
+        wx.getStorage({
+          key: 'businessId',
+          success: function (res) {
+            thisdistance = res.data;
+            var oshopId = res.data;
+            wx.request({
+              url: app.globalData.testUrl + '/storeInformation/storeDetail',
+              method: 'post',
+              data: {
+                businessId: oshopId,
+                lat: olat,
+                lng: olng
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (msg) {
+                console.log(msg)
+                var odata = msg.data.data,
+                  oarr = odata.facadeDetailUrl,
+                  imgArr;
+                if (oarr == null) {
+                  that.setData({
+                    data: odata,
+                    shopPhone: odata.phone
+                  })
+                } else {
+                  imgArr = oarr.split(",");
+                  that.setData({
+                    data: odata,
+                    imgArr: imgArr,
+                    shopPhone: odata.phone
+                  })
+                }
+              }
+            })
+          }
+        })
+      },
+    })
+
+
     wx.getStorage({
       key: 'businessId',
       success: function (res) {
-        thisdistance = res.data;
-        var oshopId = res.data;
+        shopId = res.data;
         wx.request({
-          url: app.globalData.testUrl + '/storeInformation/storeDetail',
+          url: app.globalData.testUrl + '/storeInformation/shopEvaluateQuery',
           method: 'post',
           data: {
-            businessId: oshopId,
-            lat: olat,
-            lng: olng
+            shopId: shopId
           },
           header: {
-            'content-type': 'application/x-www-form-urlencoded'
+            'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
             console.log(msg);
-            console.log("******************")
-            var odata=msg.data.data,
-              oarr = odata.facadeDetailUrl,
-              imgArr;
-            imgArr=oarr.split(",");
-            that.setData({
-                  data:odata,
-                  imgArr:imgArr,
-                  shopPhone: odata.phone
-            })
+            var arr = msg.data.data;
+            if (arr.length == 0) {
+              that.setData({
+                havamsg: false
+              })
+            } else {
+              that.setData({
+                havamsg: true,
+                evaluateList: msg.data.data,
+                commentpe: msg.data.data.length ? msg.data.data.length : 0
+              })
+            }
           }
         })
       }
     })
+    wx.getStorage({
+      key: 'score',
+      success: function (res) {
+        that.setData({
+          score: res.data
+        })
+      },
+    })
   },
-})
-},
   //回到顶部
   bindViewStoredetailb: function () {
     wx.pageScrollTo({
@@ -91,14 +148,14 @@ Page({
     })
   },
   //电话
-  shopPhone:function(){
-    var that=this;
+  shopPhone: function () {
+    var that = this;
     wx.makePhoneCall({
       phoneNumber: that.data.shopPhone,
     })
   },
   //地图
-  goShop:function(){
+  goShop: function () {
     wx.navigateTo({
       url: '../searchmap/searchmap',
     })
@@ -108,7 +165,7 @@ Page({
    */
   onReady: function () {
     //this.initAdsInfo();
-   // this.initServerList();
+    // this.initServerList();
   },
   /**
    * 生命周期函数--监听页面显示

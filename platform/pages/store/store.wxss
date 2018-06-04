@@ -56,7 +56,7 @@
   z-index: 9999;
 }
 .oaddress{
-  width: 250rpx;
+  width: 330rpx;
   float: left;
   overflow: hidden;
   text-align: left;
