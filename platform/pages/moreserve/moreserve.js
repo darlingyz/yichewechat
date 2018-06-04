@@ -12,21 +12,25 @@ Page({
         id: 1,
         serve1P: 'http://116.62.151.139/res/img/2washserve.png',
         pos: 1,
+        name:"拼团活动"
       },
       {
         id: 2,
         serve1P: 'http://116.62.151.139/res/img/2washserve.png',
         pos: 1,
+        name: "砍价活动"
       },
       {
         id: 3,
         serve1P: 'http://116.62.151.139/res/img/2washserve.png',
         pos: 1,
+        name: "优惠券"
       },
       {
         id: 4,
         serve1P: 'http://116.62.151.139/res/img/2washserve.png',
         pos: 2,
+        name: "代金券"
       }
     ],
     allServelList: [

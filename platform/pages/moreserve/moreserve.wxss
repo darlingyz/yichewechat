@@ -1,22 +1,53 @@
-.pat_top{overflow: hidden;}
-  .an{width: 110rpx;
-     background-color:#F4CB01;
-    margin-left: 612rpx;}
-  .sever{top: 16rpx;
-        left: 60rpx;}
-  .serve1P{margin-left: 42rpx;}
-
-.none{height:26rpx;background-color: #eaeaea;}
-
-.list_2{ border-left: 4rpx solid;
-         padding-left: 18rpx;
-         margin-top: 25rpx;
+.pat_top {
+  overflow: hidden;
+  padding-bottom: 10rpx;
 }
 
-.allserve{margin-top: 25rpx;overflow: hidden;}
-.del_1{margin-left: -17rpx; margin-top: -10rpx;}
+.an {
+  width: 110rpx;
+  background-color: #f4cb01;
+  margin-left: 612rpx;
+}
 
-.allmatainList{margin-top: 25rpx;overflow: hidden;}
-.del_1{margin-left: -17rpx; margin-top: -10rpx;}
+.sever {
+  top: 16rpx;
+  left: 60rpx;
+}
 
-     
+.serve1P {
+  margin-left: 42rpx;
+}
+
+.none {
+  height: 26rpx;
+  background-color: #eaeaea;
+}
+
+.list_2 {
+  border-left: 4rpx solid;
+  padding-left: 18rpx;
+  margin-top: 25rpx;
+}
+
+.allserve {
+  margin-top: 25rpx;
+  overflow: hidden;
+}
+
+.del_1 {
+  margin-left: -17rpx;
+  margin-top: -10rpx;
+}
+
+.allmatainList {
+  margin-top: 25rpx;
+  overflow: hidden;
+}
+
+.del_1 {
+  margin-left: -17rpx;
+  margin-top: -10rpx;
+}
+.serve1{
+  height: 150rpx;
+}

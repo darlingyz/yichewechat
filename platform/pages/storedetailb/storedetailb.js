@@ -10,7 +10,8 @@ Page({
   data: {
     distance : 0,
     data:"",
-    imgArr:""
+    imgArr:"",
+    shopPhone:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -53,7 +54,8 @@ Page({
             imgArr=oarr.split(",");
             that.setData({
                   data:odata,
-                  imgArr:imgArr
+                  imgArr:imgArr,
+                  shopPhone: odata.phone
             })
           }
         })
@@ -86,6 +88,19 @@ Page({
   bindViewStoreevaluate: function () {
     wx.navigateTo({
       url: '../storeevaluate/storeevaluate',
+    })
+  },
+  //电话
+  shopPhone:function(){
+    var that=this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.shopPhone,
+    })
+  },
+  //地图
+  goShop:function(){
+    wx.navigateTo({
+      url: '../searchmap/searchmap',
     })
   },
   /**

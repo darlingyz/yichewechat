@@ -4,7 +4,7 @@
 <view class='pa collectbtn' wx:if='{{!showCollect}}'>
   <button class='outbutton bg-light-blue ta-c op5' bindtap='collectstore'>
     <view class='h50 lh50 w180 border-red bg-t inbutton'>
-      <image src='http://121.40.148.153/img/1384070672683654.png' mode='widthFix' class='w30 fl mt10 ml10'></image>
+      <image src='http://121.40.148.153/img/1384070672683654.png' mode='widthFix' class='w20 fl mt10 ml10'></image>
       <text class='fs28 color-red fr w120 h50 lh50 mr10'>收藏门店</text>
     </view>
   </button>
@@ -29,9 +29,11 @@
     <view class='fs28 fl h60 lh60 ml20 color-degray'>{{people}}人购买>></view>
   </view>
   <view class='wp100 h60 cb'>
-    <view class='fs28 fl h60 lh60 ml20 color-blue'>更换机油滤芯</view>
-    <view class='fs28 fl h60 lh60 ml20 color-degray'>|</view>
-    <view class='fs28 fl h60 lh60 ml20 color-blue'>更换空调滤芯</view>
+  <block wx:for="{{services}}" wx:key="unique" wx:for-index="index" >
+ <view class='fs28 fl h60 lh60 ml20 color-blue ml20'>{{item.businessName}}</view>
+  <view class='fs28 fl h60 lh60 ml20 color-degray' wx:if='{{index<services.length-1}}'>|</view>
+  </block>
+   
   </view>
 </view>
 <view class='fl wp30 h120'>
@@ -182,7 +184,10 @@
       </view>
       <view class='bg-white wp78 h180 fr mt10 border-b'>
         <view>
-          <image src='{{item.img}}' mode='widthFix' class='wp30 fl ml10'></image>
+        <view  class='wp30 fl ml10'>
+        <image src='{{item.img}}' mode='widthFix' class='logoPic'></image>
+        </view>
+          
           <view class='fl wp65 ml10'>
             <view class='cb '>
               <view class='fs30 fl mt10'>{{item.businessName}}</view>

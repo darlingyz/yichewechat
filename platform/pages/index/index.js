@@ -25,89 +25,131 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgheights: [],
     current: 0,
-
+    loginstatus:false
   },
   /**
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
+ 
+    // wx.showLoading({ title: '努力加载中...' }),
+    this.initlogin();//授权登陆
+    this.initCateInfo();// 初始化栏目信息
+    this.initShopInfo();// 初始化门店推荐
+    this.initAdsInfo();// 初始化中屏广告
+    this.initlocation();//初始定位
+    this.initactive();//附近优惠活
+    // this.imageLoad(e);
+  },
+  initlogin:function(){
     var that = this;
-    wx.showLoading({ title: '努力加载中...' }),
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-            console.log("授权成功~~~")
-            wx.getUserInfo({
-              success: res => {
-                // 可以将 res 发送给后台解码出 unionId
-                app.globalData.userInfo = res.userInfo
-                var userInfo = res.userInfo;
-                var nickName = userInfo.nickName;
-                var vatarUrl = userInfo.avatarUrl;
-                var openid = app.globalData.openId;
-                app.globalData.nickName = nickName;
-                app.globalData.vatarUrl = vatarUrl;
-                wx.getStorage({
-                  key: 'openId',
-                  success: function (res) {
-                    var openId = res.data;
-                    wx.request({
-                      url: app.globalData.testUrl + '/login/wxLittleLogin',
-                      data: {
-                        openId: openId,
-                        userName: nickName,
-                        portait: vatarUrl
-                      },
-                      header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                      },
-                      method: 'post',
-                      success: function (res) {
-                        wx.hideLoading();
-                        var data = res.data.data;
-                        if (data != null) {
-                          var userId = res.data.data.userId;
-                          app.globalData.userId = userId;
-                          console.log(userId)
-                          that.initshowCar(userId);//初始化车辆
-                          that.initbao(userId);//初始化红包
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          console.log("授权成功~~~")
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              app.globalData.userInfo = res.userInfo
+              var userInfo = res.userInfo;
+              var nickName = userInfo.nickName;
+              var vatarUrl = userInfo.avatarUrl;
+              var openid = app.globalData.openId;
+              app.globalData.nickName = nickName;
+              app.globalData.vatarUrl = vatarUrl;
+              wx.getStorage({
+                key: 'openId',
+                success: function (res) {
+                  var openId = res.data;
+                  wx.request({
+                    url: app.globalData.testUrl + '/login/wxLittleLogin',
+                    data: {
+                      openId: openId,
+                      userName: nickName,
+                      portait: vatarUrl
+                    },
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    method: 'post',
+                    success: function (res) {
+                      console.log(res)
+                      console.log("===================")
+                      wx.hideLoading();
+                      var data = res.data.data;
+                      if (data != null) {
+                        var userId = res.data.data.userId;
+                        var carMap = res.data.data.carMap;
+                        if (carMap == null) {
                           that.setData({
-                            userId: userId
+                            nomsg: true,
+                            havemsg: false
                           })
                         } else {
-                          console.log("没有返回信息~提醒绑定手机~~~");
-                          // console.log(res)
-                          wx.showModal({
-                            title: '温馨提示',
-                            content: '请先绑定手机号!',
-                            success: function (res) {
-                              if (res.confirm) {
-                                //console.log('用户点击确定去注册手机号')
-                                wx.navigateTo({
-                                  url: '../phonelogin/phonelogin',
-                                })
-                              } else if (res.cancel) {
-                                //用户点击取消退出小程序
-                                wx.navigateBack({
-                                  delta: 0
-                                })
-                              }
-                            }
-                          })
+                          var breakRulesList = carMap.carMsg.breakRules;
+                          var ocarList = carMap.carMsg;
+                          console.log(ocarList.carId)
+                          app.globalData.carId = ocarList.carId;
+                          if (breakRulesList == null || breakRulesList.length == 0) {
+                            that.setData({
+                              nomsg: false,
+                              havemsg: true,
+                              reson: false,
+                              myCar: ocarList
+                            })
+                          } else {
+                            that.setData({
+                              nomsg: false,
+                              havemsg: true,
+                              reson: true,
+                              myCar: ocarList
+                            })
+                          }
                         }
-                      },
-                    })
-                  },
-                })
-                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                // 所以此处加入 callback 以防止这种情况
-                if (that.userInfoReadyCallback) {
-                  that.userInfoReadyCallback(res)
-                }
+                        app.globalData.userId = userId;
+                        console.log(userId)
+                        //that.initshowCar(userId);//初始化车辆
+                        that.initbao(userId);//初始化红包
+                        that.setData({
+                          loginstatus:true,
+                          userId: userId
+                        })
+                      } else {
+                        console.log("没有返回信息~提醒绑定手机~~~");
+                        // console.log(res)
+                        wx.showModal({
+                          title: '温馨提示',
+                          content: '请先绑定手机号!',
+                          success: function (res) {
+                            if (res.confirm) {
+                              //console.log('用户点击确定去注册手机号')
+                              wx.navigateTo({
+                                url: '../phonelogin/phonelogin',
+                              })
+                            } else if (res.cancel) {
+                              //用户点击取消退出小程序
+                              wx.navigateBack({
+                                delta: 0
+                              })
+                            }
+                          }
+                        })
+                      }
+                    },
+                  })
+                },
+              })
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (that.userInfoReadyCallback) {
+                that.userInfoReadyCallback(res)
               }
-            })
-          } else {
+            }
+          })
+        } else {
+          var astatue = that.data.loginstatus
+          if (!astatue){
             console.log("授权失败~===~")
             var models = that.data.maskModal;
             if (true) {
@@ -117,14 +159,10 @@ Page({
             };
           }
         }
-      })
-    this.initCateInfo();// 初始化栏目信息
-    this.initShopInfo();// 初始化门店推荐
-    this.initAdsInfo();// 初始化中屏广告
-    this.initlocation();//初始定位
-    this.initactive();//附近优惠活
-    // this.imageLoad(e);
+      }
+    })
   },
+   
   //获取用户信息
   getUserInfo: function (res) {
     var that = this;
@@ -155,8 +193,35 @@ Page({
           var userId = res.data.data.userId;
           app.globalData.userId = userId;
           console.log(userId)
-          that.initshowCar(userId);
+         // that.initshowCar(userId);
           that.initbao(userId);
+          var carMap = res.data.data.carMap;
+          if (carMap == null) {
+            that.setData({
+              nomsg: true,
+              havemsg: false
+            })
+          } else {
+            var breakRulesList = carMap.carMsg.breakRules;
+            var ocarList = carMap.carMsg;
+            console.log(ocarList.carId)
+            app.globalData.carId = ocarList.carId;
+            if (breakRulesList == null || breakRulesList.length == 0) {
+              that.setData({
+                nomsg: false,
+                havemsg: true,
+                reson: false,
+                myCar: ocarList
+              })
+            } else {
+              that.setData({
+                nomsg: false,
+                havemsg: true,
+                reson: true,
+                myCar: ocarList
+              })
+            }
+          }
           that.setData({
             userId: userId
           })
@@ -189,7 +254,8 @@ Page({
       url: '../illegallist/illegallist',
     })
   },
-  initshowCar: function (userId) {
+  //查询违章============
+  /*initshowCar: function (userId) {
     var that = this;
     wx.request({
       url: app.globalData.testUrl + '/carInformation/wxUserDefaultCarQuery',
@@ -229,7 +295,7 @@ Page({
         }
       }
     })
-  },
+  },*/
   //点击地图跳转到定位首页
   goSearch: function (event) {
     wx.navigateTo({
@@ -284,7 +350,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that=this;
+    var ostatue = that.data.loginstatus;
+    if(!ostatue){
+    that.initlogin()
+    }
   },
   // 循环优惠券列表方法
   coupondetail: function () {
@@ -390,6 +460,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
   },
 
   /**

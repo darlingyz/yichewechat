@@ -256,3 +256,9 @@ color: #222;
 .max-price{
   text-decoration: line-through;
 }
+.logoPic{
+  margin-top: 15%;
+margin-left: 5%;
+  max-width: 75%;
+  max-height:75%;
+}

@@ -50,7 +50,8 @@ Page({
     groupActivitis: "",
     phone: "",
     startSrc: 'http://116.62.151.139/res/img/star.png',
-    merchantId:""
+    merchantId:"",
+    services:""
   },
 
   /**
@@ -66,7 +67,7 @@ Page({
         wx.getStorage({
           key: 'businessId',
           success: function (res) {
-           // console.log(res)
+            console.log(res)
             thisBusinessId = res.data;
             that.setData({
               bussinessId: thisBusinessId
@@ -84,7 +85,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded' // 默认值
               },
               success: function (msg) {
-                //console.log(msg);
+                console.log(msg);
                 var score = msg.data.data.score;
                 //console.log(score);
                 wx.setStorage({
@@ -116,7 +117,8 @@ Page({
                   starttime: msg.data.data.startTime,
                   endtime: msg.data.data.endTime,
                   phonecall: msg.data.data.phone,
-                  merchantId: msg.data.data.merchantId
+                  merchantId: msg.data.data.merchantId,
+                  services: msg.data.data.services
                 })
               }
             })
@@ -271,12 +273,12 @@ Page({
   // 加入购物车
   addPlus: function (e) {
     var that = this;
-    let id = e.currentTarget.dataset.id;
-    let index = e.currentTarget.dataset.index;
-    let allData = that.data.shopServicesMsg;
-    //console.log(e,index)
-    let num = that.data.count;
-    for (let i = 0; i < allData.length; i++) {
+    var id = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.index;
+    var allData = that.data.shopServicesMsg;
+    console.log(e,index)
+    var num = that.data.count;
+    for (var i = 0; i < allData.length; i++) {
       if (allData[i].serviceId == id) {
         wx.request({
           url: app.globalData.testUrl + '/cartServcie/addShoppingCart',
@@ -290,8 +292,11 @@ Page({
             num: that.data.count
           },
           success: function (res) {
+            console.log(res)
             //console.log(app.globalData.userId, id, that.data.count);
-            let msg = res.data.code;
+            var msg = res.data.code;
+            console.log("添加购物车成功")
+            console.log(app.globalData.userId, id, that.data.count)
             if (msg == 1) {
               wx.showToast({
                 title: '添加成功',

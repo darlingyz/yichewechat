@@ -54,8 +54,8 @@
           </view>
         </block>
       </view>
-      <view class='color-gray fs25 pt10 w350 h30 ohid wsn fl'>{{item.address}}</view>
-      <view class='w150 mr10 fr'>
+      <view class='color-gray fs25 w250 h30 ohid wsn fl oaddress'>{{item.address}}</view>
+      <view class='w150 mr5 fr kms'>
         <image src='{{guideSrc}}' class='fl w40 pt10' mode='widthFix'></image>
         <text class='fl fs25 ml10 w40 h40 pt15'>{{item.distance}}km</text>
       </view>

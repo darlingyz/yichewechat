@@ -25,9 +25,9 @@
   </view>
 </view>
 <view class='fl wp30 h120'>
-  <image src='http://116.62.151.139/res/img/call.png' mode='widthFix' class='w80 fl'></image>
+  <image src='http://116.62.151.139/res/img/call.png' mode='widthFix' class='w80 fl' bindtap='shopPhone'></image>
   <image src='http://116.62.151.139/res/img/clineg.png' class='fl ml10 h80 w5'></image>
-  <image src='http://116.62.151.139/res/img/guidemap.png' mode='widthFix' class='w80 fl ml10'></image>
+  <image src='http://116.62.151.139/res/img/guidemap.png' mode='widthFix' class='w80 fl ml10' bindtap='goShop'></image>
 </view>
 
 </view>
