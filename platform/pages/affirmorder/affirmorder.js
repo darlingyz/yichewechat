@@ -20,7 +20,9 @@ Page({
     couponSelectedId: 0,
     priceId: "",
     omerchantId:"",
-    
+    totalprce:"",
+    shopId:"",
+    businessId:""
   },
 
   /**
@@ -42,45 +44,32 @@ Page({
         shopCarId: app.globalData.shopcarId
       },
       success: function (res) {
+        console.log(res)
         var merchantId = res.data.data.shoppingCar.merchantId;
+        var shoppingCartDetails = res.data.data.shoppingCartDetails;
+        console.log(merchantId)
+        var arr = [];
+        for (var i = 0; i < shoppingCartDetails.length;i++){
+            var merbusinessId = shoppingCartDetails[i].merchantBusinessId;
+            var amount = shoppingCartDetails[i].businessNum;
+            arr.push({
+             'merbusinessId': merbusinessId,
+              'amount': amount
+            });
+        };
+        console.log(arr);
+        var str = JSON.stringify(arr);
+        console.log(str);
         that.setData({
           merchant: res.data.data.merchant,
           shoppingCartDetails: res.data.data.shoppingCartDetails,
           shoppingCar: res.data.data.shoppingCar,
-          users: res.data.data.users
+          users: res.data.data.users,
+          totalprce: res.data.data.shoppingCar.totalCurrentPrice,
+          shopId: merchantId,
+          businessId: str
         })
-        //查询可用的优惠券
-        wx.request({
-          url: app.globalData.testUrl + '/coupon/couponQuery',
-          method: 'post',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-            userId: app.globalData.userId
-          },
-          success: function (res) {
-            var odata = res.data.data;
-            var arr = [];
-            console.log(res)
-            console.log(odata)
-            if (odata==null){
-                return
-            }else{
-              for (var i = 0; i < odata.length; i++) {
-                var omerchat = odata[i].merchantId;
-                if (merchantId == omerchat) {
-                  arr.push(odata[i])
-                } else {
-                  return
-                }
-              };
-              that.setData({
-                couponsList: arr
-              })
-            }
-          }
-        })
+
       }
     });
   
@@ -114,10 +103,11 @@ Page({
           merchantId: app.globalData.businessId,
           carId: app.globalData.carId,
           orderType: 1,
-          shoppingCarId: app.globalData.shopcarId
+          shoppingCarId: app.globalData.shopcarId,
+          userDiscountId: that.data.couponSelectedId
         },
         success: function (res) {
-          console.log(app.globalData.userId, app.globalData.merchantName, app.globalData.businessId, app.globalData.carId, app.globalData.shopcarId)
+          console.log(app.globalData.userId, app.globalData.merchantName, app.globalData.businessId, app.globalData.carId, app.globalData.shopcarId, that.data.couponSelectedId)
           var orderId = res.data.data;
           app.globalData.orderId = orderId;
           if (res.data.code == 1) {
@@ -129,11 +119,36 @@ Page({
       })
     }
   },
+  //点击弹出优惠券==
   txClick: function () {
     var isShow = this.data.show;
     this.setData({ show: !isShow })
     var tcShow = this.data.showModalStatus;
     this.setData({ showModalStatus: !tcShow })
+    var that=this;
+    wx.request({
+      url: app.globalData.testUrl + '/coupon/userableCouponQuery',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        userId: app.globalData.userId,
+        price: that.data.totalprce,
+        shopId: that.data.shopId,
+        businessId: that.data.businessId
+      },
+      success: function (res) {
+        console.log(app.globalData.userId, that.data.totalprce, that.data.shopId, that.data.businessId)
+        console.log(res + "===================")
+        var odata = res.data.data;
+        console.log(res)
+        console.log(odata)
+          that.setData({
+            couponsList: odata
+          })
+      }
+    })
   },
   closeClick: function () {
     var tcShow = this.data.showModalStatus;
@@ -142,12 +157,12 @@ Page({
     this.setData({ show: !isShow })
   },
   chooseClick: function (event) {
+    var that = this;
     var price = event.currentTarget.dataset.price;
     var couponSelectedId = event.currentTarget.dataset.id;
     var discountId = event.currentTarget.dataset.discountid;
-    console.log(event);
-    console.log(discountId);
     //优惠券Id
+    console.log(price, couponSelectedId,discountId)
     app.globalData.discountId = discountId;
     this.setData({ 
       couponSelectedId: couponSelectedId,

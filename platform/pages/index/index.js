@@ -123,14 +123,14 @@ Page({
     this.initAdsInfo();// 初始化中屏广告
     this.initlocation();//初始定位
     this.initactive();//附近优惠活
-   // this.imageLoad(e);
+    // this.imageLoad(e);
   },
   //获取用户信息
   getUserInfo: function (res) {
     var that = this;
     that.setData({
       maskModal: false,
-    }) 
+    })
     var models = that.data.maskModal;
     var userInfo = res.detail.userInfo;
     var nickName = userInfo.nickName;
@@ -359,7 +359,7 @@ Page({
           url: app.globalData.testUrl + '/project/searchAllActivitis',
           method: 'post',
           header: {
-            'content-type': 'application/x-www-form-urlencoded' 
+            'content-type': 'application/x-www-form-urlencoded'
           },
           data: {
             lat: latitude,

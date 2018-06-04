@@ -25,6 +25,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
+        console.log(app.globalData.userId)
         console.log(msg)
         that.setData({
           bargainactiveList:msg.data.data.bargainActivity,

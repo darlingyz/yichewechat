@@ -45,6 +45,7 @@ Page({
           },
           success: function (msg) {
             console.log(msg);
+            console.log(app.globalData.userId, res.longitude, res.latitude)
             console.log("代金券.....")
             that.setData({
               CouponsList: msg.data.data

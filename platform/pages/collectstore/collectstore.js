@@ -34,6 +34,9 @@ Page({
   },
   //收藏接口
   initcollection: function () {
+    wx.showLoading({
+      title: '努力加载中...',
+  })
     var that = this;
     wx.getLocation({
       success: function (res) {
@@ -51,6 +54,7 @@ Page({
             lat: latitude
           },
           success: function (res) {
+            wx.hideLoading()
             var arr = res.data.data;
             if (arr.length == 0) {
               that.setData({
