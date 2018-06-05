@@ -28,19 +28,64 @@ Page({
     rests: '其他',
     showService: '全部服务',
     searchType: 1,
-    keyWord: ""
+    keyWord: "",
+    downarrow: app.globalData.imgUrl + '/downarrow.png',
+    uparrow: app.globalData.imgUrl + '/uparrow.png',
+    area: '浦东新区',
+    carbrand: '奔驰',
+    carmodel: 'GLC200 2017款',
+    currentformat: '235/55 R19',
+    currentbrand: '米其林',
   },
   onLoad: function (options) {
-    wx.showLoading({ title: '努力加载中...' }),
-      this.setData({
-        downarrow: app.globalData.imgUrl + '/downarrow.png',
-        uparrow: app.globalData.imgUrl + '/uparrow.png',
-        area: '浦东新区',
-        carbrand: '奔驰',
-        carmodel: 'GLC200 2017款',
-        currentformat: '235/55 R19',
-        currentbrand: '米其林',
-      });
+    wx.showLoading({ title: '努力加载中...' })
+    let that = this;
+    var searchType = 1;
+    wx.getStorage({
+      key: 'keyWorld',
+      success: function(res) {
+        var keyWorld=res.data;
+        console.log(keyWorld);
+        wx.getLocation({
+          success: function (res) {
+            that.setData({
+              lat: res.latitude,
+              lng: res.longitude
+            });
+            that.initShopList(res.latitude, res.longitude, searchType, keyWorld);
+          },
+        })
+      },
+    })
+    //调用 数组循环门店列表方法
+  },
+  //数组循环门店列表方法
+  initShopList: function (lat, lng, searchType, keyWorld) {
+    var that = this;
+    wx.request({
+      url: app.globalData.testUrl + '/search/wxSearchStore',
+      method: "post",
+      data: {
+        searchType: searchType,
+        lat: lat,
+        lng: lng,
+        keyword: keyWorld
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (result) {
+        console.log(searchType, lat, lng, keyWorld)
+        console.log(result)
+        wx.hideLoading()
+        var msg = result.data.data;
+        // console.log(msg);
+        //遍历这个对象
+        that.setData({
+          shopList: msg,
+        })
+      }
+    })
   },
   /**
       * 弹窗
@@ -147,7 +192,6 @@ Page({
     this.setData({
       showModal: true,
       selectbrand: !isShow,
-
     })
   },
   /**
@@ -244,20 +288,7 @@ Page({
 
 
   onReady: function () {
-    //调用 数组循环门店列表方法
-    let that = this;
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        that.setData({
-          lat: res.latitude,
-          lng: res.longitude
-        });
-        var searchType = 1;
-        //调用 数组循环门店列表的方法
-        that.initShopList(res.latitude, res.longitude, searchType);
-      }
-    });
+
   },
 
   /**
@@ -273,7 +304,23 @@ Page({
         that.setData({
           currentformat: odata
         })
-
+      },
+    })
+    //点击再次进入============
+    wx.getStorage({
+      key: 'keyWorld',
+      success: function (res) {
+        var keyWorld = res.data;
+        var searchType=1;
+        wx.getLocation({
+          success: function (res) {
+            that.setData({
+              lat: res.latitude,
+              lng: res.longitude
+            });
+            that.initShopList(res.latitude, res.longitude, searchType, keyWorld);
+          },
+        })
       },
     })
   },
@@ -439,6 +486,7 @@ Page({
     var searchType = that.data.searchType;
     var lat = that.data.lat;
     var lng = that.data.lng;
+
     that.setData({
       allservice: false,
       showService: e.currentTarget.dataset.showservice
@@ -497,50 +545,13 @@ Page({
       success: function (result) {
         wx.hideLoading()
         var msg = result.data.data;
-        //遍历这个对象
-        if (msg) {
-          for (var i = 0; i < msg.length; i++) {
-            msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
-          }
-        }
         that.setData({
           shopList: msg,
         })
       }
     })
   },
-  //数组循环门店列表方法
-  initShopList: function (lat, lng, searchType) {
-    var that = this;
-    wx.request({
-      url: app.globalData.testUrl + '/search/wxSearchStore',
-      method: "post",
-      data: {
-        searchType: searchType,
-        lat: lat,
-        lng: lng,
-        keyWord: this.data.keyWord
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: function (result) {
-        wx.hideLoading()
-        var msg = result.data.data;
-        // console.log(msg);
-        //遍历这个对象
-        if (msg) {
-          for (var i = 0; i < msg.length; i++) {
-            msg[i].distance = that.getDistance(msg[i].lat, msg[i].lng, that.data.lat, that.data.lng);
-          }
-        }
-        that.setData({
-          shopList: msg,
-        })
 
-      }
-    })
-  },
 
   getDistance: function (lat1, lng1, lat2, lng2) {
     lat1 = lat1 || 0;

@@ -2,8 +2,10 @@
   <view wx:if="{{hasList}}">
     <view class="cart-box">
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
-        <navigator url="../details/details?id={{item.id}}">
-          <image class="cart-thumb" src="{{item.img}}"></image>
+        <navigator url="../details/details">
+        <view class='cart-thumb'>
+        <image class="server-logo" src="{{item.img}}"></image>
+        </view>  
         </navigator>
         <!-- <text class="cart-pro-name">{{item.brandName}}</text> -->
         <text class="cart-pro-names">{{item.businessName}}</text>

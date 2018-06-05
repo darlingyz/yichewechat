@@ -27,7 +27,7 @@ Page({
     wx.getStorage({
       key: 'businessId',
       success: function (res) {
-        //console.log(res);
+        console.log(res);
         var obId = res.data;
         that.setData({
           bussinessId: obId

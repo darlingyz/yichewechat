@@ -12,7 +12,7 @@ Page({
     allServelList:'',
     servelList:'',
     obj:"",
-  },
+  },  
   onLoad: function () {
     var that = this;
     //我的服务接口

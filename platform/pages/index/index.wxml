@@ -49,10 +49,83 @@
 </view>
 <view class="border-b-5"></view>
 <!-- 栏目 -->
-<!--汽车美容  -->
-<view class="mt20 ml15 mr15">
+<view class='mt20 ml15 mr15 car-box'>
+  <!--汽车美容  -->
+  <view class='car-beauty'>
+    <view class='fl bg-green beauty-left'>
+      <view class='beauty-pic'>
+        <image src='http://116.62.151.139/res/img//cate1.png' class='pic-item'></image>
+      </view>
+      <view class='fs35 h60 beauty-name'>汽车美容</view>
+      <view class='fs20'>选择专业 选择放心</view>
+    </view>
+    <view class='beauty-right fl'>
+      <block wx:for="{{beautyList}}" wx:key="unique">
+        <view class='beauty-right-item fl bg-green' data-name="{{item.businessName}}"bindtap='goStore'>
+          <view class='right-item-box'>
+            <image src='{{item.img}}' class='right-box-pic'></image>
+          </view>
+          <text class='fs26'>{{item.businessName}}</text>
+        </view>
+      </block>
+    </view>
+    <view class='fs26 color-gray ta-r' bindtap='searchMore'>更多 >> </view>
+  </view>
+  <!--汽车保养  -->
+  <view class='car-maintain'>
+    <view class='car-beauty'>
+      <view class='fl bg-green beauty-left'>
+        <view class='beauty-pic'>
+          <image src='http://116.62.151.139/res/img//cate1.png' class='pic-item'></image>
+        </view>
+        <view class='fs35 h60 beauty-name'>汽车保养</view>
+        <view class='fs20'>品质服务 呵护爱车</view>
+      </view>
+      <view class='beauty-right fl'>
+        <block wx:for="{{maintainList}}" wx:key="unique">
+          <view class='beauty-right-item fl bg-green' data-name="{{item.businessName}}"bindtap='goStore'>
+            <view class='right-item-box'>
+              <image src='{{item.img}}' class='right-box-pic'></image>
+            </view>
+            <text class='fs26'>{{item.businessName}}</text>
+          </view>
+        </block>
+      </view>
+      <view class='fs26 color-gray ta-r' bindtap='maintainMore'>更多 >> </view>
+    </view>
+  </view>
+  <!--活动专区  -->
+  <view class='car-active'>
+    <view class='car-beauty'>
+      <view class='fl bg-green beauty-left'>
+        <navigator url="../moreserve1/moreserve1" hover-class="other-navigator-hover">
+          <view class='beauty-pic'>
+            <image src='http://116.62.151.139/res/img//cate1.png' class='pic-item'></image>
+          </view>
+          <view class='fs35 h60 beauty-name'>活动专区</view>
+          <view class='fs20'>超值特惠 感恩回馈</view>
+        </navigator>
+      </view>
+      <view class='beauty-right fl'>
+        <block wx:for="{{activeList}}" wx:key="unique">
+          <navigator url="{{item.url}}" hover-class="other-navigator-hover">
+            <view class='beauty-right-item fl bg-green'>
+              <view class='right-item-box'>
+                <image src='{{item.img}}' class='right-box-pic'></image>
+              </view>
+              <text class='fs26'>{{item.businessName}}</text>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <view class='fs26 color-gray ta-r' bindtap='activeMore'>更多 >> </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="mt20 ml15 mr15">
   <block wx:for="{{cateInfoList}}" wx:key="unique">
-    <!--分类-->
+    <!--分类--
     <view class="container flex-row flex-ail color-white">
       <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
         <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
@@ -68,7 +141,7 @@
           <view class="hotIcon pa r0 b0"></view>
         </view>
       </navigator>
-      <!-- 中间首列 -->
+      <!-- 中间首列 --
       <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
         <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
           <view class="ml20 mr20" style="height:85rpx;">
@@ -81,7 +154,7 @@
           <view class="hotIcon pa r0 b0"></view>
         </view>
       </navigator>
-      <!-- 最后首列 -->
+      <!-- 最后首列 --
       <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[item].url}}">
         <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
           <view class="ml20 mr20" style="height:85rpx;">
@@ -119,7 +192,7 @@
 
       <view class="flex-column" style="width:210rpx;">
         <navigator url="{{item.cateInfo.list[3].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-          <!-- 首行 -->
+          <!-- 首行 --
           <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
@@ -128,7 +201,7 @@
               <view>{{item.cateInfo.list[3].name}}</view>
             </view>
           </view>
-          <!--中间行-->
+          <!--中间行--
           <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
@@ -147,7 +220,7 @@
               <view>{{item.cateInfo.list[4].name}}</view>
             </view>
           </view>
-          <!--最后一行-->
+          <!--最后一行--
           <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
@@ -168,9 +241,9 @@
       </navigator>
     </view>
   </block>
-  <!--活动专区 -->
+  <!--活动专区 --
   <block wx:for="{{ocateInfoList}}" wx:key="unique">
-    <!--分类-->
+    <!--分类--
     <view class="container flex-row flex-ail color-white">
       <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}">
         <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
@@ -186,7 +259,7 @@
           <view class="hotIcon pa r0 b0"></view>
         </view>
       </navigator>
-      <!-- 中间首列 -->
+      <!-- 中间首列 --
       <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}">
         <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
           <view class="ml20 mr20" style="height:85rpx;">
@@ -199,7 +272,7 @@
           <view class="hotIcon pa r0 b0"></view>
         </view>
       </navigator>
-      <!-- 最后首列 -->
+      <!-- 最后首列 --
       <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[0].url}}">
         <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
           <view class="ml20 mr20" style="height:85rpx;">
@@ -237,7 +310,7 @@
 
       <view class="flex-column" style="width:210rpx;">
         <navigator url="{{item.cateInfo.list[3].url}}">
-          <!-- 首行 -->
+          <!-- 首行 --
           <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
@@ -246,7 +319,7 @@
               <view>{{item.cateInfo.list[3].name}}</view>
             </view>
           </view>
-          <!--中间行-->
+          <!--中间行--
           <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
@@ -265,7 +338,7 @@
               <view>{{item.cateInfo.list[4].name}}</view>
             </view>
           </view>
-          <!--最后一行-->
+          <!--最后一行--
           <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
             <view class="ml20 mr20 flex-aic" style="height:46rpx;">
               <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
@@ -286,7 +359,7 @@
       </navigator>
     </view>
   </block>
-</view>
+</view> -->
 <view class="border-b-15"></view>
 <!--周边门店-->
 <view class="ml15 mr15">

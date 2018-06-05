@@ -25,23 +25,26 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     imgheights: [],
     current: 0,
-    loginstatus:false
+    loginstatus: false,
+    beautyList: "",
+    maintainList: "",
+    activeList: ""
   },
   /**
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
- 
+
     // wx.showLoading({ title: '努力加载中...' }),
     this.initlogin();//授权登陆
-    this.initCateInfo();// 初始化栏目信息
+
     this.initShopInfo();// 初始化门店推荐
     this.initAdsInfo();// 初始化中屏广告
     this.initlocation();//初始定位
     this.initactive();//附近优惠活
     // this.imageLoad(e);
   },
-  initlogin:function(){
+  initlogin: function () {
     var that = this;
     wx.getSetting({
       success: res => {
@@ -61,6 +64,7 @@ Page({
               wx.getStorage({
                 key: 'openId',
                 success: function (res) {
+                  console.log(res)
                   var openId = res.data;
                   wx.request({
                     url: app.globalData.testUrl + '/login/wxLittleLogin',
@@ -74,6 +78,7 @@ Page({
                     },
                     method: 'post',
                     success: function (res) {
+                      console.log(res)
                       wx.hideLoading();
                       var data = res.data.data;
                       if (data != null) {
@@ -108,9 +113,10 @@ Page({
                         app.globalData.userId = userId;
                         console.log(userId)
                         //that.initshowCar(userId);//初始化车辆
+                        that.initCateInfo(userId);// 初始化栏目信息
                         that.initbao(userId);//初始化红包
                         that.setData({
-                          loginstatus:true,
+                          loginstatus: true,
                           userId: userId
                         })
                       } else {
@@ -145,22 +151,19 @@ Page({
               }
             }
           })
-        } else {
+        } else if (!res.authSetting['scope.userInfo']) {
           var astatue = that.data.loginstatus
-          if (!astatue){
+          if (!astatue) {
             console.log("授权失败~===~")
-            var models = that.data.maskModal;
-            if (true) {
-              that.setData({
-                maskModal: !models,
-              })
-            };
+            that.setData({
+              maskModal: true,
+            })
           }
         }
       }
     })
   },
-   
+
   //获取用户信息
   getUserInfo: function (res) {
     var that = this;
@@ -191,7 +194,6 @@ Page({
           var userId = res.data.data.userId;
           app.globalData.userId = userId;
           console.log(userId)
-         // that.initshowCar(userId);
           that.initbao(userId);
           var carMap = res.data.data.carMap;
           if (carMap == null) {
@@ -252,53 +254,24 @@ Page({
       url: '../illegallist/illegallist',
     })
   },
-  //查询违章============
-  /*initshowCar: function (userId) {
-    var that = this;
-    wx.request({
-      url: app.globalData.testUrl + '/carInformation/wxUserDefaultCarQuery',
-      method: 'post',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        userId: userId
-      },
-      success: function (res) {
-        var msg = res.data.data;
-        if (msg == null) {
-          that.setData({
-            nomsg: true,
-            havemsg: false
-          })
-        } else {
-          var breakRulesList = res.data.data;
-          var breakRules = breakRulesList.breakRules;
-          app.globalData.carId = res.data.data.carId;//直接查询把车辆Id直接赋值为全局变量
-          if (breakRules == null || breakRules.length == 0) {
-            that.setData({
-              nomsg: false,
-              havemsg: true,
-              reson: false,
-              myCar: res.data.data
-            })
-          } else {
-            that.setData({
-              nomsg: false,
-              havemsg: true,
-              reson: true,
-              myCar: res.data.data
-            })
-          }
-        }
-      }
-    })
-  },*/
   //点击地图跳转到定位首页
   goSearch: function (event) {
     wx.navigateTo({
       url: '../selectcity/selectcity'
     })
+  },
+  //跳转...............
+  goStore: function (e) {
+      console.log(e)
+      var keyWorld = e.currentTarget.dataset.name;
+      console.log(keyWorld);
+      wx.setStorage({
+        key: 'keyWorld',
+        data: keyWorld,
+      })
+      wx.switchTab({
+        url: '../store/store',
+      })
   },
   //点击领取优惠券
   coupondetail: function () {
@@ -348,10 +321,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that=this;
+    var that = this;
     var ostatue = that.data.loginstatus;
-    if(!ostatue){
-    that.initlogin()
+    if (!ostatue) {
+      that.initlogin()
     }
   },
   // 循环优惠券列表方法
@@ -453,7 +426,24 @@ Page({
       },
     })
   },
-
+  //汽车美容更多
+  searchMore: function () {
+    wx.navigateTo({
+      url: '../morecarbeauty/morecarbeauty',
+    })
+  },
+  //汽车保养
+  maintainMore: function () {
+    wx.navigateTo({
+      url: '../morecarmaintain/morecarmaintain',
+    })
+  },
+  //活动
+  activeMore:function(){
+    wx.navigateTo({
+      url: '../moreserve/moreserve',
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -465,14 +455,12 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -600,122 +588,76 @@ Page({
     })
   },
   // 初始化栏目信息
-  initCateInfo: function () {
-    this.setData({
-      // 分类信息列表： cateInfo 5个一组
-      cateInfoList: [{
-        cateInfo: {
-          rowPos: 'first',
-          moreUrl: '../morecarbeauty/morecarbeauty',
-          list: [{
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '汽车美容',
-            memo: '选择专业 选择放心',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '标准洗车',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '内饰清洗',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '全车精洗',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '汽车打蜡',
-            memo: '',
-            url: '../store/store'
-          }
-          ]
-        }
+  initCateInfo: function (userId) {
+    //请求洗车服务的接口
+    var that = this;
+    wx.request({
+      url: app.globalData.testUrl + '/search/seachCarComServcies',
+      method: 'post',
+      data: {
+        userId: userId,
+        sn1: 'beauty'
       },
-      {
-        cateInfo: {
-          rowPos: 'middle',
-          moreUrl: '../morecarmaintain/morecarmaintain',
-          list: [{
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '汽车保养',
-            memo: '品质服务 呵护爱车',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '轮胎更换',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '空气滤清器',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '机油',
-            memo: '',
-            url: '../store/store'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '机油滤清器',
-            memo: '',
-            url: '../store/store'
-          }
-          ]
-        }
-      }],
-      ocateInfoList: [{
-        cateInfo: {
-          rowPos: 'last',
-          moreUrl: '../moreserve/moreserve',
-          list: [{
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '活动专区',
-            memo: '超值特惠 感恩回馈',
-            url: '../moreserve1/moreserve1'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '拼团活动',
-            memo: '',
-            url: '../groupactivity/groupactivity'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '砍价活动',
-            memo: '',
-            url: '../bargainactivity/bargainactivity'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '优惠券',
-            memo: '',
-            url: '../mycoupons/mycoupons'
-          },
-          {
-            icon: 'http://116.62.151.139/res/img/cate1.png',
-            name: '代金券',
-            memo: '',
-            url: '../mycoupons/mycoupons'
-          }
-          ]
-        }
-      }]
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      success: function (msg) {
+        console.log(msg.data.data);
+        that.setData({
+          beautyList: msg.data.data
+        })
+      }
+    })
+  
+    //请求汽车保养的接口
+    wx.request({
+      url: app.globalData.testUrl + '/search/seachCarComServcies',
+      method: 'post',
+      data: {
+        userId: userId,
+        sn1: 'maintain'
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'//默认值
+      },
+      success: function (msg) {
+        console.log(msg);
+        that.setData({
+          maintainList: msg.data.data
+        })
+      }
+    })
+    this.setData({
+      // rowPos: 'last',
+      // moreUrl: '../moreserve/moreserve',url: '../moreserve1/moreserve1'
+      activeList: [
+        {
+          img: 'http://116.62.151.139/res/img/cate1.png',
+          businessName: '拼团活动',
+          memo: '',
+          url: '../groupactivity/groupactivity'
+        },
+        {
+          img: 'http://116.62.151.139/res/img/cate1.png',
+          businessName: '砍价活动',
+          memo: '',
+          url: '../bargainactivity/bargainactivity'
+        },
+        {
+          img: 'http://116.62.151.139/res/img/cate1.png',
+          businessName: '优惠券',
+          memo: '',
+          url: '../mycoupons/mycoupons'
+        },
+        {
+          img: 'http://116.62.151.139/res/img/cate1.png',
+          businessName: '代金券',
+          memo: '',
+          url: '../mycoupons/mycoupons'
+        }]
     });
   },
+
   imageLoad: function (e) {
     //获取图片真实宽度  
     var imgwidth = e.detail.width,

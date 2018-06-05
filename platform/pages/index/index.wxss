@@ -262,7 +262,7 @@
   width: 100%;
   height: 80rpx;
   /* border-bottom: 1rpx solid #eaeaea; */
-  z-index: 9999
+  z-index: 9999;
 }
 
 .applyuser {
@@ -296,9 +296,84 @@
   text-align: center;
   margin-left: 200rpx;
 }
-.itemname{
-  overflow: hidden
+
+.itemname {
+  overflow: hidden;
 }
- .adverother{
-  display: none
-} 
+
+.adverother {
+  display: none;
+}
+
+/*活动栏目  */
+
+.car-box {
+  width: 95%;
+  height: 600rpx;
+  
+}
+
+/*汽车美容  */
+
+.car-beauty {
+  height: 200rpx;
+  color: #fff;
+  background: #fff;
+  
+}
+
+.beauty-left {
+  width: 40%;
+  height: 150rpx;
+  text-align: center;
+
+}
+
+.beauty-name {
+  margin-top: 10%;
+}
+
+.beauty-pic {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 10%;
+  margin-left: 10rpx;
+  float: left;
+}
+.pic-item {
+  max-width: 90%;
+  max-height: 90%;
+}
+.beauty-right{
+  width: 60%;
+  height: 150rpx;
+}
+.beauty-right-item{
+  width: 47%;
+  height: 70rpx;
+  margin-left: 14rpx;
+  margin-bottom: 10rpx;
+}
+.right-item-box{
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+}
+.right-box-pic{
+  margin-left: 10rpx;
+  max-width: 80%;
+  max-height: 80%;
+}
+/*汽车保养  */
+
+.car-maintain {
+  height: 200rpx;
+  background: #f0f;
+}
+
+/*活动专区  */
+
+.car-active {
+  height: 200rpx;
+  background: #00f;
+}

@@ -29,17 +29,16 @@
 </view>
 <!--门店列表-->
 <block wx:for="{{shopList}}" wx:key="unique">
-
   <view class='cb wp100 h160 border-t mt10' bindtap='storedetail' data-shopId='{{item.shopId}}'>
     <image src='{{item.facadePhotoUrl}}' class='fl w200 ml10 mt10 h150'></image>
     <view class='fl h160 ml10 w530'>
       <view class='fs28 mt10 '>{{item.shopName}}</view>
       <view class='pt10 '>
-        <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
-        <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
-        <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
-        <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
-        <image src='{{startSrc}}' class='w30 fl' mode='widthFix'></image>
+        <image src="http://116.62.151.139/res/img//star.png" class='w30 fl' mode='widthFix'></image>
+        <image src='http://116.62.151.139/res/img//star.png' class='w30 fl' mode='widthFix'></image>
+        <image src='http://116.62.151.139/res/img//star.png' class='w30 fl' mode='widthFix'></image>
+        <image src='http://116.62.151.139/res/img//star.png' class='w30 fl' mode='widthFix'></image>
+        <image src='http://116.62.151.139/res/img//star.png' class='w30 fl' mode='widthFix'></image> 
         <view class='fs20 fl ml20'>{{item.score}}分</view>
         <view class='fs20 fl ml20'>{{item.amount}}人购买</view>
       </view>

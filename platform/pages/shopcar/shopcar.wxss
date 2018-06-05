@@ -28,10 +28,10 @@ page{
 
 .cart-list .cart-thumb{
     position: absolute;
-    top: 20rpx;
+    top: 10rpx;
     left: 85rpx;
     width: 150rpx;
-    height: 120rpx;
+    height: 150rpx;
 }
 
 .cart-list {
@@ -45,9 +45,9 @@ page{
  .cart-pro-names,
  .cart-pro-name{
     display: inline-block;
-    width: 300rpx;
-    height:40rpx;
-    line-height: 40rpx;
+    width: 250rpx;
+    height:30rpx;
+    line-height: 30rpx;
     overflow: hidden;
 }
 .cart-list .cart-pro-price{
@@ -188,4 +188,8 @@ page{
   color: #fff;
   border-radius: 12rpx;
   z-index: 999
+}
+.server-logo{
+  max-height: 80%;
+  max-width: 80%;
 }
