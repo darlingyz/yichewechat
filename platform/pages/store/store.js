@@ -41,22 +41,17 @@ Page({
     wx.showLoading({ title: '努力加载中...' })
     let that = this;
     var searchType = 1;
-    wx.getStorage({
-      key: 'keyWorld',
-      success: function(res) {
-        var keyWorld=res.data;
-        console.log(keyWorld);
-        wx.getLocation({
-          success: function (res) {
-            that.setData({
-              lat: res.latitude,
-              lng: res.longitude
-            });
-            that.initShopList(res.latitude, res.longitude, searchType, keyWorld);
-          },
-        })
+    var keyWord = that.data.keyWord;
+    wx.getLocation({
+      success: function (res) {
+        that.setData({
+          lat: res.latitude,
+          lng: res.longitude
+        });
+        that.initShopList(res.latitude, res.longitude, searchType, keyWord);
       },
     })
+
     //调用 数组循环门店列表方法
   },
   //数组循环门店列表方法
@@ -91,6 +86,7 @@ Page({
       * 弹窗
       */
   showAllservice: function (event) {
+    console.log(event)
     var isShow = this.data.allservice;
     this.setData({
       showModal: !isShow,
@@ -311,7 +307,7 @@ Page({
       key: 'keyWorld',
       success: function (res) {
         var keyWorld = res.data;
-        var searchType=1;
+        var searchType = 1;
         wx.getLocation({
           success: function (res) {
             that.setData({
@@ -409,12 +405,10 @@ Page({
     var lng = that.data.lng;
     var serviceId = e.currentTarget.dataset.serviceid;
     var businessName = e.currentTarget.dataset.showservice;
-    console.log(businessName);
     var searchType = that.data.searchType
     that.setData({
       allservice: false,
       showService: e.currentTarget.dataset.showservice
-
     })
     //调用 根据一级服务查询门店列表的方法
     that.searchShopList(lat, lng, searchType, serviceId, businessName);
@@ -449,7 +443,6 @@ Page({
           that.setData({
             shopList: msg,
           })
-
         }
       })
     } else {
@@ -486,13 +479,18 @@ Page({
     var searchType = that.data.searchType;
     var lat = that.data.lat;
     var lng = that.data.lng;
-
+    var keyworld = e.currentTarget.dataset.showservice;
     that.setData({
       allservice: false,
       showService: e.currentTarget.dataset.showservice
     })
+    if (keyworld == "全部服务") {
+      that.initShopList(lat, lng, searchType, "");
+    } else {
+      that.initShopList(lat, lng, searchType, keyworld);
+    }
     //调用 数组循环门店列表的方法
-    that.initShopList(lat, lng, searchType);
+    that.initShopList(lat, lng, searchType, keyworld);
     that.hideModal();
   },
   findServiceStores: function (e) {
@@ -500,9 +498,9 @@ Page({
     var searchType = that.data.searchType;
     var lat = that.data.lat;
     var lng = that.data.lng;
-    var keyWord = that.data.keyWord;
+    var keyworld = that.data.keyWord;
     //调用 关键字查询门店列表的方法
-    that.searchStoreByWord(lat, lng, searchType, keyWord);
+    that.searchStoreByWord(lat, lng, searchType, keyworld);
     that.hideModal();
 
   },
