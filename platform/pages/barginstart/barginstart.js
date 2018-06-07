@@ -21,7 +21,7 @@ Page({
       userBargainId: userBargainId,
       acitivityId: acitivityId
     })
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/userBargainDetail',
       method: 'post',
       data: {
@@ -76,7 +76,7 @@ Page({
   //立即购买
   bindViewBuy: function () {
     var that=this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/bargainPay',
       method: 'post',
       data: {

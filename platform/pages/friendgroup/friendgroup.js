@@ -18,7 +18,7 @@ Page({
       userGroupId: nums
     })
     //此处要获取支付页面跳转过来后 传过来的活动id
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/userHelpGroupActivity',
           method: 'post',
           data: {

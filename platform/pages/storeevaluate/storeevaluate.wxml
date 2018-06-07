@@ -1,0 +1,51 @@
+<!--pages/storeevaluate/storeevaluate.wxml-->
+<view class='border-b wp100 h80'>
+  <view class='fl h80 lh80 wp50' bindtap='bindViewStoredetailb'>
+     <text class='ml120'>门店详情</text>
+  </view>
+  <view class='fl h80 lh80 wp50 '>
+     <text class='ml120 color-green '>门店评价</text>
+  </view>
+</view>
+<image src='http://192.168.1.111:90/ckgreen.png' class='fr w370' mode='widthFix'></image>
+<view class='wp100 h170 lh170 border-b'>
+  <view class='fl wp20 ta-c'>{{score}}</view>
+  <image src='http://192.168.1.111:90/clineg.png' class='fl ml10 h100 w5 mt40'></image>
+  <view class='fl wp70 ml20'>
+      <view class='pt40'>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+        <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+      </view>
+      <view class=''>
+          <text class='fl fs28 satisfy'>服务满意度</text>
+          <text class='fl fs28 ml20'>共{{commentpe}}人点评</text>
+      </view>
+  </view>
+</view>
+
+<block wx:for='{{evaluateList}}'>
+  <view class='wp100 h300 border-b mt20'>
+    <image src='{{item.portait}}' class='fl ml10 w100' mode='widthFix'></image>
+    <view class='fl wp80 ml20'>
+        <view class='ml10'>
+            <text class='fl fs28'>{{item.userName}}</text>
+            <text class='fl fs28 ml340'>{{item.evaluateTime}}</text>
+        </view>
+        <view wx:for="{{item.satisfaction / 2}}">
+        <view class='cb mt50'>
+          <image src='{{startSrc}}' class='w30 fl ml10' mode='widthFix'></image>
+        </view>
+        </view>
+        <view class='cb'>
+            <text class='fs25 ml10'>{{item.desn}}</text>
+        </view>
+        <view class='cb mt10'>
+            <image src='{{item.picture}}' class='w150 ml10' mode='widthFix'></image>
+        </view>
+    </view>
+  </view>
+</block>
+

@@ -24,7 +24,7 @@ Page({
       success: function (res) {
         var lng = res.longitude;
         var lat = res.latitude;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/order/wxOrderDetails',
           method: 'post',
           data: {
@@ -61,7 +61,7 @@ Page({
   //去付款
   bindViewpay: function () {
     var that=this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/bargainPayPrice',
       method: 'post',
       data: {
@@ -90,7 +90,7 @@ Page({
   //取消订单
   cancel:function(){
     var that=this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/cancelOrder',
       method: 'post',
       data: {

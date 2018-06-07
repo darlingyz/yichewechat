@@ -1,0 +1,60 @@
+.gps {background: url(http://192.168.1.111:90/position.png) no-repeat center left;background-size:30rpx;width:90rpx;}
+.searchIcon {background: url(http://192.168.1.111:90/search.png) no-repeat center center;background-size:38rpx;width:70rpx;}
+.searchGpsIcon {background: url(http://192.168.1.111:90/searchgps.png) no-repeat center left;background-size:38rpx;width:160rpx;}
+.cs {background: url(http://192.168.1.111:90/cs.png) no-repeat center center;background-size:44rpx;width:70rpx;}
+.signInIcon {background: url(http://192.168.1.111:90/signin.png) no-repeat center left;background-size:38rpx;}
+.myCar {background: #ccc; border:1rpx solid #fff;}
+.bg-green {background-color: #00A465;}
+.hotIcon {background: url(http://192.168.1.111:90/catehot.png) no-repeat center center;background-size:73rpx;width:73rpx;height:35rpx;}
+.panicbuyIcon {background: url(http://192.168.1.111:90/panicbuying.png) no-repeat center center;background-size:100rpx;width:100rpx;height:100rpx; top: -35rpx;}
+.navbox {width:130rpx;}
+.boxa{
+  height: 235rpx;
+}
+.bargain{
+  top: 142rpx;
+  left: 348rpx;
+}
+.boxb{
+  top: 10rpx;
+  left: 500rpx;
+}
+.discount{
+  top: 155rpx;
+}
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+.modal-dialog {
+  height: 570rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 77rpx;
+  top: 22%;
+  z-index: 9999;
+  background: #da251c;
+  border-radius: 36rpx;
+}
+.couponbtn{
+  background-color: #fff500;
+  line-height: 56rpx;
+}
+.delect{
+  position: fixed;
+  left: 656rpx;
+  top: 19%;
+  z-index: 9999;
+}
+.middle{
+  overflow-y: scroll;
+}
+

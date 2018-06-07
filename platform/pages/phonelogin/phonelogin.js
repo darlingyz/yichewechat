@@ -112,7 +112,7 @@ Page({
       //console.log(0);
     };
     //手机号验证成功，请求接口验证手机号是否注册过，
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/register/getWxVerificationCode',
       method:"post",
       data:{
@@ -146,7 +146,7 @@ Page({
   //验证手机号,跳转到下一页
   gosetPass:function(options){
     var that=this;
-  wx.request({
+  app.request({
     url: app.globalData.testUrl + '/register/checkVerificationCode',
     method: "post",
     data: {

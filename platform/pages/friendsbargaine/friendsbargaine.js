@@ -18,7 +18,7 @@ Page({
     that.setData({
       userBargainId: userBargainId
     })
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/helpResult',
       method: 'post',
       data: {

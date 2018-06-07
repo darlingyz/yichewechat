@@ -42,7 +42,7 @@ Page({
       success: function (res) {
         var latitude = res.latitude;
         var longitude = res.longitude;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/search/searchCollectStore',
           method: "post",
           header: {

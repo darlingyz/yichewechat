@@ -34,7 +34,7 @@ Page({
       nickName: app.globalData.nickName,
       vatarUrl: app.globalData.vatarUrl
     })
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/verifyOrder',
       method: 'post',
       header: {
@@ -91,7 +91,7 @@ Page({
           }
         })
     }else{
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/order/addShoppingOrder',
         method: "post",
         header: {
@@ -126,7 +126,7 @@ Page({
     var tcShow = this.data.showModalStatus;
     this.setData({ showModalStatus: !tcShow })
     var that=this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/userableCouponQuery',
       method: 'post',
       header: {

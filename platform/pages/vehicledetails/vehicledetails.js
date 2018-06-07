@@ -69,7 +69,7 @@ Page({
     })
   },
   addCar : function(){
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/carInformation/addCarInformation',
       method: 'post',
       data: {

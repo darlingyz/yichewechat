@@ -24,7 +24,7 @@ Page({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res.code);
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/Wx/aaa',
           method: "post",
           data: {
@@ -64,7 +64,7 @@ Page({
                   console.log(openid);
                   // 可以将 res 发送给后台解码出 unionId
                   app.globalData.userInfo = res.userInfo
-                  wx.request({
+                  app.request({
                     url: app.globalData.testUrl + '/login/wxLittleLogin',
                     data: {
                       openId: openid,
@@ -111,7 +111,7 @@ Page({
               //console.log(openid);
               // 可以将 res 发送给后台解码出 unionId
               app.globalData.userInfo = res.userInfo
-              wx.request({
+              app.request({
                 url: app.globalData.testUrl + '/login/wxLittleLogin',
                 data: {
                   openId: openid,
@@ -184,7 +184,7 @@ Page({
     //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
     //           // 所以此处加入 callback 以防止这种情况
 
-    //           wx.request({
+    //           app.request({
     //             url: app.globalData.testUrl + '/login/wxLittleLogin',
     //             data: {
     //               openId: openid,

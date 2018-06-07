@@ -48,7 +48,7 @@ Page({
   onLoad: function (options){
     var group = options.group;
     var that =this;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/GroupSuccess',
           method: 'post',
           data: {

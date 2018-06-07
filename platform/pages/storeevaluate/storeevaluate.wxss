@@ -1,0 +1,5 @@
+/* pages/storeevaluate/storeevaluate.wxss */
+.satisfy{
+  margin-left:-190rpx;
+}
+

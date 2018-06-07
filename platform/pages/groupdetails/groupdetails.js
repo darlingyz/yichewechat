@@ -33,7 +33,7 @@ Page({
           activityId: res.data
         });
         console.log(app.globalData.userId, res.data)
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/groupDetail',
           method: 'post',
           data: {
@@ -94,7 +94,7 @@ Page({
         }
       })
     }else{
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/activity/userGroupActivity',
         method: 'post',
         data: {

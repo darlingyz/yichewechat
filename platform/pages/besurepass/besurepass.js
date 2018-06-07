@@ -43,7 +43,7 @@ Page({
         success: function (res) {
           let phoneNo = res.data;
           //console.log(res);
-          wx.request({
+          app.request({
             url: app.globalData.testUrl + '/register/submitRegister',
             method: 'post',
             header: {
@@ -101,7 +101,7 @@ Page({
     // console.log(e)
     var id = e.currentTarget.dataset.id;
     // console.log(id)
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/GetCoupon',
       method: 'post',
       header: {

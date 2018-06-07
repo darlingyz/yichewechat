@@ -3,12 +3,18 @@ var app = getApp();
 var shopId;
 var thisdistance;
 var score;
+var amap = require("../../libs/amap");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    lat:"",
+    lng:"",
+    merLat:"",
+    merLng:"",
+    merName:"",
     navbar: ['门店详情', '门店评价'],
     currentTab: 0,
     distance: 0,
@@ -28,6 +34,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    amap.getRegeo()
+      .then(res => {
+        that.setData({
+          lat: res[0].latitude,
+          lng: res[0].longitude
+        })
+      })
+      .catch(e => {
+        console.log(e);
+      })
     wx.getStorage({
       key: 'shopId',
       success: function (res) {
@@ -38,13 +54,12 @@ Page({
       success: function (res) {
         var olat = res.latitude;
         var olng = res.longitude;
-
         wx.getStorage({
           key: 'businessId',
           success: function (res) {
             thisdistance = res.data;
             var oshopId = res.data;
-            wx.request({
+            app.request({
               url: app.globalData.testUrl + '/storeInformation/storeDetail',
               method: 'post',
               data: {
@@ -63,14 +78,20 @@ Page({
                 if (oarr == null) {
                   that.setData({
                     data: odata,
-                    shopPhone: odata.phone
+                    shopPhone: odata.phone,
+                    merLat: odata.lat,
+                    merLng: odata.lng,
+                    merName: odata.storeName
                   })
                 } else {
                   imgArr = oarr.split(",");
                   that.setData({
                     data: odata,
                     imgArr: imgArr,
-                    shopPhone: odata.phone
+                    shopPhone: odata.phone,
+                    merLat:odata.lat,
+                    merLng:odata.lng,
+                    merName: odata.storeName
                   })
                 }
               }
@@ -79,13 +100,11 @@ Page({
         })
       },
     })
-
-
     wx.getStorage({
       key: 'businessId',
       success: function (res) {
         shopId = res.data;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/storeInformation/shopEvaluateQuery',
           method: 'post',
           data: {
@@ -95,7 +114,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-            console.log(msg);
+            // console.log(msg);
             var arr = msg.data.data;
             if (arr.length == 0) {
               that.setData({
@@ -156,8 +175,16 @@ Page({
   },
   //地图
   goShop: function () {
+    var that = this;
+    var city = "",
+      desc = "",
+      latitude = that.data.lat,
+      latitude2 = that.data.merLat,
+      longitude = that.data.lng,
+      longitude2 = that.data.merLng,
+      name = that.data.merName;
     wx.navigateTo({
-      url: '../searchmap/searchmap',
+      url: `../map/map?longitude=${longitude}&latitude=${latitude}&longitude2=${longitude2}&latitude2=${latitude2}&city=${city}&name=${name}&desc=${desc}`,
     })
   },
   /**
@@ -171,7 +198,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

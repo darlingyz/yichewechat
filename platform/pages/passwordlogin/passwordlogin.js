@@ -26,7 +26,7 @@ Page({
     wx.clearStorage();
     var that=this;
     console.log("手机号：" + that.data.phone + " 密码：" + that.data.password);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/login/accountLogin',
       method: "post",
       data: {

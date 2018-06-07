@@ -49,7 +49,7 @@
 </view>
 <view class="border-b-5"></view>
 <!-- 栏目 -->
-<view class='mt20 ml15 mr15 car-box'>
+<view class='mt20 ml10 mr10 car-box'>
   <!--汽车美容  -->
   <view class='car-beauty'>
     <view class='fl bg-green beauty-left'>

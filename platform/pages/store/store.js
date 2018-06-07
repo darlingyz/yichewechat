@@ -57,7 +57,7 @@ Page({
   //数组循环门店列表方法
   initShopList: function (lat, lng, searchType, keyWorld) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       method: "post",
       data: {
@@ -143,7 +143,7 @@ Page({
         }
       })
     } else {
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/search/checkByTireSpec',
         method: 'post',
         header: {
@@ -260,7 +260,7 @@ Page({
           lng: lng
         })
         //调用 数组循环门店列表的方法
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/search/wxSearchStore',
           method: "post",
           header: {
@@ -323,7 +323,7 @@ Page({
   //轮胎规格
   godata: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       data: {
         spec: that.data.currentformat,
@@ -418,7 +418,7 @@ Page({
   searchShopList: function (lat, lng, searchType, serviceId, businessName) {
     var that = this;
     if (businessName == "洗车服务") {
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/search/serviceFindStore',
         method: "post",
         data: {
@@ -446,7 +446,7 @@ Page({
         }
       })
     } else {
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/search/serviceFindStore',
         method: "post",
         data: {
@@ -528,7 +528,7 @@ Page({
   //关键字查询门店列表的方法
   searchStoreByWord: function (lat, lng, searchType, keyWord) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       method: "post",
       data: {

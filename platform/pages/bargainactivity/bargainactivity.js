@@ -44,7 +44,7 @@ Page({
   initBargainList: function (lat, lng) {
     let that = this;
     console.log(lat);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/findActivity',
       method: "post",
       data: {
@@ -76,7 +76,7 @@ Page({
   bargaindetail: function (e) {
     console.log(e);
     var activityId = e.currentTarget.dataset.id;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/bargainDetail',
       method: 'post',
       data: {

@@ -34,7 +34,7 @@ Page({
     wx.updateShareMenu({
       withShareTicket: true,
       success: function () {
-        wx.request({
+        app.request({
           url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
           method: 'post',
           data: {
@@ -71,7 +71,7 @@ Page({
     wx.login({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
+        app.request({
           url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
           method: "post",
           data: {
@@ -109,7 +109,7 @@ Page({
               var openid = app.globalData.openId;
               app.globalData.nickName = nickName;
               app.globalData.vatarUrl = vatarUrl;
-              wx.request({
+              app.request({
                 url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
                 data: {
                   openId: openid,
@@ -188,7 +188,7 @@ Page({
     var openid = app.globalData.openId;
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
-    wx.request({
+    app.request({
       url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
       data: {
         openId: openid,
@@ -242,7 +242,7 @@ Page({
         path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
           console.log(res);
-        /*  wx.request({
+        /*  app.request({
             url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
             method: 'post',
             data: {
@@ -325,7 +325,7 @@ Page({
         }
       })
     } else {
-      wx.request({
+      app.request({
         url: 'https://api-wechat.glongcar.com/api' + '/activity/HelpGroupActivity',
         method: 'post',
         data: {

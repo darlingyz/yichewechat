@@ -1,0 +1,355 @@
+<view class="container">
+  <view class="zi1 pa fs28 h70 lh70 mt20 dis-flex flex-row contenter">
+    <view class="gps ta-r">
+      上海
+    </view>
+    <view class="bg-black rad10 op4 dis-flex flex-row ml20" style="width:75%">
+      <view class="searchIcon mr10"></view>
+      <view class="searchGpsIcon ta-r fs25 color-white">搜索&地图</view>
+      <view class="color-white ta-r" style="width:50%;">搜索汽车试试</view>
+    </view>
+    <view class="cs"></view>
+  </view>
+</view>
+
+<swiper indicator-dots="true"
+  autoplay="true" interval="5000" duration="1000" indicator-color="#DFDFDD" indicator-active-color="#fff" style="height:{{imgheights[current]}}rpx;">
+  <block wx:for="{{adsInfo}}">
+    <swiper-item>
+    <navigator src="{{item.url}}">
+      <image mode="aspectFit" bindload="imageLoad" src="{{item.img}}" class="wp100" style="height:{{imgheights[current]}}rpx;width:{{imgwidth}}rpx;"/>
+    </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="container pr fs25" style="top:-14rpx;">
+  <view class="wp80 dis-flex flex-row rad10 h70 lh70 myCar">
+    <image class="w40 ha ml10 mr10" mode="aspectFit" src="{{myCar.logo}}"></image>
+    <view class="mr20 wp40">{{myCar.carname}}</view>
+    <view class="mr20 wp40">行驶里程 {{myCar.mileage}}km</view>
+    <view class="wp20 ta-r pr20">{{myCar.state}}</view>
+  </view>
+</view>
+<view class="container fs28 mt5">
+  <view class="contenter h40 lh40 pb20">
+    <view class="signInIcon wp70 ti50 fl">每周签到送优惠券哦！</view>
+    <view class="fr bg-light-green rad40 w150 ta-c fs25 color-white" bindtap='coupondetail'>
+      点击领取
+    </view>
+  </view>
+</view>
+<view class="border-b-5"></view>
+<!-- 栏目 -->
+<view class="mt20 ml15 mr15">
+  <block wx:for="{{cateInfoList}}">
+    <!--分类-->
+    <view class="container flex-row flex-ail color-white">
+      <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 中间首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="hotIcon pa r0 b0"></view>
+        </view>
+      </navigator>
+      <!-- 最后首列 -->
+      <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[0].url}}">
+        <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
+          <view class="ml20 mr20" style="height:85rpx;">
+            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
+          </view>
+          <view class="ta-c">
+            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
+            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
+          </view>
+          <view class="panicbuyIcon pa r0"></view>
+        </view>
+      </navigator>
+
+        <view class="flex-column" style="width:210rpx;">
+          <navigator url="{{item.cateInfo.list[1].url}}">
+          <view class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic"  style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[1].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[1].name}}</view>
+            </view>
+          </view>
+          </navigator>
+          <navigator url="{{item.cateInfo.list[2].url}}">
+          <view class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic"  style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[2].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[2].name}}</view>
+            </view>
+          </view>
+          </navigator>
+        </view>
+
+        <view class="flex-column" style="width:210rpx;">
+          <navigator url="{{item.cateInfo.list[3].url}}">
+          <!-- 首行 -->
+          <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic"  style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+          <!--中间行-->
+          <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[3].name}}</view>
+            </view>
+          </view>
+          </navigator>
+          <navigator url="{{item.cateInfo.list[4].url}}">
+          <view wx:if="{{item.cateInfo.rowPos!='last'}}" class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic"  style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+          <!--最后一行-->
+          <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
+            <view class="ml20 mr20 flex-aic"  style="height:46rpx;">
+              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
+            </view>
+            <view class="wp60">
+              <view>{{item.cateInfo.list[4].name}}</view>
+            </view>
+          </view>
+          </navigator>
+        </view>
+    </view>
+
+    <view class="dis-b fs28 h60 lh60">
+      <navigator url="{{item.cateInfo.moreUrl}}">
+        <view class="fr color-gray">
+          更多>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</view>
+<view class="border-b-15"></view>
+<!--周边门店-->
+<view class="ml15 mr15">
+  <view class="fs30 ta-c h60 lh60 border-b">-周边门店推荐-</view>
+  <view class="container mt20 mb10 dis-flex flex-row" bindtap='storedetail'>
+    <block wx:for="{{shopInfo}}">
+    <navigator src="{{item.url}}">
+    <view>
+      <view>
+        <image mode="widthFix" style="width:230rpx;" src='{{item.img}}'></image>
+      </view>
+      <view class="fs25 h40 lh40 ohid">{{item.shop_name}}</view>
+      <view class="dis-flex flex-row fs18 color-gray">
+        <view class="border-r pr10">{{item.score}}分</view>
+        <view class="border-r pl10 pr10">{{item.buynum}}人购买</view>
+        <view class="pl10">{{item.distance}}km</view>
+      </view>
+    </view>
+    </navigator>
+    </block>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--导航菜单-->
+<view class="container fs28 mb20">
+  <view class="container dis-flex flex-row wp90 ta-c mt10">
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/Illegal.png'></image>
+      <view>查违章</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/pickcar.png'></image>
+      <view>取车维修</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/1hi.png'></image>
+      <view>一嗨租车</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/loan.png'></image>
+      <view>车抵贷</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/save.png'></image>
+      <view>道路救援</view>
+    </view>
+    </navigator>
+  </view>
+  <view class="container dis-flex flex-row wp90 ta-c mt10">
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/insurance.png'></image>
+      <view>买车险</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/oilcard.png'></image>
+      <view>充油卡</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/drivingservice.png'></image>
+      <view>找代驾</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/parking.png'></image>
+      <view>智慧停车</view>
+    </view>
+    </navigator>
+    <navigator>
+    <view class="navbox">
+      <image mode="widthFix" style="width:85rpx;" src='http://192.168.1.111:90/navmore.png'></image>
+      <view>更多</view>
+    </view>
+    </navigator>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--中间广告-->
+<view>
+  <view>
+    <navigator src="" style="height:auto;">
+      <image mode="widthFix" class="wp100" src="http://192.168.1.111:91/666.png"></image>
+    </navigator>
+  </view>
+  <view  class="container dis-flex flex-row">
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://192.168.1.111:91/mad1.png"></image>
+    </navigator>
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://192.168.1.111:91/mad2.png"></image>
+    </navigator>
+    <navigator>
+      <image mode="widthFix" style="width:247rpx;" src="http://192.168.1.111:91/mad2.png"></image>
+    </navigator>
+  </view>
+  <view class="container flex-row">
+    <navigator>
+      <image mode="widthFix" style="width:497rpx;" src="http://192.168.1.111:91/mad3.png"></image>
+    </navigator>
+    <view>
+      <view style="height:147rpx;">
+        <navigator>
+          <image mode="widthFix" style="width:247rpx;" src="http://192.168.1.111:91/mad4.png"></image>
+        </navigator>
+      </view>
+      <view>
+        <navigator>
+          <image mode="widthFix" style="width:247rpx;" src="http://192.168.1.111:91/mad5.png"></image>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="border-b-15"></view>
+<!--限时优惠活动-->
+<view class="ml15 mr15">
+  <view class="fs30 ta-c h60 lh60 border-b">-限时优惠活动-</view>
+</view>
+  <block wx:for="{{bargainList}}">
+    <view class='wp100'>
+      <view class="pr">
+        <image src='{{item.storeSrc}}' class='wp60 fl mt10' mode='widthFix'></image>
+        <image src='{{item.bargainSrc}}' mode='widthFix' class='bargain w90 pa fl'></image>
+      </view>
+      <view class="pr">
+        <image src='{{item.couponSrc}}' class='boxa wp40 fl mt10'></image>
+        <view class='boxb fl pa'>
+          <view class='pr'>
+                <view class='fs35 mt20 ml80 fw'>{{item.washcar}}</view>
+                <view class='mt10'>
+                    <view class='fs20 fl ml30'>{{item.slogana}}</view>
+                    <view class='fs20 fr mr20'>{{item.sloganb}}</view>
+                </view>
+                <view class='pt40'>
+                    <view class='fs40 fl fw'>￥{{item.currentPrice}}</view>
+                    <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.originalPrice}}</view>
+                </view>
+                <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.discount}}折-</view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class='cb border-b wp100 h80 lh100'>
+        <view class='fl h80 lh80 fs28 ml20'>{{item.storename}}</view>
+        <view class='fl h80 lh80 fs28 ml100 color-gray'>{{item.address}}</view>
+        <view class='fr h80 lh80 fs28 mr20 color-gray'>{{item.distance}}km</view>
+    </view>
+  </block>
+<!--优惠券弹窗-->
+<view  wx:if="{{showcoupondetail}}">
+  <view class="modal-dialog wp80">
+    <view class='h60 lh60'>
+      <view class="pt40 fs30 color-white ta-c">优惠券</view>
+    </view>
+    <view class='mt60 h300 wp100 cb middle'>
+      <block wx:for='{{couponList}}'>
+        <view class='h150 ml70 mt20'>
+            <view class='bg-orange h150 wp30 fl'>
+              <text class='fs40 color-white fl mt60 ml40'>￥</text>
+              <text class='fs80 color-white fl mt20'>{{item.couponprice}}</text>
+            </view>
+            <view class='bg-white h150 wp55 fl pl10'>
+                <view class='cb'>
+                    <view class='fs28 fl mt30 color-orange'>{{item.allusecoupons}}</view>
+                    <view class='fs18 fr color-gray mt20 mr10'>剩余时间：{{item.residualtime}}天</view>
+                </view>
+                <view class='cb mt10'>
+                    <view class='fs20 fl mt10 color-gray '>{{item.userange}}</view>
+                    <view class='fs20 fr mt40 mr10'>满{{item.enprice}}元可用</view>
+                </view>
+            </view>
+        </view>
+      </block>
+    </view>
+    <view class='couponbtn rad40 h60 w200 ta-c mt30 ma'><text class='fs30'>立即领取</text></view>
+  </view>
+  <image src='http://192.168.1.111:90/delect.png' mode='widthFix' class='delect w50' bindtap="hideModal"></image>
+</view>
+<!--遮罩-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+

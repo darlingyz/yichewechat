@@ -65,7 +65,7 @@ Page({
         var id = res.data;
         wx.getLocation({
           success: function (res) {
-            wx.request({
+            app.request({
               url: app.globalData.testUrl + '/order/wxOrderDetails',
               method: 'post',
               data: {

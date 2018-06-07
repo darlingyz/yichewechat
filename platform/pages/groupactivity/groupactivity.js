@@ -17,7 +17,7 @@ Page({
     var that = this;
     wx.getLocation({
       success: function (res) {
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/findActivity',
           method: 'post',
           data: {

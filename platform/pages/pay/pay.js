@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + "/order/shoppingCarPay",
       method: 'post',
       data: {
@@ -87,7 +87,7 @@ Page({
   paypay: function () {
     var that = this;
     console.log("进入支付" + app.globalData.orderId);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + "/Wx/getPrePayId",
       method: 'post',
       data: {

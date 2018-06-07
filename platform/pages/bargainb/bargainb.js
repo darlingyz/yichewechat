@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl +'/activity/bargainDetail',
       method: 'post',
       header:{

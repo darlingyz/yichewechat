@@ -20,7 +20,7 @@ Page({
         userBargainId: userNum
       })
     console.log(userNum)
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/helpResult',
           method: 'post',
           data: {

@@ -1,4 +1,7 @@
 //app.js
+
+let requestCount = 0
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -34,12 +37,30 @@ App({
       }
     })
   },
+  request(args) {
+    if (!requestCount) {
+      wx.showLoading({
+        title: '正在加载中...',
+        mask: true
+      })
+    }
+    requestCount++
+    return wx.request({
+      complete() {
+        --requestCount
+        if(!requestCount) {
+          wx.hideLoading() 
+        }
+      },
+      ...args
+    })
+  },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
     //testUrl: 'http://192.168.1.137:802/api',
     imgUrl: 'http://116.62.151.139/res/img/',
-    //testUrl:'https://api-wechat.glongcar.com/api',
-    testUrl: 'https://jk.glongcar.com/api',
+    testUrl:'https://api-wechat.glongcar.com/api',
+   //testUrl: 'https://jk.glongcar.com/api',
     code:"",
     getuser: null,
     openId: null,

@@ -78,7 +78,7 @@ Page({
   onLoad: function () {
     var that = this;
     //我的服务接口
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/seachCarComServcies',
       method: 'post',
       data: {
@@ -96,7 +96,7 @@ Page({
       }
     })
     //所有的服务接口
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/seachCarAllService',
       method: 'post',
       data: {
@@ -217,7 +217,7 @@ Page({
     if (editModel) {
       var ser = JSON.stringify(comServiceList);
       console.log(ser)
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/search/updeteCarAllServcie',
         method: 'post',
         data: {

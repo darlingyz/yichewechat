@@ -32,7 +32,7 @@ Page({
         that.setData({
           bussinessId: obId
         }),
-          wx.request({
+          app.request({
             url: app.globalData.testUrl + '/cartServcie/searchShoppingCartDetails',
             method: "post",
             header: {
@@ -54,7 +54,7 @@ Page({
                   carts: res.data.data
                 })
                 //查询总价钱
-                wx.request({
+                app.request({
                   url: app.globalData.testUrl + '/cartServcie/searchCarSum',
                   method: "post",
                   header: {
@@ -97,7 +97,7 @@ Page({
       success: function (res) {
         //console.log(res);
         var bId = res.data;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/cartServcie/addShoppingCart',
           method: "post",
           header: {
@@ -137,7 +137,7 @@ Page({
       success: function (res) {
         //console.log(res);
         var bId = res.data;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/cartServcie/subtractShoppingCart',
           method: "post",
           header: {
@@ -177,7 +177,7 @@ Page({
     } else {                              // 如果不为空
       this.getTotalPrice();           // 重新计算总价格
     }
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/cartServcie/deleteOneShoppingCarDetails',
       method: "post",
       header: {
@@ -221,7 +221,7 @@ Page({
   //订单生成，跳转到订单生成页面
   makeorder: function (e) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/verifyOrder',
       method: "post",
       header: {

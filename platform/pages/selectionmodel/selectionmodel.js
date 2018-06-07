@@ -17,7 +17,7 @@ Page({
       wx.getStorage({
         key: 'id',
         success: function(res) {
-          wx.request({
+          app.request({
             url: 'https://api.jisuapi.com/car/car',
             method: 'GET',
             data: {

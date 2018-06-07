@@ -1,6 +1,7 @@
 // pages/storedetail/storedetail.js
 var app = getApp();
 var thisBusinessId;
+let amap = require("../../libs/amap");
 Page({
   /**
    * 页面的初始数据
@@ -8,6 +9,9 @@ Page({
   data: {
     lng: "",
     lat: "",
+    merLat:"",
+    merLng:"",
+    merName:"",
     noshow: true,
     disabled: false,
     datatypes:"领取",
@@ -60,6 +64,16 @@ Page({
 
   onLoad: function (options) {
     var that = this;
+    amap.getRegeo()
+      .then(res => {
+        that.setData({
+          lat: res[0].latitude,
+          lng: res[0].longitude
+        })
+      })
+      .catch(e => {
+        console.log(e);
+      })
     wx.getLocation({
       success: function (res) {
         var olat = res.latitude;
@@ -73,7 +87,7 @@ Page({
               bussinessId: thisBusinessId
             }),
              // console.log(thisBusinessId, olat, olng)
-            wx.request({
+            app.request({
               url: app.globalData.testUrl + '/storeInformation/storeDetail',
               method: 'post',
               data: {
@@ -118,12 +132,15 @@ Page({
                   endtime: msg.data.data.endTime,
                   phonecall: msg.data.data.phone,
                   merchantId: msg.data.data.merchantId,
-                  services: msg.data.data.services
+                  services: msg.data.data.services,
+                  merLat: msg.data.data.lat,
+                  merLng:msg.data.data.lng,
+                  merName: msg.data.data.storeName
                 })
               }
             })
             //请求商户服务
-            wx.request({
+            app.request({
               url: app.globalData.testUrl + '/search/wxStoreService',
               method: 'post',
               data: {
@@ -139,7 +156,7 @@ Page({
                 })
               }
             })
-            wx.request({
+            app.request({
               url: app.globalData.testUrl + '/search/judgeCollectStore',
               method: 'post',
               data: {
@@ -160,7 +177,7 @@ Page({
               key: 'status',
               success: function (res) {
                 var status = res.data;
-                wx.request({
+                app.request({
                   url: app.globalData.testUrl + '/search/searchMerActivity',
                   method: 'post',
                   header: {
@@ -172,8 +189,6 @@ Page({
                     status: status
                   },
                   success: function (res) {
-                    console.log(res)
-                    console.log(app.globalData.userId, thisBusinessId, status)
                     var discounts=res.data.data.discounts;
                     if(discounts.length==0){
                       that.setData({
@@ -231,7 +246,7 @@ Page({
       //console.log(e);
       var that=this;
       var couponId = e.currentTarget.dataset.id;
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + '/coupon/getMerCoupon',
         method: "post",
         header: {
@@ -280,7 +295,7 @@ Page({
     var num = that.data.count;
     for (var i = 0; i < allData.length; i++) {
       if (allData[i].serviceId == id) {
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/cartServcie/addShoppingCart',
           method: "post",
           header: {
@@ -315,7 +330,7 @@ Page({
       }
     };
     //查询购物车
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/cartServcie/searchShoppingCartDetails',
       method: "post",
       header: {
@@ -346,8 +361,16 @@ Page({
     })
   },
   goMap: function (e) {
+    var that = this;
+    var city = "",
+      desc = "",
+      latitude = that.data.lat,
+      latitude2 = that.data.merLat,
+      longitude = that.data.lng,
+      longitude2 = that.data.merLng,
+      name = that.data.merName;
     wx.navigateTo({
-      url: '../searchmap/searchmap',
+      url: `../map/map?longitude=${longitude}&latitude=${latitude}&longitude2=${longitude2}&latitude2=${latitude2}&city=${city}&name=${name}&desc=${desc}`,
     })
   },
   /**
@@ -356,7 +379,7 @@ Page({
   collectstore: function (e) {
     var that = this;
     if (!that.data.showCollect) {
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + "/storeInformation/collectStore",
         method: 'post',
         data: {
@@ -374,7 +397,7 @@ Page({
         }
       })
     } else {
-      wx.request({
+      app.request({
         url: app.globalData.testUrl + "/storeInformation/cancelCollect",
         method: 'post',
         data: {
@@ -414,7 +437,7 @@ Page({
       showBrand: !isShow,
       showChangetyre: true,
     })
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/searchTire',
       method: 'post',
       data: {
@@ -435,7 +458,7 @@ Page({
   //显示全部服务
   showAllServices: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/storeInformation/carService',
       method: 'post',
       data: {
@@ -470,7 +493,7 @@ Page({
   showServicesDetail: function (e) {
     var that = this;
     //console.log(e.currentTarget.dataset.businessname);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/storeInformation/carService',
       method: 'post',
       data: {
@@ -521,7 +544,7 @@ Page({
   //评价
   showEvaluate: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/storeInformation/shopEvaluateQuery',
       method: 'post',
       data: {

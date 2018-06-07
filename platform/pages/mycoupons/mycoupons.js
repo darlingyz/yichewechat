@@ -13,7 +13,7 @@ Page({
   },
   onReady: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/couponQuery',
       method: 'post',
       data: {
@@ -32,7 +32,7 @@ Page({
 //商家代金券
     wx.getLocation({
       success: function (res) {
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/coupon/voucherQuery',
           method: 'post',
           data: {

@@ -17,7 +17,7 @@ Page({
     var that = this;
     var activityId = options.activityId;//活动id
     var oactive = parseInt(activityId);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl+'/activity/bargainDetail',
       method: 'post',
       data: {
@@ -57,7 +57,7 @@ Page({
   bindViewBuy: function () {
     var that = this;
    // console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/activity/bargainPay',
       method: 'post',
       data: {
@@ -85,7 +85,7 @@ Page({
   createBargain: function () {
     var that = this;
     //console.log(app.globalData.userId, that.data.acitivityId)
-    wx.request({
+    app.request({
       url:app.globalData.testUrl + '/activity/useBargainActivity',
       method: 'post',
       data: {

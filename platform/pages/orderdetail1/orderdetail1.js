@@ -42,7 +42,7 @@ Page({
   },
   onReady: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/wxUserOrders',
       method: 'post',
       data: {

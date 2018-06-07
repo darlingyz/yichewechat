@@ -8,8 +8,7 @@ Page({
     showModal: false,
     userInfo:{}
   },
-  onLoad: function (options) {
-    wx.showLoading({ title: '努力加载中...' });
+  onShow: function (options) {
     this.setData({
       srcActivity: 'http://121.40.148.153/img/1381294047390736.png',
       srcStore: 'http://121.40.148.153/img/1381379545768160.png',
@@ -24,8 +23,7 @@ Page({
     })
     var that = this;
     //console.log("获取用户信息");
-    console.log(app.globalData.userId);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/project/wxPersonalCenter',
       method: 'post',
       data: {
@@ -35,8 +33,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (msg) {
-        console.log(msg)
-        wx.hideLoading()
         that.setData({
           srcUser: app.globalData.vatarUrl,
           design: app.globalData.nickName,
@@ -180,36 +176,36 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    //页面再次加载的时候请求的数据,如果此是用户id改变,则重新请求数据
-    var that = this;
-    //console.log("获取用户信息");
-    //console.log(app.globalData.userId);
-    wx.request({
-      url: app.globalData.testUrl + '/project/wxPersonalCenter',
-      method: 'post',
-      data: {
-        userId:app.globalData.userId,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' 
-      },
-      success: function (msg) {
-        //console.log(app.globalData.vatarUrl, app.globalData.nickName)
-        that.setData({
-          srcUser: app.globalData.vatarUrl,
-          design: app.globalData.nickName,
-          price: msg.data.data.price,
-          num: msg.data.data.couponAmount,
-          mobile: msg.data.data.mobile,
-          carId: msg.data.data.carId,
-          carLogo: msg.data.data.carLogo,
-          carName: msg.data.data.carName,
-          strokeCount: msg.data.data.strokeCount,
-        })
-      }
-    })   
-  },
+  // onShow: function () {
+  //   页面再次加载的时候请求的数据,如果此是用户id改变,则重新请求数据
+  //   var that = this;
+  //   console.log("获取用户信息");
+  //   console.log(app.globalData.userId);
+  //   app.request({
+  //     url: app.globalData.testUrl + '/project/wxPersonalCenter',
+  //     method: 'post',
+  //     data: {
+  //       userId:app.globalData.userId,
+  //     },
+  //     header: {
+  //       'content-type': 'application/x-www-form-urlencoded' 
+  //     },
+  //     success: function (msg) {
+  //       //console.log(app.globalData.vatarUrl, app.globalData.nickName)
+  //       that.setData({
+  //         srcUser: app.globalData.vatarUrl,
+  //         design: app.globalData.nickName,
+  //         price: msg.data.data.price,
+  //         num: msg.data.data.couponAmount,
+  //         mobile: msg.data.data.mobile,
+  //         carId: msg.data.data.carId,
+  //         carLogo: msg.data.data.carLogo,
+  //         carName: msg.data.data.carName,
+  //         strokeCount: msg.data.data.strokeCount,
+  //       })
+  //     }
+  //   })   
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏

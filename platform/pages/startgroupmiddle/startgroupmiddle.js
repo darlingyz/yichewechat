@@ -21,7 +21,7 @@ Page({
         that.setData({
           activityId: activityId
         }),
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/SearchUserGroupActivity',
           method: 'post',
           data: {
@@ -77,7 +77,7 @@ Page({
         title: "提示",
         path:'/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
-          wx.request({
+          app.request({
             url: app.globalData.testUrl  + '/activity/SearchheadGroupDetail',
             method: 'post',
             data: {

@@ -90,7 +90,7 @@ Page({
 //发表评论
   gocommont:function(event){
     var that=this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl +'/order/wxAppraise',
       method:'post',
       header:{

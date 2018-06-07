@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/project/searchMyActivity',
       method: 'post',
       data: {
@@ -87,7 +87,7 @@ Page({
 
   },
   godown:function(){
-    wx.request({
+    app.request({
       url: 'http://www.glongcar.com/xlxq/#/download',
     })
   },

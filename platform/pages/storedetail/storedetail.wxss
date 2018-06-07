@@ -262,3 +262,17 @@ margin-left: 5%;
   max-width: 75%;
   max-height:75%;
 }
+
+.service-item {
+  animation: scale-item .4s ease-out 1;
+}
+@-webkit-keyframes scale-item {
+  0% {
+    opacity: 0;
+    transform: translateX(20rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

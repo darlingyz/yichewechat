@@ -94,7 +94,7 @@ Page({
   paypay: function () {
    var that = this;
    console.log("进入支付" + orderId);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + "/Wx/getPrePayId",
       method: 'post',
       data: {

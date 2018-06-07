@@ -35,7 +35,7 @@ Page({
       success: function (res) {
         var lati = res.latitude;
         var long = res.longitude;
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/search/storeRecommend',
           method: "post",
           header: {
@@ -85,7 +85,7 @@ Page({
   //搜索关键字显示店铺
    search:function(e){
      var that=this;
-     wx.request({
+     app.request({
        url: app.globalData.testUrl + '/search/wxSearchShop',
        method:"post",
        header:{

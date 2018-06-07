@@ -23,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/wxUserOrders',
       method: 'post',
       data: {
@@ -41,7 +41,7 @@ Page({
       }
     })
     // 待支付
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/wxUserOrders',
       method: 'post',
       data: {
@@ -59,7 +59,7 @@ Page({
       }
     })
     //服务中
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/wxUserOrders',
       method: 'post',
       data: {
@@ -86,7 +86,7 @@ Page({
       }
     })
     //待评价
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/noEvaluateOrders',
       method: 'post',
       data: {
@@ -152,7 +152,7 @@ Page({
   //取消订单
   txClick: function (e) {
     var code = e.currentTarget.dataset.code;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/order/cancelOrder',
       method: 'post',
       data: {

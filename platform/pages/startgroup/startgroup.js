@@ -27,7 +27,7 @@ Page({
             key: 'activityId',
             data: activityId,
           })
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/activity/userStartGroupActivity',
           method: 'post',
           data: {

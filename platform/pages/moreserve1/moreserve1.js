@@ -26,7 +26,7 @@ Page({
         var longitude = res.longitude;
         //定位成功，请求接口去查找信息
         console.log(latitude, longitude);
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/project/searchAllActivitis',
           method: 'post',
           header: {

@@ -77,7 +77,7 @@ Page({
   gosearch:function(){
     var that=this;
     //console.log(app.globalData.userId, app.globalData.carId, that.data.lat, that.data.lng)
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       method: "post",
       data: {

@@ -21,7 +21,7 @@ Page({
       key: 'carId',
       success: function (res) {
         carId = res.data
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/carInformation/searchCarByCarId',
           method: 'post',
           data: {
@@ -56,7 +56,7 @@ Page({
   },
   bindViewcarport: function () {
     var that =this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/shopCarRecord/updateCarRecord',
       method: 'post',
       data: {
@@ -79,7 +79,7 @@ Page({
     })
   },
   setDefault : function(){
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/carInformation/modifyDefault',
       method: 'post',
       data: {
@@ -100,7 +100,7 @@ Page({
   sureClick: function () {
     var that = this;
     var editModel = that.data.editModel;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/carInformation/deleteCarInfo',
       method: 'post',
       data: {

@@ -194,7 +194,7 @@ bindViewSelectstandard: function () {
     // });
     var that = this;
     console.log(lat);
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/wxSearchStore',
       method: "post",
       data: {

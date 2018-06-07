@@ -9,7 +9,7 @@ Page({
   },
   onLoad : function(){
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/carInformation/wxUserCarQuery',
       method: 'post',
       data: {

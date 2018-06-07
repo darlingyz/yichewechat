@@ -111,7 +111,7 @@ Page({
   },
   hostdetail : function(e){
     var that = this;
-    wx.request({
+    app.request({
       url: 'https://api.jisuapi.com/car/type',
       method: 'GET',
       data: {
@@ -137,7 +137,7 @@ Page({
   // 车型详情
   modeldetail:function(modelId){
     var that = this;
-    wx.request({
+    app.request({
       url: 'https://api.jisuapi.com/car/type',
       method: 'GET',
       data: {
@@ -187,7 +187,7 @@ Page({
   onReady: function () {
     this.modellist();
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/project/searchCarBrand',
       method: 'post',
       data: {
@@ -206,7 +206,7 @@ Page({
   //车型列表接口对接
   modellist:function(){
     let that = this;
-    wx.request({
+    app.request({
       url: 'https://api.jisuapi.com/car/brand',
       method: 'post',
       data: {

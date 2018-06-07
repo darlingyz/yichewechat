@@ -31,13 +31,22 @@ Page({
     activeList: ""
   },
   /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    // var that = this;
+    // var ostatue = that.data.loginstatus;
+    // if (!ostatue) {
+    //   that.initlogin()
+    // }
+  },
+  /**
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
 
     // wx.showLoading({ title: '努力加载中...' }),
     this.initlogin();//授权登陆
-
     this.initShopInfo();// 初始化门店推荐
     this.initAdsInfo();// 初始化中屏广告
     this.initlocation();//初始定位
@@ -66,7 +75,7 @@ Page({
                 success: function (res) {
                   console.log(res)
                   var openId = res.data;
-                  wx.request({
+                  app.request({
                     url: app.globalData.testUrl + '/login/wxLittleLogin',
                     data: {
                       openId: openId,
@@ -166,6 +175,7 @@ Page({
 
   //获取用户信息
   getUserInfo: function (res) {
+    console.log('=======', res)
     var that = this;
     that.setData({
       maskModal: false,
@@ -177,7 +187,7 @@ Page({
     var openid = app.globalData.openId;
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/login/wxLittleLogin',
       data: {
         openId: openid,
@@ -193,6 +203,7 @@ Page({
         if (data != null) {
           var userId = res.data.data.userId;
           app.globalData.userId = userId;
+          //console.log(userId)
           that.initbao(userId);
           that.initCateInfo(userId);
           var carMap = res.data.data.carMap;
@@ -283,7 +294,7 @@ Page({
   },
   initbao(userId) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/weekSign',
       method: "post",
       header: {
@@ -317,20 +328,11 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var that = this;
-    var ostatue = that.data.loginstatus;
-    if (!ostatue) {
-      that.initlogin()
-    }
-  },
+  
   // 循环优惠券列表方法
   coupondetail: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/SignCouponQuery',
       method: "post",
       header: {
@@ -358,7 +360,7 @@ Page({
       showModal: false,
       showit: false,
     })
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/coupon/signIn',
       method: 'post',
       header: {
@@ -381,7 +383,7 @@ Page({
   //车俩i
   initshowCar: function (userId) {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/carInformation/wxUserDefaultCarQuery',
       method: 'post',
       header: {
@@ -437,7 +439,7 @@ Page({
         var latitude = res.latitude;
         var longitude = res.longitude;
         //定位成功，请求接口去查找信息
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/project/searchAllActivitis',
           method: 'post',
           header: {
@@ -494,6 +496,7 @@ Page({
       return
     }else{
       this.initshowCar(userId)
+      this.initCateInfo(userId)
     }
   },
 
@@ -553,7 +556,7 @@ Page({
   // 初始化中屏广告
   initAdsInfo: function () {
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/project/carousel',
       method: "post",
       header: {
@@ -608,7 +611,7 @@ Page({
         var lat = res.latitude;
         var long = res.longitude;
         //定位成功，请求接口，获取该位置的附近的信息
-        wx.request({
+        app.request({
           url: app.globalData.testUrl + '/search/storeRecommend',
           method: "post",
           data: {
@@ -637,7 +640,7 @@ Page({
   initCateInfo: function (userId) {
     //请求洗车服务的接口
     var that = this;
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/seachCarComServcies',
       method: 'post',
       data: {
@@ -656,7 +659,7 @@ Page({
     })
   
     //请求汽车保养的接口
-    wx.request({
+    app.request({
       url: app.globalData.testUrl + '/search/seachCarComServcies',
       method: 'post',
       data: {

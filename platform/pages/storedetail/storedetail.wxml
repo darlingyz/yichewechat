@@ -170,8 +170,8 @@
   <!--各种服务列表-->
   <view wx:if="{{shopServiceList}}">
     <block wx:for='{{shopServicesMsg}}' wx:key="unique">
-      <view wx:if="{{showChangetyre}}">
-        <view >
+      <!-- <view wx:if="{{showChangetyre}}">
+        <view > -->
            <!--<view class='border-b wp78 fr h90 pa title'>
             <view class='h90 lh90 w100 fs25 fl ml10' bindtap="showSelectbrand">{{searchbrand}}</view>
             <image wx:if="{{!showBrand}}" src='{{downarrow}}' class='w20 fl mt40' mode='widthFix'></image>
@@ -180,9 +180,9 @@
             <view class='h90 lh90 w210 fs28 fl ml30'>{{currentstandard}}</view>
             <view class='h90 lh90 w10 fs28 fl pr30 color-red' bindtap='bindViewSelectstandard'>切换规格>></view> 
           </view>-->
-        </view>
-      </view>
-      <view class='bg-white wp78 h180 fr mt10 border-b'>
+        <!-- </view>
+      </view> -->
+      <view class='bg-white wp78 h180 fr mt10 border-b service-item'>
         <view>
         <view  class='wp30 fl ml10'>
         <image src='{{item.img}}' mode='widthFix' class='logoPic'></image>
