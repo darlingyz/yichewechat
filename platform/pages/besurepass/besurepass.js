@@ -57,8 +57,9 @@ Page({
               pwd: pwdNo02,
               type: 1,
             },
-            //请求成功后的跳转
+            //请求成功后的跳
             success: function (res) {
+              console.log(app.globalData.openId, phoneNo, pwdNo02)
               console.log(res);
               var oall = res.data.data.respUserInfo;
               app.globalData.userId = oall.userId;
@@ -112,9 +113,10 @@ Page({
         discountId: id
       },
       success: function (res) {
-        //console.log(res);
-        var msg = res.data.msg;
-        if (msg == "成功") {
+        console.log(app.globalData.userId,id)
+        console.log(res);
+        var code = res.data.code;
+        if (code == 1) {
           wx.showToast({
             title: '领取成功！',
             icon: 'success',

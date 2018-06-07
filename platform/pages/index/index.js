@@ -193,8 +193,8 @@ Page({
         if (data != null) {
           var userId = res.data.data.userId;
           app.globalData.userId = userId;
-          console.log(userId)
           that.initbao(userId);
+          that.initCateInfo(userId);
           var carMap = res.data.data.carMap;
           if (carMap == null) {
             that.setData({
@@ -378,6 +378,47 @@ Page({
       }
     })
   },
+  //车俩i
+  initshowCar: function (userId) {
+    var that = this;
+    wx.request({
+      url: app.globalData.testUrl + '/carInformation/wxUserDefaultCarQuery',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        var msg = res.data.msg;
+        if (msg == "没有默认车辆，请设置") {
+          that.setData({
+            nomsg: true,
+            havemsg: false
+          })
+        } else {
+          var breakRules = res.data.data;
+          app.globalData.carId = res.data.data.carId;//直接查询把车辆Id直接赋值为全局变量
+          if (breakRules.breakRules == null) {
+            that.setData({
+              nomsg: false,
+              havemsg: true,
+              reson: false,
+              myCar: res.data.data
+            })
+          } else {
+            that.setData({
+              nomsg: false,
+              havemsg: true,
+              reson: true,
+              myCar: res.data.data
+            })
+          }
+        }
+      }
+    })
+  },
   //点击周边门店 存shopid=businessid;用于页面间传值
   storedetail: function (e) {
     wx.navigateTo({
@@ -448,7 +489,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var userId = app.globalData.userId;
+    if (userId==null){
+      return
+    }else{
+      this.initshowCar(userId)
+    }
   },
 
   /**
