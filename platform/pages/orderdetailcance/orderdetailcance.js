@@ -27,7 +27,7 @@ Page({
               },
               success: function (msg) {
                 var data = msg.data.data;
-               // console.log(msg);
+               console.log(msg);
                 that.setData({
                   personName: data.userMsg.user_name,
                   phoneNumber: data.userMsg.mobile,

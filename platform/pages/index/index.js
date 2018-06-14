@@ -14,7 +14,7 @@ Page({
     cateInfoList: "",
     ocateInfoList: "",
     lat: '',
-    long: '',
+    lng: '',
     shopInfo: '',
     currentCity: '',
     obargainList: '',
@@ -28,169 +28,19 @@ Page({
     loginstatus: false,
     beautyList: "",
     maintainList: "",
-    activeList: ""
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    // var that = this;
-    // var ostatue = that.data.loginstatus;
-    // if (!ostatue) {
-    //   that.initlogin()
-    // }
-  },
-  /**
- * 生命周期函数--监听页面加载
- */
-  onLoad: function (options) {
-
-    // wx.showLoading({ title: '努力加载中...' }),
-    this.initlogin();//授权登陆
-    this.initShopInfo();// 初始化门店推荐
-    this.initAdsInfo();// 初始化中屏广告
-    this.initlocation();//初始定位
-    this.initactive();//附近优惠活
-    // this.imageLoad(e);
-  },
-  initlogin: function () {
-    var that = this;
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          console.log("授权成功~~~")
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              app.globalData.userInfo = res.userInfo
-              var userInfo = res.userInfo;
-              var nickName = userInfo.nickName;
-              var vatarUrl = userInfo.avatarUrl;
-              var openid = app.globalData.openId;
-              app.globalData.nickName = nickName;
-              app.globalData.vatarUrl = vatarUrl;
-              wx.getStorage({
-                key: 'openId',
-                success: function (res) {
-                  console.log(res)
-                  var openId = res.data;
-                  app.request({
-                    url: app.globalData.testUrl + '/login/wxLittleLogin',
-                    data: {
-                      openId: openId,
-                      userName: nickName,
-                      portait: vatarUrl
-                    },
-                    header: {
-                      'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    method: 'post',
-                    success: function (res) {
-                      console.log(res)
-                      wx.hideLoading();
-                      var data = res.data.data;
-                      if (data != null) {
-                        var userId = res.data.data.userId;
-                        var carMap = res.data.data.carMap;
-                        if (carMap == null) {
-                          that.setData({
-                            nomsg: true,
-                            havemsg: false
-                          })
-                        } else {
-                          var breakRulesList = carMap.carMsg.breakRules;
-                          var ocarList = carMap.carMsg;
-                          console.log(ocarList.carId)
-                          app.globalData.carId = ocarList.carId;
-                          if (breakRulesList == null || breakRulesList.length == 0) {
-                            that.setData({
-                              nomsg: false,
-                              havemsg: true,
-                              reson: false,
-                              myCar: ocarList
-                            })
-                          } else {
-                            that.setData({
-                              nomsg: false,
-                              havemsg: true,
-                              reson: true,
-                              myCar: ocarList
-                            })
-                          }
-                        }
-                        app.globalData.userId = userId;
-                        console.log(userId)
-                        //that.initshowCar(userId);//初始化车辆
-                        that.initCateInfo(userId);// 初始化栏目信息
-                        that.initbao(userId);//初始化红包
-                        that.setData({
-                          loginstatus: true,
-                          userId: userId
-                        })
-                      } else {
-                        console.log("没有返回信息~提醒绑定手机~~~");
-                        // console.log(res)
-                        wx.showModal({
-                          title: '温馨提示',
-                          content: '请先绑定手机号!',
-                          success: function (res) {
-                            if (res.confirm) {
-                              //console.log('用户点击确定去注册手机号')
-                              wx.navigateTo({
-                                url: '../phonelogin/phonelogin',
-                              })
-                            } else if (res.cancel) {
-                              //用户点击取消退出小程序
-                              wx.navigateBack({
-                                delta: 0
-                              })
-                            }
-                          }
-                        })
-                      }
-                    },
-                  })
-                },
-              })
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (that.userInfoReadyCallback) {
-                that.userInfoReadyCallback(res)
-              }
-            }
-          })
-        } else if (!res.authSetting['scope.userInfo']) {
-          var astatue = that.data.loginstatus
-          if (!astatue) {
-            console.log("授权失败~===~")
-            that.setData({
-              maskModal: true,
-            })
-          }
-        }
-      }
-    })
+    activeList: "",
+    mealList:""
   },
 
-  //获取用户信息
-  getUserInfo: function (res) {
-    console.log('=======', res)
-    var that = this;
-    that.setData({
-      maskModal: false,
-    })
-    var models = that.data.maskModal;
-    var userInfo = res.detail.userInfo;
-    var nickName = userInfo.nickName;
-    var vatarUrl = userInfo.avatarUrl;
-    var openid = app.globalData.openId;
-    app.globalData.nickName = nickName;
-    app.globalData.vatarUrl = vatarUrl;
+  initlogin() {
+    const that = this
+    const openId = app.globalData.openId
+    const nickName = app.globalData.nickName
+    const vatarUrl = app.globalData.vatarUrl
     app.request({
       url: app.globalData.testUrl + '/login/wxLittleLogin',
       data: {
-        openId: openid,
+        openId: openId,
         userName: nickName,
         portait: vatarUrl
       },
@@ -199,13 +49,11 @@ Page({
       },
       method: 'post',
       success: function (res) {
+        console.log(res)
+        // wx.hideLoading();
         var data = res.data.data;
         if (data != null) {
           var userId = res.data.data.userId;
-          app.globalData.userId = userId;
-          //console.log(userId)
-          that.initbao(userId);
-          that.initCateInfo(userId);
           var carMap = res.data.data.carMap;
           if (carMap == null) {
             that.setData({
@@ -233,10 +81,19 @@ Page({
               })
             }
           }
+          app.globalData.userId = userId;
+          console.log(userId)
+          //that.initshowCar(userId);//初始化车辆
+          that.initCateInfo(userId);// 初始化栏目信息
+          that.initbao(userId);//初始化红包
+          app.globalData.loginstatus = true
           that.setData({
+            loginstatus: true,
             userId: userId
           })
         } else {
+          console.log("没有返回信息~提醒绑定手机~~~");
+          // console.log(res)
           wx.showModal({
             title: '温馨提示',
             content: '请先绑定手机号!',
@@ -257,14 +114,8 @@ Page({
         }
       },
     })
-    app.globalData.userInfo = res.detail.userInfo;
   },
-  // 点击跳转到违章车库列表
-  goillegal: function () {
-    wx.navigateTo({
-      url: '../illegallist/illegallist',
-    })
-  },
+
   //点击地图跳转到定位首页
   goSearch: function (event) {
     wx.navigateTo({
@@ -273,16 +124,16 @@ Page({
   },
   //跳转...............
   goStore: function (e) {
-      console.log(e)
-      var keyWorld = e.currentTarget.dataset.name;
-      console.log(keyWorld);
-      wx.setStorage({
-        key: 'keyWorld',
-        data: keyWorld,
-      })
-      wx.switchTab({
-        url: '../store/store',
-      })
+    console.log(e)
+    var keyWorld = e.currentTarget.dataset.name;
+    console.log(keyWorld);
+    wx.setStorage({
+      key: 'keyWorld',
+      data: keyWorld,
+    })
+    wx.switchTab({
+      url: '../store/store',
+    })
   },
   //点击领取优惠券
   coupondetail: function () {
@@ -304,7 +155,8 @@ Page({
         userId: userId
       },
       success: function (res) {
-        // console.log(res, userId);
+         console.log(userId);
+         console.log(res)
         var odata = res.data.data;
         if (odata == false) {
           that.setData({
@@ -328,7 +180,7 @@ Page({
     });
   },
 
-  
+
   // 循环优惠券列表方法
   coupondetail: function () {
     var that = this;
@@ -390,9 +242,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        userId: userId
+        userId:userId
       },
       success: function (res) {
+        console.log(res)
         var msg = res.data.msg;
         if (msg == "没有默认车辆，请设置") {
           that.setData({
@@ -401,8 +254,9 @@ Page({
           })
         } else {
           var breakRules = res.data.data;
-          app.globalData.carId = res.data.data.carId;//直接查询把车辆Id直接赋值为全局变量
-          if (breakRules.breakRules == null) {
+          app.globalData.carId = res.data.data.carId;//直接查询把车辆Id
+          var abreakRules = breakRules.breakRules;
+          if (abreakRules == null || abreakRules.length == 0) {
             that.setData({
               nomsg: false,
               havemsg: true,
@@ -421,6 +275,20 @@ Page({
       }
     })
   },
+  // 点击跳转到违章车库列表
+  goillegal: function () {
+    var that=this;
+    var havemsg = that.data.havemsg
+    if (havemsg==false){
+      wx.navigateTo({
+        url: '../carport/carport',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../illegallist/illegallist',
+      })
+    }
+  },
   //点击周边门店 存shopid=businessid;用于页面间传值
   storedetail: function (e) {
     wx.navigateTo({
@@ -434,39 +302,33 @@ Page({
   //优惠活动
   initactive: function (event) {
     var that = this;
-    wx.getLocation({
-      success: function (res) {
-        var latitude = res.latitude;
-        var longitude = res.longitude;
-        //定位成功，请求接口去查找信息
-        app.request({
-          url: app.globalData.testUrl + '/project/searchAllActivitis',
-          method: 'post',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-            lat: latitude,
-            lng: longitude
-          },
-          success: function (res) {
-            //console.log(res)
-            var ogroups = res.data.data.groupActivities;
-            var ores = res.data.data.bargainActivities;
-            if (ogroups.length == 0 & ores == 0) {
-              that.setData({
-                activemsg: false,
-              })
-            } else {
-              that.setData({
-                activemsg: true,
-                odata: ores,
-                ogroup: ogroups
-              })
-            }
-          }
-        })
+    //定位成功，请求接口去查找信息
+    app.request({
+      url: app.globalData.testUrl + '/project/searchAllActivitis',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
       },
+      data: {
+        lat: that.data.lat,
+        lng: that.data.lng
+      },
+      success: function (res) {
+        console.log(res)
+        var ogroups = res.data.data.groupActivities;
+        var ores = res.data.data.bargainActivities;
+        if (ogroups.length == 0 & ores == 0) {
+          that.setData({
+            activemsg: false,
+          })
+        } else {
+          that.setData({
+            activemsg: true,
+            odata: ores,
+            ogroup: ogroups
+          })
+        }
+      }
     })
   },
   //汽车美容更多
@@ -482,50 +344,85 @@ Page({
     })
   },
   //活动
-  activeMore:function(){
+  activeMore: function () {
     wx.navigateTo({
       url: '../moreserve/moreserve',
     })
   },
   /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  // onReady: function () {
+  //   var that = this;
+  //   var ostatue = that.data.loginstatus;
+  //   if (!ostatue) {
+  //     that.initlogin()
+  //   }
+  // },
+  /**
+ * 生命周期函数--监听页面加载
+ */
+  onLoad: function (options) {
+
+    // wx.showLoading({ title: '努力加载中...' }),
+    // this.initlogin();//授权登陆
+    
+    
+    //初始定位
+    // this.initlocation().then(() => {
+    //   this.initlogin()
+    //   // 初始化门店推荐
+    //   this.initShopInfo();
+    //   // 初始化中屏广告
+    //   this.initAdsInfo();
+    //   //附近优惠活
+    //   this.initactive();
+    //   //套餐活动
+    //   this.initmealActive();
+    // })
+    // this.imageLoad(e);
+  },
+  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var userId = app.globalData.userId;
-    if (userId==null){
+    if (!app.globalData.openId) {
+      app.userInfoReadyCallback = () => this.onShow()
       return
-    }else{
-      this.initshowCar(userId)
-      this.initCateInfo(userId)
+    }
+    const scopeUserInfo = wx.getStorageSync('scopeUserInfo') || ''
+    const scopeUserLocation = wx.getStorageSync('scopeUserLocation') || ''
+    if (!scopeUserInfo && !scopeUserLocation) {
+      app.goAuth()
+      return
+    }
+    
+    if (app.globalData.userId) {
+      this.initshowCar(app.globalData.userId)
+      this.initCateInfo(app.globalData.userId)
+    } else {
+      //初始定位
+      this.initlocation().then(() => {
+        this.initlogin()
+        // 初始化门店推荐
+        this.initShopInfo();
+        // 初始化中屏广告
+        this.initAdsInfo();
+        //附近优惠活
+        this.initactive();
+        //套餐活动
+        this.initmealActive();
+      }).catch(err => {
+        console.log(err)
+      })
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.onLoad();
-    wx.hideLoading();
-
+    this.onShow();
   },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  },
-
   /**
    * 用户点击右上角分享
    */
@@ -579,61 +476,95 @@ Page({
     var BMap = new bmap.BMapWX({
       ak: 'ymNQk372B1LOebIHILNz0kHzbSDnHH2V'
     });
-    wx.getLocation({
-      success: function (res) {
-        //console.log(res);
-        var latitude = res.latitude;
-        var longitude = res.longitude;
-        // console.log(latitude, longitude);
-        //定位成功，调取百度接口去逆解析地址
-        BMap.regeocoding({
-          location: latitude + ',' + longitude,
-          success: function (res) {
-            var odata = res.originalData.result.addressComponent;
-            that.setData({
-              currentCity: odata.city
-            })
-          },
-          fail: function (res) {
-            //console.log('小程序得到坐标失败')
-            console.log(res)
-          },
-        })
-      },
+
+    try {
+      that.data.lat = wx.getStorageSync('lat')
+      that.data.lng = wx.getStorageSync('lng')
+    } catch (err) {
+      console.log(err)
+    }
+    
+    return new Promise((resolve, reject) => {
+      //定位成功，调取百度接口去逆解析地址
+      BMap.regeocoding({
+        location: that.data.lat + ',' + that.data.lng,
+        success: function (res) {
+          var odata = res.originalData.result.addressComponent;
+          that.setData({
+            currentCity: odata.city
+          })
+          resolve(res)
+        },
+        fail: function (res) {
+          //console.log('小程序得到坐标失败')
+          console.log(res)
+          reject(res)
+        },
+      })
     })
   },
   // 初始化门店推荐
   initShopInfo: function () {
-    var that = this;
-    wx.getLocation({
-      type: 'wgs84',
+    let that = this
+    //定位成功，请求接口，获取该位置的附近的信息
+    app.request({
+      url: app.globalData.testUrl + '/search/storeRecommend',
+      method: "post",
+      data: {
+        lat: that.data.lat,
+        lng: that.data.lng,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
       success: function (res) {
-        var lat = res.latitude;
-        var long = res.longitude;
-        //定位成功，请求接口，获取该位置的附近的信息
-        app.request({
-          url: app.globalData.testUrl + '/search/storeRecommend',
-          method: "post",
-          data: {
-            lat: lat,
-            lng: long,
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded' // 默认值
-          },
-          success: function (res) {
-            that.setData({
-              shopInfo: res.data.data
-            })
-          }
-        });
+        that.setData({
+          shopInfo: res.data.data
+        })
       }
     });
+  },
+  //套餐活动
+  initmealActive: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.testUrl + '/activityPackage/seachActivityPackageList',
+      data: {
+        lat: that.data.lat,
+        lng: that.data.lng,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'post',
+      success: function (res) {
+        console.log(res.data.data);
+        that.setData({
+          mealList: res.data.data
+        })
+
+      }
+    })
+  },
+  //点击进入套餐活动的详情页面
+  goShopMeal: function (e) {
+    console.log(e);
+    var activityId = e.currentTarget.dataset.activityid;
+    console.log(activityId);
+    wx.navigateTo({
+      url: '../mealActivity/mealActivity?activityId=' + activityId,
+    })
   },
   //客服打电话
   callPeople: function (event) {
     wx.makePhoneCall({
       phoneNumber: '(021)58180562'
+    })
+  },
+  //跳转到门店页面
+  goBeauty: function () {
+    wx.switchTab({
+      url: '../store/store',
     })
   },
   // 初始化栏目信息
@@ -657,7 +588,7 @@ Page({
         })
       }
     })
-  
+
     //请求汽车保养的接口
     app.request({
       url: app.globalData.testUrl + '/search/seachCarComServcies',

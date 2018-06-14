@@ -1,0 +1,13 @@
+  <view class='shop-logo'>
+    <image src='../../images/logos.png' class='logo-pic'></image>
+  </view>
+<view class="page">
+  <view>
+    <view class="comment">应用需要获取您的用户信息和地理位置</view>
+    <view class="btn-box">
+      <button open-type="getUserInfo" class='auth-btn' bindgetuserinfo="callback">
+      点击授权
+      </button>
+    </view>
+  </view>
+</view>

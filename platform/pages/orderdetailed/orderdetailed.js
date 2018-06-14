@@ -11,7 +11,8 @@ Page({
     havewaitmsg: false,
     waitcommon: "",
     seringmsg: false,
-    seringcommon: ""
+    seringcommon: "",
+    showModalStatus:false
   },
   navbarTap: function (e) {
     this.setData({
@@ -118,6 +119,20 @@ Page({
    */
   onReady: function () {
 
+  },
+  //===================
+  downApp:function(){
+    console.log("000000");
+    var that=this;
+    that.setData({
+      showModalStatus:true
+    })
+  },
+  hidepic:function(){
+  var that=this;
+    that.setData({
+      showModalStatus: false
+    })
   },
   //根据订单的状态去不同的页面
   orderdetail: function (e) {
@@ -233,13 +248,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

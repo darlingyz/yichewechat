@@ -95,8 +95,8 @@ Page({
       },
       success: function (msg) {
         //console.log(orderId, app.globalData.openId)
-        console.log(msg);
-        console.log("111111111")
+       // console.log(msg);
+        //console.log("111111111")
         wx.requestPayment({
           'timeStamp': msg.data.data.timeStamp,
           'nonceStr': msg.data.data.nonceStr,
@@ -104,7 +104,7 @@ Page({
           'signType': 'MD5',
           'paySign': msg.data.data.paySign,
           'success': function (res) {
-            console.log("222222222222222222")
+            //console.log("222222222222222222")
             //支付成功，设定一个全局变量，用来设定去是否查看拼团还是支付
            // app.globalData.num=1;
             wx.navigateTo({

@@ -1,40 +1,43 @@
 <!--pages/friendsbargainc/friendsbargainc.wxml-->
 <view class='container-box pr'>
-    <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
-    <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
-    <view class='brand pa w200 fs28 ta-c'>{{userName}}</view> 
-    <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view> 
-    <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
-    <view class='detail pa wp75'>
-       <image src='{{storeba}}' mode='widthFix' class='wp30 fl'></image>
-       <view class='fl ml10 wp65'>
-          <view class='cb'>
-              <view class='fs30 fl mt10' >{{washcoupons}}</view>
-              <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
-          </view>
-          <view class='cb'>
-              <view class='fs45 fl mt20 fw'>￥{{nprice}}</view>
-              <view class='fs25 fl mt40 ml20 txt-throw'>原价￥{{oprice}}</view>
-          </view>
-       </view>
+  <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
+  <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
+  <view class='brand pa w200 fs28 ta-c'>{{userName}}</view>
+  <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view>
+  <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
+  <view class='detail pa wp75 h150 ohid'>
+    <view class='mb20 h130 ohid fl wp30'>
+      <image src='{{storeba}}' mode='widthFix' class='fl h130'></image>
     </view>
+
+    <view class='fl ml10 wp65'>
+      <view class='cb'>
+        <view class='fs30 fl mt10'>{{washcoupons}}</view>
+        <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
+      </view>
+      <view class='cb'>
+        <view class='fs45 fl mt20 fw'>￥{{nprice}}</view>
+        <view class='fs25 fl mt40 ml20 txt-throw'>原价￥{{oprice}}</view>
+      </view>
+    </view>
+  </view>
 </view>
 <view class='cb list-detail'>
-    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
-    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
-<view class='cb'>
+  <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+  <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+  <view class='cb'>
     <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
-</view>
- <view class='cb'>
+  </view>
+  <view class='cb'>
     <view class='fl fs30 ml50'>原价</view>
     <view class='fl fs30 ml210'>中间价</view>
     <view class='fr fs30 mr50'>最低价</view>
-</view>
-<view class='cb'>
+  </view>
+  <view class='cb'>
     <view class='fl fs30 ml50'>￥{{origprice}}</view>
     <view class='fl fs30 ml210'>￥{{middleprice}}</view>
     <view class='fr fs30 mr65'>￥{{bottomprice}}</view>
-</view>
+  </view>
 </view>
 
 <view class='cutdetial wp90 h300 rad10 mt50 ma'>
@@ -57,14 +60,15 @@
   </view>
 </view>
 <view class='cb wp100 pa pf b0'>
-<view class='banrgn-box' wx:if="{{counbanrgin}}">
- <view class='wp40 fl fs28 h80 lh80 border-t ta-c' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
-  <button class='wp60 fl color-white sharebox' open-type="share">
-    <text>召唤好友砍到￥{{cutedprice}}元</text>
-  </button>
-</view>
- <view class='nobargin' wx:else>
- <view class='wp100 fs28 h80 lh80 border-t ta-c' bindtap='seeorder'>查看订单</view>
- </view>
+
+  <view class='banrgn-box' wx:if="{{counbanrgin}}">
+    <view class='wp40 fl fs28 h80 lh80 border-t ta-c' bindtap='bindViewBuy'>￥{{saleprice}}元立即购买</view>
+    <button class='wp60 fl color-white sharebox' open-type="share">
+      <text>召唤好友砍到￥{{cutedprice}}元</text>
+    </button>
+  </view>
+  <view class='nobargin' wx:else>
+    <view class='wp100 fs28 h80 lh80 border-t ta-c' bindtap='seeorder'>查看订单</view>
+  </view>
 
 </view>

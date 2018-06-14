@@ -45,16 +45,16 @@ page{
  .cart-pro-names,
  .cart-pro-name{
     display: inline-block;
-    width: 250rpx;
-    height:30rpx;
-    line-height: 30rpx;
+    width: 200rpx;
+    height:50rpx;
+    font-size: 25rpx;
     overflow: hidden;
 }
 .cart-list .cart-pro-price{
     display: inline-block;
     float: right;
-    height: 105rpx;
-    line-height: 50rpx;
+    height: 50rpx;
+
 }
 .cart-list .cart-count-box{
     position: absolute;
@@ -68,13 +68,26 @@ page{
     line-height: 80rpx;
     text-align: center;
 }
-.cart-count-down,.cart-count-add{
-    font-size: 44rpx;
+.cart-count-down{
+    font-size:25rpx;
+    font-weight: 900;
+    width: 30rpx;
+    height: 100%;
+    line-height: 100%;
+    overflow: hidden;
+    float: left;
+}
+.cart-count-add{
+    font-size: 50rpx;
     width: 50rpx;
     height: 100%;
+    display: inline-block;
+    float: left;
 }
 .cart-count-num{
     width: 150rpx;
+    display: inline-block;
+    float: left;
 }
 .cart-del{
     position: absolute;
@@ -190,6 +203,6 @@ page{
   z-index: 999
 }
 .server-logo{
-  max-height: 80%;
-  max-width: 80%;
+  height: 100rpx;
+  width: 100rpx;
 }

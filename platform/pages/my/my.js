@@ -6,23 +6,25 @@ Page({
    */
   data: {
     showModal: false,
-    userInfo:{}
+    userInfo:{},
+    srcActivity: 'http://121.40.148.153/img/1381294047390736.png',
+    srcStore: 'http://121.40.148.153/img/1381379545768160.png',
+    srcContact: 'http://121.40.148.153/img/1381445916955184.png',
+    srcCooperation: 'http://121.40.148.153/img/1381480333446998.png',
+    srcAboutCar: 'http://121.40.148.153/img/1381504748859460.png',
+    srcUser: '',
+    design: '你好！',
+    bindPhone: '请绑定手机 >>',
+    orderList: '我的订单',
+    price: '0',
+    num: '0',
   },
-  onShow: function (options) {
-    this.setData({
-      srcActivity: 'http://121.40.148.153/img/1381294047390736.png',
-      srcStore: 'http://121.40.148.153/img/1381379545768160.png',
-      srcContact: 'http://121.40.148.153/img/1381445916955184.png',
-      srcCooperation: 'http://121.40.148.153/img/1381480333446998.png',
-      srcAboutCar: 'http://121.40.148.153/img/1381504748859460.png',
-      design: '你好！',
-      bindPhone: '请绑定手机 >>',
-      orderList: '我的订单',
-      price: '0',
-      num: '0',
-    })
+  onShow: function () {
     var that = this;
-    //console.log("获取用户信息");
+    that.setData({
+      srcUser: app.globalData.vatarUrl,
+      design: app.globalData.nickName,
+    })
     app.request({
       url: app.globalData.testUrl + '/project/wxPersonalCenter',
       method: 'post',
@@ -34,8 +36,6 @@ Page({
       },
       success: function (msg) {
         that.setData({
-          srcUser: app.globalData.vatarUrl,
-          design: app.globalData.nickName,
           price: msg.data.data.price,
           num: msg.data.data.couponAmount,
           mobile: msg.data.data.mobile,
@@ -81,7 +81,7 @@ Page({
    // this.hideModal();
 
     wx.makePhoneCall({
-      phoneNumber: '(021)58180562',
+      phoneNumber: '4008201868',
     })
   
   },
@@ -152,9 +152,10 @@ Page({
   },
   //退出登录，跳到登录页
   bindViewLogin: function () {
-    wx.clearStorage();
-    wx.navigateTo({
-      url: '../passwordlogin/passwordlogin'
+    // wx.clearStorage();
+    wx.removeStorageSync('phone')
+    wx.redirectTo({
+      url: '../passwordlogin/passwordlogin',
     })
   },
   /**
@@ -225,8 +226,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showLoading({ title: '努力加载中...' });
-    this.onLoad();
+    // wx.showLoading({ title: '努力加载中...' });
+    this.onShow();
     wx.stopPullDownRefresh();
   },
 

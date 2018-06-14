@@ -160,7 +160,7 @@ Page({
       'content-type': 'application/x-www-form-urlencoded'//默认值
     },
     success: function (res) {
-      console.log(res);
+      //console.log(res);
       //console.log(app.globalData.openId, that.data.phoneNum, that.data.verificationCode)
       var code=res.data.code;
       if(code==1){

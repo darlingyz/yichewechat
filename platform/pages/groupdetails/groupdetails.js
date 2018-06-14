@@ -111,20 +111,21 @@ Page({
           var odata=msg.data.data;
           if(odata==null){
             console.log("您已经拼过该团,不能贪心哦")
-            wx.showModal({
-              title: '提示',
-              content: '您已经拼过该团,不能贪心哦',
-              success: function (res) {
-                if (res.confirm) {
-                  console.log('用户点击确定，去拼团页面')
-                  wx.navigateTo({
-                    url: "../startgroupmiddle/startgroupmiddle"
-                  })
-                } else if (res.cancel) {
-                  console.log('用户点击取消不去拼团页面')
-                }
-              }
+            wx.navigateTo({
+              url: "../startgroupmiddle/startgroupmiddle"
             })
+            // wx.showModal({
+            //   title: '提示',
+            //   content: '您已经拼过该团,不能贪心哦',
+            //   success: function (res) {
+            //     if (res.confirm) {
+            //       console.log('用户点击确定，去拼团页面')
+
+            //     } else if (res.cancel) {
+            //       console.log('用户点击取消不去拼团页面')
+            //     }
+            //   }
+            // })
           }else{
             console.log("去付钱--")
             var odata = msg.data.data;

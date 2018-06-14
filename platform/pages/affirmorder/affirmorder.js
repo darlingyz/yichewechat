@@ -44,7 +44,6 @@ Page({
         shopCarId: app.globalData.shopcarId
       },
       success: function (res) {
-        console.log(res)
         var merchantId = res.data.data.shoppingCar.merchantId;
         var shoppingCartDetails = res.data.data.shoppingCartDetails;
         console.log(merchantId)
@@ -69,14 +68,12 @@ Page({
           shopId: merchantId,
           businessId: str
         })
-
       }
     });
   
   },
   //提交订单
   bindWiewpay: function () {
-    //console.log(app.globalData.userId, app.globalData.merchantName, app.globalData.businessId, app.globalData.carId, app.globalData.shopcarId, "888888")
     var that = this;
     if (app.globalData.carId==null){
         wx.showModal({
@@ -84,7 +81,9 @@ Page({
           content: '你还没有添加默认车辆,请先添加再提交订单~',
           success: function (res) {
             if (res.confirm) {
-              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '../carport/carport',
+              })
             } else if (res.cancel) {
               console.log('用户点击取消')
             }
@@ -107,6 +106,12 @@ Page({
           userDiscountId: that.data.couponSelectedId
         },
         success: function (res) {
+          wx.showToast({
+            title: res.data.msg,
+            icon:'success',
+            duration:1000
+          })
+          console.log(res)
           console.log(app.globalData.userId, app.globalData.merchantName, app.globalData.businessId, app.globalData.carId, app.globalData.shopcarId, that.data.couponSelectedId)
           var orderId = res.data.data;
           app.globalData.orderId = orderId;
@@ -140,7 +145,7 @@ Page({
       },
       success: function (res) {
         console.log(app.globalData.userId, that.data.totalprce, that.data.shopId, that.data.businessId)
-        console.log(res + "===================")
+        console.log(res)
         var odata = res.data.data;
         console.log(res)
         console.log(odata)

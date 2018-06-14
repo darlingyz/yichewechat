@@ -29,6 +29,8 @@ Page({
         })
       }
     })
+    //
+
 //商家代金券
     wx.getLocation({
       success: function (res) {
@@ -54,9 +56,24 @@ Page({
         })
       },
     })
-
   },
-
+  //跳转到门店
+  goShop: function () {
+    wx.switchTab({
+      url: '../store/store',
+    })
+  },
+  //====代金券
+  toMerchant:function(e){
+    var businessId = e.currentTarget.dataset.id;
+    wx.setStorage({
+      key: 'businessId',
+      data: businessId,
+    })
+    wx.navigateTo({
+      url: '../storedetail/storedetail',
+    })
+  },
   bindViewmyvouchers:function(){
      wx.navigateTo({
        url: '../myvouchers/myvouchers',

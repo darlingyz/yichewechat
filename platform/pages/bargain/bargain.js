@@ -7,7 +7,7 @@ Page({
    */
   data: {
     acitivityId: "",
-    userBargainId:""
+    userBargainId: ""
   },
 
   /**
@@ -18,7 +18,7 @@ Page({
     var activityId = options.activityId;//活动id
     var oactive = parseInt(activityId);
     app.request({
-      url: app.globalData.testUrl+'/activity/bargainDetail',
+      url: app.globalData.testUrl + '/activity/bargainDetail',
       method: 'post',
       data: {
         userId: app.globalData.userId,
@@ -27,10 +27,10 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
-      success:function(res){
+      success: function (res) {
         var msg = res.data.data;
-       // console.log(msg)
-       // console.log(res)
+        // console.log(msg)
+        // console.log(res)
         that.setData({
           storeSrc: msg.img,
           couponSrc: 'http://116.62.151.139/res/img/coupon.png',
@@ -56,37 +56,101 @@ Page({
   //立即购买
   bindViewBuy: function () {
     var that = this;
-   // console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
-    app.request({
-      url: app.globalData.testUrl + '/activity/bargainPay',
-      method: 'post',
-      data: {
-        userId: app.globalData.userId,
-        activityId: that.data.acitivityId,
-        carId: app.globalData.carId
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'//默认值
-      },
-      success: function (res) {
-       // console.log(res)
-        wx.setStorage({
-          key: 'paybargain',
-          data: res,
+    var middlePrice = that.data.middleprice;
+    var saleprice = that.data.saleprice;
+    if (middlePrice == saleprice) {
+      wx.showModal({
+        title: '提示',
+        content: '如果要购买,则立即停止砍价,是否继续?',
+        success: function (res) {
+          if (res.confirm) {
+            app.request({
+              url: app.globalData.testUrl + '/activity/bargainPay',
+              method: 'post',
+              data: {
+                userId: app.globalData.userId,
+                activityId: that.data.acitivityId,
+                carId: app.globalData.carId
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'//默认值
+              },
+              success: function (res) {
+                // console.log(res)
+                wx.setStorage({
+                  key: 'paybargain',
+                  data: res,
+                })
+                // console.log(res)
+                wx.navigateTo({
+                  url: '../paybargain/paybargain',
+                })
+              }
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    } else {
+      console.log("000000");
+      console.log(app.globalData.userId, that.data.acitivityId, app.globalData.carId)
+      var carId = app.globalData.carId;
+      if (carId == null) {
+        wx.showModal({
+          title: '提示',
+          content: '您还没有绑定默认车辆,请去绑定~',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../carport/carport',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
         })
-       // console.log(res)
-         wx.navigateTo({
-           url: '../paybargain/paybargain',
-         })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '如果您直接付款,则立即停止砍价,是否继续?',
+          success: function (res) {
+            if (res.confirm) {
+              app.request({
+                url: app.globalData.testUrl + '/activity/bargainPay',
+                method: 'post',
+                data: {
+                  userId: app.globalData.userId,
+                  activityId: that.data.acitivityId,
+                  carId: app.globalData.carId
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'//默认值
+                },
+                success: function (res) {
+                  wx.setStorage({
+                    key: 'paybargain',
+                    data: res,
+                  })
+                  wx.navigateTo({
+                    url: '../paybargain/paybargain',
+                  })
+                }
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
       }
-    })
+    }
   },
-//发起砍价活动的接口
+  //发起砍价活动的接口
   createBargain: function () {
     var that = this;
     //console.log(app.globalData.userId, that.data.acitivityId)
     app.request({
-      url:app.globalData.testUrl + '/activity/useBargainActivity',
+      url: app.globalData.testUrl + '/activity/useBargainActivity',
       method: 'post',
       data: {
         userId: app.globalData.userId,
@@ -96,16 +160,16 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-       // console.log(msg);
+        // console.log(msg);
         var userBargainId = msg.data.data.userBargainId;
- //     console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
+        //     console.log(userBargainId + "砍价活动的id该参数要传递给分享好友的页面");
         that.setData({
           userBargainId: userBargainId
         })
         wx.navigateTo({
-          url: '../barginstart/barginstart?userBargainId=' + that.data.userBargainId+'&acitivityId=' + that.data.acitivityId,
+          url: '../barginstart/barginstart?userBargainId=' + that.data.userBargainId + '&acitivityId=' + that.data.acitivityId,
         })
-       // console.log("点击获取分享个会好友的id")
+        // console.log("点击获取分享个会好友的id")
       }
     })
   },

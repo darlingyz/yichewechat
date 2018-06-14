@@ -18,7 +18,7 @@
 }
 
 .wash {
-  left: 111rpx;
+  left: 50rpx;
   height: 34rpx;
   color: #2a1573;
   top: 12rpx;

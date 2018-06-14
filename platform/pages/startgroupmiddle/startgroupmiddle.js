@@ -21,7 +21,7 @@ Page({
         that.setData({
           activityId: activityId
         }),
-        app.request({
+       wx.request({
           url: app.globalData.testUrl + '/activity/SearchUserGroupActivity',
           method: 'post',
           data: {

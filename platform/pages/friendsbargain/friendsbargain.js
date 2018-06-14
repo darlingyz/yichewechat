@@ -28,7 +28,7 @@ Page({
           userBargainId: BargainNum,
         })
         app.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/activity/userBargainDetail',
+          url: app.globalData.testUrl + '/activity/userBargainDetail',
           method: 'post',
           data: {
             userBargainId: BargainNum,
@@ -38,7 +38,7 @@ Page({
           },
           success: function (msg) {
             // wx.hideLoading();
-            var userlist = msg.data.data.userBargainHelps;
+            var userlist = msg.data && msg.data.data.userBargainHelps;
             if (userlist.length == 0) {
               that.setData({
                 friendlist: false,
@@ -82,7 +82,7 @@ Page({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
         app.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
+          url: app.globalData.testUrl + '/Wx/aaa',
           method: "post",
           data: {
             code: res.code
@@ -125,7 +125,7 @@ Page({
                 success: function (res) {
                   var openId = res.data;
                   app.request({
-                    url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+                    url: app.globalData.testUrl + '/login/wxLittleLogin',
                     data: {
                       openId: openId,
                       userName: nickName,
@@ -205,7 +205,7 @@ Page({
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
     app.request({
-      url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+      url: app.globalData.testUrl + '/login/wxLittleLogin',
       data: {
         openId: openid,
         userName: nickName,
@@ -252,7 +252,7 @@ Page({
   bindViewHelpcut: function () {
     var that = this;
     app.request({
-      url: 'https://api-wechat.glongcar.com/api' + '/activity/helpBargain',
+      url: app.globalData.testUrl + '/activity/helpBargain',
       method: 'post',
       data: {
         userId: app.globalData.userId,
@@ -310,7 +310,11 @@ Page({
   onHide: function () {
 
   },
-
+  bindGohome:function(){
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

@@ -1,12 +1,12 @@
 <view class='box_top wp100 pr'>
   <image class='store' src='{{store}}'></image>
   <view class='all_price pr rad8'>
-    <text class='wash fw pa dis-b w100'>{{wash}}</text>
+    <text class='wash fw pa dis-b w300'>{{wash}}</text>
     <text class='onsale pa'>{{onsale}}</text>
     <text class='onsale1 pa'>{{onsale1}}</text>
     <text class='price pa fw fs50'>{{price}}</text>
     <text class='price1 pa fw fs50'>{{price1}}</text>
-    <text class='ex_price pa fs16 txt-throw'>{{ex_price}}</text>
+    <text class='ex_price pa fs16 txt-throw ml20'>{{ex_price}}</text>
     <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text>
   </view>
 </view>
@@ -18,16 +18,18 @@
 
 <text class='group-detail dis-b pt10 fs30'>-拼团详情-</text>
 
-<view class='begin-detail1 pr  border-b wp100'>
-  <image class='begin-logo pa' src='{{beginLogo1}}'></image>
-  <text class='colonel  dis-b ta-c color-white pa rad40 h30'>团长</text>
-  <text class='begin-name pa fs26 ml120'>{{beginName1}}参与</text>
-  <text class='begin-time pa fs25'>{{beginTime1}}</text>
-</view>
 <view wx:if='{{helpsMsg}}'>
   <view wx:for='{{helpsMsg}}' wx:key="unique">
     <view class='begin-detail1 pr  border-b'>
-      <image class='begin-logo pa' src='{{item.portait}}'></image>
+      <view>
+        <view wx:if="{{index=='0'}}">
+         <image class='begin-logo pa' src='{{item.portait}}'></image>
+          <text class='colonel  dis-b ta-c color-white pa rad40 h30'>团长</text>
+        </view>
+        <view wx:else>
+          <image class='begin-logo pa' src='{{item.portait}}'></image>
+        </view>
+      </view>
       <text class='begin-name pa fs26 ml120'>{{item.userName}}</text>
       <text class='begin-time pa'>{{item.stime}}</text>
     </view>
@@ -35,12 +37,11 @@
 </view>
 
 <text class='serve-place wp100 dis-b border-b fs26 ta-c'>-服务地点-</text>
-
 <view class='contact pr wp100 border-b h180'>
   <image class='place_dot pa mt20 w20' src='http://116.62.151.139/res/img/place.png'></image>
-  <image class='telphone pa h30 w20' src='http://116.62.151.139/res/img/telphone.png' ></image>
+  <image class='telphone pa h30 w20' src='http://116.62.151.139/res/img/telphone.png'></image>
   <text class='place pa fs26 wp60'>{{address}}</text>
-  <text class='phone_number pa fs26  h70 lh60'>{{mobile}}</text>
+  <text class='phone_number pa fs26  h70'>{{mobile}}</text>
   <image class='phone-logo pa w70 h70' src='http://116.62.151.139/res/img/greenphone.png' bindtap='gophone'></image>
   <image class='line' src='http://116.62.151.139/res/img/veryicalline.png'></image>
   <image class='navigetion pa h70 w70' src='http://116.62.151.139/res/img/navigation.png' bindtap='gomap'></image>

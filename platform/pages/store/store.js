@@ -36,23 +36,7 @@ Page({
     carmodel: 'GLC200 2017款',
     currentformat: '235/55 R19',
     currentbrand: '米其林',
-  },
-  onLoad: function (options) {
-    wx.showLoading({ title: '努力加载中...' })
-    let that = this;
-    var searchType = 1;
-    var keyWord = that.data.keyWord;
-    wx.getLocation({
-      success: function (res) {
-        that.setData({
-          lat: res.latitude,
-          lng: res.longitude
-        });
-        that.initShopList(res.latitude, res.longitude, searchType, keyWord);
-      },
-    })
-
-    //调用 数组循环门店列表方法
+    shopList: [],
   },
   //数组循环门店列表方法
   initShopList: function (lat, lng, searchType, keyWorld) {
@@ -72,9 +56,7 @@ Page({
       success: function (result) {
         console.log(searchType, lat, lng, keyWorld)
         console.log(result)
-        wx.hideLoading()
         var msg = result.data.data;
-        // console.log(msg);
         //遍历这个对象
         that.setData({
           shopList: msg,
@@ -283,10 +265,26 @@ Page({
   },
 
 
+
+  onLoad: function (options) {
+  // wx.showLoading({ title: '努力加载中...' })
+     let that = this;
+     var searchType = 1;
+     var keyWord = that.data.keyWord;
+     wx.getLocation({
+       success: function (res) {
+         that.setData({
+           lat: res.latitude,
+           lng: res.longitude
+         });
+         that.initShopList(res.latitude, res.longitude, searchType, keyWord);
+       },
+     })
+    
+  },
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -319,6 +317,12 @@ Page({
         })
       },
     })
+  wx.removeStorage({
+    key: 'keyWorld',
+    success: function(res) {
+      console.log(res)
+    },
+  })
   },
   //轮胎规格
   godata: function () {
@@ -362,40 +366,6 @@ Page({
         }
       },
     })
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   //根据一级服务下拉框查询
   GetServiceStores: function (e) {
@@ -490,7 +460,7 @@ Page({
       that.initShopList(lat, lng, searchType, keyworld);
     }
     //调用 数组循环门店列表的方法
-    that.initShopList(lat, lng, searchType, keyworld);
+    // that.initShopList(lat, lng, searchType, keyworld);
     that.hideModal();
   },
   findServiceStores: function (e) {
@@ -516,7 +486,7 @@ Page({
       searchType: searchType
     })
     //调用 数组循环门店列表的方法
-    that.initShopList(lat, lng, searchType);
+    that.initShopList(lat, lng, searchType,"");
     that.hideModal();
   },
   //跳转到地图

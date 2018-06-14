@@ -1,0 +1,27 @@
+<!--pages/pay/pay.wxml-->
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl fs30 ml20'>商品总额</text>
+    <text class='textb h50 fr fs30 ta-r mr20 w300'>{{data.price}}元</text>
+</view>
+<!-- <view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl fs30 ml20'>优惠券</text>
+    <text class='textb h50 fr fs30 ta-r mr20 w300'>{{data.discountPrice}}元</text>
+</view> -->
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl fs30 ml20'>实付款</text>
+    <text class='textb h50 fr fs30 ta-r mr20 w300'>{{data.actualPayment}}元</text>
+</view>
+<!-- <view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl fs30 ml20'>账户余额({{data.userCount}}元）</text>
+     <text class='textb h50 fr fs30 ta-r mr20 w300'>{{data.useMoney}}</text>
+</view> -->
+<view class='border-b wp100 h50 cb mt20 pb20'> 
+    <text class='w300 h50 fl fs30 ml20'>需支付</text>
+    <text class='w300 h50 fr fs30 ta-r mr20 color-black w300'>{{data.balance}}元</text>
+</view>
+<view>
+    <button class='btna ma h100 lh100 rad20 ta-c w700' bindtap='paypay'>
+        <text class='color-white' >微信支付</text>
+    </button>
+</view>
+

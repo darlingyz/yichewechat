@@ -31,7 +31,7 @@ Page({
           },
           success: function (msg) {
             wx.hideLoading();
-            //console.log(msg);
+            console.log(msg);
             var odata=msg.data.data;
               if(odata.length==0){
               that.setData({

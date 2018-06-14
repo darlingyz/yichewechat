@@ -58,20 +58,35 @@
   <view class='fl wp22'>
     <view class=' ta-c mt30 fs28 ml60' bindtap='showEvaluate'>评价</view>
   </view>
-  <button class='bg-green fl wp40 rad40 h60 lh50 mt20 ml100 pr20' bindtap='bindViewStoredetailb'>
+  <!-- <button class='bg-green fl wp40 rad40 h60 lh50 mt20 ml100 pr20' bindtap='bindViewStoredetailb'>
     <text class=' ta-c mt30 fs28 color-white'>去该店铺小程序查看</text>
-  </button>
+  </button> -->
 </view>
 <!--服务-->
 <view class='wp100 cb'>
   <!--菜单列表-->
   <!--活动-->
   <view class='bg-white wp22 fl' wx:if="{{showList}}">
-    <view class='h90 lh90 border-b border-r fs28 pl30 {{showstoreactivity ? "color-green" : ""}}' bindtap="showStoreactivity">店铺活动</view>
     <!--服务-->
-    <view class='h90 lh90 border-b border-r fs28 pl30' bindtap='showAllServices'>全部服务</view>
+    <view class='h90 lh90 border-b border-r fs28 pl30 {{currentTab === "allService" ? "color-green" : ""}}' 
+    bindtap="showAllServices"
+    data-tab-name="allService">全部服务</view>
+
+    <view class='h90 lh90 border-b border-r fs28 pl30 {{currentTab === "storeActivity" ? "color-green" : ""}}' 
+    bindtap="showStoreactivity"
+    data-tab-name="storeActivity">店铺活动</view>
+
+
+
     <block wx:for='{{showListMsg}}' wx:key="unique">
-      <view class='h90 lh90 border-b border-r fs28 pl30' data-business='{{item.businessId}}' data-sn='{{item.sn}}' data-businessName='{{item.businessName}}' bindtap='showServicesDetail'>{{item.businessName}}</view>
+      <view class='h90 lh90 border-b border-r fs28 pl30 {{currentTab === index ? "color-green" : ""}}'
+        data-business='{{item.businessId}}'
+        data-sn='{{item.sn}}'
+        data-businessName='{{item.businessName}}'
+        bindtap='showServicesDetail'
+        data-tab-name="{{index}}">
+        {{item.businessName}}
+      </view>
     </block>
   </view>
 
@@ -197,11 +212,11 @@
             </view>
             <view class='cb wp40 wh40'>
               <view wx:if="{{item.privilegePrice > 0}}">
-                <view class='fs45 fl mt10 fw'>￥{{item.privilegePrice}}</view>
-                <view class='fs25 fl mt30 ml20 txt-throw'>原价￥{{item.price}}</view>
+                <text class='fs30 fl'>￥{{item.privilegePrice}}</text>
+                <text class='fs22 fl txt-throw'>原价￥{{item.price}}</text>
               </view>
               <view wx:else>
-                <view class='fs45 fl mt10 fw'>￥{{item.price}}</view>
+                <view class='fs30 fl mt10 fw'>￥{{item.price}}</view>
               </view>
               <!--购物车加减功能-->
             </view>

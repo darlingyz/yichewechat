@@ -7,7 +7,8 @@ Page({
   data: {
     appGeneralize: '汽车服务全包揽 , 用一车独秀APP',
     activityId:"",
-    userBargainId:""
+    userBargainId:"",
+    showModalStatus: false
   },
 
   /**
@@ -62,6 +63,7 @@ Page({
       })
     }
   },
+
   //点击跳转到拼团
   groupDetailView : function(e){
     var that=this;
@@ -111,7 +113,18 @@ Page({
   onHide: function () {
     
   },
-
+  goDown: function () {
+    var that = this;
+    that.setData({
+      showModalStatus: true
+    })
+  },
+  hidepic: function () {
+    var that = this;
+    that.setData({
+      showModalStatus: false
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

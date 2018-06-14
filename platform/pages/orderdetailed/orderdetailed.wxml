@@ -6,11 +6,11 @@
 <view hidden="{{currentTab!==0}}">
   <view class='wp100 allbox'>
     <!--app下载  -->
-    <!-- <view class='wp90 h80 appbox'>
+    <view class='wp90 h80 appbox'>
       <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img//fork.png' mode='widthFix'></image>
       <text class="appGeneralize pa fs26">汽车服务全包揽 , 用一车独秀APP</text>
-      <view class='downlodeButton pa h40 ta-c lh40'>点击下载</view>
-    </view> -->
+      <view class='downlodeButton pa h40 ta-c lh40' bindtap='downApp'>点击下载</view>
+    </view>
     <!-- 活动内容 -->
     <block wx:for='{{orderListMsg}}' wx:key="unique">
       <view>
@@ -83,11 +83,11 @@
 <view hidden="{{currentTab!==1}}">
   <view class='waitpay wp100'>
     <!--app下载  -->
-    <!-- <view class='wp90 h80 appbox'>
+    <view class='wp90 h80 appbox'>
       <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img//fork.png' mode='widthFix'></image>
       <text class="appGeneralize pa fs26">汽车服务全包揽 , 用一车独秀APP</text>
-      <view class='downlodeButton pa h40 ta-c lh40'>点击下载</view>
-    </view> -->
+      <view class='downlodeButton pa h40 ta-c lh40' bindtap='downApp'>点击下载</view>
+    </view>
     <!---订单-  -->
     <block wx:for='{{paylist}}' wx:key="unique">
       <view data-status='{{item.paymentStatus}}' data-id="{{item.id}}">
@@ -159,11 +159,11 @@
 <view hidden="{{currentTab!==2}}">
   <view class='sering wp100'>
     <!--app下载  -->
-    <!-- <view class='wp90 h80 appbox'>
+    <view class='wp90 h80 appbox'>
       <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img//fork.png' mode='widthFix'></image>
       <text class="appGeneralize pa fs26">汽车服务全包揽 , 用一车独秀APP</text>
-      <view class='downlodeButton pa h40 ta-c lh40'>点击下载</view>
-    </view> -->
+      <view class='downlodeButton pa h40 ta-c lh40' bindtap='downApp'>点击下载</view>
+    </view>
     <view class='boxsering'>
       <view class='seringmsg' wx:if="{{seringmsg}}">
         <block wx:for='{{seringcommon}}' wx:key="unique">
@@ -240,11 +240,11 @@
 <view hidden="{{currentTab!==3}}">
   <view class='waitcommont wp100'>
     <!--app下载  -->
-    <!-- <view class='wp90 h80 appbox'>
+    <view class='wp90 h80 appbox'>
       <image class='fork pa w30 mt30' src='http://116.62.151.139/res/img//fork.png' mode='widthFix'></image>
       <text class="appGeneralize pa fs26">汽车服务全包揽 , 用一车独秀APP</text>
-      <view class='downlodeButton pa h40 ta-c lh40'>点击下载</view>
-    </view> -->
+      <view class='downlodeButton pa h40 ta-c lh40' bindtap='downApp'>点击下载</view>
+    </view>
     <!--评价  -->
     <view class='boxcommon'>
       <view class='havemsg' wx:if="{{havewaitmsg}}">
@@ -319,7 +319,10 @@
     <!--全部评价结束  -->
   </view>
 </view>
-
+<!-- <view class="commodity_screen wp100 pf top0 ohid" wx:if="{{showModalStatus}}"></view> -->
+<view class='tell-app' wx:if="{{showModalStatus}}">
+  <image src='./../../images/tells.png' class="app-pic" mode="widthFix" bindtap='hidepic'></image>
+</view>
 <!--
 <view class='bomb border-1 pr pf bg-white' wx:if="{{show}}">
     <text class='warmPrompt pa'>温馨提示</text>

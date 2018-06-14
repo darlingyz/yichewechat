@@ -37,7 +37,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        
+        console.log(msg)
         if (msg.data.code == 0){
           wx.showModal({
             title: '提示',
@@ -54,7 +54,11 @@ Page({
         //登录成功,请求接口获取ip
         if(msg.data.code == '1'){
           var userId = msg.data.data.userId;
+          var nickName = msg.data.data.userName;
+          var vatarUrl = msg.data.data.portait
           app.globalData.userId = userId;
+          app.globalData.nickName = nickName;
+          app.globalData.vatarUrl = vatarUrl;
           console.log(app.globalData.userId);
           wx.switchTab({
             url: '../index/index'

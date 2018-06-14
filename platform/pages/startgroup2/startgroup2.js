@@ -5,11 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    maskModal:false,
-    userGroupId:"",
-    userId:"",
-    openId:"",
-    carId:""
+    maskModal: false,
+    userGroupId: "",
+    userId: "",
+    openId: "",
+    carId: ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     wx.showLoading({ title: '努力加载中...' });
     //优化体验首先把页面显示出来,随后获取用户的信息
-    var that=this;
+    var that = this;
     var models = that.data.maskModal;
     //获取活动的usegroupId
     var fail = that.data.fail;
@@ -25,7 +25,7 @@ Page({
     //console.log(options);
     //获取活动传过来的活动userGropId,获取该活动页面的信息
     var userGroupId = options.userGroupId;
-    var nums =parseInt(userGroupId);//整形数字
+    var nums = parseInt(userGroupId);//整形数字
     app.globalData.nums = nums;//设置全局,拼团的ID
     that.setData({
       userGroupId: nums
@@ -34,8 +34,8 @@ Page({
     wx.updateShareMenu({
       withShareTicket: true,
       success: function () {
-        app.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
+        wx.request({
+          url: app.globalData.testUrl + '/activity/SearchheadGroupDetail',
           method: 'post',
           data: {
             userGroupId: nums
@@ -66,13 +66,13 @@ Page({
           }
         })
       }
-    }) 
-  //获取登录信息,此时加载的为分享页面,所以此页面先加载,所有首先获得信息
+    })
+    //获取登录信息,此时加载的为分享页面,所以此页面先加载,所有首先获得信息
     wx.login({
       success: res => {
         //发送 res.code 到后台换取 openId, sessionKey, unionId
-        app.request({
-          url: 'https://api-wechat.glongcar.com/api' + '/Wx/aaa',
+        wx.request({
+          url: app.globalData.testUrl + '/Wx/aaa',
           method: "post",
           data: {
             code: res.code
@@ -92,7 +92,7 @@ Page({
         })
       }
     })
-//获取道登录信息以后
+    //获取道登录信息以后
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -100,17 +100,17 @@ Page({
           console.log("授权成功~~~")
           wx.getUserInfo({
             success: res => {
-              var that=this;
+              var that = this;
               // 可以将 res 发送给后台解码出 unionId
-              app.globalData.userInfo = res.userInfo; 
+              app.globalData.userInfo = res.userInfo;
               var userInfo = res.userInfo;
               var nickName = userInfo.nickName;
               var vatarUrl = userInfo.avatarUrl;
               var openid = app.globalData.openId;
               app.globalData.nickName = nickName;
               app.globalData.vatarUrl = vatarUrl;
-              app.request({
-                url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+              wx.request({
+                url: app.globalData.testUrl + '/login/wxLittleLogin',
                 data: {
                   openId: openid,
                   userName: nickName,
@@ -167,12 +167,12 @@ Page({
           console.log("授权失败~===~")
           that.setData({
             maskModal: !models,
-            fail:0
+            fail: 0
           })
         }
       }
     })
-  
+
   },
   //获取用户信息
   getUserInfo: function (res) {
@@ -188,8 +188,8 @@ Page({
     var openid = app.globalData.openId;
     app.globalData.nickName = nickName;
     app.globalData.vatarUrl = vatarUrl;
-    app.request({
-      url: 'https://api-wechat.glongcar.com/api' + '/login/wxLittleLogin',
+    wx.request({
+      url: app.globalData.testUrl + '/login/wxLittleLogin',
       data: {
         openId: openid,
         userName: nickName,
@@ -221,7 +221,7 @@ Page({
           })
         } else {
           var userId = data.userId;
-          var carId=data.carId;
+          var carId = data.carId;
           app.globalData.userId = userId;
           app.globalData.carId = carId;
         }
@@ -231,7 +231,7 @@ Page({
   },
   //使用分享过来的id进行参与活动,我这里写死一个
   //传的值为id// 分享
-  onShareAppMessage: function (res) { 
+  onShareAppMessage: function (res) {
     withShareTicket: true;
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -242,36 +242,36 @@ Page({
         path: '/pages/startgroup2/startgroup2?userGroupId=' + that.data.userGroupId,
         success: function (res) {
           console.log(res);
-        /*  app.request({
-            url: 'https://api-wechat.glongcar.com/api' + '/activity/SearchheadGroupDetail',
-            method: 'post',
-            data: {
-              userGroupId: that.data.userGroupId
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'//默认值
-            },
-            success:function(msg){
-              console.log(msg)
-              that.setData({
-                store: msg.data.data.Activity.activityImg,
-                wash: msg.data.data.Activity.activityName,
-                onsale: msg.data.data.Activity.description,
-                price: '￥',
-                price1: msg.data.data.Activity.groupPrice,
-                ex_price: '原价￥' + msg.data.data.Activity.price,
-                discount: '-砍价低至' + (msg.data.data.Activity.groupPrice / msg.data.data.Activity.price * 10).toFixed(1) + '折-',
-                residueNumbers: msg.data.data.Activity.shortNum,
-                residueTime: msg.data.data.Activity.etime,
-                pic_1: msg.data.data.Activity.portrait,
-                helpsMsg: msg.data.data.helps,
-                group_arrow: 'http://116.62.151.139/res/img/detailed_arrow.png',
-                needNum: msg.data.data.Activity.groupNum - 1,
-                activityId: msg.data.data.Activity.id,
-                time: msg.data.data.Activity.etime
-              })
-            }
-          })*/
+          /*  wx.request({
+              url: app.globalData.testUrl + '/activity/SearchheadGroupDetail',
+              method: 'post',
+              data: {
+                userGroupId: that.data.userGroupId
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'//默认值
+              },
+              success:function(msg){
+                console.log(msg)
+                that.setData({
+                  store: msg.data.data.Activity.activityImg,
+                  wash: msg.data.data.Activity.activityName,
+                  onsale: msg.data.data.Activity.description,
+                  price: '￥',
+                  price1: msg.data.data.Activity.groupPrice,
+                  ex_price: '原价￥' + msg.data.data.Activity.price,
+                  discount: '-砍价低至' + (msg.data.data.Activity.groupPrice / msg.data.data.Activity.price * 10).toFixed(1) + '折-',
+                  residueNumbers: msg.data.data.Activity.shortNum,
+                  residueTime: msg.data.data.Activity.etime,
+                  pic_1: msg.data.data.Activity.portrait,
+                  helpsMsg: msg.data.data.helps,
+                  group_arrow: 'http://116.62.151.139/res/img/detailed_arrow.png',
+                  needNum: msg.data.data.Activity.groupNum - 1,
+                  activityId: msg.data.data.Activity.id,
+                  time: msg.data.data.Activity.etime
+                })
+              }
+            })*/
         },
         fail: function (res) {
           // 分享失败
@@ -298,16 +298,16 @@ Page({
    */
   onReady: function () {
   },
-  bindViewhome:function(){
+  bindViewhome: function () {
     wx.switchTab({
       url: '../index/index',
     })
   },
   //去支付界面
-  gopaygroup:function(e){
+  gopaygroup: function (e) {
     var that = this;
     var carId = app.globalData.carId;
-    console.log(app.globalData.userId, carId )
+    console.log(app.globalData.userId, carId)
     console.log("新用户登录成功,获取了userId")
     if (carId == null) {
       wx.showModal({
@@ -325,34 +325,36 @@ Page({
         }
       })
     } else {
-      app.request({
-        url: 'https://api-wechat.glongcar.com/api' + '/activity/HelpGroupActivity',
+      wx.request({
+        url: app.globalData.testUrl + '/activity/HelpGroupActivity',
         method: 'post',
         data: {
-          headGroupId:app.globalData.nums,
-          userId: app.globalData.userId ,//拼团用户的id
+          headGroupId: app.globalData.nums,
+          userId: app.globalData.userId,//拼团用户的id
           carId: carId,
-          type:2
+          type: 2
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (msg) {
           console.log(msg);
-          var omsg=msg.data.data;
-          if(omsg==null){
+          var omsg = msg.data.data;
+          if (omsg == null) {
             wx.showModal({
               title: '提示',
               content: '您已经拼过该团,不能贪心哦~',
-              success:function(res){
-                if (res.confirm){
-                  console.log('用户点击确定')
-                } else if (res.cancel){
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '../startgroupmiddle/startgroupmiddle',
+                  })
+                } else if (res.cancel) {
                   console.log(用户点击取消)
                 }
               }
             })
-          }else{
+          } else {
             wx.setStorage({
               key: 'codedata',
               data: msg,
@@ -388,7 +390,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.onLoad()
+    this.onLoad();
+    wx.hideLoading();
   },
 
   /**

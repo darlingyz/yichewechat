@@ -26,8 +26,9 @@
 
 .wash {
   width: 100%;
-  left: 80rpx;
-  height: 40rpx;
+  left: 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   color: #2a1573;
   top: 12rpx;
   font-size: 34rpx;

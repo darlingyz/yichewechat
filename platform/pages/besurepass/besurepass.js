@@ -65,11 +65,22 @@ Page({
               app.globalData.userId = oall.userId;
               var bmoney = res.data.data.coupon;
               var shareCode = res.data.data.respUserInfo.shareCode;
-              that.setData({
-                showcoupondetail: true,
-                showModal: true,
-                bao: bmoney
-              });
+              if (bmoney.length == 0 || bmoney==null){
+                wx.switchTab({
+                  url: '../my/my',
+                })
+                that.setData({
+                  showcoupondetail: true,
+                  showModal: false,
+                  bao: bmoney
+                });
+              }else{
+                that.setData({
+                  showcoupondetail: true,
+                  showModal: true,
+                  bao: bmoney
+                });
+              }
             }
           })
         }
@@ -109,8 +120,6 @@ Page({
       },
       data: {
         userId: app.globalData.userId,
-        sign: 2,
-        discountId: id
       },
       success: function (res) {
         console.log(app.globalData.userId,id)
@@ -118,7 +127,7 @@ Page({
         var code = res.data.code;
         if (code == 1) {
           wx.showToast({
-            title: '领取成功！',
+            title: res.data.data,
             icon: 'success',
             duration: 1000
           })
@@ -127,7 +136,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '失败！',
+            title: res.data.msg,
             icon: "success",
             duration: 1000
           })

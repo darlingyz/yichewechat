@@ -63,9 +63,9 @@
   <view class='fl ml30 fs30'>关于一车独秀</view>
   <view class='navto fr mr50'>></view>
 </view>
-<button class='backBtn h80 lh80 wp90 ta-c mt50 bg-white' bindtap='bindViewLogin'>
+<!-- <button class='backBtn h80 lh80 wp90 ta-c mt50 bg-white' bindtap='bindViewLogin'>
   <text class='backLogin h80 lh80'>退出登录</text>
-</button>
+</button> -->
 <!--遮罩-->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <!--弹窗-->

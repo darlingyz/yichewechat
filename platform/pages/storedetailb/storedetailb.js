@@ -25,6 +25,7 @@ Page({
     havamsg: false
   },
   navbarTap: function (e) {
+    console.log(e)
     this.setData({
       currentTab: e.currentTarget.dataset.idx
     })

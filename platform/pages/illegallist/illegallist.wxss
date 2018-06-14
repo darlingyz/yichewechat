@@ -27,20 +27,20 @@ padding-top: 20rpx;
 }
 .illreson{
   height: auto;
-  min-height: 60rpx;
 }
 .illegalReason{
-  width: 70%;
-  min-height: 80rpx;
-  line-height: 30rpx;
+  width: 68%;
   display: inline-block;
+  white-space: nowrap;
+  text-overflow:ellipsis; 
+  overflow: hidden;
 }
  .illtime
 .illplace
 .illmoney
 .illscoe{
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 
 }
 .no-data{

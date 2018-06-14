@@ -10,16 +10,17 @@
         <view class='couponsFace color-white pr'>
           <text class='currency pa fs40'>￥</text>
           <text class='price pa'>{{item.price}}</text>
-          <text class='require pa fs18'>{{item.require1}}</text>
+          <text class='require pa fs22 h40 lh40'>满{{item.discountPrice}}元可用</text>
         </view>
         <text class='couponsName pa'>{{item.title}}</text>
         <text class='couponsTime pa fs23 dis-b'>使用期限:{{item.startDate}}至{{item.endDate}}</text>
         <view wx:if='{{item.businessName}}'>
-          <text class='couponsRange pa fs23'>使用条件:{{item.businessName}}</text>
+          <text class='couponsRange pa fs23'>{{item.merchantName}}:{{item.businessName}}</text>
         </view>
         <view wx:else>
           <text class='couponsRange pa fs23'>{{couponsRange1}}</text>
         </view>
+        <view class='getButton pa color-white ta-c fs16 rad20' bindtap='goShop'>立即使用</view> 
       </view>
     </block>
   </view>
@@ -46,7 +47,7 @@
           <text class='shopName'>{{item.merchantName}}</text>
           <!-- <image class='arrow' src='http://116.62.151.139/res/img/yellow-arrow.png'></image> -->
         </view>
-        <!-- <view class='getButton pa color-white ta-c fs16 rad20'>立即使用</view> -->
+         <view class='getButton pa color-white ta-c fs16 rad20' data-id="{{item.merchantId}}" bindtap='toMerchant'>立即使用</view> 
       </view>
     </block>
   </view>

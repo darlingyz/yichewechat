@@ -1,0 +1,43 @@
+<view class="meal-activity">
+  <view class='meal-box-pic h240 wp100'>
+    <image src='{{shopDatail.activityImg}}' class='meal-shop-img h240'></image>
+  </view>
+  <view class='meal-desc'>夏季养护大套餐</view>
+  <view class='fs26 meal-desc-list'>夏季养护大套餐祝您清爽一夏</view>
+  <view class='meal-shop-detail'>
+    <view class='meal-shop-price fl'>
+      <text class='meal-price mr20'>¥{{shopDatail.packagePrice}}</text>
+      <text class='meal-org-price fs26'>原价:¥{{shopDatail.price}}</text>
+    </view>
+    <view class='meal-shop-amount ta-c'>
+      <view class='shop-amount-org fs26 lh50 h50'>已有{{shopDatail.salesVolume}}人购买</view>
+      <view class='shop-amount-limit fs26 lh50 h50'>限量{{shopDatail.repertory}}套</view>
+    </view>
+  </view>
+  <!--服务详情  -->
+  <view class="border-b-15"></view>
+  <view class='meal-list'>
+    <view class='meal-shop-title wp100 ta-c h80 lh80'> -- 套餐详情 -- </view>
+    <view class='meal-list-box'>
+      <block wx:for="{{shopServer}}" wx:key="unique">
+        <view class='shop-meal-name '>
+          <text class='fs26 shop-name-list wp50 ta-c'>{{item.pageServerName}}</text>
+          <text class='fs26 shop-server-amount wp50 ta-c'>X{{item.amount}}</text>
+        </view>
+      </block>
+    </view>
+    <view class='meal-shop-title wp100 ta-c h80 lh80'> -- 服务地点 -- </view>
+    <view class='meal-shop-ads wp100 h60 lh60'>
+      <image src='http://116.62.151.139/res/img//place.png' class='w30 h40 ml20 fl mt10'></image>
+      <text class='fs26 fl ml10'>{{shopDatail.address}}</text>
+    </view>
+    <view class='shop-meal-phone wp100 h60 '>
+      <image class='phoneLogo w30 h40 ml20 fl mt10' src='http://116.62.151.139/res/img/phone.png'></image>
+      <text class='meal-shop-phone fl fs26 lh60 ml10'>{{shopDatail.mobile}}</text>
+    </view>
+  </view>
+  <view class='shop-detail-buy mt80'>
+    <text class='shop-phone wp50' bindtap='shopPhone'>电话咨询</text>
+    <text class='shoping wp50' bindtap='goPay'>¥{{shopDatail.packagePrice}}立即购买</text>
+  </view>
+</view>

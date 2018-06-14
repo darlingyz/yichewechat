@@ -39,10 +39,10 @@ left: 330rpx;
  line-height: 82rpx;
 }
 .gocar{
-  border:1px solid #ccc;
+  border-right:1px solid #ccc;
   box-sizing:border-box;
-   background: #ccc;
-   text-align: center;
+  background: #00a43c;
+  text-align: center;
 }
  .sharebox{
   background: #00a43c;
@@ -74,4 +74,10 @@ left: 330rpx;
   display: -webkit-inline-box;
   margin:0 auto;
   left: 10rpx;
+}
+.shop-pr{
+  height: 300rpx;
+  position: absolute;
+  top: 0;
+  z-index: 999
 }

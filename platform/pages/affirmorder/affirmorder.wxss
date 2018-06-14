@@ -80,7 +80,7 @@
 .serveName {
   font-size: 33rpx;
   margin-left: 153rpx;
-  margin-top: 35rpx;
+  margin-top: 40rpx;
 }
 
 .serveDetail {
@@ -90,13 +90,13 @@
 }
 
 .servePrice {
-  margin-top: 13rpx;
-  margin-left: 628rpx;
+  margin-top: 30rpx;
+  margin-left: 610rpx;
 }
 
 .serveNumber {
   margin-top: 105rpx;
-  margin-left: 695rpx;
+  margin-left: 610rpx;
 }
 
 .discount {
@@ -113,7 +113,7 @@
 }
 
 .arrow {
-  margin-left: 720rpx;
+  margin-left: 640rpx;
 }
 
 .priceCount {
@@ -142,7 +142,7 @@
 }
 
 .discountPrice {
-  margin-left: 630rpx;
+  margin-left: 610rpx;
   margin-top: 73rpx;
 }
 

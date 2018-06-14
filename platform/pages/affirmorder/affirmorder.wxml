@@ -24,8 +24,22 @@
     <image class='serveLogo pa' src='{{item.img}}' mode='widthFix'></image>
     <text class='serveName pa'>{{item.businessName}}</text>
     <!-- <text class='serveDetail pa fs26'>{{item.serveDetail}}</text> -->
-    <text class='servePrice pa fs25'>{{item.price}}</text>
-    <!-- <text class='serveNumber pa fs25'>{{item.serveNumber}}</text> -->
+    <view class='servePrice pa fs25'>
+      <view wx:if="{{item.privilegePrice > 0}}">
+        <text class='fs30 fl '>￥{{item.privilegePrice}}</text>
+        <text class='fs22 fl txt-throw'>原价￥{{item.price}}</text>
+      </view>
+      <view wx:else>
+        <view class='fs30 fl mt10 fw'>￥{{item.price}}</view>
+      </view>
+<!-- 
+      ￥:{{item.privilegePrice}} -->
+      </view>
+
+
+
+
+<text class='serveNumber pa fs25'> X {{item.businessNum}}</text> 
   </view>
 </block>
 
@@ -38,39 +52,40 @@
 <view class='priceCount wp100 border-t border-b'>
   <view class='priceCount2 pr wp100 bg-white fs28'>
     <text class='allPric pa'>商品总额</text>
-    <text class='price pa'>{{shoppingCar.totalCurrentPrice - price}}元</text>
+    <text class='price pa'>￥:{{(shoppingCar.totalCurrentPrice - price) <= 0?'0.01':(shoppingCar.totalCurrentPrice - price)}}</text>
     <text class='discount2 pa'>优惠券</text>
-    <text class='discountPrice pa'>-￥{{price}}元</text>
+    <text class='discountPrice pa'>￥: {{-price}}</text>
   </view>
 </view>
 
 <view>
-  <view class='discountMoney bg-white fl border-1 h80 ta-c'>￥{{shoppingCar.totalCurrentPrice - price}}元</view>
-  <view class='sendOrder fr ta-c color-white' bindtap='bindWiewpay'>提交订单</view>
-</view>
-
-<!--弹层可用优惠券-->
-<view class='popUp border-1 wp100 pf bg-white' wx:if="{{show}}">
-  <text class='canUse fs30 mt20'>可用优惠券</text>
-  <view class='contbox'> 
-  <view class='couponsMain pr wp100 border-b' wx:for="{{couponsList}}" data-id="{{item.couponId}}" data-price="{{item.price}}" data-discountId="{{item.discountId}}" wx:key="unique" bindtap='chooseClick'>
-    <text class='kindMoney pa'>￥{{item.price}}</text>
-    <text class='couponsName pa fs27'>{{item.title}}</text>
-    <text class='useRange pa fs22'>满{{item.discountPrice}}可用</text>
-    <text class='useTime pa fs22'>使用期限：{{item.startDate}}至{{item.endDate}}</text>
-
-    <!--选择状态标志-->
-    <image class='useState pa' wx:if="{{couponSelectedId==item.couponId}}" src='http://116.62.151.139/res/img//success.png' mode='widthFix'></image>
-    <image class='useState pa' wx:if="{{couponSelectedId!=item.couponId}}" src='http://116.62.151.139/res/img//unchecked.png' mode='widthFix'></image>
+  <view class='discountMoney bg-white fl border-1 h80 ta-c'>￥:{{(shoppingCar.totalCurrentPrice - price)
+    <=0 ? '0.01':(shoppingCar.totalCurrentPrice - price)}}</view>
+      <view class='sendOrder fr ta-c color-white' bindtap='bindWiewpay'>提交订单</view>
   </view>
- </view>
-  <view class='canNot pr wp100 border-b' data-id="0" data-price="0" data-discountId="0"  bindtap='chooseClick'>
-    <text class='canNotUse pa fs31 ml30'>不使用优惠券</text>
-    <image class='useState pa' wx:if="{{couponSelectedId==0}}" src='http://116.62.151.139/res/img//success.png' mode='widthFix'></image>
-    <image class='useState pa' wx:if="{{couponSelectedId!=0}}" src='http://116.62.151.139/res/img//unchecked.png' mode='widthFix'></image>
-  </view>
-  <button class='close color-white wp100' bindtap='closeClick'>确认</button>
-</view>
 
-<view class="commodity_screen wp100 pf top0 ohid" bindtap="hideModa" wx:if="{{showModalStatus}}"></view>
-<!--弹层可用优惠券结束-->
+  <!--弹层可用优惠券-->
+  <view class='popUp border-1 wp100 pf bg-white' wx:if="{{show}}">
+    <text class='canUse fs30 mt20'>可用优惠券</text>
+    <view class='contbox'>
+      <view class='couponsMain pr wp100 border-b' wx:for="{{couponsList}}" data-id="{{item.couponId}}" data-price="{{item.price}}" data-discountId="{{item.discountId}}" wx:key="unique" bindtap='chooseClick'>
+        <text class='kindMoney pa'>￥{{item.price}}</text>
+        <text class='couponsName pa fs27'>{{item.title}}</text>
+        <text class='useRange pa fs22'>满{{item.discountPrice}}可用</text>
+        <text class='useTime pa fs22'>使用期限：{{item.startDate}}至{{item.endDate}}</text>
+
+        <!--选择状态标志-->
+        <image class='useState pa' wx:if="{{couponSelectedId==item.couponId}}" src='http://116.62.151.139/res/img//success.png' mode='widthFix'></image>
+        <image class='useState pa' wx:if="{{couponSelectedId!=item.couponId}}" src='http://116.62.151.139/res/img//unchecked.png' mode='widthFix'></image>
+      </view>
+    </view>
+    <view class='canNot pr wp100 border-b' data-id="0" data-price="0" data-discountId="0" bindtap='chooseClick'>
+      <text class='canNotUse pa fs31 ml30'>不使用优惠券</text>
+      <image class='useState pa' wx:if="{{couponSelectedId==0}}" src='http://116.62.151.139/res/img//success.png' mode='widthFix'></image>
+      <image class='useState pa' wx:if="{{couponSelectedId!=0}}" src='http://116.62.151.139/res/img//unchecked.png' mode='widthFix'></image>
+    </view>
+    <button class='close color-white wp100' bindtap='closeClick'>确认</button>
+  </view>
+
+  <view class="commodity_screen wp100 pf top0 ohid" bindtap="hideModa" wx:if="{{showModalStatus}}"></view>
+  <!--弹层可用优惠券结束-->

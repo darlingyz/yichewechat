@@ -19,9 +19,9 @@
 }
 
 .wash {
-  left: 80rpx;
-  height: 34rpx;
-  width: 140rpx;
+  left: 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   color: #2a1573;
   top: 12rpx;
   font-size: 34rpx;
@@ -45,7 +45,7 @@
 .price {
   font-size: 50rpx;
   left: 15rpx;
-  top: 110rpx;
+  top: 100rpx;
   color: #2a1573;
   font-weight: bold;
 }

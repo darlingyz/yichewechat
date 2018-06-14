@@ -1,65 +1,72 @@
 <!--pages/friendsbargain/friendsbargain.wxml-->
 <view class='container-box pr'>
-    <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
-    <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
-    <view class='brand pa w200 fs28 ta-c'>{{userName}}</view> 
-    <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view> 
-    <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
-    <view class='detail pa wp75'>
-       <image src='{{storeba}}' mode='widthFix' class='wp30 fl'></image>
-       <view class='fl ml10 wp65'>
-          <view class='cb'>
-              <view class='fs30 fl mt10' >{{washcoupons}}</view>
-              <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
-          </view>
-          <view class='cb'>
-              <view class='fs45 fl mt20 fw'>￥{{nprice}}</view>
-              <view class='fs25 fl mt40 ml20 txt-throw'>原价￥{{oprice}}</view>
-          </view>
-       </view>
+  <image src='http://116.62.151.139/res/img/info.png' mode='widthFix' class='bg wp90 pa'></image>
+  <image src='{{userSrc}}' mode='widthFix' class='userPic w100 pa'></image>
+  <view class='brand pa w200 fs28 ta-c'>{{userName}}</view>
+  <view class='callon pa wp90 fs30 ta-c'>我发现一个好东西，来一起砍价超低价拿吧！</view>
+  <image src='http://116.62.151.139/res/img/discountinfo.png' mode='widthFix' class='discountbg wp80 pa'></image>
+  <view class='detail pa wp75 h150 ohid'>
+    <view class='mb20 h130 ohid fl wp30'>
+      <image src='{{storeba}}' mode='widthFix' class='fl h130'></image>
     </view>
+    <view class='fl ml10 wp65'>
+      <view class='cb'>
+        <view class='fs30 fl mt10'>{{washcoupons}}</view>
+        <view class='color-gray fs25 fr mt15'>{{pnum}}人已抢</view>
+      </view>
+      <view class='cb'>
+        <view class='fs45 fl mt20 fw'>￥{{nprice}}</view>
+        <view class='fs25 fl mt40 ml20 txt-throw'>原价￥{{oprice}}</view>
+      </view>
+    </view>
+  </view>
 </view>
 <view class='cb list-detail'>
-    <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
-    <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
-<view class='cb'>
+  <view class='pnum fl fs30 ml280 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnuma}}人</view>
+  <view class='pnum fr fs30 mr40 rad10 w150 h60 lh60 ta-c pl10'>邀请{{pnumb}}人</view>
+  <view class='cb'>
     <image src='http://116.62.151.139/res/img/line.png' class='wp81 ml65' mode='widthFix'></image>
-</view>
- <view class='cb'>
+  </view>
+  <view class='cb'>
     <view class='fl fs30 ml50'>原价</view>
     <view class='fl fs30 ml210'>中间价</view>
     <view class='fr fs30 mr50'>最低价</view>
-</view>
-<view class='cb'>
+  </view>
+  <view class='cb'>
     <view class='fl fs30 ml50'>￥{{origprice}}</view>
     <view class='fl fs30 ml210'>￥{{middleprice}}</view>
     <view class='fr fs30 mr65'>￥{{bottomprice}}</view>
-</view>
+  </view>
 </view>
 
 <!--friends-helps-list -->
 
 
 <view class='cutdetial wp90 h300 rad10 mt50 ma'>
-<view class='h280 middle'>
-<view class='pr pt20' wx:if="{{friendlist}}">
-  <block wx:for="{{friendsCutList}}" wx:key="unique">
-          <view class='bgbox wp90 h80 lh80'>
-            <view class='pr h80'>
-              <image src='{{item.userHelpPortait}}' class='frienduserSrc w60 pa' mode='widthFix'></image>
-              <view class='friendsname w180 pa fs28'>{{item.userHelpName}}</view>
-              <view class='cutnum w150 pa fs28'>砍了一刀</view>
-              <view class='date w200 pa fs28'>{{item.helpTime}}</view>
-            </view>
-          </view> 
-  </block>
-</view>
+  <view class='h280 middle'>
+    <view class='pr pt20' wx:if="{{friendlist}}">
+      <block wx:for="{{friendsCutList}}" wx:key="unique">
+        <view class='bgbox wp90 h80 lh80'>
+          <view class='pr h80'>
+            <image src='{{item.userHelpPortait}}' class='frienduserSrc w60 pa' mode='widthFix'></image>
+            <view class='friendsname w180 pa fs28'>{{item.userHelpName}}</view>
+            <view class='cutnum w150 pa fs28'>砍了一刀</view>
+            <view class='date w200 pa fs28'>{{item.helpTime}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
     <view wx:else>
       <text class='fs28'> 暂无好友帮他砍价,赶紧帮他砍一刀吧~</text>
     </view>
   </view>
 </view>
-<button class='cutbtn h90 lh90 wp90 ma ta-c mt80 ml40' bindtap='bindViewHelpcut'><text class='color-white fs40'>帮他砍价！</text></button>
+<button class='cutbtn h90 lh90 wp90 ma ta-c mt80 ml40' bindtap='bindViewHelpcut'>
+  <text class='color-white fs40'>帮他砍价！</text>
+</button>
+<button class='cutbtn h90 lh90 wp90 ma ta-c mt80 ml40' bindtap='bindGohome'>
+  <text class='color-white fs40'>返回首页</text>
+</button>
 <view class='h60 lh60 wp100 ta-c fs30 border-t border-b mt150'>-猜你喜欢-</view>
 <block wx:for='{{adsList}}' wx:key="unique">
   <image src='{{item.adsSrc}}' mode='widthFix' class='wp100 mt20'></image>
@@ -70,15 +77,15 @@
   <view class="contbox">
     <button class='prompt'>微信授权</button>
     <view class='pic wp100 h160'>
-        <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
-    <text class='applyuser'>一车独秀申请获得一下授权</text>
+      <image src='http://116.62.151.139/res/img/absmall.png' class='h100 logopic'></image>
+      <text class='applyuser'>一车独秀申请获得一下授权</text>
     </view>
     <view class='advise'>
       <text class='titles'>获取你的公开信息（昵称，头像等）</text>
     </view>
     <view class='allbtn'>
-    <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
-    <button class='cancel' bindtap='close'>取消</button>
+      <button open-type="getUserInfo" class='obtn' bindgetuserinfo="getUserInfo">确认</button>
+      <button class='cancel' bindtap='close'>取消</button>
     </view>
   </view>
 </view>

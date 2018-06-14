@@ -3,9 +3,8 @@
   <view class='all_price pr'>
     <text class='wash fw pa dis-b'>{{wash}}</text>
     <text class='onsale pa'>{{onsale}}</text>
-    <text class='onsale1 pa'>{{onsale1}}</text>
-    <text class='price pa'>{{price}}</text>
-    <text class='price1 pa'>{{price1}}</text>
+    <text class='price pa'>￥ {{price1}}</text>
+    <!-- <text class='price1 pa'>{{price1}}</text> -->
     <text class='ex_price pa fs16 txt-throw'>{{ex_price}}</text>
     <text class='discount pa bg-white dis-b rad15 fs18'>{{discount}}</text>
   </view>

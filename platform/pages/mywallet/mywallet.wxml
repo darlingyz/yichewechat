@@ -15,5 +15,5 @@
 <view class='cb'> 
     <view class='textc fl h30 mt20 ml40 mb30'>.</view>
     <view class='textb fl h30 lh30 mt20 ml20 mb30 fs28'>提现更多服务尽在一车独秀APP</view>
-    <view class='textd fl h30 lh30 mt20 ml40 mb30 fs28' bindtap='bindViewDoload'>点我下载>></view>
+     <!-- <view class='textd fl h30 lh30 mt20 ml40 mb30 fs28' bindtap='bindViewDoload'>点我下载>></view>  -->
 </view>

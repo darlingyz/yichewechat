@@ -52,8 +52,8 @@
 <view class='mt20 ml10 mr10 car-box'>
   <!--汽车美容  -->
   <view class='car-beauty'>
-    <view class='fl bg-green beauty-left'>
-      <view class='beauty-pic'>
+    <view class='fl bg-green beauty-left' bindtap='goBeauty'>
+      <view class='beauty-pic mt30' >
         <image src='http://116.62.151.139/res/img//cate1.png' class='pic-item'></image>
       </view>
       <view class='fs35 h60 beauty-name'>汽车美容</view>
@@ -65,7 +65,7 @@
           <view class='right-item-box'>
             <image src='{{item.img}}' class='right-box-pic'></image>
           </view>
-          <text class='fs26'>{{item.businessName}}</text>
+          <text class='fs26 lh70'>{{item.businessName}}</text>
         </view>
       </block>
     </view>
@@ -74,8 +74,8 @@
   <!--汽车保养  -->
   <view class='car-maintain'>
     <view class='car-beauty'>
-      <view class='fl bg-green beauty-left'>
-        <view class='beauty-pic'>
+      <view class='fl bg-green beauty-left' bindtap='goBeauty'>
+        <view class='beauty-pic mt30'>
           <image src='http://116.62.151.139/res/img//cate1.png' class='pic-item'></image>
         </view>
         <view class='fs35 h60 beauty-name'>汽车保养</view>
@@ -87,7 +87,7 @@
             <view class='right-item-box'>
               <image src='{{item.img}}' class='right-box-pic'></image>
             </view>
-            <text class='fs26'>{{item.businessName}}</text>
+            <text class='fs26 lh70'>{{item.businessName}}</text>
           </view>
         </block>
       </view>
@@ -113,7 +113,7 @@
               <view class='right-item-box'>
                 <image src='{{item.img}}' class='right-box-pic'></image>
               </view>
-              <text class='fs26'>{{item.businessName}}</text>
+              <text class='fs26 lh70'>{{item.businessName}}</text>
             </view>
           </navigator>
         </block>
@@ -122,244 +122,6 @@
     </view>
   </view>
 </view>
-
-<!-- <view class="mt20 ml15 mr15">
-  <block wx:for="{{cateInfoList}}" wx:key="unique">
-    <!--分类--
-    <view class="container flex-row flex-ail color-white">
-      <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-        <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">
-              {{item.cateInfo.list[0].name}}
-            </view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="hotIcon pa r0 b0"></view>
-        </view>
-      </navigator>
-      <!-- 中间首列 --
-      <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-        <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="hotIcon pa r0 b0"></view>
-        </view>
-      </navigator>
-      <!-- 最后首列 --
-      <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[item].url}}">
-        <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="panicbuyIcon pa r0"></view>
-        </view>
-      </navigator>
-      <view class="flex-column" style="width:210rpx;">
-        <navigator url="{{item.cateInfo.list[1].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-          <view class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[1].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[1].name}}</view>
-            </view>
-          </view>
-        </navigator>
-        <navigator url="{{item.cateInfo.list[2].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-          <view class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[2].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[2].name}}</view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-
-      <view class="flex-column" style="width:210rpx;">
-        <navigator url="{{item.cateInfo.list[3].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-          <!-- 首行 --
-          <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[3].name}}</view>
-            </view>
-          </view>
-          <!--中间行--
-          <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[3].name}}</view>
-            </view>
-          </view>
-        </navigator>
-        <navigator url="{{item.cateInfo.list[4].url}}" open-type="switchTab" hover-class="other-navigator-hover">
-          <view wx:if="{{item.cateInfo.rowPos!='last'}}" class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[4].name}}</view>
-            </view>
-          </view>
-          <!--最后一行--
-          <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[4].name}}</view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-
-    <view class="dis-b fs28 h60 lh60">
-      <navigator url="{{item.cateInfo.moreUrl}}">
-        <view class="fr color-gray">
-          更多>
-        </view>
-      </navigator>
-    </view>
-  </block>
-  <!--活动专区 --
-  <block wx:for="{{ocateInfoList}}" wx:key="unique">
-    <!--分类--
-    <view class="container flex-row flex-ail color-white">
-      <navigator wx:if="{{item.cateInfo.rowPos == 'first'}}" url="{{item.cateInfo.list[0].url}}">
-        <view class="bg-green dis-flex flex-aic pr rad-lt20" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">
-              {{item.cateInfo.list[0].name}}
-            </view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="hotIcon pa r0 b0"></view>
-        </view>
-      </navigator>
-      <!-- 中间首列 --
-      <navigator wx:if="{{item.cateInfo.rowPos == 'middle'}}" url="{{item.cateInfo.list[0].url}}">
-        <view class="bg-green dis-flex flex-aic pr" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="hotIcon pa r0 b0"></view>
-        </view>
-      </navigator>
-      <!-- 最后首列 --
-      <navigator wx:if="{{item.cateInfo.rowPos == 'last'}}" url="{{item.cateInfo.list[0].url}}">
-        <view class="bg-green dis-flex flex-aic pr rad-lb20" style="height:146rpx;width:284rpx;">
-          <view class="ml20 mr20" style="height:85rpx;">
-            <image mode="widthFix" style="width:85rpx;" src="{{item.cateInfo.list[0].icon}}"></image>
-          </view>
-          <view class="ta-c">
-            <view class="fs35">{{item.cateInfo.list[0].name}}</view>
-            <view class="fs16">{{item.cateInfo.list[0].memo}}</view>
-          </view>
-          <view class="panicbuyIcon pa r0"></view>
-        </view>
-      </navigator>
-      <view class="flex-column" style="width:210rpx;">
-        <navigator url="{{item.cateInfo.list[1].url}}">
-          <view class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[1].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[1].name}}</view>
-            </view>
-          </view>
-        </navigator>
-        <navigator url="{{item.cateInfo.list[2].url}}">
-          <view class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[2].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[2].name}}</view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-
-      <view class="flex-column" style="width:210rpx;">
-        <navigator url="{{item.cateInfo.list[3].url}}">
-          <!-- 首行 --
-          <view wx-if="{{item.cateInfo.rowPos=='first'}}" class="bg-green dis-flex flex-aic fs28 rad-rt20" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[3].name}}</view>
-            </view>
-          </view>
-          <!--中间行--
-          <view wx-if="{{item.cateInfo.rowPos!='first'}}" class="bg-green dis-flex flex-aic fs28" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[3].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[3].name}}</view>
-            </view>
-          </view>
-        </navigator>
-        <navigator url="{{item.cateInfo.list[4].url}}">
-          <view wx:if="{{item.cateInfo.rowPos!='last'}}" class="bg-green dis-flex flex-aic fs28 mt5" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[4].name}}</view>
-            </view>
-          </view>
-          <!--最后一行--
-          <view wx:if="{{item.cateInfo.rowPos=='last'}}" class="bg-green dis-flex flex-aic fs28 mt5  rad-rb20" style="height:72rpx;">
-            <view class="ml20 mr20 flex-aic" style="height:46rpx;">
-              <image mode="widthFix" style="width:46rpx;" src="{{item.cateInfo.list[4].icon}}"></image>
-            </view>
-            <view class="wp60">
-              <view>{{item.cateInfo.list[4].name}}</view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </view>
-
-    <view class="dis-b fs28 h60 lh60">
-      <navigator url="{{item.cateInfo.moreUrl}}">
-        <view class="fr color-gray">
-          更多>
-        </view>
-      </navigator>
-    </view>
-  </block>
-</view> -->
 <view class="border-b-15"></view>
 <!--周边门店-->
 <view class="ml15 mr15">
@@ -497,7 +259,7 @@
     <view class='wp100 wpbox kanjia'>
       <block wx:for="{{odata}}" wx:key="unique">
         <!--子元素，每个小盒子  -->
-        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goActive'>
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.activityId}}" bindtap='goActive'>
           <!--公司活动图片-->
           <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
           <!--其他内容 -->
@@ -509,7 +271,7 @@
               <view class='fs40 fl fw'>￥{{item.minPrice}}</view>
               <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
             </view>
-            <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.distance}}折-</view>
+            <view class='cb ml40 fs20 h20 pa discount'>-砍价低至{{item.discount}}折-</view>
           </view>
           <!--地址  -->
           <view class='cb border-b wp100 h80 lh100'>
@@ -525,7 +287,7 @@
     <view class='wp100 wpbox'>
       <block wx:for="{{ogroup}}" wx:key="unique">
         <!--子元素，每个小盒子  -->
-        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.id}}" bindtap='goGroup'>
+        <view class='wp100 boxc' data-shopId="{{item.merchantId}}" data-activeId="{{item.activityId}}" bindtap='goGroup'>
           <!--公司活动图片-->
           <image src='{{item.img}}' class='wpic' mode='widthFix'></image>
           <!--其他内容 -->
@@ -537,7 +299,7 @@
               <view class='fs40 fl fw'>￥{{item.groupPrice}}</view>
               <view class='fs20 fl mt20 ml20 txt-throw'>原价:￥{{item.price}}</view>
             </view>
-            <view class='cb ml40 fs20 h20 pa discount'>---拼团低至{{item.distance}}折-</view>
+            <view class='cb ml40 fs20 h20 pa discount'>---拼团低至{{item.discount}}折-</view>
           </view>
           <!--地址  -->
           <view class='cb border-b wp100 h80 lh80'>
@@ -551,8 +313,28 @@
     </view>
   </view>
   <view wx:else>
-    <text class='fs28'> 活动准备中,敬请期待~</text>
+    <text class='fs28'> 拼团,砍价活动准备中,敬请期待~</text>
   </view>
+</view>
+<!--套餐活動  -->
+<view class="border-b-15"></view>
+<view  class='shop-meal wp100'>
+  <block wx:for="{{mealList}}" wx:key="unique">
+    <view class='meal-item wp100 h400'>
+      <view class='item-meal-title h80 wp100 lh80'>
+      <text class='fs35 ml20'>活动标题：</text>
+      <text class='fs28'>{{item.activityName}}</text>
+      </view>
+      <image class='wp100 h240' src='{{item.activityImg}}'></image>
+      <view class='ta-r shop-meal-price'>￥:{{item.packagePrice}}</view>
+      <view class='item-meal-address h80 lh80'>
+        <text class='item-meal-name fs30 ml20 h80 fl'>{{item.merchantName}}</text>
+        <text class='item-meal-ads fs22 h80 fl'>{{item.address}}</text>
+        <text class='item-meal-km fs22 ml10 h80 fl'>{{item.distance}}km</text>
+<text class='item-meal-detail fs26 fr mr10 w120 h60 lh60' data-activityId="{{item.activityId}}" bindtap='goShopMeal'>查看详情</text>
+      </view>
+    </view>
+  </block>
 </view>
 <!--优惠券弹窗-->
 <view wx:if="{{showcoupondetail}}">

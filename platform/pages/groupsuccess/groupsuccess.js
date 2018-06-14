@@ -4,23 +4,23 @@ Page({
  
   data: {
     store:'http://116.62.151.139/res/img//absmall.png',
-         wash:'洗车',
-         onsale:'限时优惠',
-         onsale1:'新年感恩',
-         price:'￥',
-         price1: '9.9',
-         ex_price:'原价40.0',
-         discount:'-砍价低至2.5折-',
-         beginLogo1:'http://116.62.151.139/res/img//absmall.png',
-         beginName1:'淦隆汽车',
-         beginTime1:'2018-02-14 13：31发起',
-         beginLogo2:'http://116.62.151.139/res/img//absmall.png',
-         beginName2:'享来享趣',
-         beginTime2:'2018-02-14 13：33参与',
-         beginLogo3:'http://116.62.151.139/res/img//absmall.png',
-         beginName3: '一车独秀',
-         beginTime3: '2018-02-14 13：33参与',
-         mobile: '(021)58180562',
+    wash:'洗车',
+    onsale:'限时优惠',
+    onsale1:'新年感恩',
+    price:'￥',
+    price1: '9.9',
+    ex_price:'原价40.0',
+    discount:'-砍价低至2.5折-',
+    beginLogo1:'http://116.62.151.139/res/img//absmall.png',
+    beginName1:'淦隆汽车',
+    beginTime1:'2018-02-14 13：31发起',
+    beginLogo2:'http://116.62.151.139/res/img//absmall.png',
+    beginName2:'享来享趣',
+    beginTime2:'2018-02-14 13：33参与',
+    beginLogo3:'http://116.62.151.139/res/img//absmall.png',
+    beginName3: '一车独秀',
+    beginTime3: '2018-02-14 13：33参与',
+    mobile: '(021)58180562',
   },
 
   bindViewhome: function () {
@@ -58,7 +58,6 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'//默认值
           },
           success: function (msg) {
-            console.log(msg);
             that.setData({
               store: msg.data.data.Activity.activityImg,
               wash: msg.data.data.Activity.activityName,

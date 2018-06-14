@@ -265,7 +265,9 @@
 .mt280 {
   margin-top: 280rpx;
 }
-
+.mt350 {
+  margin-top: 350rpx;
+}
 .mt450 {
   margin-top: 450rpx;
 }
@@ -893,11 +895,15 @@
 .h70 {
   height: 70rpx;
 }
-
+.h400{
+  height: 400rpx;
+}
 .h75 {
   height: 75rpx;
 }
-
+.h240{
+  height: 240rpx;
+}
 .h80 {
   height: 80rpx;
 }
@@ -1263,4 +1269,7 @@ input{
   outline:none;
   border:none;
   list-style: none;
+}
+image {
+  height: auto;
 }

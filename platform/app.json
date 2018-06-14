@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/about/about",
+    "pages/auth/auth",
     "pages/besurepass/besurepass",
     "pages/groupdetails/groupdetails",
     "pages/aboutmain/aboutmain",
@@ -72,7 +73,9 @@
     "pages/startgroupmiddle/startgroupmiddle",
     "pages/paygroupfriend/paygroupfriend",
     "pages/waitpay/waitpay",
-    "pages/paybargain/paybargain"
+    "pages/paybargain/paybargain",
+    "pages/paymeal/paymeal",
+    "pages/mealActivity/mealActivity"
   ],
   "window": {
     "backgroundTextStyle": "light",

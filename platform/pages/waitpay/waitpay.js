@@ -37,6 +37,7 @@ Page({
           },
           success: function (msg) {
             console.log(msg);
+            console.log(aorderId, lng, lat)
             var data = msg.data.data;
             var merchantMsg = data.merchantMsg;
             var orderMsg = data.orderMsg;

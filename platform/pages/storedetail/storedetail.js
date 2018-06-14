@@ -9,12 +9,12 @@ Page({
   data: {
     lng: "",
     lat: "",
-    merLat:"",
-    merLng:"",
-    merName:"",
-    noshow: true,
+    merLat: "",
+    merLng: "",
+    merName: "",
+    noshow: false,
     disabled: false,
-    datatypes:"领取",
+    datatypes: "领取",
     showstoreactivity: true,
     showChangetyre: false,
     showBrand: false,
@@ -25,7 +25,7 @@ Page({
     hiddencart: true,
     showCollect: false,
     showcartdetail: false,
-    shopServiceList: false,
+    shopServiceList: true,
     showdelect: false,
     score: 0,
     searchbrand: '选品牌',
@@ -54,8 +54,9 @@ Page({
     groupActivitis: "",
     phone: "",
     startSrc: 'http://116.62.151.139/res/img/star.png',
-    merchantId:"",
-    services:""
+    merchantId: "",
+    services: "",
+    currentTab: 'allService'
   },
 
   /**
@@ -86,60 +87,60 @@ Page({
             that.setData({
               bussinessId: thisBusinessId
             }),
-             // console.log(thisBusinessId, olat, olng)
-            app.request({
-              url: app.globalData.testUrl + '/storeInformation/storeDetail',
-              method: 'post',
-              data: {
-                businessId: thisBusinessId,
-                lat: olat,
-                lng: olng
-              },
-              header: {
-                'content-type': 'application/x-www-form-urlencoded' // 默认值
-              },
-              success: function (msg) {
-                console.log(msg);
-                var score = msg.data.data.score;
-                //console.log(score);
-                wx.setStorage({
-                  key: 'score',
-                  data: score,
-                })
-                wx.getLocation({
-                  type: 'wgs84',
-                  success: function (res) {
-                    var distance = that.getDistance(msg.data.data.lat, msg.data.data.lng, res.latitude, res.longitude);
-                    that.setData({
-                      distance: distance,
-                    })
-                  }
-                })
-                var state = msg.data.data.businessState;
-                app.globalData.merchantName = msg.data.data.storeName
-                wx.setStorage({
-                  key: 'status',
-                  data: state,
-                })
-                that.setData({
-                  businessState: msg.data.data.businessState,
-                  storedetail: msg.data.data.facadePhotoUrl,
-                  storeName: msg.data.data.storeName,
-                  score: msg.data.data.score,
-                  people: msg.data.data.amount,
-                  address: msg.data.data.facadeAdd,
-                  starttime: msg.data.data.startTime,
-                  endtime: msg.data.data.endTime,
-                  phonecall: msg.data.data.phone,
-                  merchantId: msg.data.data.merchantId,
-                  services: msg.data.data.services,
-                  merLat: msg.data.data.lat,
-                  merLng:msg.data.data.lng,
-                  merName: msg.data.data.storeName
-                })
-              }
-            })
-            //请求商户服务
+              // console.log(thisBusinessId, olat, olng)
+              app.request({
+                url: app.globalData.testUrl + '/storeInformation/storeDetail',
+                method: 'post',
+                data: {
+                  businessId: thisBusinessId,
+                  lat: olat,
+                  lng: olng
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                success: function (msg) {
+                  console.log(msg);
+                  var score = msg.data.data.score;
+                  //console.log(score);
+                  wx.setStorage({
+                    key: 'score',
+                    data: score,
+                  })
+                  wx.getLocation({
+                    type: 'wgs84',
+                    success: function (res) {
+                      var distance = that.getDistance(msg.data.data.lat, msg.data.data.lng, res.latitude, res.longitude);
+                      that.setData({
+                        distance: distance,
+                      })
+                    }
+                  })
+                  var state = msg.data.data.businessState;
+                  app.globalData.merchantName = msg.data.data.storeName
+                  wx.setStorage({
+                    key: 'status',
+                    data: state,
+                  })
+                  that.setData({
+                    businessState: msg.data.data.businessState,
+                    storedetail: msg.data.data.facadePhotoUrl,
+                    storeName: msg.data.data.storeName,
+                    score: msg.data.data.score,
+                    people: msg.data.data.amount,
+                    address: msg.data.data.facadeAdd,
+                    starttime: msg.data.data.startTime,
+                    endtime: msg.data.data.endTime,
+                    phonecall: msg.data.data.phone,
+                    merchantId: msg.data.data.merchantId,
+                    services: msg.data.data.services,
+                    merLat: msg.data.data.lat,
+                    merLng: msg.data.data.lng,
+                    merName: msg.data.data.storeName
+                  })
+                }
+              })
+            //请求商户服务左侧列表
             app.request({
               url: app.globalData.testUrl + '/search/wxStoreService',
               method: 'post',
@@ -150,6 +151,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded'
               },
               success: function (msg) {
+                console.log(msg)
                 that.setData({
                   showListMsg: msg.data.data,
                   showList: true
@@ -172,65 +174,96 @@ Page({
                 })
               }
             })
-            // 店铺活动
-            wx.getStorage({
-              key: 'status',
+            // 全部活动
+            app.request({
+              url: app.globalData.testUrl + '/storeInformation/carService',
+              method: 'post',
+              data: {
+                shopId: thisBusinessId,
+                businessId: '',
+                type: 1,
+                sn: '',
+                businessName: ''
+              },
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'//默认值
+              },
+              success: function (msg) {
+                that.setData({
+                  noshow: false,
+                  shopServicesMsg: msg.data.data
+                })
+                var isShow = that.data.shopServiceList;
+                that.setData({
+                  shopServiceList: true,
+                  showstoreactivity: false,
+                  showModal: false,
+                  showChangetyre: false,
+                  showBrand: false,
+                })
+              }
+            })
+          },
+        })
+        //店铺活动
+        wx.getStorage({
+          key: 'status',
+          success: function (res) {
+            var status = res.data;
+            app.request({
+              url: app.globalData.testUrl + '/search/searchMerActivity',
+              method: 'post',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              data: {
+                userId: app.globalData.userId,
+                merchantId: thisBusinessId,
+                status: status
+              },
               success: function (res) {
-                var status = res.data;
-                app.request({
-                  url: app.globalData.testUrl + '/search/searchMerActivity',
-                  method: 'post',
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                  },
-                  data: {
-                    userId: app.globalData.userId,
-                    merchantId: thisBusinessId,
-                    status: status
-                  },
-                  success: function (res) {
-                    var discounts=res.data.data.discounts;
-                    if(discounts.length==0){
+                var discounts = res.data.data.discounts;
+                if (discounts.length == 0) {
+                  that.setData({
+                    noshow: false,
+                    bargainActivitis: res.data.data.bargainActivitis,
+                    //discounts: res.data.data.discounts,
+                    groupActivitis: res.data.data.groupActivitis
+                  })
+                } else {
+                  for (var i = 0; i < discounts.length; i++) {
+                    if (discounts[i].receive == false) {
+                      console.log(discounts[i].receive)
                       that.setData({
-                        noshow: true,
-                        bargainActivitis: res.data.data.bargainActivitis,
-                        //discounts: res.data.data.discounts,
-                        groupActivitis: res.data.data.groupActivitis
+                        disabled: false,
+                        datatypes: "已领取"
                       })
-                    }else{
-                       for (var i = 0; i < discounts.length; i++) {
-                         if (discounts[i].receive == false) {
-                           console.log(discounts[i].receive)
-                           that.setData({
-                             disabled: false,
-                             datatypes: "已领取"
-                           })
-                         } else if (discounts[i].receive == true) {
-                           that.setData({
-                             disabled: true,
-                             datatypes: "领取"
-                           })
-                         }
-                       }
+                    } else if (discounts[i].receive == true) {
                       that.setData({
-                        noshow: true,
-                        bargainActivitis: res.data.data.bargainActivitis,
-                        discounts: res.data.data.discounts,
-                        groupActivitis: res.data.data.groupActivitis
+                        disabled: true,
+                        datatypes: "领取"
                       })
                     }
                   }
-                })
-              },
+                  that.setData({
+                    noshow: false,
+                    bargainActivitis: res.data.data.bargainActivitis,
+                    discounts: res.data.data.discounts,
+                    groupActivitis: res.data.data.groupActivitis
+                  })
+                }
+              }
             })
           },
         })
       }
     })
   },
+
   //店铺活动
-  showStoreactivity: function () {
+  showStoreactivity: function (e) {
     var that = this;
+    var tabName = e.target.dataset.tabName
     that.setData({
       noshow: true,
       shopServiceList: false,
@@ -239,51 +272,53 @@ Page({
       showChangetyre: false,
       showBrand: false,
       nocommsg: false,
+      currentTab: tabName
     })
   },
+
   //领取优惠券
-  gosolve:function(e){
-      //console.log(e);
-      var that=this;
-      var couponId = e.currentTarget.dataset.id;
-      app.request({
-        url: app.globalData.testUrl + '/coupon/getMerCoupon',
-        method: "post",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        data: {
-          userId: app.globalData.userId,
-          couponId: couponId
-        },
-        success:function(res){
-          console.log(res)
-          var ocode=res.data.code;
-          if(ocode==1){
-            wx.showToast({
-              title: '领取成功',
-              icon:"success",
-              duration:1000
-            })
-            that.setData({
-              disabled: false,
-              datatypes: "已领取"
-            })
-          }else{
-            wx.showToast({
-              title: '领取失败',
-              icon: "success",
-              duration: 1000
-            })
-          }
+  gosolve: function (e) {
+    //console.log(e);
+    var that = this;
+    var couponId = e.currentTarget.dataset.id;
+    app.request({
+      url: app.globalData.testUrl + '/coupon/getMerCoupon',
+      method: "post",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        userId: app.globalData.userId,
+        couponId: couponId
+      },
+      success: function (res) {
+        console.log(res)
+        var ocode = res.data.code;
+        if (ocode == 1) {
+          wx.showToast({
+            title: '领取成功',
+            icon: "success",
+            duration: 1000
+          })
+          that.setData({
+            disabled: false,
+            datatypes: "已领取"
+          })
+        } else {
+          wx.showToast({
+            title: '领取失败',
+            icon: "success",
+            duration: 1000
+          })
         }
-      })
+      }
+    })
   },
   //点击去砍价活动页面
-  gobargin:function(){
-      wx.navigateTo({
-        url: '../bargainactivity/bargainactivity',
-      })
+  gobargin: function () {
+    wx.navigateTo({
+      url: '../bargainactivity/bargainactivity',
+    })
   },
   // 加入购物车
   addPlus: function (e) {
@@ -291,7 +326,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     var index = e.currentTarget.dataset.index;
     var allData = that.data.shopServicesMsg;
-    console.log(e,index)
+    console.log(e, index)
     var num = that.data.count;
     for (var i = 0; i < allData.length; i++) {
       if (allData[i].serviceId == id) {
@@ -456,8 +491,13 @@ Page({
 
   },
   //显示全部服务
-  showAllServices: function () {
+  showAllServices: function (e) {
     var that = this;
+    var tabName = e.target.dataset.tabName
+    that.setData({
+      currentTab: tabName,
+      shopServicesMsg: []
+    })
     app.request({
       url: app.globalData.testUrl + '/storeInformation/carService',
       method: 'post',
@@ -472,8 +512,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        //console.log("返回成功啦111111111");
-        // console.log(msg);
+
         that.setData({
           noshow: false,
           shopServicesMsg: msg.data.data
@@ -493,6 +532,12 @@ Page({
   showServicesDetail: function (e) {
     var that = this;
     //console.log(e.currentTarget.dataset.businessname);
+    var tabName = e.target.dataset.tabName
+
+    that.setData({
+      currentTab: tabName,
+      shopServicesMsg: []
+    })
     app.request({
       url: app.globalData.testUrl + '/storeInformation/carService',
       method: 'post',
@@ -607,7 +652,7 @@ Page({
     })
   },
   //点击跳转到拼团页面
-  gogroupActivitis:function(){
+  gogroupActivitis: function () {
     wx.navigateTo({
       url: '../groupactivity/groupactivity',
     })

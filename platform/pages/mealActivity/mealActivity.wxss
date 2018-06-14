@@ -1,0 +1,93 @@
+.meal-shop-img {
+  width: 100%;
+}
+
+.meal-desc {
+  width: 90%;
+  text-indent: 20rpx;
+  font-size: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.meal-desc-list {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-indent: 20rpx;
+}
+
+.meal-shop-detail {
+  width: 100%;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+}
+
+.meal-shop-price {
+  width: 50%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.meal-price {
+  font-size: 40rpx;
+  color: #963;
+}
+
+.meal-org-price {
+  text-decoration: line-through;
+}
+
+.shop-amount-limit {
+  width: 200rpx;
+  border: 1rpx solid #000;
+  background: #9cf;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.shop-meal-name {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  /* text-indent: 80rpx; */
+}
+
+.shop-name-list {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+.shop-server-amount {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+
+.shop-detail-buy {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  border-top: 1rpx solid #aeaeae;
+  border-bottom: 1rpx solid #aeaeae;
+}
+
+.shop-phone, .shoping {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.shoping {
+  background: #09bb07;
+  color: #fff;
+}

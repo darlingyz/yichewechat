@@ -66,3 +66,7 @@
 .cutbtn{
   background-color: #09ba07;
 }
+.cuthome{
+  margin: 20rpx auto;
+  background-color: #09ba07;
+}

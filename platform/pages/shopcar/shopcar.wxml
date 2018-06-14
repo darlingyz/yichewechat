@@ -3,15 +3,27 @@
     <view class="cart-box">
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
         <navigator url="../details/details">
-        <view class='cart-thumb'>
-        <image class="server-logo" src="{{item.img}}"></image>
-        </view>  
+          <view class='cart-thumb'>
+            <image class="server-logo" src="{{item.img}}"></image>
+          </view>
         </navigator>
         <!-- <text class="cart-pro-name">{{item.brandName}}</text> -->
         <text class="cart-pro-names">{{item.businessName}}</text>
-        <text class="cart-pro-price">￥{{item.price}}</text>
+        <view class='cart-pro-price wp50'>
+          <view wx:if="{{item.privilegePrice > 0}}">
+            <text class='fs30 fl '>￥{{item.privilegePrice}}</text>
+            <text class='fs22 fl txt-throw ml10'>原价￥{{item.price}}</text>
+          </view>
+          <view wx:else>
+            <view class='fs30 fl mt10 fw ml80'>￥{{item.price}}</view>
+          </view>
+        </view>
+
+
+
+
         <view class="cart-count-box">
-          <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}" data-id="{{item.merchantBusinessId}}">-</text>
+          <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}" data-id="{{item.merchantBusinessId}}">——</text>
           <text class="cart-count-num">{{item.businessNum}}</text>
           <text class="cart-count-add" bindtap="addCount" data-index="{{index}}" data-id="{{item.merchantBusinessId}}">+</text>
         </view>
