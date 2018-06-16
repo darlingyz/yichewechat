@@ -3,7 +3,7 @@
     <view class="gps ta-r backs" bindtap="goSearch">
       <text class='ml23'>{{currentCity}}</text>
     </view>
-    <view class="bg-black rad10 op4 dis-flex flex-row ml20" style="width:75%" bindtap='goSearcar'>
+    <view class=" rad10 obgs dis-flex flex-row ml20" style="width:75%" bindtap='goSearcar'>
       <view class="searchIcon mr10"></view>
       <view class="searchGpsIcon ta-r fs25 color-white">搜索&地图</view>
       <view class="color-white ta-r" style="width:50%;">搜索汽车试试</view>

@@ -10,11 +10,11 @@
 
 <view class='personalDetails wp100 h90'>
   <view class='personalName border-1 fl pr'>
-    <image class='personPic w30' src='{{portait}}'></image>
+    <image class='personPic w80' src='{{portait}}'></image>
     <text class='personName pa fs27'>{{personName}}</text>
   </view>
   <view class='personalPhonenumber border-1 fr pr'>
-    <image class='phoneLogo w20 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
+    <image class='phoneLogo w30 ml80' src='http://116.62.151.139/res/img/phone.png'></image>
     <text class='phoneNumber pa fs25'>{{phoneNumber}}</text>
   </view>
 </view>
@@ -25,10 +25,10 @@
   </view>
   <text class='shopsName pa'>{{shopsName}}</text>
   <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
-  <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
-  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png'></image>
+  <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}} km</text>
+  <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png' bindtap='shopPhone'></image>
   <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png'></image>
+  <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png' bindtap='shopMap'></image>
 </view>
 
 <text class='serve dis-b'>| 服务</text>
@@ -37,9 +37,9 @@
     <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
     <text class='serveName pa'>{{item.businessName}}</text>
     <text class='serveDetail pa'>{{item.brandName}}</text>
-    <text class='servePrice pa fs25'>¥{{item.price}}</text>
-    <text class='servePrice pa fs25'>¥{{item.privilegePrice}}</text>
-    <text class='serveNumber pa fs25'>{{item.amount}}</text>
+    <text class='servePrice pa fs25'>¥ {{item.price}}</text>
+    <!-- <text class='servePrice pa fs25'>¥{{item.privilegePrice}}</text> -->
+    <text class='serveNumber pa fs25'> X{{item.amount}}</text>
   </view>
 </block>
 
@@ -51,7 +51,7 @@
   </view>
   <view class="projectBox h80">
     <text class='projectName pr fl dis-b fs26 mt20'>优惠券</text>
-    <text class='projectPrice pa fr dis-b fs26 mt20'>{{discountPrice ? discountPrice :0}}</text>
+    <text class='projectPrice pa fr dis-b fs26 mt20'>¥{{discountPrice ? discountPrice :0}}</text>
   </view>
   <view class="projectBox h80">
     <text class='projectName pr fl dis-b fs26 mt20'>实付款</text>
@@ -76,6 +76,6 @@
   <text class='onlionServe pa fs28'>一车独秀在线客服</text>
 
   <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png' bindtap='goPhome'></image>
+  <image class='consultLogo pa' src='../../images/phone.png' bindtap='goPhome'></image>
   <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>

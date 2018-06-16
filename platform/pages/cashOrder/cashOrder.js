@@ -5,10 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopPhon:""
+    shopPhon:"",
+    lat: "",
+    lng: "",
+    merLng: "",
+    merLat: "",
+    merName: ""
   },
   onLoad: function () {
     var that = this;
+    wx.getStorage({
+      key: 'lat',
+      success: function (res) {
+        var lat = res.data;
+        that.setData({
+          lat: lat
+        })
+      },
+    })
+    wx.getStorage({
+      key: 'lng',
+      success: function (res) {
+        var lng = res.data;
+        that.setData({
+          lng: lng
+        })
+      },
+    })
     wx.getStorage({
       key: 'id',
       success: function (res) {
@@ -43,7 +66,10 @@ Page({
                   payPrice: data.orderMsg.payPrice,
                   orderCode: data.orderMsg.orderCode,
                   orderDate: data.orderMsg.orderDate,
-                  portait: data.userMsg.portait
+                  portait: data.userMsg.portait,
+                  merName: data.merchantMsg.merchant_name,
+                  merLng: data.merchantMsg.lng,
+                  merLat: data.merchantMsg.lat
                 })
               }
             })
@@ -68,8 +94,16 @@ Page({
   },
   //地图
   shopMap:function(){
+    var that = this;
+    var city = "",
+      desc = "",
+      latitude = that.data.lat,
+      latitude2 = that.data.merLat,
+      longitude = that.data.lng,
+      longitude2 = that.data.merLng,
+      name = that.data.merName;
     wx.navigateTo({
-      url: '../searchmap/searchmap',
+      url: `../map/map?longitude=${longitude}&latitude=${latitude}&longitude2=${longitude2}&latitude2=${latitude2}&city=${city}&name=${name}&desc=${desc}`,
     })
   },
   bindViewevaluateorder: function () {
@@ -79,7 +113,7 @@ Page({
   },
   goPhone: function () {
     wx.makePhoneCall({
-      phoneNumber: '(021)58180562',
+      phoneNumber: '4008201868',
     })
   }
 })

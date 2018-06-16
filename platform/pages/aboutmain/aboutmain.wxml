@@ -1,7 +1,7 @@
 <!--//关于一车独秀  -->
 <view class='conter'>
 <view class='interduce'>
-    <image class='log' src='../../images/logo.png' mode='widthFix'></image>
+    <image class='log' src='../../images/logos.png' mode='widthFix'></image>
     <text class='wename'> 一车独秀</text>
 </view>
     <text class='about'>
@@ -18,9 +18,9 @@
       <!-- ///bindtap='abouts' -->
       <text class='name031'>服务类目</text>
       <view class='name03'>
-        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
-        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
-        <image class='logs' src='../../images/logo.png' mode='widthFix'></image>
+        <image class='logs' src='../../images/logos.png' mode='widthFix'></image>
+        <image class='logs' src='../../images/logos.png' mode='widthFix'></image>
+        <image class='logs' src='../../images/logos.png' mode='widthFix'></image>
       </view>
     </view>
     <button  open-type="switchTab" hover-class="other-navigator-hover"  class='wxbtn wp90 h70 lh70 rad10 color-white ma mt40' bindtap='goindex' >

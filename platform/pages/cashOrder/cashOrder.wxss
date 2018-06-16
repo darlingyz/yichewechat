@@ -87,7 +87,7 @@
 }
 
 .shopsDistance {
-  margin-left: 536rpx;
+  margin-left: 560rpx;
   color: #4a4947;
 }
 

@@ -1,6 +1,5 @@
 .needPayBg {
   height: 238rpx;
-  margin-top: 10rpx;
 }
 
 .headBg {
@@ -8,7 +7,7 @@
 }
 
 .needPayWd {
-  margin-top: 98rpx;
+  margin-top:98rpx;
   margin-left: 55rpx;
 }
 
@@ -27,6 +26,7 @@
 .sorryW {
   margin-left: 98rpx;
   margin-top: 12rpx;
+  line-height: 60rpx;
 }
 
 .sorryTime {
@@ -44,9 +44,10 @@
 }
 
 .personPic {
-  height: 44rpx;
-  margin-top: 26rpx;
+  height: 80rpx;
+  margin-top:8rpx;
   margin-left: 68rpx;
+  border-radius: 50%;
 }
 
 .personName {
@@ -55,13 +56,13 @@
 }
 
 .personalPhonenumber {
-  height: 93rpx;
+  height: 100rpx;
   width: 50%;
   /* margin-top: -94rpx; */
 }
 
 .phoneLogo {
-  height: 38rpx;
+  height: 45rpx;
   margin-top: 26rpx;
 }
 
@@ -90,7 +91,7 @@
 }
 
 .shopsDistance {
-  margin-left: 536rpx;
+  margin-left: 560rpx;
   color: #4a4947;
 }
 
@@ -146,8 +147,8 @@
 }
 
 .serveNumber {
-  margin-top: 105rpx;
-  margin-left: 695rpx;
+  margin-top: 95rpx;
+  margin-left:628rpx;
 }
 
 .orderCollect {

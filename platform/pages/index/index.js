@@ -49,7 +49,7 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         // wx.hideLoading();
         var data = res.data.data;
         if (data != null) {
@@ -82,7 +82,7 @@ Page({
             }
           }
           app.globalData.userId = userId;
-          console.log(userId)
+          // console.log(userId)
           //that.initshowCar(userId);//初始化车辆
           that.initCateInfo(userId);// 初始化栏目信息
           that.initbao(userId);//初始化红包
@@ -155,8 +155,8 @@ Page({
         userId: userId
       },
       success: function (res) {
-         console.log(userId);
-         console.log(res)
+        //  console.log(userId);
+        //  console.log(res)
         var odata = res.data.data;
         if (odata == false) {
           that.setData({
@@ -314,7 +314,7 @@ Page({
         lng: that.data.lng
       },
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         var ogroups = res.data.data.groupActivities;
         var ores = res.data.data.bargainActivities;
         if (ogroups.length == 0 & ores == 0) {
@@ -396,32 +396,36 @@ Page({
       app.goAuth()
       return
     }
+   // console.log('====================================');
+   // console.log('首页onShow' + app.globalData.userId);
+    //console.log('====================================');
     
-    if (app.globalData.userId) {
-      this.initshowCar(app.globalData.userId)
-      this.initCateInfo(app.globalData.userId)
-    } else {
-      //初始定位
-      this.initlocation().then(() => {
-        this.initlogin()
-        // 初始化门店推荐
-        this.initShopInfo();
-        // 初始化中屏广告
-        this.initAdsInfo();
-        //附近优惠活
-        this.initactive();
-        //套餐活动
-        this.initmealActive();
-      }).catch(err => {
-        console.log(err)
-      })
-    }
+    //初始定位
+    this.initlocation().then(() => {
+      if (app.globalData.userId) {
+        this.initshowCar(app.globalData.userId)
+        this.initCateInfo(app.globalData.userId)
+      }
+      this.initlogin()
+      // 初始化门店推荐
+      this.initShopInfo();
+      // 初始化中屏广告
+      this.initAdsInfo();
+      //附近优惠活
+      this.initactive();
+      //套餐活动
+    //  this.initmealActive();
+    }).catch(err => {
+      console.log(err)
+    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    app.globalData.userId = ''
     this.onShow();
+    wx.stopPullDownRefresh()
   },
   /**
    * 用户点击右上角分享
@@ -538,7 +542,7 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         that.setData({
           mealList: res.data.data
         })
@@ -558,7 +562,7 @@ Page({
   //客服打电话
   callPeople: function (event) {
     wx.makePhoneCall({
-      phoneNumber: '(021)58180562'
+      phoneNumber: '4008201868'
     })
   },
   //跳转到门店页面
@@ -582,7 +586,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg.data.data);
+        // console.log(msg.data.data);
         that.setData({
           beautyList: msg.data.data
         })
@@ -601,7 +605,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'//默认值
       },
       success: function (msg) {
-        console.log(msg);
+        // console.log(msg);
         that.setData({
           maintainList: msg.data.data
         })

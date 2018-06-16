@@ -1,27 +1,34 @@
 /* pages/storedetail/storedetail.wxss */
+
 /* pages/storedetail/storedetail.wxss */
-.collectbtn{
-  top:218rpx;
-  left:533rpx;
+
+.collectbtn {
+  top: 218rpx;
+  left: 533rpx;
 }
-.outbutton{
-   height: 67rpx;
-   width: 196rpx;
+
+.outbutton {
+  height: 67rpx;
+  width: 196rpx;
 }
-.inbutton{
-  margin-left:-21rpx;
-  margin-top:8rpx;
+
+.inbutton {
+  margin-left: -21rpx;
+  margin-top: 8rpx;
 }
-.add{
-  right:8rpx;
-  bottom:5rpx;
+
+.add {
+  right: 8rpx;
+  bottom: 5rpx;
 }
+
 .modal-mask {
-width: 100%;
-height: 900rpx;
-background: #000;
-opacity: 0.5;
+  width: 100%;
+  height: 900rpx;
+  background: #000;
+  opacity: 0.5;
 }
+
 .modal-maskb {
   width: 100%;
   height: 100%;
@@ -34,31 +41,37 @@ opacity: 0.5;
   z-index: 9000;
   color: #fff;
 }
-.brand{
-top:805rpx;
-left: 166rpx;
+
+.brand {
+  top: 805rpx;
+  left: 166rpx;
 }
-.cart{
-  right:0;
-  bottom:52rpx;
-  z-index:9900;
+
+.cart {
+  right: 0;
+  bottom: 52rpx;
+  z-index: 9900;
 }
-.carthave{
-  right:380rpx;
-  bottom:50rpx;
-  z-index:9990;
+
+.carthave {
+  right: 380rpx;
+  bottom: 50rpx;
+  z-index: 9990;
 }
-.cartnum{
+
+.cartnum {
   background-color: #de2916;
-  z-index:9999;
-  right:384rpx;
-  bottom:118rpx;
+  z-index: 9999;
+  right: 384rpx;
+  bottom: 118rpx;
 }
-.carthidden{
-  right:0;
-  bottom:50rpx;
-  z-index:9999;
+
+.carthidden {
+  right: 0;
+  bottom: 50rpx;
+  z-index: 9999;
 }
+
 .modal-dialog {
   height: 380rpx;
   overflow: hidden;
@@ -69,121 +82,139 @@ left: 166rpx;
   background: #fff;
   border-radius: 36rpx;
 }
-.saleprice{
+
+.saleprice {
   color: #ce2216;
 }
-.dec{
+
+.dec {
   border: 1rpx solid #7b7b7b;
 }
-.addnum{
-   right:8rpx;
-   bottom:5rpx;
+
+.addnum {
+  right: 8rpx;
+  bottom: 5rpx;
 }
-.triangle-down { 
-    width: 0; 
-    height: 0; 
-    border-left: 12px solid transparent; 
-    border-right: 12px solid transparent; 
-    border-top: 20px solid #fff; 
-    bottom: 150rpx;
-    left: 326rpx;
-    z-index: 9999;
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid #fff;
+  bottom: 150rpx;
+  left: 326rpx;
+  z-index: 9999;
 }
-.middle{
+
+.middle {
   overflow-y: scroll;
 }
+
 .clearcart {
-  background:url('http://116.62.151.139/res/img/emptycart.png') no-repeat center left;
-  background-size:25rpx;
-  padding-left:40rpx;
+  background: url('http://116.62.151.139/res/img/emptycart.png') no-repeat center left;
+  background-size: 25rpx;
+  padding-left: 40rpx;
 }
-.title{
-top: 712rpx;
-right: 1rpx;
+
+.title {
+  top: 712rpx;
+  right: 1rpx;
 }
-.addCarts{
+
+.addCarts {
   width: 200rpx;
-  height:60rpx;
+  height: 60rpx;
   line-height: 60rpx;
-  background:#09bb07;
+  background: #09bb07;
   position: absolute;
   right: 10rpx;
- border-radius:12rpx; 
-
+  border-radius: 12rpx;
 }
-.carpic{
+
+.carpic {
   width: 200rpx;
-  height:60rpx;
+  height: 60rpx;
   line-height: 60rpx;
   font-size: 30rpx;
-   float: left;
+  float: left;
   /* position: absolute;  */
   color: #fff;
   text-align: center;
 }
-.contbox{
+
+.contbox {
   width: 100%;
   /* //border-bottom: 1px solid #7b7b7b; */
   height: 180rpx;
 }
-.disitembox{
+
+.disitembox {
   width: 100%;
   height: 200rpx;
   display: block;
-  border-bottom:1rpx #eaeaea solid; 
+  border-bottom: 1rpx #eaeaea solid;
   padding-bottom: 10rpx;
   position: relative;
 }
-.oleft,
-.oright{
+
+.oleft, .oright {
   float: left;
   height: 200rpx;
-  display:inline-block;
+  display: inline-block;
 }
-.oright{
+
+.oright {
   float: right;
   padding-left: 40rpx;
   position: absolute;
   top: 0;
 }
 
-.conts{
+.conts {
   width: 95%;
   height: 200rpx;
   line-height: 200rpx;
   float: left;
   text-align: center;
 }
-.lines{
+
+.lines {
   width: 2rpx;
   display: inline-block;
   height: 100rpx;
   margin-top: 40rpx;
 }
-.stars{
+
+.stars {
   float: left;
   width: 30rpx;
   height: 30rpx;
-  margin-top:40rpx; 
+  margin-top: 40rpx;
 }
-.allcom{
+
+.allcom {
   min-height: 260rpx;
   padding-bottom: 20rpx;
 }
-.commleft{
+
+.commleft {
   width: 100rpx;
-  float: left
+  float: left;
 }
-.photocom{
+
+.photocom {
   width: 120rpx;
   height: 120rpx;
   margin-bottom: 20rpx;
 }
-.photoitem{
+
+.photoitem {
   max-width: 100%;
   max-height: 100%;
 }
-.groupbox{
+
+.groupbox {
   width: 90%;
   height: 150rpx;
   margin-bottom: 20rpx;
@@ -191,47 +222,57 @@ right: 1rpx;
   border-bottom: 1px solid #eaeaea;
   padding-bottom: 20rpx;
 }
-.shoplogo{
+
+.shoplogo {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
+  margin-top: 20rpx;
 }
-.listbox{
+
+.listbox {
   width: 70%;
   height: 150rpx;
+  margin-top: 30rpx;
 }
-.sername,
-.serndec{
+
+.sername, .serndec {
   display: block;
   font-size: 28rpx;
 }
-.sername{
+
+.sername {
   font-size: 35rpx;
   color: #222;
 }
-.orginprice{
-  text-decoration: line-through
+
+.orginprice {
+  text-decoration: line-through;
 }
-.coups{
+
+.coups {
   background: #e67817;
   color: #fff;
   line-height: 150rpx;
   text-align: center;
-  font-size:50rpx;
+  font-size: 50rpx;
   margin: 10rpx 20rpx 0 20rpx;
 }
-.coupsbox{
+
+.coupsbox {
   padding-bottom: 20rpx;
   border-bottom: 1px solid #eaeaea;
 }
-.detailcups{
-color: #222;
 
+.detailcups {
+  color: #222;
 }
-.coupsdetail{
-  color: #c38964
+
+.coupsdetail {
+  color: #c38964;
 }
-.gosolve{
+
+.gosolve {
   text-align: center;
   line-height: 50rpx;
   background: #0cb908;
@@ -239,38 +280,46 @@ color: #222;
   display: inline-block;
   border-radius: 50rpx;
 }
+
 /* 砍价 */
-.bargin-box{
+
+.bargin-box {
   width: 100%;
   padding-bottom: 10rpx;
   border-bottom: 1rpx solid #eaeaea;
 }
-.picimg{
+
+.picimg {
   margin: 10rpx 10rpx 0 10rpx;
   max-width: 100%;
-  max-height:100%;
+  max-height: 100%;
 }
-.rightbox{
-  margin-left: 30rpx
+
+.rightbox {
+  margin-left: 30rpx;
 }
-.max-price{
+
+.max-price {
   text-decoration: line-through;
 }
-.logoPic{
+
+.logoPic {
   margin-top: 15%;
-margin-left: 5%;
+  margin-left: 5%;
   max-width: 75%;
-  max-height:75%;
+  max-height: 75%;
 }
 
 .service-item {
-  animation: scale-item .4s ease-out 1;
+  animation: scale-item 0.4s ease-out 1;
 }
+
 @-webkit-keyframes scale-item {
   0% {
     opacity: 0;
     transform: translateX(20rpx);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);

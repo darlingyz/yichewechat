@@ -21,7 +21,7 @@
   </view>
   <text class='shopsName pa'>{{shopsName}}</text>
   <text class='shopsPlace pa fs25 mt100'>{{shopsPlace}}</text>
-  <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}}</text>
+  <text class='shopsDistance pa fs25 mt100'>{{shopsDistance}} km</text>
   <image class='shopsPhone pa w48 h48' src='http://116.62.151.139/res/img/greenphone.png' bindtap='shopPhone'></image>
   <image class='cutline pa mt40' src='http://116.62.151.139/res/img/cutline.png'></image>
   <image class='shopsNavigation w48 h48' src='http://116.62.151.139/res/img/navigation.png' bindtap='shopMap'></image>
@@ -34,7 +34,7 @@
     <image class='serveLogo pa w90' src='{{item.img}}' mode='widthFix'></image>
     <text class='serveName pa'>{{item.businessName}}</text>
     <text class='serveDetail pa'>{{item.brandName}}</text>
-    <text class='servePrice pa fs25 w100'>¥{{item.price}}元</text>
+    <text class='servePrice pa fs25 w100'>¥{{item.price}}</text>
     <!-- <text class='servePrice pa fs25'>¥{{item.privilegePrice}}元</text> -->
     <text class='serveNumber pa fs25'>x{{item.amount}}</text>
   </view>
@@ -44,15 +44,15 @@
 
   <view class="projectBox h80">
     <text class='projectName pr fl dis-b fs26 mt20'>商品总额</text>
-    <text class='projectPrice pa fr dis-b fs26 mt20'>¥ {{totalMoney}} 元</text>
+    <text class='projectPrice pa fr dis-b fs26 mt20'>¥ {{totalMoney}}</text>
   </view>
   <view class="projectBox h80">
     <text class='projectName pr fl dis-b fs26 mt20'>优惠券</text>
-    <text class='projectPrice pa fr dis-b fs26 mt20'>{{discountPrice ? discountPrice :0}}</text>
+    <text class='projectPrice pa fr dis-b fs26 mt20'>¥ {{discountPrice ? discountPrice :0}}</text>
   </view>
   <view class="projectBox h80" wx:if='{{payPrice}}'>
     <text class='projectName pr fl dis-b fs26 mt20'>实付款</text>
-    <text class='projectPrice pa fr dis-b fs26 mt20'>¥{{payPrice}}元</text>
+    <text class='projectPrice pa fr dis-b fs26 mt20'>¥{{payPrice}}</text>
   </view>
 
 
@@ -70,6 +70,6 @@
  <contact-button class='serveLogo1 pa' type="default-darke" size="28" session-from="weapp"></contact-button>
   <text class='onlionServe pa fs28'>一车独秀在线客服</text>
   <image class='blackLine pa' src='http://116.62.151.139/res/img/cutline.png'></image>
-  <image class='consultLogo pa' src='http://116.62.151.139/res/img/greenphone.png' bindtap='goPhone'></image>
+  <image class='consultLogo pa' src='../../images/phone.png' bindtap='goPhone'></image>
   <text class='consultW pa fs28'>一车独秀电话咨询</text>
 </view>

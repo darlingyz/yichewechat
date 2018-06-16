@@ -761,13 +761,6 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   getDistance: function (lat1, lng1, lat2, lng2) {
     lat1 = lat1 || 0;
     lng1 = lng1 || 0;

@@ -7,7 +7,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    // 登录
+    // 登录F
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -71,10 +71,15 @@ App({
     }
     requestCount++
     return wx.request({
-      complete() {
+      complete(res) {
+        // console.log('请求开始 ====================================')
+        // console.log(args.url)
+        // console.log(args.data)
+        // console.log(res.data)
+        // console.log('请求结束====================================')
         --requestCount
-        if(!requestCount) {
-          wx.hideLoading() 
+        if (!requestCount) {
+          wx.hideLoading()
         }
       },
       ...args
@@ -82,11 +87,11 @@ App({
   },
   globalData: {
     baiduMapKey: 'l97ULFNUrWcq64EjjoZPscgXzm1YxwPh',
-  //testUrl: 'http://192.168.1.127:802/api',
+    //testUrl: 'http://192.168.1.127:802/api',
     imgUrl: 'http://116.62.151.139/res/img/',
- // testUrl:'https://api-wechat.glongcar.com/api',
-   testUrl: 'https://jk.glongcar.com/api',
-    code:"",
+    //testUrl:'https://api-wechat.glongcar.com/api',
+    testUrl: 'https://jk.glongcar.com/api',
+    code: "",
     getuser: null,
     openId: null,
     sessionKey: null,
@@ -106,7 +111,7 @@ App({
     loginstatus: false,
     num: null,
     getuser: null,
-    fail:null,//flag表示调用授权失败,去调用button
+    fail: null,//flag表示调用授权失败,去调用button
     scopeUserInfo: false,
     scopeUserLocation: false,
   }

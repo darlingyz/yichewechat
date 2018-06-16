@@ -46,3 +46,6 @@ margin-top: 10%
   top: 19%;
   z-index: 9999;
 }
+.cont-bao{
+  overflow-y: auto;
+}

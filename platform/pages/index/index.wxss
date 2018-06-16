@@ -419,3 +419,6 @@ margin-top: 10rpx;
   width: 100%;
   height: auto;
 }
+.obgs{
+  background: rgba(0, 0, 0,0.4)
+}

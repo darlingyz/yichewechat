@@ -60,6 +60,28 @@
         </view>  
     </block>
   </view>
+<!--套餐活動  -->
+<view class="border-b-15"></view>
+<view  class='shop-meal wp100'>
+  <block wx:for="{{mealList}}" wx:key="unique">
+    <view class='meal-item wp100 h400'>
+      <view class='item-meal-title h80 wp100 lh80'>
+      <text class='fs35 ml20'>活动标题：</text>
+      <text class='fs28'>{{item.activityName}}</text>
+      </view>
+      <image class='wp100 h240' src='{{item.activityImg}}'></image>
+      <view class='ta-r shop-meal-price'>￥:{{item.packagePrice}}</view>
+      <view class='item-meal-address h80 lh80'>
+        <text class='item-meal-name fs30 ml20 h80 fl'>{{item.merchantName}}</text>
+        <text class='item-meal-ads fs22 h80 fl'>{{item.address}}</text>
+        <text class='item-meal-km fs22 ml10 h80 fl'>{{item.distance}}km</text>
+<text class='item-meal-detail fs26 fr mr10 w120 h60 lh60' data-activityId="{{item.activityId}}" bindtap='goShopMeal'>查看详情</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+
 </view>
 <view wx:else>
   <text class='msg'>活动准备中,敬请期待~</text>

@@ -124,9 +124,9 @@
     <view class='h100 lh100 w180 fs25 fl' bindtap='bindViewModelmatch'>更换车辆>></view>
   </view> -->
   <view class='border-b cb wp100'>
-    <view class='h100 lh100 w150 fs28 fl ml20' bindtap=''>当前规格</view>
-    <view class='h100 lh100 w210 fs28 fl ' bindtap=''>{{currentformat}}</view>
-    <view class='h100 lh100 w10 fs28 fl pr30 color-gray' bindtap=''>|</view>
+    <view class='h100 lh100 w150 fs28 fl ml20'>当前规格</view>
+    <view class='h100 lh100 w210 fs28 fl '>{{currentformat}}</view>
+    <view class='h100 lh100 w10 fs28 fl pr30 color-gray'>|</view>
     <view class='h100 lh100 w180 fs25 fl' bindtap='bindViewSelectstandard'>切换规格>></view>
   </view>
   <!-- <view class='border-b cb wp100'>
